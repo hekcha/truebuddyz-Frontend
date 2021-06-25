@@ -20,7 +20,7 @@ function Quizhome(){
         return(
             <div>
                 {console.log(item.code)}
-                <h3 onClick={() => window.location.href='/item/view/'+item.code}>item no {item.id}</h3> 
+                <h3 onClick={() => window.location.href='/item/view/'+item.code}>item no {item.id}</h3>
                 {/* dont use item.id for numbering */}
             </div>
         );
@@ -32,7 +32,7 @@ function Quizhome(){
             <br />
             you created {quizList.length} no. of quiz
             <br />
-            {quizList.map(quiz=>ShowQuiz(quiz))}
+            {/* {quizList.map(quiz=>ShowQuiz(quiz))} */}
             <button onClick={() => window.location.href="/quiz/new"}>create more quiz</button>
         </div>
     );
