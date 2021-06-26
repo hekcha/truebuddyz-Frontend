@@ -7,6 +7,8 @@ import Quizcreate from "./components/quiz/createQuiz";
 import Playquiz from "./components/quiz/playQuiz";
 import Quizhome from "./components/quiz/quizHome";
 import Quizshow from "./components/quiz/showQuiz";
+import Navbar from "./components/Nav/Navbar";
+import QuizIndex from './components/quiz/index-quiz';
 
 function App() {
 	const [token] = useCookies("tb-token");
@@ -34,11 +36,12 @@ function App() {
 	if (token["tb-token"])
 		return (
 			<React.Fragment>
+				<Navbar />
 				<CookiesProvider>
 					<Router>
 						<Switch>
 							<Route path="/home" exact component={() => <Home />} />
-							<Route path="/quiz" exact component={() => <Quizhome />} />
+							<Route path="/quiz" exact component={() => <QuizIndex />} />
 							<Route path="/quiz/new" exact component={() => <Quizcreate />} />
 							<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 							<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />

@@ -5,7 +5,6 @@ function Home() {
 	return (
 		<React.Fragment>
 			<div>
-				<Navbar />
 			</div>
 		</React.Fragment>
 	);
