@@ -1,2 +1,6 @@
 check for expired token
 show all quiz created by user
+reduce image size
+add countdown in rapid fire
+
+need a proper solution of index-rf.js "setTimeout(function(){ window.location.href=`/rf/play/${gmId}` }, 1500);" line

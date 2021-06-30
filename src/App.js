@@ -10,6 +10,10 @@ import Quizshow from "./components/quiz/showQuiz";
 import Navbar from "./components/Nav/Navbar";
 import QuizIndex from './components/quiz/index-quiz';
 
+// RapidFire
+import RfIndex from "./components/rapidfire/index-rf";
+import Rapidfire from "./components/rapidfire/friends-rf";
+
 function App() {
 	const [token] = useCookies("tb-token");
 	useEffect(() => {
@@ -36,7 +40,7 @@ function App() {
 	if (token["tb-token"])
 		return (
 			<React.Fragment>
-				<Navbar />
+				{/* <Navbar /> */}
 				<CookiesProvider>
 					<Router>
 						<Switch>
@@ -46,7 +50,10 @@ function App() {
 							<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 							<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />
 
-							<Redirect to="/quiz" />
+							<Route path="/rf" exact component={() => <RfIndex />} />
+							<Route path="/rf/play/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} />} />
+							
+							<Redirect to="/rf" />
 						</Switch>
 					</Router>
 				</CookiesProvider>
