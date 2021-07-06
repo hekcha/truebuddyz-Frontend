@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
@@ -16,10 +16,11 @@ import Rapidfire from "./components/rapidfire/friends-rf";
 
 function App() {
 	const [token] = useCookies("tb-token");
+	const [view, setView] = useState(0)
 	useEffect(() => {
 		var frm = new FormData();
 		var date = new Date();
-		if (!token["tb-token"]) {
+		if(!token["tb-token"]) {
 			frm.append("username", date.getTime());
 			frm.append("password", "adminadmin");
 			date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
@@ -31,13 +32,15 @@ function App() {
 				.then((res) => {
 					document.cookie = "tb-token=" + res + "; expires=" + date.toGMTString() + ";path=/;";
 					document.cookie = "tb-user=" + frm.get("username") + "; expires=" + date.toGMTString() + ";path=/;";
-					window.location.reload();
+					setTimeout(function(){ setView(1); }, 1000);
 				})
 				.catch((err) => console.log(err));
 		}
+		else
+			setView(1);
 	}, []);
 
-	if (token["tb-token"])
+	if(view)
 		return (
 			<React.Fragment>
 				{/* <Navbar /> */}
@@ -59,7 +62,11 @@ function App() {
 				</CookiesProvider>
 			</React.Fragment>
 		);
-	else return <div />;
+		else return (
+		<div>
+			loading............
+		</div>
+	);
 }
 
 export default App;

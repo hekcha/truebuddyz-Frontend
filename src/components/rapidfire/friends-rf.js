@@ -13,12 +13,13 @@ function Rapidfire(props){
     // store which question is currently display
     const [i, setI] =useState(0)
     // to switch btw "display question", "wating window", and "result component"
-    const [y, setY] =useState(0)
+    const [y, setY] =useState(null)
     // store RF que fetch form backend
     const [que, setQue]=useState(null)
     // store name
     const [name, setName] = useState('');
-
+    const [timer, startTimer] = useState(null)
+    const [countdown, setCountDown] = useState(null)
 
     useEffect(() => {
 
@@ -39,24 +40,27 @@ function Rapidfire(props){
         (errorObject) => {console.log('The read failed: ' + errorObject.name);})
         
         // monitor changes in RapidFire -> GameID -> queNo (in firebase)
-        firebaseDb.child('RapidFire').child(props.gameId).child('queNo').on('value',snapshot => {setI(snapshot.val());setY(0)},
+        firebaseDb.child('RapidFire').child(props.gameId).child('queNo').on('value',snapshot => {setI(snapshot.val());setY(1)},
         (errorObject) => {console.log('The read failed: ' + errorObject.name);})
 
     }, [])
 
+    
+    const AnsChoice = (item) =>{
+        // post answer
+        firebaseDb.child('RapidFire').child(props.gameId).child('ans').child(name).set(item)
+        setY(2)
+        clearTimeout(timer)
+    }
+    
     const Submit = () =>{
         var nme=document.getElementById("name").value;
         // post name like  ( {userID}:nme )
         firebaseDb.child('RapidFire').child(props.gameId).child('users').child(token['tb-user']).set(nme)
         setName(nme)
+        setY(0)
     }
-    
-    const AnsChoice = (item) =>{
-        // post answer
-        firebaseDb.child('RapidFire').child(props.gameId).child('ans').child(name).set(item)
-        setY(1)
-    }
-    
+
     const NextQue = () => {
         // Set ans to null
         firebaseDb.child('RapidFire').child(props.gameId).child('ans').set("null")
@@ -64,6 +68,21 @@ function Rapidfire(props){
         firebaseDb.child('RapidFire').child(props.gameId).child('queNo').set(i+1)
         setI(i+1)
     }
+    
+    useEffect(()=>{
+        if(y==1&&name!='')
+        {
+            setCountDown(setInterval(function(){
+                if(document.getElementById("time") && document.getElementById("time").innerHTML != null)
+                    document.getElementById("time").innerHTML = document.getElementById("time").innerText-1;
+            }, 1000));
+            startTimer(setTimeout(function(){
+                AnsChoice("not selected");
+            }, 10000))
+        }
+        else if(y!=1 && countdown)
+            clearInterval(countdown)
+    },[y,name])
 
 
     if(name==='')
@@ -76,12 +95,19 @@ function Rapidfire(props){
 
             </div>
         );
-    // Show Question
+        // Show Question
     if(y===0)
+        return(
+            <div>
+                <button onClick={()=> setY(1)}> start </button>
+            </div>
+        );
+    if(y===1)
         return(
             <div>
                 {Object.values(users).length} people join the game<br/>
                 <div className="row">
+                    <h1>time left - <span id="time">10</span></h1>
                     <div className="col-8 offset-2 row">
                         <div className="col-12">
                             {que[parseInt(i)]['que']}
@@ -97,14 +123,13 @@ function Rapidfire(props){
                 </div>
             </div>
         );
-    // Show wating window
-    if(y===1)
+        // Show wating window
+    if(y===2)
     {
         if(ans!=null&&Object.values(users).length===Object.values(ans).length)
-            setY(2)
+        setY(3)
         return(
             <div>
-                {/* {alert("wating return")} */}
                 <div className="m-5" style={{backgroundColor:'violet'}}>
                     <h1>Wait for your friend's response</h1>
                     <h3>these people voted</h3>
@@ -112,15 +137,15 @@ function Rapidfire(props){
                         {Object.getOwnPropertyNames(ans).map(item=>{
                             return(
                                 <li>{item}</li>
-                            )
-                        })}
+                                )
+                            })}
                     </ul>
                 </div>
             </div>
         );
     }
-        // Show Result
-    if(y===2)
+    // Show Result
+    if(y===3)
         return(
             <div>
                 <div>
@@ -145,9 +170,9 @@ function Rapidfire(props){
         );
     // if any thing went wrong
     return(
-        <div>
-            <h1>Something went wrong</h1>
-        </div>
+    <div>
+        <h1>Something went wrong</h1>
+    </div>
     );
 }
 
