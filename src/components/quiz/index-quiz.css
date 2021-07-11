@@ -1,78 +1,89 @@
+.quiz-img {
+	margin-left: 10%;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+
 #quizindex {
-    text-align: -webkit-center;
+	text-align: -webkit-center;
 }
 
-#quizindex .quiz-img{
-    margin-top: 15px;
-    width: 70%;
+#quizindex .quiz-img {
+	margin-top: 15px;
+	width: 70%;
 }
 
-#quizindex .card .box .content .card-image{
-    width: 100%;
-    margin-bottom: 10px;
+#quizindex .card .box .content .card-image {
+	width: 100%;
+	margin-bottom: 10px;
 }
 
 #quizindex .card {
-    position: relative;
-    width: 80%;
-    height: 50vh;
-    border-radius: 15px;
-    border: 0;
-    margin: 15px;
-    background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-    box-shadow: 0 14px 28px rgb(8 56 103 / 25%), 0 10px 10px rgb(8 56 103 / 20%);
+	position: relative;
+	width: 80%;
+	height: 50vh;
+	border-radius: 15px;
+	border: 0;
+	margin: 15px;
+	background-color: #4158d0;
+	background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+	box-shadow: 0 14px 28px rgb(8 56 103 / 25%), 0 10px 10px rgb(8 56 103 / 20%);
 }
 
 #quizindex .card:hover {
-    box-shadow: 0 16px 28px 0 rgb(8 56 103 / 50%)
+	box-shadow: 0 16px 28px 0 rgb(8 56 103 / 50%);
+}
+
+.card-image {
+	margin: auto;
+	justify-content: center;
 }
 
 #quizindex .card .box {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background: rgb(248, 248, 248);
-    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	background: rgb(248, 248, 248);
+	/* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #quizindex .card .box .content {
-    margin: 10px;
-    text-align: center;
+	margin: 10px;
+	text-align: center;
 }
 
 #quizindex .card .box .content h3 {
-    font-size: 1.8em;
-    color: #777;
-    z-index: 1;
-    transition: 0.6s;
-    text-transform: none;
+	font-size: 1.8em;
+	color: #777;
+	z-index: 1;
+	transition: 0.6s;
+	text-transform: none;
 }
 
 #quizindex .card .box .content p {
-    font-size: 1rem;
-    font-weight: 300;
-    color: #777;
-    z-index: 1;
-    transition: 0.5s;
+	font-size: 1rem;
+	font-weight: 300;
+	color: #777;
+	z-index: 1;
+	transition: 0.5s;
 }
 
 #quizindex .card .box .content a {
-    position: relative;
-    display: inline-block;
-    padding: 8px 20px;
-    background: rgba(9, 33, 248, 0.527);
-    border-radius: 20px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 400;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    margin: 10px;
+	position: relative;
+	display: inline-block;
+	padding: 8px 20px;
+	background: rgba(9, 33, 248, 0.527);
+	border-radius: 20px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 400;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	margin: 10px;
 }

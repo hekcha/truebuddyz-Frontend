@@ -1,6 +1,2 @@
 check for expired token
 show all quiz created by user
-reduce image size
-add countdown in rapid fire
-
-make proper urls

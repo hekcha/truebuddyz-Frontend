@@ -50,5 +50,3 @@ function Quizshow(props){
     }
 
 export default Quizshow
-
-

@@ -4,8 +4,7 @@ import Navbar from "../Nav/Navbar";
 function Home() {
 	return (
 		<React.Fragment>
-			<div>
-			</div>
+			<Navbar />
 		</React.Fragment>
 	);
 }

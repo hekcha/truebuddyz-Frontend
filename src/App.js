@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
@@ -10,17 +10,12 @@ import Quizshow from "./components/quiz/showQuiz";
 import Navbar from "./components/Nav/Navbar";
 import QuizIndex from './components/quiz/index-quiz';
 
-// RapidFire
-import RfIndex from "./components/rapidfire/index-rf";
-import Rapidfire from "./components/rapidfire/friends-rf";
-
 function App() {
 	const [token] = useCookies("tb-token");
-	const [view, setView] = useState(0)
 	useEffect(() => {
 		var frm = new FormData();
 		var date = new Date();
-		if(!token["tb-token"]) {
+		if (!token["tb-token"]) {
 			frm.append("username", date.getTime());
 			frm.append("password", "adminadmin");
 			date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
@@ -32,18 +27,16 @@ function App() {
 				.then((res) => {
 					document.cookie = "tb-token=" + res + "; expires=" + date.toGMTString() + ";path=/;";
 					document.cookie = "tb-user=" + frm.get("username") + "; expires=" + date.toGMTString() + ";path=/;";
-					setTimeout(function(){ setView(1); }, 1000);
+					window.location.reload();
 				})
 				.catch((err) => console.log(err));
 		}
-		else
-			setView(1);
 	}, []);
 
-	if(view)
+	if (token["tb-token"])
 		return (
 			<React.Fragment>
-				{/* <Navbar /> */}
+				
 				<CookiesProvider>
 					<Router>
 						<Switch>
@@ -53,20 +46,13 @@ function App() {
 							<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 							<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />
 
-							<Route path="/rf" exact component={() => <RfIndex />} />
-							<Route path="/rf/play/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} />} />
-							
-							<Redirect to="/rf" />
+							<Redirect to="/quiz" />
 						</Switch>
 					</Router>
 				</CookiesProvider>
 			</React.Fragment>
 		);
-		else return (
-		<div>
-			loading............
-		</div>
-	);
+	else return <div />;
 }
 
 export default App;

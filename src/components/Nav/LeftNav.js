@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
 
 const animateIn = keyframes`
-	from{margin-left:-100%}
-	50%{margin-left:-50%}
-	to{margin-left:0%}
+	from{margin-left:-100% }
+	50%{margin-left:-50% }
+	to{margin-left:0% }
 `;
 const animateOut = keyframes`
-	from{margin-left:0%}
-	50%{margin-left:-50%}
-	to{margin-left:-100%}
+	from{margin-left:0% }
+	50%{margin-left:-50% }
+	to{margin-left:-100% }
 `;
 
 const Ul = styled.ul`
@@ -22,7 +22,7 @@ const Ul = styled.ul`
 		font-family: "Bangers", cursive;
 		font-size: larger;
 		cursor: pointer;
-		color: #000;
+		color: #62b4e3;
 	}
 
 	@media (max-width: 768px) {
@@ -99,7 +99,7 @@ const LeftNav = ({ open }) => {
 			</a>
 			<a href>
 				<li>
-					<Apply3 open={open}>Conribution</Apply3>
+					<Apply3 open={open}>Contribution</Apply3>
 				</li>
 			</a>
 			<a href>
