@@ -5,7 +5,6 @@ import { Button, Stepper, Step, StepLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card } from "react-bootstrap";
 import CreateQuiz from "../page/CreateQuiz";
-import ShareQuiz from "./shareQuiz";
 import QueNumber from "../QueNumber";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: "column",
 		minWidth: "50vw",
 		maxWidth: "400px",
+		// maxHeight: "600px",
 		position: "absolute",
 		justifyContent: "center",
 		alignItems: "center",
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down("xs")]: {
 			position: "absolute",
 			top: "3.2vh",
-			left: "-9vw",
+			left: "-2rem",
 		},
 		transition: "all 0.3s ease-out",
 		justifyContent: "center",
@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		justifyContent: "center",
 		maxWidth: "80vw",
-		height: "500px",
+		height: "525px",
 		border: "solid 2px",
 		borderColor: "black",
 		borderRadius: "20px",
@@ -147,7 +147,7 @@ function getSteps() {
 
 function Quizcreate() {
 	const [token] = useCookies("tb-token");
-	const [name, setName] = useState(null);
+	const [username, setUsername] = useState(null);
 	const [user, setUser] = useState(null);
 	const [code, setCode] = useState("");
 	const [queBank, setQueBank] = useState(null);
@@ -212,15 +212,15 @@ function Quizcreate() {
 	};
 
 	useEffect(() => {
-		if (queBank && name) {
-			setQue(`${queBank[i].part1} ${name} ${queBank[i].part2}`);
+		if (queBank && username) {
+			setQue(`${queBank[i].part1} ${username} ${queBank[i].part2}`);
 			setOptionA(queBank[i].optionA);
 			setOptionB(queBank[i].optionB);
 			setOptionC(queBank[i].optionC);
 			setOptionD(queBank[i].optionD);
 			setClick(0);
 		}
-	}, [i, queBank, name, click]);
+	}, [i, queBank, username, click]);
 
 	const ChangeHandler = (func, event) => {
 		func(event.target.value);
@@ -241,7 +241,7 @@ function Quizcreate() {
 			}
 			formdata.append("user", user);
 			formdata.append("code", code);
-			formdata.append("name", name);
+			formdata.append("name", username);
 			fetch(`${process.env.REACT_APP_API_URL}/api/quiz/`, {
 				method: "POST",
 				body: formdata,
@@ -279,6 +279,16 @@ function Quizcreate() {
 									disabled
 								/>
 							</Card.Title>
+							<a href={`${process.env.REACT_APP_URL}/quiz/play/${code}`}>
+								<button
+									type="button"
+									className="btn btn-outline-dark btn-sm"
+									data-mdb-ripple-color="dark"
+									style={{ marginTop: "18px", marginBottom: "-5px", borderRadius: "10px" }}
+								>
+									Result
+								</button>
+							</a>
 						</Card.Body>
 						<Card.Footer className="text-muted p-3">
 							<h4 style={{ marginBottom: "-12px" }}>Share On</h4>
@@ -301,7 +311,7 @@ function Quizcreate() {
 									</a>
 									<span class="text">Short link</span>
 								</span>
-								<span class="sr-facebook sr-text-below">
+								<span class="sr-facebook sr-text-below ">
 									<a href={`https://www.facebook.com/share.php?u=${process.env.REACT_APP_URL}/quiz/play/${code}`} title="Facebook">
 										<i class="fab fa-facebook-f"></i>
 									</a>
@@ -314,7 +324,7 @@ function Quizcreate() {
 									<span class="text">WhatsApp</span>
 								</span>
 								<span class="sr-more sr-text-below">
-									<a href="#" target="_blank" title="More">
+									<a href="#" title="More">
 										<i class="fa fa-share-alt"></i>
 									</a>
 									<span class="text">More</span>
@@ -367,11 +377,6 @@ function Quizcreate() {
 						</Card.Footer>
 					</Card>
 				</div>
-				// <div>
-				// 	<a href={`${process.env.REACT_APP_URL}/quiz/play/${code}`}>
-				// 		{process.env.REACT_APP_URL}/quiz/play/{code}
-				// 	</a>
-				// </div>
 			);
 		}
 		if (i < queBank.length) {
@@ -461,9 +466,7 @@ function Quizcreate() {
 							</span>
 						</div>
 					</div>
-					<br />
-					<br />
-					<Button variant="contained" color="secondary" className="my-3" onClick={() => setI(i + 1)}>
+					<Button variant="contained" color="secondary" className="my-2" onClick={() => setI(i + 1)} style={{}}>
 						Skip
 					</Button>
 				</div>
@@ -474,7 +477,7 @@ function Quizcreate() {
 	}
 
 	/**************  THIS SHOW WHILE PLAYING QUIZ  ******************/
-	if (name)
+	if (username)
 		return (
 			<div>
 				<Stepper activeStep={j < 10 ? "1" : "2"} alternativeLabel>
@@ -483,7 +486,7 @@ function Quizcreate() {
 							<StepLabel className={classes.fontChange}>{label}</StepLabel>
 						</Step>
 					))}
-					{console.log(name)}
+					{console.log(username)}
 				</Stepper>
 				<QueNumber que={j} />
 				{Showque()}
@@ -494,7 +497,7 @@ function Quizcreate() {
 		return (
 			// Here I am rendering to create the quiz
 			<div>
-				<CreateQuiz setName={setName} />
+				<CreateQuiz setName={setUsername} />
 			</div>
 		);
 }

@@ -1,8 +1,29 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import { Button, TextField } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import Loader from "../Loader";
+import { Card } from "react-bootstrap";
+import Image from "../assets/friends.jpg";
 
-
+const useStyles = makeStyles((theme) => ({
+	box: {
+		display: "flex",
+		margin: "5vw",
+		border: "double 10px",
+		flexDirection: "column",
+		minWidth: "50vw",
+		maxWidth: "400px",
+		height: "350px",
+		position: "absolute",
+		justifyContent: "center",
+		borderRadius: "20px",
+		background: "url(../assets/friends.jpg)",
+		[theme.breakpoints.up("sm")]: {
+			left: "20vw",
+		},
+	},
+}));
 
 function Playquiz(props) {
 	const [token] = useCookies("tb-token");
@@ -12,6 +33,8 @@ function Playquiz(props) {
 	const [marks, setMarks] = useState(0);
 	const [i, steI] = useState(0);
 	const [ans, setAns] = useState([]);
+
+	const classes = useStyles();
 
 	useEffect(() => {
 		// for questions
@@ -134,10 +157,49 @@ function Playquiz(props) {
 	else
 		return (
 			<div>
-				<label for="name">name</label>
-				<input type="text" id="name" name="name"></input>
-				<button onClick={() => setName(document.getElementById("name").value)}>submit</button>
+				<br />
+				<br />
+				<br />
+				<Card className={`text-center ${classes.box}`}>
+					<Card.Header as="h4">How well do you know ????</Card.Header>
+					<Card.Body>
+						<Card.Title as="h2">True BFF Quiz🤝</Card.Title>
+						<Card.Text>
+							<TextField
+								className={classes.filledTextarea}
+								component="h1"
+								id="name"
+								label="Your Name Here"
+								placeholder="Hello Dear👋"
+								multiline
+								variant="filled"
+								name="name"
+								gutterbottom
+								raised
+								required
+							/>
+						</Card.Text>
+						<Button
+							size="large"
+							className={classes.btn}
+							onClick={() => setName(document.getElementById("name").value)}
+							variant="contained"
+							color="primary"
+							href=""
+						>
+							Play Quiz
+						</Button>
+					</Card.Body>
+					<Card.Footer>
+						<h4>Have to ADD Recommendation down below👇</h4>
+					</Card.Footer>
+				</Card>
 			</div>
+			// <div>
+			// 	<label for="name">name</label>
+			// 	<input type="text" id="name" name="name"></input>
+			// 	<button onClick={() => setName(document.getElementById("name").value)}>submit</button>
+			// </div>
 		);
 }
 
