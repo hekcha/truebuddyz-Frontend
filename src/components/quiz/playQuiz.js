@@ -4,7 +4,6 @@ import { Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Loader from "../Loader";
 import { Card } from "react-bootstrap";
-import Image from "../assets/friends.jpg";
 
 const useStyles = makeStyles((theme) => ({
 	box: {
