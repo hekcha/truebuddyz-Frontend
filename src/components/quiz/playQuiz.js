@@ -161,7 +161,7 @@ function Playquiz(props) {
 				<br />
 				<br />
 				<Card className={`text-center ${classes.box}`}>
-					<Card.Header as="h4">How well do you know ????</Card.Header>
+					<Card.Header as="h4">How well do you know {que.name}</Card.Header>
 					<Card.Body>
 						<Card.Title as="h2">True BFF Quiz🤝</Card.Title>
 						<Card.Text>
