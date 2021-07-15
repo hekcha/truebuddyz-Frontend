@@ -10,16 +10,18 @@ import QueNumber from "../QueNumber";
 const useStyles = makeStyles((theme) => ({
 	box: {
 		margin: "5vw",
-		border: "double 10px",
+		// border: "double 10px",
 		display: "flex",
 		flexDirection: "column",
 		minWidth: "50vw",
 		maxWidth: "400px",
 		// maxHeight: "600px",
+		backgroundColor: "rgb(235, 236, 240)",
 		position: "absolute",
 		justifyContent: "center",
 		alignItems: "center",
 		borderRadius: "20px",
+		boxShadow: "5px 5px 7px rgba(0, 0, 0, 0.2), -8px -8px 10px rgba(255, 255, 255, 0.8)",
 		[theme.breakpoints.up("sm")]: {
 			left: "20vw",
 		},
@@ -38,9 +40,11 @@ const useStyles = makeStyles((theme) => ({
 		fontFamily: "'Acme', sans-serif",
 		fontWeight: "700	",
 		lineHeight: "1.2em",
+		color: "#364547",
 		background: "#f0f0f6",
-		border: "solid 3px",
+		border: "solid 1px black",
 		borderRadius: "20px",
+		boxShadow: "8px 5px 15px 7px rgba(0, 0, 0, 0.3), -9px -7px 10px 8px rgba(255, 255, 255, 1)",
 	},
 
 	parentOption: {
@@ -63,9 +67,12 @@ const useStyles = makeStyles((theme) => ({
 		fontFamily: "'Acme', sans-serif",
 		fontWeight: "700	",
 		lineHeight: "1.2em",
+		color: "#435560",
 		background: "#f0f0f6",
-		border: "solid 5px",
+		border: "solid 2px dark",
 		borderRadius: "20px",
+		boxShadow:
+			"8px 8px 10px rgba( 0, 0, 0, 0.2), -8px -8px 10px rgba(255, 255, 255, 0.8), inset 6px 6px 10px rgba( 0, 0, 0, 0.2), inset -6px -6px 10px rgba(255, 255, 255, 0.8)",
 	},
 
 	checked: {
@@ -381,7 +388,8 @@ function Quizcreate() {
 		}
 		if (i < queBank.length) {
 			return (
-				<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
+				// <div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
+				<div className={classes.box}>
 					<br />
 					<hr />
 					{console.log(i)}

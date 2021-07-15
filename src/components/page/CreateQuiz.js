@@ -18,6 +18,9 @@ const useStyles = makeStyles({
 		backgroundImage: `url("https://media.giphy.com/media/Jsi9OgtvGylZq3mcMw/giphy.gif")`,
 		backgroundSize: "cover",
 		backgroundRepeat: "no-repeat",
+		border: "solid 2px dark",
+		borderRadius: "20px",
+		boxShadow: "10px 15px 10px rgba(0, 0, 1, 0.5), -10px -14px 10px whitesmoke",
 		backgroundPosition: "center",
 	},
 	content: {
