@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { Redirect } from "react-router-dom";
+import copy from "copy-text-to-clipboard";
 import { Button, Stepper, Step, StepLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card } from "react-bootstrap";
@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "center",
 		alignItems: "center",
 		borderRadius: "20px",
+		border: "solid 2px",
 		boxShadow: "5px 5px 7px rgba(0, 0, 0, 0.2), -8px -8px 10px rgba(255, 255, 255, 0.8)",
 		[theme.breakpoints.up("sm")]: {
 			left: "20vw",
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 		background: "#f0f0f6",
 		border: "solid 1px black",
 		borderRadius: "20px",
-		boxShadow: "8px 5px 15px 7px rgba(0, 0, 0, 0.3), -9px -7px 10px 8px rgba(255, 255, 255, 1)",
+		boxShadow: "8px 5px 15px 7px rgba(0, 0, 0, 0.3), -3px -7px 10px 8px rgba(255, 255, 255, 1)",
 	},
 
 	parentOption: {
@@ -69,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
 		lineHeight: "1.2em",
 		color: "#435560",
 		background: "#f0f0f6",
-		border: "solid 2px dark",
+		border: "solid 1px dark",
 		borderRadius: "20px",
 		boxShadow:
 			"8px 8px 10px rgba( 0, 0, 0, 0.2), -8px -8px 10px rgba(255, 255, 255, 0.8), inset 6px 6px 10px rgba( 0, 0, 0, 0.2), inset -6px -6px 10px rgba(255, 255, 255, 0.8)",
@@ -112,11 +113,12 @@ const useStyles = makeStyles((theme) => ({
 	cardBody: {
 		display: "flex",
 		justifyContent: "center",
-		maxWidth: "80vw",
-		height: "525px",
+		maxWidth: "82vw",
+		height: "535px",
 		border: "solid 2px",
 		borderColor: "black",
 		borderRadius: "20px",
+		boxShadow: "10px 15px 10px rgba(0, 0, 1, 0.5), -10px -14px 10px whitesmoke",
 	},
 	heading: {
 		fontSize: "2.4vw",
@@ -143,6 +145,12 @@ const useStyles = makeStyles((theme) => ({
 			fontWeight: "999",
 		},
 		fontWeight: "999",
+	},
+	group: {
+		"&:hover": {
+			display: "flex",
+			flexDirection: "row",
+		},
 	},
 }));
 
@@ -268,6 +276,7 @@ function Quizcreate() {
 							<Card.Title className={classes.title}>Share this Quiz with your friends</Card.Title>
 							<Card.Title className={classes.title}>
 								<textarea
+									id="link"
 									value={`${process.env.REACT_APP_URL}/quiz/play/${code}`}
 									style={{
 										padding: "0.5vw 2vw",
@@ -286,99 +295,66 @@ function Quizcreate() {
 									disabled
 								/>
 							</Card.Title>
-							<a href={`${process.env.REACT_APP_URL}/quiz/play/${code}`}>
+							<span>
+								<a href={`${process.env.REACT_APP_URL}/quiz/play/${code}`}>
+									<button
+										type="button"
+										className="btn btn-outline-dark btn-sm mx-1"
+										data-mdb-ripple-color="dark"
+										style={{ marginTop: "18px", marginBottom: "-5px", borderRadius: "10px" }}
+									>
+										Result
+									</button>
+								</a>
 								<button
 									type="button"
-									className="btn btn-outline-dark btn-sm"
+									className="btn btn-success btn-sm mx-1"
 									data-mdb-ripple-color="dark"
 									style={{ marginTop: "18px", marginBottom: "-5px", borderRadius: "10px" }}
+									onClick={() => {
+										copy(`${process.env.REACT_APP_URL}/quiz/play/${code}`);
+									}}
 								>
-									Result
+									Copy link🔗
 								</button>
-							</a>
+							</span>
 						</Card.Body>
 						<Card.Footer className="text-muted p-3">
 							<h4 style={{ marginBottom: "-12px" }}>Share On</h4>
 							<br />
 							<div
-								class="socializer a sr-32px sr-circle sr-float sr-font-lg sr-icon-white sr-bdr-grey sr-sw-icon-1 sr-pad"
+								className="socializer a sr-32px sr-circle sr-float sr-font-lg sr-icon-white sr-bdr-grey sr-sw-icon-1 sr-pad justify-content-center"
 								data-more="instagram,twitter,snapchat,telegram,reddit"
+								style={{ display: "flex", flexDirection: "row", fontSize: "12px" }}
 							>
-								<span class="sr-shortlink sr-text-below">
-									<a
-										onClick={() => {
-											var copyText = `${process.env.REACT_APP_URL}/quiz/play/${code}`;
-											console.log(copyText);
-											document.execCommand("copy");
-											alert("Copied the text: " + copyText);
-										}}
-										title="Short link"
-									>
-										<i class="fa fa-link"></i>
-									</a>
-									<span class="text">Short link</span>
-								</span>
-								<span class="sr-facebook sr-text-below ">
-									<a href={`https://www.facebook.com/share.php?u=${process.env.REACT_APP_URL}/quiz/play/${code}`} title="Facebook">
-										<i class="fab fa-facebook-f"></i>
-									</a>
-									<span class="text">Facebook</span>
-								</span>
-								<span class="sr-whatsapp sr-text-below">
+								<span className="sr-whatsapp sr-text-below">
 									<a href={`https://api.whatsapp.com/send?text=${process.env.REACT_APP_URL}/quiz/play/${code}`} target="_blank" title="WhatsApp">
-										<i class="fab fa-whatsapp"></i>
+										<i className="fab fa-whatsapp"></i>
 									</a>
-									<span class="text">WhatsApp</span>
+									<span className="text">WhatsApp</span>
 								</span>
-								<span class="sr-more sr-text-below">
-									<a href="#" title="More">
-										<i class="fa fa-share-alt"></i>
+								<span className="sr-telegram sr-text-below">
+									<a
+										href={`https://telegram.me/share/url?url=${process.env.REACT_APP_URL}/quiz/play/${code};text=Free%20Social%20Media%20Share%20Buttons%20Generator%20-%20Aakash%20Web`}
+										target="_blank"
+										title="Telegram"
+									>
+										<i className="fab fa-telegram-plane"></i>
 									</a>
-									<span class="text">More</span>
-									<ul class="socializer">
-										<li class="sr-instagram sr-text-below">
-											<a href="https://instagram.com" target="_blank" title="Instagram">
-												<i class="fab fa-instagram"></i>
-											</a>
-											<span class="text">Instagram</span>
-										</li>
-										<li class="sr-twitter sr-text-below">
-											<a
-												href={`https://twitter.com/intent/tweet?text=${process.env.REACT_APP_URL}/quiz/play/${code}`}
-												target="_blank"
-												title="Twitter"
-											>
-												<i class="fab fa-twitter"></i>
-											</a>
-											<span class="text">Twitter</span>
-										</li>
-										<li class="sr-snapchat sr-text-below">
-											<a href="https://snapchat.com" target="_blank" title="Snapchat">
-												<i class="fab fa-snapchat"></i>
-											</a>
-											<span class="text">Snapchat</span>
-										</li>
-										<li class="sr-telegram sr-text-below">
-											<a
-												href={`https://telegram.me/share/url?url=${process.env.REACT_APP_URL}/quiz/play/${code};text=Free%20Social%20Media%20Share%20Buttons%20Generator%20-%20Aakash%20Web`}
-												target="_blank"
-												title="Telegram"
-											>
-												<i class="fab fa-telegram-plane"></i>
-											</a>
-											<span class="text">Telegram</span>
-										</li>
-										<li class="sr-reddit sr-text-below">
-											<a
-												href="https://reddit.com/submit?url=https%3A%2F%2Fwww.aakashweb.com%2Fapps%2Fsocial-buttons-generator%2F&amp;title=Free%20Social%20Media%20Share%20Buttons%20Generator%20-%20Aakash%20Web"
-												target="_blank"
-												title="Reddit"
-											>
-												<i class="fab fa-reddit"></i>
-											</a>
-											<span class="text">Reddit</span>
-										</li>
-									</ul>
+									<span className="text">Telegram</span>
+								</span>
+
+								<span className="sr-facebook sr-text-below ">
+									<a href={`https://www.facebook.com/share.php?u=${process.env.REACT_APP_URL}/quiz/play/${code}`} title="Facebook">
+										<i className="fab fa-facebook-f"></i>
+									</a>
+									<span className="text">Facebook</span>
+								</span>
+								<span className="sr-instagram sr-text-below">
+									<a href="https://instagram.com" target="_blank" title="Instagram">
+										<i className="fab fa-instagram"></i>
+									</a>
+									<span className="text">Instagram</span>
 								</span>
 							</div>
 						</Card.Footer>
@@ -388,8 +364,7 @@ function Quizcreate() {
 		}
 		if (i < queBank.length) {
 			return (
-				// <div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
-				<div className={classes.box}>
+				<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
 					<br />
 					<hr />
 					{console.log(i)}

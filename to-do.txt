@@ -1,5 +1,7 @@
 check for expired token
 show all quiz created by user
-option me border, shadow...
 upar blinking wala me shadow aur border aur thoda acha bnana
 contact us ke upar logo from quotedtale
+more share option shi krna
+Copy link wala shi krna
+

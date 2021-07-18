@@ -9,15 +9,14 @@ const useStyles = makeStyles((theme) => ({
 	box: {
 		display: "flex",
 		margin: "5vw",
-		border: "double 10px",
+		border: "solid 1px",
+		boxShadow: "10px 10px 7px rgba(0, 0, 0, 0.5), -8px -8px 10px rgba(255, 255, 255, 0.8)",
 		flexDirection: "column",
 		minWidth: "50vw",
 		maxWidth: "400px",
-		height: "350px",
+		height: "335px",
 		position: "absolute",
 		justifyContent: "center",
-		borderRadius: "20px",
-		background: "url(../assets/friends.jpg)",
 		[theme.breakpoints.up("sm")]: {
 			left: "20vw",
 		},

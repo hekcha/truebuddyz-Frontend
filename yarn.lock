@@ -4177,6 +4177,11 @@
   "resolved" "https://registry.npmjs.org/copy-descriptor/-/copy-descriptor-0.1.1.tgz"
   "version" "0.1.1"
 
+"copy-text-to-clipboard@^3.0.1":
+  "integrity" "sha512-rvVsHrpFcL4F2P8ihsoLdFHmd404+CMg71S756oRSeQgqk51U3kicGdnvfkrxva0xXH92SjGS62B0XIJsbh+9Q=="
+  "resolved" "https://registry.npmjs.org/copy-text-to-clipboard/-/copy-text-to-clipboard-3.0.1.tgz"
+  "version" "3.0.1"
+
 "core-js-compat@^3.14.0", "core-js-compat@^3.15.0", "core-js-compat@^3.6.2":
   "integrity" "sha512-Wp+BJVvwopjI+A1EFqm2dwUmWYXrvucmtIB2LgXn/Rb+gWPKYxtmb4GKHGKG/KGF1eK9jfjzT38DITbTOCX/SQ=="
   "resolved" "https://registry.npmjs.org/core-js-compat/-/core-js-compat-3.15.2.tgz"

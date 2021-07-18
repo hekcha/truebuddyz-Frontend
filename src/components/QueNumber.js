@@ -116,7 +116,7 @@ const useStyles = makeStyles({
 		color: "gold",
 		animation: "$blinking 2s ease-in-out infinite",
 		width: "8vw",
-		boxShadow: "9.91px 9.91px 15px #d9dade,-9.91px -9.91px 15px #fff",
+		// fontSize: "18px",
 	},
 
 	number: {
