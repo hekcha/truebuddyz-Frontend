@@ -1,7 +1,5 @@
 check for expired token
 show all quiz created by user
-upar blinking wala me shadow aur border aur thoda acha bnana
+{% comment %} upar blinking wala me shadow aur border aur thoda acha bnana {% endcomment %}
 contact us ke upar logo from quotedtale
-more share option shi krna
-Copy link wala shi krna
 
