@@ -93,6 +93,7 @@ const useStyles = makeStyles({
 
 	root: {
 		display: "flex",
+		position: "relative",
 		flexDirection: "row",
 		alignContent: "center",
 		alignItems: "center",

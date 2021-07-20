@@ -313,6 +313,7 @@ function Quizcreate() {
 									style={{ marginTop: "18px", marginBottom: "-5px", borderRadius: "10px" }}
 									onClick={() => {
 										copy(`${process.env.REACT_APP_URL}/quiz/play/${code}`);
+										alert("Copied!!");
 									}}
 								>
 									Copy link🔗
@@ -383,7 +384,7 @@ function Quizcreate() {
 									}}
 								></i>
 								<textarea
-									className={`optionA ${classes.option} col-md-9 col-xs-11 `}
+									className={`border optionA ${classes.option} col-md-9 col-xs-11 `}
 									id="optionA"
 									value={optionA}
 									onChange={(event) => ChangeHandler(setOptionA, event)}
@@ -402,7 +403,7 @@ function Quizcreate() {
 									}}
 								></i>
 								<textarea
-									className={`optionB ${classes.option} col-md-9 col-xs-11`}
+									className={`border optionB ${classes.option} col-md-9 col-xs-11`}
 									id="optionB"
 									value={optionB}
 									onChange={(event) => ChangeHandler(setOptionB, event)}
@@ -421,7 +422,7 @@ function Quizcreate() {
 									}}
 								></i>
 								<textarea
-									className={`optionC ${classes.option} col-md-9 col-xs-11`}
+									className={`border optionC ${classes.option} col-md-9 col-xs-11`}
 									id="optionC"
 									value={optionC}
 									onChange={(event) => ChangeHandler(setOptionC, event)}
@@ -441,7 +442,7 @@ function Quizcreate() {
 									}}
 								></i>
 								<textarea
-									className={`optionD ${classes.option} col-md-9 col-xs-11`}
+									className={`border optionD ${classes.option} col-md-9 col-xs-11`}
 									id="optionD"
 									value={optionD}
 									onChange={(event) => ChangeHandler(setOptionD, event)}
