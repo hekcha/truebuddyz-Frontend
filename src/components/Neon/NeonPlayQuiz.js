@@ -1,7 +1,7 @@
 import React from "react";
-import "./neon.css";
+import "./neonPlayQuiz.css";
 
-function Neon() {
+function NeonPlayQuiz() {
 	return (
 		<div className="logo row">
 			<b>
@@ -11,4 +11,4 @@ function Neon() {
 	);
 }
 
-export default Neon;
+export default NeonPlayQuiz;

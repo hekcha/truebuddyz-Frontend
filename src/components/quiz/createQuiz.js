@@ -114,25 +114,25 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		justifyContent: "center",
 		maxWidth: "82vw",
-		height: "535px",
+		height: "565px",
 		border: "solid 2px",
 		borderColor: "black",
 		borderRadius: "20px",
-		boxShadow: "10px 15px 10px rgba(0, 0, 1, 0.5), -10px -14px 10px whitesmoke",
+		boxShadow: "10px 15px 10px rgba(0, 0, 1, 0.5)",
 	},
 	heading: {
 		fontSize: "2.4vw",
-		// padding: "2.6vw",
+		marginTop: "3px",
 		[theme.breakpoints.down("xs")]: {
-			fontSize: "13px",
+			fontSize: "12px",
 			fontWeight: "700",
 		},
 		fontFamily: "'Permanent Marker', cursive",
 	},
 	title: {
-		fontSize: "2.4vw",
+		fontSize: "2.2vw",
 		[theme.breakpoints.down("xs")]: {
-			fontSize: "24px",
+			fontSize: "18px",
 			fontWeight: "999",
 		},
 		margin: "2vw",
@@ -301,7 +301,7 @@ function Quizcreate() {
 										type="button"
 										className="btn btn-outline-dark btn-sm mx-1"
 										data-mdb-ripple-color="dark"
-										style={{ marginTop: "18px", marginBottom: "-5px", borderRadius: "10px" }}
+										style={{ marginTop: "18px", marginBottom: "-25px", borderRadius: "10px" }}
 									>
 										Result
 									</button>
@@ -310,7 +310,7 @@ function Quizcreate() {
 									type="button"
 									className="btn btn-success btn-sm mx-1"
 									data-mdb-ripple-color="dark"
-									style={{ marginTop: "18px", marginBottom: "-5px", borderRadius: "10px" }}
+									style={{ marginTop: "18px", marginBottom: "-25px", borderRadius: "10px" }}
 									onClick={() => {
 										copy(`${process.env.REACT_APP_URL}/quiz/play/${code}`);
 										alert("Copied!!");

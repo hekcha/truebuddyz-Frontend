@@ -1,16 +1,16 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardActionArea, CardHeader, Typography, TextField, Stepper, Step, StepLabel } from "@material-ui/core";
-import CardActions from "@material-ui/core/CardActions";
+import { Card, TextField, Stepper, Step, StepLabel } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
+import NeonCreateQuiz from "../Neon/NeonCreateQuiz";
 
 const useStyles = makeStyles({
 	root: {
 		position: "relative",
 		display: "flex",
 		justifyContent: "center",
-		margin: "10px auto 10px auto",
+		margin: "45px auto 10px auto",
 		top: "50px",
 		minWidth: 100,
 		maxWidth: 800,
@@ -34,13 +34,20 @@ const useStyles = makeStyles({
 	subHeading: {
 		// Add media breakpoint Material UI
 		textTransform: "initial",
+		justifyContent: "center",
+		textAlign: "center",
+		marginTop: "10px",
 		fontWeight: "999",
 		color: "whitesmoke",
 	},
 	filledTextarea: {
 		backgroundColor: "white",
 		marginBottom: "1rem",
-		opacity: "0.5",
+		// marginTop: "-2rem",
+		padding: "2px 1px 1px",
+		width: "200px",
+		height: "56px",
+		opacity: "0.8",
 		border: "ridge",
 		borderWidth: "0 2px 3px 0",
 		boxShadow: "0 2px 10px 0 whitesmoke",
@@ -64,9 +71,10 @@ export default function SimpleCard(props) {
 					</Step>
 				))}
 			</Stepper>
+			<NeonCreateQuiz />
 			<Card className={classes.root} raised>
 				<CardContent className={classes.content}>
-					<h1 style={{ color: "whitesmoke", fontWeight: "999" }}>BFF Quiz</h1>
+					<h1 style={{ color: "whitesmoke", fontWeight: "100 ", marginBottom: "0px", marginTop: "13px" }}>True BFF Quiz</h1>
 					<h2 className={classes.subHeading}>How well do your friends know you🤝?</h2>
 					<TextField
 						className={classes.filledTextarea}

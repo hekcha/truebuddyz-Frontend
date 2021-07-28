@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import { Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Loader from "../Loader";
-import Neon from "../Neon";
+import NeonPlayQuiz from "../Neon/NeonPlayQuiz";
 import QueNumber from "../QueNumber";
 import { Card } from "react-bootstrap";
 
@@ -248,27 +248,6 @@ function Playquiz(props) {
 								</span>
 							</div>
 						</div>
-						{/* <br />
-					que{i} = {que[`que${i + 1}`]}
-					<br />
-					<br />
-					<br />
-					<div className="row">
-						<div className="optionA col-6 d-flex justify-content-center" onClick={() => Checkans(0)}>
-							<h4>{que[`option${i + 1}A`]}</h4>
-						</div>
-
-						<div className="optionB col-6 d-flex justify-content-center" onClick={() => Checkans(1)}>
-							<h4>{que[`option${i + 1}B`]}</h4>
-						</div>
-
-						<div className="optionC col-6 d-flex justify-content-center" onClick={() => Checkans(2)}>
-							<h4>{que[`option${i + 1}C`]}</h4>
-						</div>
-
-						<div className="optionD col-6 d-flex justify-content-center" onClick={() => Checkans(3)}>
-							<h4>{que[`option${i + 1}D`]}</h4>
-						</div> */}
 					</div>
 				</div>
 			);
@@ -307,7 +286,7 @@ function Playquiz(props) {
 	if (name)
 		return (
 			<div>
-				<Neon />
+				<NeonPlayQuiz />
 				{Showque()}
 			</div>
 		);
