@@ -6,6 +6,8 @@ import Loader from "../Loader";
 import NeonPlayQuiz from "../Neon/NeonPlayQuiz";
 import QueNumber from "../QueNumber";
 import { Card } from "react-bootstrap";
+import Rating from "../Rating.js";
+import CountUp from "react-countup";
 
 const useStyles = makeStyles((theme) => ({
 	box: {
@@ -119,6 +121,17 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "center",
 		alignItems: "center",
 		cursor: "pointer",
+	},
+	playquizCard: {
+		backgroundImage: `url("https://media.giphy.com/media/5T06ftQWtCMy0XFaaI/giphy.gif")`,
+		margin: "auto",
+		marginTop: "10px",
+		width: "40vw",
+		borderRadius: "40px",
+		boxShadow: "10px 15px 10px rgba(0, 0, 1, 0.5), -10px -14px 10px whitesmoke",
+		[theme.breakpoints.down("sm")]: {
+			width: "350px",
+		},
 	},
 }));
 
@@ -273,11 +286,27 @@ function Playquiz(props) {
 				.then((res) => console.log(res))
 				.catch((err) => console.log(err));
 			return (
-				<div>
-					congrats you give {marks} right ans
-					<br />
-					<br />
-					click here to create your Quiz
+				<div style={{ position: "relative", top: "80px" }}>
+					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "28px" }}>How much you liked us?😍</h1>
+					<Rating />
+					<Card className={classes.playquizCard} raised>
+						<h1 className="my-3" style={{ fontSize: "34px", textAlign: "center" }}>
+							Congratulation🎉
+						</h1>
+						<h1 className="my-3" style={{ fontSize: "30px", textAlign: "center" }}>
+							Your score is
+						</h1>
+						<h1 style={{ fontSize: "58px", textAlign: "center" }}>
+							<CountUp start={0} end={marks} duration={4} onEnd={() => console.log("Ended! 👏")} onStart={() => console.log("Started! 💨")}></CountUp>
+						</h1>
+					</Card>
+					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "30px" }}>
+						Click{" "}
+						<a href="/quiz/new" as="u" style={{ color: "skyblue" }}>
+							here
+						</a>{" "}
+						to create your own Quiz
+					</h1>
 				</div>
 			);
 		}
