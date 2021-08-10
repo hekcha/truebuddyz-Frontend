@@ -4,3 +4,5 @@ show all quiz created by user
 contact us ke upar logo from quotedtale
 games click krne pr jojo games hai wo show krne
 aur home page pr do jgh rhega Trending and Most Liked
+Add backend to rating
+cursor text krna question edit me

@@ -146,12 +146,6 @@ const useStyles = makeStyles((theme) => ({
 		},
 		fontWeight: "999",
 	},
-	group: {
-		"&:hover": {
-			display: "flex",
-			flexDirection: "row",
-		},
-	},
 }));
 
 //********* THIS IS THE STEPS FOR STEPPER  ********/

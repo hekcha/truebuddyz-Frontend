@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import Typical from "react-typical";
+import { Card } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,6 +15,65 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: "center",
 		marginTop: "50px",
 		transition: "all 1s easeout",
+	},
+	table: {
+		textAlign: "center",
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	tableCard1: {
+		width: "35vw",
+		margin: "15px",
+		background: "linear-gradient(-45deg, #24ff72, #9a4eff)",
+		[theme.breakpoints.down("sm")]: {
+			width: "280px",
+		},
+	},
+	tableCard2: {
+		width: "35vw",
+		margin: "15px",
+		[theme.breakpoints.down("sm")]: {
+			width: "280px",
+			backgroundPosition: "-20px",
+		},
+		"&:hover,&:active": {
+			transform: "scale(1.1)",
+			transition: " 0.5s",
+			background: "#ada996",
+			background: "-webkit-linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea)",
+			background: "linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea)",
+			backgroundPosition: "-150px",
+		},
+		cursor: "pointer",
+	},
+	nameHeading: {
+		display: "inline-block",
+		// marginRight: "140px",
+		textAlign: "center",
+		fontSize: "27px",
+		textTransform: "capitalize",
+	},
+	marksHeading: {
+		display: "inline-block",
+		textAlign: "center",
+		fontSize: "27px",
+		textTransform: "capitalize",
+	},
+	name: {
+		display: "inline-block",
+		textAlign: "center",
+		fontWeight: "500",
+
+		fontSize: "24px",
+		textTransform: "capitalize",
+	},
+	marks: {
+		display: "inline-block",
+		textAlign: "center",
+		fontWeight: "525",
+		fontSize: "24px",
+		textTransform: "capitalize",
+		verticalAlign: "center",
 	},
 }));
 
@@ -40,24 +100,31 @@ function Quizshow(props) {
 	function Showresp(resp) {
 		return (
 			<tr>
-				<td>{resp.name}</td>
-				<td>{resp.marks}</td>
+				<Card className={classes.tableCard2} raised>
+					<td className={`col-6 col-sm-6 ${classes.name}`}>{resp.name}</td>
+					<td className={`col-6 col-sm-6 ${classes.marks}`}>{resp.marks}</td>
+				</Card>
 			</tr>
 		);
 	}
-
+	//text-capitalize me show hoga name ka
+	// hover effect daalna hai card me
 	if (quizResp.length)
 		return (
-			<div>
+			<div className={classes.table}>
 				{console.log(quizResp)}
-				number of responce to this quiz is {quizResp.length}
+				<h1>Friend's Responded : {quizResp.length}</h1>
 				<br />
-				<table>
+				<table style={{ margin: "auto", justifyContent: "center" }}>
 					<tr>
-						<th>name </th>
-						<th>marks</th>
+						<Card className={classes.tableCard1} raised>
+							<th className={`col-6 col-sm-6 ${classes.nameHeading}`}>name </th>
+
+							<th className={`col-6 col-sm-6 ${classes.marksHeading}`}>marks</th>
+						</Card>
 					</tr>
 					{quizResp.map((resp) => Showresp(resp))}
+					{/* <h2>Click to view Friend Response</h2> */}
 				</table>
 			</div>
 		);
