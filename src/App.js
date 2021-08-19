@@ -8,8 +8,7 @@ import Playquiz from "./components/quiz/playQuiz";
 import Quizhome from "./components/quiz/quizHome";
 import Quizshow from "./components/quiz/showQuiz";
 import Navbar from "./components/Nav/Navbar";
-import QuizIndex from "./components/quiz/index-quiz";
-import ShareQuiz from "./components/quiz/showQuiz";
+import EachResponse from "./components/quiz/eachResponse";
 
 function App() {
 	const [token] = useCookies("tb-token");
@@ -40,14 +39,14 @@ function App() {
 				<CookiesProvider>
 					<Router>
 						<Switch>
-							<Route path="/home" exact component={() => <Home />} />
-							<Route path="/quiz" exact component={() => <QuizIndex />} />
+							<Route path="/" exact component={() => <Home />} />
+							<Route path="/quiz" exact component={() => <Quizhome />} />
 							<Route path="/quiz/new" exact component={() => <Quizcreate />} />
-							<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 							<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />
-							{/* <Route path="/quiz/new/share" exact component={(x) => <ShareQuiz />} /> */}
+							<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
+							<Route path="/quiz/response/:code" exact component={(x) => <EachResponse responseCode={x.match.params.code} />} />
 
-							<Redirect to="/quiz" />
+							<Redirect to="/" />
 						</Switch>
 					</Router>
 				</CookiesProvider>

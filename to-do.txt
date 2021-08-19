@@ -6,3 +6,22 @@ games click krne pr jojo games hai wo show krne
 aur home page pr do jgh rhega Trending and Most Liked
 Add backend to rating
 cursor text krna question edit me
+http://localhost:3000/quiz/view/1629295352940kshdbvjh     is showing webpage.....wrong link
+createquiz.js and playquiz.js      fetch (${process.env.REACT_APP_API_URL}/api/user/) for getting id of user  try to rmove for less server load
+quiz response security (not to seen by other)
+why we say sorry on result page its his fault😂😂
+code generated need encription    try to convert it into base35
+share button not working properly
+
+
+in playquiz.js try another method for good UI
+	useEffect(() => {if (que && user && user === que.user) window.location.href = `/quiz/view/${que.code}`;}, [user, que]);
+
+
+
+
+//// for abhishek
+page/quiz move it to quiz
+add word limit every where according to backend
+showquiz.js  -> quizresult.js    rename
+combine share page and result page

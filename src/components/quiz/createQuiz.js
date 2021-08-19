@@ -220,6 +220,10 @@ function Quizcreate() {
 		setClick(1);
 	};
 
+	const ChangeHandler = (func, event) => {
+		func(event.target.value);
+	};
+
 	useEffect(() => {
 		if (queBank && username) {
 			setQue(`${queBank[i].part1} ${username} ${queBank[i].part2}`);
@@ -231,13 +235,9 @@ function Quizcreate() {
 		}
 	}, [i, queBank, username, click]);
 
-	const ChangeHandler = (func, event) => {
-		func(event.target.value);
-	};
-
-	function Showque() {
-		if (queBank.length === 0) return <div />;
-		if (j === 10) {
+	useEffect(()=>{
+		if(j==10)
+		{
 			var formdata = new FormData();
 
 			for (var p = 0; p < 10; p++) {
@@ -251,6 +251,7 @@ function Quizcreate() {
 			formdata.append("user", user);
 			formdata.append("code", code);
 			formdata.append("name", username);
+
 			fetch(`${process.env.REACT_APP_API_URL}/api/quiz/`, {
 				method: "POST",
 				body: formdata,
@@ -258,9 +259,16 @@ function Quizcreate() {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
 			})
-				.then((resp) => resp.json())
-				.then((res) => console.log(res))
-				.catch((err) => console.log(err));
+			.then((resp) => resp.json())
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+
+		}
+},[j])
+
+	function Showque() {
+		if (queBank.length === 0) return <div />;
+		if (j === 10) {
 			return (
 				<div style={{ display: "flex", justifyContent: "center", marginTop: "8vh" }}>
 					<Card className={`text-center ${classes.cardBody}`}>
@@ -450,8 +458,9 @@ function Quizcreate() {
 				</div>
 			);
 		}
-		// window.location.href=`${process.env.REACT_APP_URL}`
-		return <div>{alert("err")}</div>;
+		// to avoid error resultant work of skip button is nothing
+		setI(i-1)
+		return <div/>
 	}
 
 	/**************  THIS SHOW WHILE PLAYING QUIZ  ******************/

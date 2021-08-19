@@ -141,7 +141,7 @@ function Playquiz(props) {
 	const [user, setUser] = useState(null);
 	const [que, setQue] = useState(null);
 	const [marks, setMarks] = useState(0);
-	const [i, steI] = useState(0);
+	const [i, setI] = useState(0);
 	const [ans, setAns] = useState([]);
 	const [click, setClick] = useState(0);
 
@@ -149,7 +149,6 @@ function Playquiz(props) {
 	var colourPalette = ["#55E6C1", "#FD7272", "#FEA47F", "#25CCF7", "#EAB543", "#FC427B", "#2C3A47", "#ffa801"];
 
 	useEffect(() => {
-		// for questions
 		fetch(`${process.env.REACT_APP_API_URL}/api/quiz/?code=${props.code}`, {
 			method: "GET",
 			headers: {
@@ -157,9 +156,9 @@ function Playquiz(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-			.then((resp) => resp.json())
-			.then((res) => setQue(res[0]))
-			.catch((err) => console.log(err));
+		.then((resp) => resp.json())
+		.then((res) => setQue(res[0]))
+		.catch((err) => console.log(err));
 
 		// for userID
 		fetch(`${process.env.REACT_APP_API_URL}/api/user/`, {
@@ -174,19 +173,39 @@ function Playquiz(props) {
 			.catch((err) => console.log(err));
 	}, []);
 
-	useEffect(() => {
-		if (que && user && user === que.user) window.location.href = `/quiz/view/${que.code}`;
-	}, [user, que]);
+	useEffect(()=>{
+		if(i===10)
+		{
+			var formdata = new FormData();
+			formdata.append("quizcode", que.code);
+			formdata.append("user", que.user);
+			formdata.append("name", name);
+			formdata.append("marks", marks);
+			formdata.append("respcode", token["tb-user"]);
+			for (var j = 0; j < 10; j++) formdata.append(`ans${j + 1}`, ans[j]);
+			fetch(`${process.env.REACT_APP_API_URL}/api/quizresp/`, {
+				method: "POST",
+				body: formdata,
+				headers: {
+					"Authorization": `Token ${token["tb-token"]}`,
+				},
+			})
+			.then((resp) => resp.json())
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+		}
+	},[i])
 
 	function Checkans(a) {
 		setAns([...ans, a]);
-		if (que[`ans${i}`] === a) setMarks(marks + 1);
-		steI(i + 1);
-		console.log(i);
+		if (que[`ans${i+1}`] === a) setMarks(marks + 1);
+		// alert(marks)
+		setI(i + 1);
 	}
 
 	function Showque() {
 		if (i < 10)
+		{
 			return (
 				<div style={{ position: "relative", top: "110px" }}>
 					<div className="row justify-content-center align-items-center">
@@ -195,7 +214,6 @@ function Playquiz(props) {
 					<br />
 					<hr />
 					<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
-						{console.log(i)}
 
 						<textarea className={`question ${classes.question}`} value={que[`que${i + 1}`]} disabled />
 						<br />
@@ -264,27 +282,8 @@ function Playquiz(props) {
 					</div>
 				</div>
 			);
+		}
 		else {
-			var formdata = new FormData();
-			formdata.append("quizcode", que.code);
-			formdata.append("user", que.user);
-			formdata.append("name", name);
-			formdata.append("marks", marks);
-			formdata.append("respcode", token["tb-user"]);
-			console.log(ans[0]);
-			window.aa = ans;
-			console.log(ans);
-			for (var j = 0; j < 10; j++) formdata.append(`ans${j + 1}`, ans[j]);
-			fetch(`${process.env.REACT_APP_API_URL}/api/quizresp/`, {
-				method: "POST",
-				body: formdata,
-				headers: {
-					"Authorization": `Token ${token["tb-token"]}`,
-				},
-			})
-				.then((resp) => resp.json())
-				.then((res) => console.log(res))
-				.catch((err) => console.log(err));
 			return (
 				<div style={{ position: "relative", top: "80px" }}>
 					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "28px" }}>How much you liked us?😍</h1>
@@ -297,8 +296,8 @@ function Playquiz(props) {
 							Your score is
 						</h1>
 						<h1 style={{ fontSize: "58px", textAlign: "center" }}>
-							<CountUp start={0} end={marks} duration={4} onEnd={() => console.log("Ended! 👏")} onStart={() => console.log("Started! 💨")}></CountUp>
-						</h1>
+							<CountUp start={0} end={marks} duration={0.7} onEnd={() => console.log("Ended! 👏")} onStart={() => console.log("Started! 💨")}></CountUp>
+						</h1> 
 					</Card>
 					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "30px" }}>
 						Click{" "}
@@ -320,12 +319,14 @@ function Playquiz(props) {
 			</div>
 		);
 	// wait until question is fetched
-	else if (!que)
+	else if (!que || !user)
 		return (
 			<div>
 				<Loader />
 			</div>
 		);
+	else if (user === que.user)
+	window.location.href = `/quiz/view/${que.code}`;
 	// ask user to enter name
 	else
 		return (
@@ -372,11 +373,6 @@ function Playquiz(props) {
 					</Card.Footer>
 				</Card>
 			</div>
-			// <div>
-			// 	<label for="name">name</label>
-			// 	<input type="text" id="name" name="name"></input>
-			// 	<button onClick={() => setName(document.getElementById("name").value)}>submit</button>
-			// </div>
 		);
 }
 

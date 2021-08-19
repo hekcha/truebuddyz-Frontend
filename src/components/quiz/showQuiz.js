@@ -93,14 +93,15 @@ function Quizshow(props) {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => setQuizResp(res))
+			.then((res) => {console.log(res);setQuizResp(res)})
+			// .then((res) => setQuizResp(res))
 			.catch((err) => console.log(err));
 	}, []);
 
 	function Showresp(resp) {
 		return (
 			<tr>
-				<Card className={classes.tableCard2} raised>
+				<Card onClick={()=> window.location.href = `/quiz/response/${resp.respcode}`} className={classes.tableCard2} raised>
 					<td className={`col-6 col-sm-6 ${classes.name}`}>{resp.name}</td>
 					<td className={`col-6 col-sm-6 ${classes.marks}`}>{resp.marks}</td>
 				</Card>
