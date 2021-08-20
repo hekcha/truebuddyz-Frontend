@@ -1,16 +1,17 @@
-function RfIndex(){
-        
-    const Redirect = () =>{
-        var date = new Date();
-        var gameId=date.getTime().toString(31)
-        window.location.href=`/rapidfire/play/${gameId}`
-    } 
-    
+function IndexRf(){
     return(
-        <div className="text-center pt-5" onClick={()=>Redirect()} style={{height:'200px',width:'200px',backgroundColor:'orange'}}>
-            click to start rapidfire
+        <div className="row">
+            <div className="col-4" onClick={()=>window.location.href='/rapidfire/friends'} style={{margin:'1rem',backgroundColor:'green',height:'7rem'}}>
+            <h1>rapidfire for friends</h1>
+            </div>
+            <div className="col-4" onClick={()=>window.location.href='/rapidfire/bff'} style={{margin:'1rem',backgroundColor:'green',height:'7rem'}}>
+            <h1>rapidfire for BFF</h1>
+            </div>
+            <div className="col-4" onClick={()=>window.location.href='/rapidfire/couples'} style={{margin:'1rem',backgroundColor:'green',height:'7rem'}}>
+            <h1>rapidfire for couples</h1>
+            </div>
         </div>
     );
 }
 
-export default RfIndex
+export default IndexRf

@@ -24,7 +24,7 @@ function Rapidfire(props){
 
 
     useEffect(()=>{
-		fetch(`${process.env.REACT_APP_API_URL}/api/rf/?category=friends`, {
+		fetch(`${process.env.REACT_APP_API_URL}/api/rf/?category=${props.type}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -104,13 +104,20 @@ function Rapidfire(props){
     
     if(i===-1||i===null)
     {
-        return( <div>creating a room</div> )    //loading se bdhiya ye dikhate h
+        return( 
+            <div>
+                <h1>{props.type} Rapidfire</h1><br/>
+                creating a room
+            </div>
+        )    
+        //loading se bdhiya ye dikhate h
     }
     
     if(name==='')
     {
         return(
             <div>
+                <h1>{props.type} Rapidfire</h1><br/>
                 <h3>Enter Your Name</h3><br/>
                 <label for="name">name</label>
                 <input type="text" id="name" name="name"></input>
@@ -123,6 +130,7 @@ function Rapidfire(props){
     {
         return(
             <div>
+                <h1>{props.type} Rapidfire</h1><br/>
                 <button onClick={()=> setY(1)}> start </button>
             </div>
         );
@@ -131,6 +139,7 @@ function Rapidfire(props){
     if(y===1)
         return(
             <div>
+                <h1>{props.type} Rapidfire</h1><br/>
                 {Object.values(users).length} people join the game<br/>
                 <div className="row">
                     <h1>time left - <span id="time">10</span></h1>
@@ -156,6 +165,7 @@ function Rapidfire(props){
             setY(3)
             return(
                 <div>
+                    <h1>{props.type} Rapidfire</h1><br/>
                     <div className="m-5" style={{backgroundColor:'violet'}}>
                         <h1>Wait for your friend's response</h1>
                         <h3>these people voted</h3>
@@ -175,6 +185,7 @@ function Rapidfire(props){
     if(y===3)
         return(
             <div>
+                <h1>{props.type} Rapidfire</h1><br/>
                 <div>
                     <table>
                         <tr>

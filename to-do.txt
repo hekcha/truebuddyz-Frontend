@@ -18,7 +18,11 @@ validate token in frontend also
 in playquiz.js try another method for good UI
 	useEffect(() => {if (que && user && user === que.user) window.location.href = `/quiz/view/${que.code}`;}, [user, que]);
 
-
+contribution 
+feedback
+diffrent quiz
+diffrent rf
+system quiz
 
 
 //// for abhishek
@@ -26,4 +30,5 @@ page/quiz move it to quiz
 add word limit every where according to backend
 showquiz.js  -> quizresult.js    rename
 combine share page and result page
+remove css script form SubQuizzes.js
 

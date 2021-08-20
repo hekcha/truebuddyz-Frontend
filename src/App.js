@@ -4,13 +4,16 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import "./App.css";
 import Home from "./components/page/HomePage";
 import Quizcreate from "./components/quiz/createQuiz";
+import SubQuizzes from "./components/quiz/SubQuizzes";
 import Playquiz from "./components/quiz/playQuiz";
 import Quizhome from "./components/quiz/quizHome";
 import Quizshow from "./components/quiz/showQuiz";
 import Navbar from "./components/Nav/Navbar";
 import EachResponse from "./components/quiz/eachResponse";
-import RfIndex from './components/rapidfire/indexRF'
+import RfCreater from './components/rapidfire/RfCreater'
 import Rapidfire from './components/rapidfire/playRF'
+import IndexRf from "./components/rapidfire/IndexRf";
+
 
 function App() {
 	const [token] = useCookies("tb-token");
@@ -42,13 +45,15 @@ function App() {
 					<Switch>
 						<Route path="/" exact component={() => <Home />} />
 						<Route path="/quiz" exact component={() => <Quizhome />} />
-						<Route path="/quiz/new" exact component={() => <Quizcreate />} />
+						<Route path="/quiz/friends/new" exact component={() => <Quizcreate />} />
+						<Route path="/quiz/:type" exact component={(x) => <SubQuizzes type={x.match.params.type} />} />
 						<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />
 						<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 						<Route path="/quiz/response/:code" exact component={(x) => <EachResponse responseCode={x.match.params.code} />} />
 						
-						<Route path="/rapidfire" exact component={() => <RfIndex />} />
-						<Route path="/rapidfire/play/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} />} />
+						<Route path="/rapidfire/" exact component={() => <IndexRf />} />
+						<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
+						<Route path="/rapidfire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />} />
 						
 						<Redirect to="/" />
 					</Switch>

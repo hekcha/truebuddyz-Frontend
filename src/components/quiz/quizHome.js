@@ -31,7 +31,7 @@ function Quizhome() {
 	var options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
 	return (
 		<div>
-			{/* {window.xyz=quizList} */}
+			{console.log(quizList)}
 			Quiz home
 			<br />
 			you created {quizList.length} no. of quiz
@@ -39,12 +39,14 @@ function Quizhome() {
 			<table style={{border:'1px solid black'}}>
 				<tr style={{border:'1px solid black'}}>
 					<th style={{border:'1px solid black'}}>name</th>
+					<th style={{border:'1px solid black'}}>category</th>
 					<th style={{border:'1px solid black'}}>date of creation</th>
 				</tr>
 				{quizList.map(item =>{
 					var today  = new Date(parseInt(item.code,31));
 					return (<tr onClick={() => (window.location.href = "/quiz/view/" + item.code)} style={{border:'1px solid black'}}>
 						<td style={{border:'1px solid black'}}>{item.name}</td>
+						<td style={{border:'1px solid black'}}>{item.category}</td>
 						<td style={{border:'1px solid black'}}>{today.toLocaleDateString("en-US", options)}</td>
 					</tr>)
 				})}
