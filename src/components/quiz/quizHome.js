@@ -42,7 +42,7 @@ function Quizhome() {
 					<th style={{border:'1px solid black'}}>date of creation</th>
 				</tr>
 				{quizList.map(item =>{
-					var today  = new Date(parseInt(item.code));
+					var today  = new Date(parseInt(item.code,31));
 					return (<tr onClick={() => (window.location.href = "/quiz/view/" + item.code)} style={{border:'1px solid black'}}>
 						<td style={{border:'1px solid black'}}>{item.name}</td>
 						<td style={{border:'1px solid black'}}>{today.toLocaleDateString("en-US", options)}</td>

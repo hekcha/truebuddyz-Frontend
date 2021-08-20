@@ -178,10 +178,10 @@ function Quizcreate() {
 
 	useEffect(() => {
 		var date = new Date();
-		setCode(date.getTime());
+		setCode(date.getTime().toString(31));
 
 		// fetch questions
-		fetch(`${process.env.REACT_APP_API_URL}/api/quizquebank/`, {
+		fetch(`${process.env.REACT_APP_API_URL}/api/quizquebank/?category=friends`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -315,7 +315,7 @@ function Quizcreate() {
 									style={{ marginTop: "18px", marginBottom: "-25px", borderRadius: "10px" }}
 									onClick={() => {
 										copy(`${process.env.REACT_APP_URL}/quiz/play/${code}`);
-										alert("Copied!!");
+										// alert("Copied!!");
 									}}
 								>
 									Copy link🔗

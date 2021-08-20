@@ -11,26 +11,30 @@ function Rapidfire(props){
     // store answer of each que  (set to "null" after question result will display)
     const [ans, setAns]=useState({})
     // store which question is currently display
-    const [i, setI] =useState(0)
+    const [i, setI] =useState(-1)
     // to switch btw "display question", "wating window", and "result component"
     const [y, setY] =useState(null)
     // store RF que fetch form backend
-    const [que, setQue]=useState(null)
+    const [queBank, setQueBank]=useState(null)
     // store name
     const [name, setName] = useState('');
     const [timer, startTimer] = useState(null)
     const [countdown, setCountDown] = useState(null)
 
-    useEffect(() => {
 
-        fetch(`http://127.0.0.1:8000/api/rf/`,{
-            method:'GET',
-            headers: {
-                "Authorization": `Token ${token['tb-token']}`,
-            },
-        }).then(resp=>resp.json()).then(res=>setQue(res))
-        .catch(err => console.log(err))
-        
+
+    useEffect(()=>{
+		fetch(`${process.env.REACT_APP_API_URL}/api/rf/?category=friends`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Token ${token["tb-token"]}`,
+			},
+		})
+        .then((resp) => resp.json())
+        .then((res) => setQueBank(res))
+        .catch((err) => console.log(err));
+
         // monitor changes in RapidFire -> GameID -> users (in firebase)
         firebaseDb.child('RapidFire').child(props.gameId).child('users').on('value',snapshot => {setUsers(snapshot.val())},
         (errorObject) => {console.log('The read failed: ' + errorObject.name);})
@@ -43,19 +47,27 @@ function Rapidfire(props){
         firebaseDb.child('RapidFire').child(props.gameId).child('queNo').on('value',snapshot => {setI(snapshot.val());setY(1)},
         (errorObject) => {console.log('The read failed: ' + errorObject.name);})
 
-    }, [])
-
+        
+    },[])
     
-    const AnsChoice = (item) =>{
-        // post answer
-        firebaseDb.child('RapidFire').child(props.gameId).child('ans').child(name).set(item)
-        setY(2)
-        clearTimeout(timer)
-    }
+    useEffect(()=>{
+        // alert(token['tb-user'])
+        if(i===null)
+        {
+            firebaseDb.child('RapidFire').child(props.gameId).set({
+                queNo:0,
+                users:"null",
+                ans:"null",
+            },  
+            err => {
+                if (err)
+                console.log('Error: ',err)
+            }) 
+        }
+    },[i])
     
     const Submit = () =>{
         var nme=document.getElementById("name").value;
-        // post name like  ( {userID}:nme )
         firebaseDb.child('RapidFire').child(props.gameId).child('users').child(token['tb-user']).set(nme)
         setName(nme)
         setY(0)
@@ -68,7 +80,6 @@ function Rapidfire(props){
         firebaseDb.child('RapidFire').child(props.gameId).child('queNo').set(i+1)
         setI(i+1)
     }
-    
     useEffect(()=>{
         if(y==1&&name!='')
         {
@@ -83,25 +94,40 @@ function Rapidfire(props){
         else if(y!=1 && countdown)
             clearInterval(countdown)
     },[y,name])
-
-
+    
+    const AnsChoice = (item) =>{
+        // post answer
+        firebaseDb.child('RapidFire').child(props.gameId).child('ans').child(name).set(item)
+        setY(2)
+        clearTimeout(timer)
+    }
+    
+    if(i===-1||i===null)
+    {
+        return( <div>creating a room</div> )    //loading se bdhiya ye dikhate h
+    }
+    
     if(name==='')
+    {
         return(
             <div>
                 <h3>Enter Your Name</h3><br/>
                 <label for="name">name</label>
                 <input type="text" id="name" name="name"></input>
                 <button onClick={()=>Submit()}>submit</button>
-
             </div>
         );
-        // Show Question
+    }
+    
     if(y===0)
+    {
         return(
             <div>
                 <button onClick={()=> setY(1)}> start </button>
             </div>
         );
+    }
+        
     if(y===1)
         return(
             <div>
@@ -110,7 +136,7 @@ function Rapidfire(props){
                     <h1>time left - <span id="time">10</span></h1>
                     <div className="col-8 offset-2 row">
                         <div className="col-12">
-                            {que[parseInt(i)]['que']}
+                            {queBank[parseInt(i)]['que']}
                         </div>
                         {Object.values(users).map(item=>{
                             return(
@@ -123,33 +149,33 @@ function Rapidfire(props){
                 </div>
             </div>
         );
-        // Show wating window
-    if(y===2)
-    {
-        if(ans!=null&&Object.values(users).length===Object.values(ans).length)
-        setY(3)
-        return(
-            <div>
-                <div className="m-5" style={{backgroundColor:'violet'}}>
-                    <h1>Wait for your friend's response</h1>
-                    <h3>these people voted</h3>
-                    <ul>
-                        {Object.getOwnPropertyNames(ans).map(item=>{
-                            return(
-                                <li>{item}</li>
-                                )
-                            })}
-                    </ul>
+
+        if(y===2)
+        {
+            if(ans!=null&&Object.values(users).length===Object.values(ans).length)
+            setY(3)
+            return(
+                <div>
+                    <div className="m-5" style={{backgroundColor:'violet'}}>
+                        <h1>Wait for your friend's response</h1>
+                        <h3>these people voted</h3>
+                        <ul>
+                            {Object.getOwnPropertyNames(ans).map(item=>{
+                                return(
+                                    <li>{item}</li>
+                                    )
+                                })}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        );
-    }
-    // Show Result
+            );
+        }
+    
+
     if(y===3)
         return(
             <div>
                 <div>
-                    {console.log('anssss',ans)}
                     <table>
                         <tr>
                             <th>Name</th>
@@ -168,12 +194,7 @@ function Rapidfire(props){
                 <button onClick={()=>NextQue()} >Next Question</button>
             </div>
         );
-    // if any thing went wrong
-    return(
-    <div>
-        <h1>Something went wrong</h1>
-    </div>
-    );
+        window.location.href = `/rapidfire`;
 }
 
 export default Rapidfire

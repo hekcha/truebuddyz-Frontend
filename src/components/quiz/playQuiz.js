@@ -326,7 +326,7 @@ function Playquiz(props) {
 			</div>
 		);
 	else if (user === que.user)
-	window.location.href = `/quiz/view/${que.code}`;
+		window.location.href = `/quiz/view/${que.code}`;
 	// ask user to enter name
 	else
 		return (
