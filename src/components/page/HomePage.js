@@ -96,6 +96,40 @@ function Home() {
 									</a>
 								</article>
 
+								<article className="style3 article">
+									<span className="image span">
+										<img className="img" src={image1} alt="No Image" />
+									</span>
+									<a href="/entertainment/anime" className="a">
+										<h2 className="h2">entertainment anime</h2>
+										{/* <div className="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div> */}
+									</a>
+								</article>
+								<article className="style3 article">
+									<span className="image span">
+										<img className="img" src={image1} alt="No Image" />
+									</span>
+									<a href="/entertainment/dog" className="a">
+										<h2 className="h2">entertainment dog</h2>
+										{/* <div className="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div> */}
+									</a>
+								</article>
+								<article className="style3 article">
+									<span className="image span">
+										<img className="img" src={image1} alt="No Image" />
+									</span>
+									<a href="/entertainment/entrepreneur" className="a">
+										<h2 className="h2">entertainment entrepreneur</h2>
+										{/* <div className="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div> */}
+									</a>
+								</article>
+
 							</section>
 						</div>
 						<br />
@@ -123,6 +157,17 @@ function Home() {
 									</span>
 									<a href="/rapidfire" className="a">
 										<h2 className="h2">rapidfire</h2>
+										{/* <div className="content div">
+											<p className="p">Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div> */}
+									</a>
+								</article>
+								<article className="style2 article">
+									<span className="image span">
+										<img className="" src={image1} alt="No Image" />
+									</span>
+									<a href="/" className="a">
+										<h2 className="h2">Entertainment</h2>
 										{/* <div className="content div">
 											<p className="p">Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div> */}
