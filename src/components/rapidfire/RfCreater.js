@@ -1,5 +1,18 @@
+import { useEffect } from "react";
+
 function RfCreater(props){
-        
+	var ALLOWED_PAGES=['friends','couples', 'bff'];
+
+    useEffect(()=>{
+        for(var i=0;i<ALLOWED_PAGES.length;i++)
+		{
+			if(ALLOWED_PAGES[i]===props.type)
+				break;
+			if(i===ALLOWED_PAGES.length-1)
+				window.location.href='/';     // SHOW 404 page
+		}
+    },[])
+
     const Redirect = () =>{
         var date = new Date();
         var gameId=date.getTime().toString(31)

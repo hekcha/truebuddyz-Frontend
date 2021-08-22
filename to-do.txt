@@ -32,3 +32,6 @@ showquiz.js  -> quizresult.js    rename
 combine share page and result page
 remove css script form SubQuizzes.js
 
+from console warning
+src\components\quiz\playQuiz.js
+  Line 146:16:  'setClick' is assigned a value but never used  

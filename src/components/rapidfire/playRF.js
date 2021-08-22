@@ -46,9 +46,7 @@ function Rapidfire(props){
         // monitor changes in RapidFire -> GameID -> queNo (in firebase)
         firebaseDb.child('RapidFire').child(props.gameId).child('queNo').on('value',snapshot => {setI(snapshot.val());setY(1)},
         (errorObject) => {console.log('The read failed: ' + errorObject.name);})
-
-        
-    },[])
+    },[null])
     
     useEffect(()=>{
         // alert(token['tb-user'])
