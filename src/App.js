@@ -10,10 +10,9 @@ import Quizhome from "./components/quiz/quizHome";
 import Quizshow from "./components/quiz/showQuiz";
 import Navbar from "./components/Nav/Navbar";
 import EachResponse from "./components/quiz/eachResponse";
-import RfCreater from './components/rapidfire/RfCreater'
-import Rapidfire from './components/rapidfire/playRF'
-import IndexRf from "./components/rapidfire/IndexRf";
-
+import RfCreater from "./components/rapidfire/RfCreater";
+import Rapidfire from "./components/rapidfire/playRF";
+import IndexRf from "./components/rapidfire/indexRF";
 
 function App() {
 	const [token] = useCookies("tb-token");
@@ -50,11 +49,11 @@ function App() {
 						<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />
 						<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 						<Route path="/quiz/response/:code" exact component={(x) => <EachResponse responseCode={x.match.params.code} />} />
-						
+
 						<Route path="/rapidfire/" exact component={() => <IndexRf />} />
 						<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
 						<Route path="/rapidfire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />} />
-						
+
 						<Redirect to="/" />
 					</Switch>
 				</Router>

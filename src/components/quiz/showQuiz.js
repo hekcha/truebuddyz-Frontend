@@ -2,9 +2,20 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import Typical from "react-typical";
 import { Card } from "@material-ui/core";
+import copy from "copy-text-to-clipboard";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+	resPage: {
+		justifyContent: "center",
+		textAlign: "center",
+		alignContent: "center",
+		alignSelf: "center",
+		alignItems: "center",
+		textAlign: "center",
+		justifyItems: "center",
+		justifySelf: "center",
+	},
 	text1: {
 		verticalAlign: "center",
 		textAlign: "center",
@@ -93,7 +104,10 @@ function Quizshow(props) {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => {console.log(res);setQuizResp(res)})
+			.then((res) => {
+				console.log(res);
+				setQuizResp(res);
+			})
 			// .then((res) => setQuizResp(res))
 			.catch((err) => console.log(err));
 	}, []);
@@ -101,7 +115,7 @@ function Quizshow(props) {
 	function Showresp(resp) {
 		return (
 			<tr>
-				<Card onClick={()=> window.location.href = `/quiz/response/${resp.respcode}`} className={classes.tableCard2} raised>
+				<Card onClick={() => (window.location.href = `/quiz/response/${resp.respcode}`)} className={classes.tableCard2} raised>
 					<td className={`col-6 col-sm-6 ${classes.name}`}>{resp.name}</td>
 					<td className={`col-6 col-sm-6 ${classes.marks}`}>{resp.marks}</td>
 				</Card>
@@ -131,7 +145,7 @@ function Quizshow(props) {
 		);
 	else
 		return (
-			<div className={classes.resp}>
+			<div className={classes.resPage}>
 				{/* <Typical loop={1} wrapper="h1" steps={["Sorry Buddy😕", 2000]}></Typical> */}
 				<h1 className={classes.text1}>Sorry Buddy😕</h1>
 				{/* <h2>But there is no response yet</h2> */}
@@ -141,6 +155,28 @@ function Quizshow(props) {
 					wrapper="h2"
 					steps={["No response yet📝. . .", 1500, "Till then Checkout some handpicked games for you 👇 ", 3000]}
 				></Typical>
+				<div className="container">
+					<div className="text-center col-md-12">
+						{" "}
+						<button
+							type="button"
+							className="btn btn-success btn-sm mx-1"
+							data-mdb-ripple-color="dark"
+							style={{
+								marginTop: "18px",
+								marginBottom: "-25px",
+								borderRadius: "10px",
+								width: "120px",
+							}}
+							onClick={() => {
+								copy(`${process.env.REACT_APP_URL}/quiz/play/${props.code}`);
+								alert("Copied!!");
+							}}
+						>
+							Copy Quiz Link🔗
+						</button>
+					</div>
+				</div>
 			</div>
 		);
 }
