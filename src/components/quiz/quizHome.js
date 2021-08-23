@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import { Table, Button } from "react-bootstrap";
 
 function Quizhome() {
 	const [token] = useCookies(["tb-token"]);
@@ -14,7 +15,10 @@ function Quizhome() {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => {setQuizList(res);window.xyz=res})
+			.then((res) => {
+				setQuizList(res);
+				window.xyz = res;
+			})
 			.catch((err) => console.log(err));
 	}, []);
 
@@ -28,30 +32,40 @@ function Quizhome() {
 		);
 	}
 
-	var options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+	var options = { year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric" };
 	return (
-		<div>
+		<div style={{ textAlign: "center" }}>
 			{console.log(quizList)}
-			Quiz home
+			<h1 style={{ fontFamily: "'Dancing Script', cursive", textTransform: "capitalize", fontSize: "58px" }}>Quiz home</h1>
+			<pre style={{ display: "inline", color: "black", verticalAlign: "text-bottom" }}>
+				<span style={{ fontSize: "24px", fontWeight: "500" }}>You created &nbsp;</span>
+				<span style={{ fontSize: "48px", fontWeight: "999" }}>{quizList.length}</span>
+				<span style={{ fontSize: "24px", fontWeight: "500" }}>&nbsp; quiz.</span>
+			</pre>
 			<br />
-			you created {quizList.length} no. of quiz
-			<br />
-			<table style={{border:'1px solid black'}}>
-				<tr style={{border:'1px solid black'}}>
-					<th style={{border:'1px solid black'}}>name</th>
-					<th style={{border:'1px solid black'}}>category</th>
-					<th style={{border:'1px solid black'}}>date of creation</th>
+			<Table style={{ display: "table", minWidth: "10rem", maxWidth: "30rem", margin: "auto" }} striped bordered hover>
+				<tr style={{ border: "1px solid black", fontSize: "40px", fontWeight: "800", color: "black" }}>
+					<th style={{ border: "1px solid black", fontSize: "16px" }}>name</th>
+					<th style={{ border: "1px solid black", fontSize: "16px" }}>category</th>
+					<th style={{ border: "1px solid black", fontSize: "16px" }}>date of creation</th>
 				</tr>
-				{quizList.map(item =>{
-					var today  = new Date(parseInt(item.code,31));
-					return (<tr onClick={() => (window.location.href = "/quiz/view/" + item.code)} style={{border:'1px solid black'}}>
-						<td style={{border:'1px solid black'}}>{item.name}</td>
-						<td style={{border:'1px solid black'}}>{item.category}</td>
-						<td style={{border:'1px solid black'}}>{today.toLocaleDateString("en-US", options)}</td>
-					</tr>)
+				{quizList.map((item) => {
+					var today = new Date(parseInt(item.code, 31));
+					return (
+						<tr
+							onClick={() => (window.location.href = "/quiz/view/" + item.code)}
+							style={{ border: "1px solid black", cursor: "pointer", fontWeight: "800" }}
+						>
+							<td style={{ border: "1px solid black", textTransform: "capitalize" }}>{item.name}</td>
+							<td style={{ border: "1px solid black", textTransform: "capitalize" }}>{item.category}</td>
+							<td style={{ border: "1px solid black" }}>{today.toLocaleDateString("en-US", options)}</td>
+						</tr>
+					);
 				})}
-			</table>
-			<button onClick={() => (window.location.href = "/quiz/new")}>create more quiz</button>
+			</Table>
+			<Button variant="success" onClick={() => (window.location.href = "/quiz/friends/new")} style={{ borderRadius: "20px", margin: "12px" }}>
+				Create more Quiz
+			</Button>
 		</div>
 	);
 }
