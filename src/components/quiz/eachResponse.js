@@ -4,9 +4,10 @@ import "../css/eachResponse.css";
 
 function EachResponse(props) {
 	const [token] = useCookies(["tb-token"]);
-	const [quizResp, setQuizResp] = useState([]);
+	const [quizResp, setQuizResp] = useState(null);
 	const [quizQue, setQuizQue] = useState(null);
-	const [quizCode, setQuizCode] = useState(0);
+	const [quizCode, setQuizCode] = useState(null);
+	const [user, setUser] = useState(null);
 
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/api/quizresp/?respcode=${props.responseCode}`, {
@@ -16,62 +17,80 @@ function EachResponse(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-			.then((resp) => resp.json())
-			.then((res) => {
-				console.log(res[0].quizcode);
-				setQuizResp(res[0]);
-				setQuizCode(res[0].quizcode);
-			})
-			.catch((err) => console.log(err));
-	}, []);
-
-	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/api/quiz/?code=${quizCode}`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": `Token ${token["tb-token"]}`,
-			},
+		.then((resp) => resp.json())
+		.then((res) => {
+			setQuizResp(res[0]);
+			setQuizCode(res[0].quizcode);
 		})
+		.catch((err) => console.log(err));
+	}, []);
+		
+	useEffect(()=>{
+		if(quizCode)
+		{
+			fetch(`${process.env.REACT_APP_API_URL}/api/quiz/?code=${quizCode}`, {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Token ${token["tb-token"]}`,
+				},
+			})
+			.then((resp) => resp.json())
+			.then((res) => setQuizQue(res[0]))
+			.catch((err) => console.log(err));
+		}
+	},[quizCode])
+
+	useEffect(()=>{
+		if(quizQue)
+		{
+			fetch(`${process.env.REACT_APP_API_URL}/api/user/`, {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Token ${token["tb-token"]}`,
+				},
+			})
 			.then((resp) => resp.json())
 			.then((res) => {
-				console.log(res[0]);
-				setQuizQue(res[0]);
+				if(quizQue['user']!==res)
+					window.location.href='/notallowed';
+				else
+					setUser(res);
 			})
 			.catch((err) => console.log(err));
-	}, [quizCode]);
+		}
+	},[quizQue])
+
 
 	const ShowQue = (i) => {
 		return (
 			<tr>
-				<td style={{ border: "1px solid black", wordWrap: "break-word" }}>{quizQue[`que${i}`]}</td>
-				<td style={{ border: "1px solid black" }}>{quizQue[`option${i}A`]}</td>
-				<td style={{ border: "1px solid black" }}>{quizQue[`option${i}B`]}</td>
-				<td style={{ border: "1px solid black" }}>{quizQue[`option${i}C`]}</td>
-				<td style={{ border: "1px solid black" }}>{quizQue[`option${i}D`]}</td>
-				<td style={{ border: "1px solid black" }}>{quizQue[`ans${i}`]}</td>
-				<td style={{ border: "1px solid black" }}>{quizResp[`ans${i}`]}</td>
+				<td style={{ border: "1px solid black", wordWrap: "break-word", fontSize:'1rem', fontWeight:'600' }}>{quizQue[`que${i}`]}</td>
+				<td style={{ border: "1px solid black", fontSize:'1rem', fontWeight:'600' }}>{quizQue[`option${i}${String.fromCharCode(quizQue[`ans${i}`]+65)}`]}</td>
+				<td style={{ border: "1px solid black", fontSize:'1rem', fontWeight:'600' }}>{quizQue[`option${i}${String.fromCharCode(quizResp[`ans${i}`]+65)}`]}</td>
+				{quizResp[`ans${i}`]===quizQue[`ans${i}`]?
+				<td style={{ border: "1px solid black", color:'#268f1e', fontSize:'1rem', fontWeight:'600' }}>right</td>
+				:
+				<td style={{ border: "1px solid black", color:'red', fontSize:'1rem', fontWeight:'600' }}>wrong</td>
+				}
 			</tr>
 		);
 	};
 
-	//////////i will display everything beacuse you get exect idea of how much data is this page have
-	if (quizQue)
+	if (quizQue&&user)
 		return (
-			<div>
-				<h1>each response in detail</h1> <br />
-				<h3>Your Score = {quizResp.marks}</h3>
-				<div class="table-wrapper">
-					<table class="fl-table">
+			<div className="container">
+				<h1>{quizResp.name} responses</h1> <br />
+				<h3>{quizResp.name} Score = {quizResp.marks}</h3>
+				<div class="table-wrapper ">
+					<table class="fl-table" style={{fontSize:'2rem'}}>
 						<thead>
 							<tr>
-								<th style={{ border: "1px solid black" }}>question</th>
-								<th style={{ border: "1px solid black" }}>option1</th>
-								<th style={{ border: "1px solid black" }}>option2</th>
-								<th style={{ border: "1px solid black" }}>option3</th>
-								<th style={{ border: "1px solid black" }}>option4</th>
-								<th style={{ border: "1px solid black" }}>correct ans</th>
-								<th style={{ border: "1px solid black" }}>answer</th>
+								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>question</th>
+								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>correct ans</th>
+								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>answer</th>
+								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>status</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -90,7 +109,12 @@ function EachResponse(props) {
 				</div>
 			</div>
 		);
-	else return <div>loading</div>;
+		else return (
+			<div>
+				{console.log(quizQue,"user")}
+				loading
+			</div>
+		);
 }
 
 export default EachResponse;

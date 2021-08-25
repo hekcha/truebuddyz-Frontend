@@ -14,6 +14,7 @@ import RfCreater from "./components/rapidfire/RfCreater";
 import Rapidfire from "./components/rapidfire/playRF";
 import IndexRf from "./components/rapidfire/indexRF";
 import Entertainment from "./components/entertainment/Entertainment";
+import NotAllowed from "./components/page/NotAllowed";
 
 function App() {
 	const [token] = useCookies("tb-token");
@@ -44,6 +45,7 @@ function App() {
 				<Router>
 					<Switch>
 						<Route path="/" exact component={() => <Home />} />
+						<Route path="/notallowed" exact component={() => <NotAllowed />} />
 						<Route path="/quiz" exact component={() => <Quizhome />} />
 						<Route path="/quiz/friends/new" exact component={() => <Quizcreate />} />
 						<Route path="/quiz/:type" exact component={(x) => <SubQuizzes type={x.match.params.type} />} />
@@ -54,7 +56,7 @@ function App() {
 						<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
 						<Route path="/rapidfire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />} />
 						<Route path="/entertainment/:type" exact component={(x) => <Entertainment type={x.match.params.type} />} />
-						<Redirect to="/entertainment/anime" />
+						<Redirect to="/" />
 					</Switch>
 				</Router>
 			</CookiesProvider>

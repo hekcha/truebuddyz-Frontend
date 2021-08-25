@@ -135,7 +135,7 @@ function Quizshow(props) {
 						<Card className={classes.tableCard1} raised>
 							<th className={`col-6 col-sm-6 ${classes.nameHeading}`}>name </th>
 
-							<th className={`col-6 col-sm-6 ${classes.marksHeading}`}>marks</th>
+							<th className={`col-6 col-sm-6 ${classes.marksHeading}`}>score</th>
 						</Card>
 					</tr>
 					{quizResp.map((resp) => Showresp(resp))}

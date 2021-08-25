@@ -296,8 +296,8 @@ function Playquiz(props) {
 							Your score is
 						</h1>
 						<h1 style={{ fontSize: "58px", textAlign: "center" }}>
-							<CountUp start={0} end={marks} duration={1.6} onEnd={() => console.log("Ended! 👏")} onStart={() => console.log("Started! 💨")}></CountUp>
-						</h1>
+							<CountUp start={0} end={marks} duration={0.7} onEnd={() => console.log("Ended! 👏")} onStart={() => console.log("Started! 💨")}></CountUp>
+						</h1> 
 					</Card>
 					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "30px" }}>
 						Click{" "}

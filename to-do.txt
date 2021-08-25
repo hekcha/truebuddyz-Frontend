@@ -13,7 +13,7 @@ code generated need encription    try to convert it into base35
 share button not working properly
 remove all usecookies and pass tokens as parameter for fast response
 validate token in frontend also
-
+remove user field 
 
 in playquiz.js try another method for good UI
 	useEffect(() => {if (que && user && user === que.user) window.location.href = `/quiz/view/${que.code}`;}, [user, que]);
@@ -23,7 +23,6 @@ feedback
 diffrent quiz
 diffrent rf
 system quiz
-
 
 //// for abhishek
 page/quiz move it to quiz
