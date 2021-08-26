@@ -70,9 +70,9 @@ function EachResponse(props) {
 				<td style={{ border: "1px solid black", fontSize:'1rem', fontWeight:'600' }}>{quizQue[`option${i}${String.fromCharCode(quizQue[`ans${i}`]+65)}`]}</td>
 				<td style={{ border: "1px solid black", fontSize:'1rem', fontWeight:'600' }}>{quizQue[`option${i}${String.fromCharCode(quizResp[`ans${i}`]+65)}`]}</td>
 				{quizResp[`ans${i}`]===quizQue[`ans${i}`]?
-				<td style={{ border: "1px solid black", color:'#268f1e', fontSize:'1rem', fontWeight:'600' }}>right</td>
+				<td style={{ border: "1px solid black", fontSize:'1rem', fontWeight:'600' }}>✔️</td>
 				:
-				<td style={{ border: "1px solid black", color:'red', fontSize:'1rem', fontWeight:'600' }}>wrong</td>
+				<td style={{ border: "1px solid black", fontSize:'1rem', fontWeight:'600' }}>❌</td>
 				}
 			</tr>
 		);
