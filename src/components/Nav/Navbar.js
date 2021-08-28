@@ -17,21 +17,24 @@ const Nav = styled.nav`
 
 	.logo {
 		padding: 0px 0;
+		margin: 0;
+		width: 57%;
+	    max-width: 13rem;
 	}
 	//below code is not necessary
 	.logo a img {
 		position: relative;
-		width: 9rem;
+		width: 15rem;
 		height: 5rem;
 		top: -5vh;
-		left: -13vw;
-		margin-left: -5vw;
+		left: 0;
+		margin-left: 0;
 	}
 `;
 
 const Navbar = () => {
 	return (
-		<Nav>
+		<Nav style={{padding: '23px 31px 57px 21px'}}>
 			<div className="logo animate__animated animate__flash">
 				<a href="/home" style={{}}>
 					<img src="https://i.ibb.co/mqtjWzK/icon.png" alt="TRUE BFF" border="0" />

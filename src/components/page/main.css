@@ -77,9 +77,9 @@ body,
 
 @media screen and (max-width: 1280px) {
 	body,
-	..input,
-	..select,
-	..textarea {
+	.input,
+	.select,
+	.textarea {
 		font-size: 12pt;
 	}
 }
@@ -327,7 +327,7 @@ header p {
 }
 
 .tiles article.style1 > .image:before {
-	background-color: #4158d0;
+	/* background-color: #4158d0; */
 	background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
 	opacity: 0.8;
 }
