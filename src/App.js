@@ -43,7 +43,7 @@ function App() {
 		<React.Fragment>
 			<CookiesProvider>
 			<Navbar />
-
+			<div style={{paddingTop:'100px'}}>
 				<Router>
 					<Switch>
 						<Route path="/" exact component={() => <Home />} />
@@ -61,6 +61,7 @@ function App() {
 						<Redirect to="/rapidfire" />
 					</Switch>
 				</Router>
+			</div>
 			</CookiesProvider>
 		</React.Fragment>
 	);

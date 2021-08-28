@@ -26,7 +26,7 @@ const Nav = styled.nav`
 		position: relative;
 		width: 15rem;
 		height: 5rem;
-		top: -5vh;
+		// top: -5vh;
 		left: 0;
 		margin-left: 0;
 	}

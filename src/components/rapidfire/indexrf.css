@@ -17,7 +17,7 @@
 }
   
 #indexrf .card .card_image {
-    width: inherit;
+    /* width: inherit; */
     height: inherit;
     border-radius: 40px;
 }
