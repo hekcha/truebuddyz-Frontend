@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Card } from "react-bootstrap";
 import CreateQuiz from "../page/CreateQuiz";
 import QueNumber from "../QueNumber";
+import QuizList from "./QuizList";
 
 const useStyles = makeStyles((theme) => ({
 	box: {
@@ -154,7 +155,7 @@ function getSteps() {
 }
 // **********************************************//
 
-function Quizcreate() {
+function Quizcreate(props) {
 	const [token] = useCookies("tb-token");
 	const [username, setUsername] = useState(null);
 	const [user, setUser] = useState(null);
@@ -170,6 +171,9 @@ function Quizcreate() {
 	const [j, setJ] = useState(0);
 	const [click, setClick] = useState(0);
 
+	
+	var ALLOWED_PAGES=['friends','couples', 'bff'];
+
 	var colourPalette = ["#55E6C1", "#FD7272", "#FEA47F", "#25CCF7", "#EAB543", "#FC427B", "#2C3A47", "#ffa801"];
 
 	// DEFINING THE VARIABLE FOR USING CSS
@@ -177,11 +181,18 @@ function Quizcreate() {
 	const steps = getSteps();
 
 	useEffect(() => {
+		for(var i=0;i<ALLOWED_PAGES.length;i++)
+		{
+			if(ALLOWED_PAGES[i]===props.type)
+				break;
+			if(i===ALLOWED_PAGES.length-1)
+				window.location.href='/';     // SHOW 404 page
+		}
 		var date = new Date();
 		setCode(date.getTime().toString(31));
 
 		// fetch questions
-		fetch(`${process.env.REACT_APP_API_URL}/api/quizquebank/?category=friends`, {
+		fetch(`${process.env.REACT_APP_API_URL}/api/quizquebank/?category=${props.type}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -251,7 +262,7 @@ function Quizcreate() {
 			formdata.append("user", user);
 			formdata.append("code", code);
 			formdata.append("name", username);
-			formdata.append("category", "friends");
+			formdata.append("category", props.type);
 
 			fetch(`${process.env.REACT_APP_API_URL}/api/quiz/`, {
 				method: "POST",
@@ -474,7 +485,6 @@ function Quizcreate() {
 							<StepLabel className={classes.fontChange}>{label}</StepLabel>
 						</Step>
 					))}
-					{console.log(username)}
 				</Stepper>
 				<QueNumber que={j} />
 				{Showque()}
@@ -485,7 +495,11 @@ function Quizcreate() {
 		return (
 			// Here I am rendering to create the quiz
 			<div>
+				{/* <h1>This is {props.type} quiz</h1> */}
 				<CreateQuiz setName={setUsername} />
+				<br/>
+				<br/>
+				<QuizList/>
 			</div>
 		);
 }
