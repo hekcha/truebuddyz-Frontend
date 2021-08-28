@@ -11,15 +11,15 @@ function IndexRf() {
 			<div class="cards-list">
 				<div class="card 1">
 					<div class="card_image"><img src={friends} /></div>
-					<div class="card_title title-white"><p>Friends RapidFire</p></div>
+					<div class="card_title title-white"><p>Friend's RapidFire</p></div>
 				</div>
 				<div class="card 2">
 					<div class="card_image"><img src={couples} /></div>
-					<div class="card_title title-white"><p>Couples RapidFire</p></div>
+					<div class="card_title title-white"><p>Couple's RapidFire</p></div>
 				</div>
 				<div class="card 3">
 					<div class="card_image"><img src={bff} /></div>
-					<div class="card_title"><p>BFF RapidFire</p></div>
+					<div class="card_title title-white"><p>BFF RapidFire</p></div>
 				</div>
 				<div class="card 3">
 					<div class="card_image"><img src={coming_soon} /></div>
