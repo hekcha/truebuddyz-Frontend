@@ -9,12 +9,7 @@ function Home() {
 		<React.Fragment>
 			<div className="is-preload">
 				<div className="row">
-					<Navbar />
 				</div>
-				<br />
-				<br />
-				<br />
-				<br />
 				<div id="wrapper" className="div mx-4">
 					<div id="main" className="div">
 						<div className="inner div">
@@ -23,12 +18,14 @@ function Home() {
 								<h2 className="h2">Most loved❤️‍🔥 and played🃏 Games by TrueBff Family.</h2>
 							</header>
 							<section className="tiles section">
+
+
 								{/* COPY THIS BELOW SECTION UPTO ARTICLE FOR A NEW CARD ALSO COPY STYLE1 classNameNAME CSS TO OTHER STYLE2*/}
 								<article className="style1 article">
 									<span className="image span">
 										<img className="img" src={image1} alt="" />
 									</span>
-									<a href="/quiz/friends/new" className="a">
+									<a href="/quiz/friends" className="a">
 										<h1 className="h1">Quiz for Friends</h1>
 										{/* <div className="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
