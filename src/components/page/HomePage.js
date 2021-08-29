@@ -28,7 +28,7 @@ function Home() {
 									<span className="image span">
 										<img className="img" src={image1} alt="" />
 									</span>
-									<a href="/quiz/friends/new" className="a">
+									<a href="/quiz/friends" className="a">
 										<h1 className="h1">Quiz for Friends</h1>
 										{/* <div className="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>

@@ -74,8 +74,8 @@ export default function SimpleCard(props) {
 			<NeonCreateQuiz />
 			<Card className={classes.root} raised>
 				<CardContent className={classes.content}>
-					<h1 style={{ color: "whitesmoke", fontWeight: "100 ", marginBottom: "0px", marginTop: "13px" }}>True BFF Quiz</h1>
-					<h2 className={classes.subHeading}>How well do your friends know you🤝?</h2>
+					<h1 style={{ color: "whitesmoke", fontWeight: "100 ", marginBottom: "30px", marginTop: "13px",textTransform:'none' }}>TrueBFF Quiz</h1>
+					{/* <h2 className={classes.subHeading}>How well do your friends know you🤝?</h2> */}
 					<TextField
 						className={classes.filledTextarea}
 						component="h1"
