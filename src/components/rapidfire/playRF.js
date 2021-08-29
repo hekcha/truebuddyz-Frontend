@@ -3,9 +3,22 @@ import * as firebase from "firebase"; // important
 import firebaseDb from "../../firebase";
 import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
+import { Button, Card, TextField } from "@material-ui/core";
+import rfimage from "../assets/rapidfire.jpg";
 
 const useStyles = makeStyles({
+	card: {
+		margin: "5px",
+		minWidth: "350px",
+		maxWidth: "500px",
+		height: "250px",
+		margin: "auto",
+		marginTop: "28px",
+		borderRadius: "50px",
+		backgroundImage: `url("https://64.media.tumblr.com/0ab36988ed272b7eb6f306ba5da6cff3/tumblr_oi4neuR8ti1u01kfzo1_1280.png")`,
+		backgroundSize: "cover",
+		backgroundRepeat: "no-repeat",
+	},
 	heading1: {
 		textTransform: "capitalize",
 		fontSize: "40px",
@@ -170,24 +183,33 @@ function Rapidfire(props) {
 
 	if (name === "") {
 		return (
-			<div className="text-center" style={{ margin: "auto" }}>
+			<div className="text-center" style={{ marginTop: "80px" }}>
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
-				<br />
-				<h3>Enter Your Name</h3>
-				<br />
-				<label for="name">name</label>
-				<input type="text" id="name" name="name"></input>
-				<button onClick={() => Submit()}>submit</button>
+				<Card className={classes.card} raised>
+					<p className="my-3" style={{ fontSize: "34px", fontWeight: "00", color: "black" }}>
+						Enter Your Name
+					</p>
+					<TextField id="name" id="name" name="name" label="Name" variant="filled" style={{ border: "4px" }} required />
+					<br />
+					<Button className="my-3" variant="contained" color="primary" onClick={() => Submit()}>
+						Play
+					</Button>
+					{/* <button onClick={() => Submit()}>submit</button> */}
+				</Card>
 			</div>
 		);
 	}
 
 	if (y === 0) {
 		return (
-			<div>
+			<div className="text-center" style={{ marginTop: "80px" }}>
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
 				<br />
-				<button onClick={() => setY(1)}> start </button>
+				<Button variant="contained" color="primary" onClick={() => setY(1)}>
+					Start
+				</Button>
+				<br />
+				<h1 className="my-4">Instructions📖</h1>
 			</div>
 		);
 	}

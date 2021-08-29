@@ -42,6 +42,8 @@ function App() {
 	return (
 		<React.Fragment>
 			<CookiesProvider>
+			<Navbar />
+			<div style={{paddingTop:'100px'}}>
 				<Router>
 					<Switch>
 						<Route path="/" exact component={() => <Home />} />
@@ -52,13 +54,14 @@ function App() {
 						<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />
 						<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 						<Route path="/quiz/response/:code" exact component={(x) => <EachResponse responseCode={x.match.params.code} />} />
-						<Route path="/rapidfire/" exact component={() => <IndexRf />} />
+						<Route path="/rapidfire" exact component={() => <IndexRf />} />
 						<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
 						<Route path="/rapidfire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />} />
 						<Route path="/entertainment/:type" exact component={(x) => <Entertainment type={x.match.params.type} />} />
-						<Redirect to="/" />
+						<Redirect to="/rapidfire" />
 					</Switch>
 				</Router>
+			</div>
 			</CookiesProvider>
 		</React.Fragment>
 	);

@@ -9,7 +9,7 @@ function Home() {
 		<React.Fragment>
 			<div className="is-preload">
 				<div className="row">
-					{/* <Navbar /> */}
+					<Navbar />
 				</div>
 				<br />
 				<br />

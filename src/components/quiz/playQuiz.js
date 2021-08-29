@@ -288,6 +288,14 @@ function Playquiz(props) {
 				<div style={{ position: "relative", top: "80px" }}>
 					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "28px" }}>How much you liked us?😍</h1>
 					<Rating />
+					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "30px" }}>
+						Click{" "}
+						<a href="/quiz/friends/new" as="u" style={{ color: "skyblue" }}>
+							here
+						</a>{" "}
+						to create your own Quiz
+					</h1>
+
 					<Card className={classes.playquizCard} raised>
 						<h1 className="my-3" style={{ fontSize: "34px", textAlign: "center" }}>
 							Congratulation🎉
@@ -301,10 +309,10 @@ function Playquiz(props) {
 					</Card>
 					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "30px" }}>
 						Click{" "}
-						<a href="/quiz/new" as="u" style={{ color: "skyblue" }}>
+						<a href={`/quiz/view/${props.code}`} as="u" style={{ color: "skyblue" }}>
 							here
 						</a>{" "}
-						to create your own Quiz
+						view all response
 					</h1>
 				</div>
 			);

@@ -5,6 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import NeonCreateQuiz from "../Neon/NeonCreateQuiz";
 
+
 const useStyles = makeStyles({
 	root: {
 		position: "relative",
@@ -63,7 +64,6 @@ export default function SimpleCard(props) {
 
 	return (
 		<div>
-			{/* <HorizontalLabelPositionBelowSteeper /> */}
 			<Stepper activeStep="0" alternativeLabel>
 				{steps.map((label) => (
 					<Step key={label}>
