@@ -103,10 +103,6 @@
 
 /* For Mobile */
 @media (max-width: 750px) {
-  .container {
-    width: 90%;
-  }
-
   #contribution form {
     display: flex;
     flex-direction: column;

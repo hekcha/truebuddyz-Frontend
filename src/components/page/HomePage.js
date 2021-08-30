@@ -1,224 +1,74 @@
 import React from "react";
-import Navbar from "../Nav/Navbar";
 import "./main.css";
-import image1 from "../assets/vegetables.png";
 import noimage from "../assets/noimage.jpg";
+import quiz_friends from "../assets/quiz_friends.jpg";
+import quiz_couples from "../assets/quiz_couples.jfif";
+import rf_friends from "../assets/rf_friends.jpg";
+import quiz from "../assets/quiz.jpg";
+import rf from "../assets/rf.jpg";
+import Card from "../Card";
+
 
 function Home() {
 	return (
 		<React.Fragment>
 			<div className="is-preload">
 				<div className="row">
-					{/* <Navbar /> */}
 				</div>
-				<br />
-				<br />
-				<br />
-				<br />
 				<div id="wrapper" className="div mx-4">
 					<div id="main" className="div">
+
 						<div className="inner div">
 							<header className="header">
-								<h1 className="h1">Most Liked💗</h1>
-								<h2 className="h2">Most loved❤️‍🔥 and played🃏 Games by TrueBff Family.</h2>
+								<h1 className="h1" style={{marginBottom:'0.2em'}}>Most Liked💗</h1>
+								<h2 className="h2" style={{marginBottom:'0.5em'}}>Most loved❤️‍🔥 and played🃏 Games by TrueBff Family.</h2>
 							</header>
-							<section className="tiles section">
-								{/* COPY THIS BELOW SECTION UPTO ARTICLE FOR A NEW CARD ALSO COPY STYLE1 classNameNAME CSS TO OTHER STYLE2*/}
-								<article className="style1 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="" />
-									</span>
-									<a href="/quiz/friends" className="a">
-										<h1 className="h1">Quiz for Friends</h1>
-										{/* <div className="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-								{/* UPTO HERE */}
-								<article className="style2 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="No Image" />
-									</span>
-									<a href="/quiz/couples">
-										<h2 className="h2">quiz for couples</h2>
-										{/* <div className="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-
-								<article className="style3 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="No Image" />
-									</span>
-									<a href="/quiz/bff" className="a">
-										<h2 className="h2">quiz for bff</h2>
-										{/* <div className="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-
-								<article className="style3 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="No Image" />
-									</span>
-									<a href="/rapidfire/friends" className="a">
-										<h2 className="h2">rapidfire for friends</h2>
-										{/* <div className="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-
-								<article className="style3 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="No Image" />
-									</span>
-									<a href="/rapidfire/couples" className="a">
-										<h2 className="h2">rapidfire for couples</h2>
-										{/* <div className="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-
-								<article className="style3 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="No Image" />
-									</span>
-									<a href="/rapidfire/bff" className="a">
-										<h2 className="h2">rapidfire for bff</h2>
-										{/* <div className="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-
-								<article className="style3 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="No Image" />
-									</span>
-									<a href="/entertainment/anime" className="a">
-										<h2 className="h2">entertainment anime</h2>
-										{/* <div className="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-								<article className="style3 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="No Image" />
-									</span>
-									<a href="/entertainment/dog" className="a">
-										<h2 className="h2">entertainment dog</h2>
-										{/* <div className="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-								<article className="style3 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="No Image" />
-									</span>
-									<a href="/entertainment/entrepreneur" className="a">
-										<h2 className="h2">entertainment entrepreneur</h2>
-										{/* <div className="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-
+							<section className="tiles section" style={{marginTop:'0'}}>
+								<div id="indexrf" className="container">
+									<div className="cards-list">
+										<Card link="/quiz/friends" img={quiz_friends} text="Friend's Quiz" />
+										<Card link="/quiz/couples" img={quiz_couples} text="Couple's Quiz" />
+										<Card link="/rapidfire/friends" img={rf_friends} text="Friend's RapidFire" />
+									</div>
+								</div>
 							</section>
 						</div>
 						<br />
-
-
+						<br />
 
 						<div className="inner div">
 							<header className="header">
-								<h1>Our games🔥</h1>
+								<h1 style={{marginBottom:'0em'}}>Hot & Trending🔥</h1>
 							</header>
-							<section className="tiles section">
-								{/* COPY THIS BELOW SECTION UPTO ARTICLE FOR A NEW CARD ALSO COPY STYLE1 classNameNAME CSS TO OTHER STYLE2*/}
-								<article className="style1 article">
-									<span className="image span">
-										<img className="img" src={image1} alt="" />
-									</span>
-									<a href="/quiz" className="a">
-										<h1 className="h1">Quiz</h1>
-									</a>
-								</article>
-								{/* UPTO HERE */}
-								<article className="style2 article">
-									<span className="image span">
-										<img className="" src={image1} alt="No Image" />
-									</span>
-									<a href="/rapidfire" className="a">
-										<h2 className="h2">rapidfire</h2>
-										{/* <div className="content div">
-											<p className="p">Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-								<article className="style2 article">
-									<span className="image span">
-										<img className="" src={image1} alt="No Image" />
-									</span>
-									<a href="/" className="a">
-										<h2 className="h2">Entertainment</h2>
-										{/* <div className="content div">
-											<p className="p">Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div> */}
-									</a>
-								</article>
-						
+							<section className="tiles section" style={{marginTop:'0'}}>
+								<div id="indexrf" className="container">
+									<div className="cards-list">
+										<Card link="/quiz/friends" img={quiz_friends} text="Friend's Quiz" />
+										<Card link="/rapidfire/friends" img={rf_friends} text="Friend's RapidFire" />
+										<Card link="/quiz/couples" img={quiz_couples} text="Couple's Quiz" />
+									</div>
+								</div>
+							</section>
+						</div>
+						<br />
+						<br />
+
+						<div className="inner div">
+							<header className="header">
+								<h1 style={{marginBottom:'0em'}}>Our games🔥</h1>
+							</header>
+							<section className="tiles section" style={{marginTop:'0'}}>
+								<div id="indexrf" className="container">
+									<div className="cards-list">
+										<Card link="/quiz" img={quiz} text="" />
+										<Card link="/rapidfire" img={rf} text="RapidFire" />
+										<Card link="/entertainment" img={noimage} text="Entertainment" />
+									</div>
+								</div>
 							</section>
 						</div>
 
 
-
-						<div className="inner div">
-							<header className="header">
-								<h1>Hot & Trending🔥</h1>
-							</header>
-							<section className="tiles section">
-								{/* COPY THIS BELOW SECTION UPTO ARTICLE FOR A NEW CARD ALSO COPY STYLE1 classNameNAME CSS TO OTHER STYLE2*/}
-								<article className="style1 article">
-									<span className="image span">
-										<img className="img" src={noimage} alt="" />
-									</span>
-									<a href="#" className="a">
-										<h1 className="h1">Quiz for Friends</h1>
-									</a>
-								</article>
-								{/* UPTO HERE */}
-								<article className="style2 article">
-									<span className="image span">
-										<img className="" src={noimage} alt="No Image" />
-									</span>
-									<a href="#" className="a">
-										<h2 className="h2">Lorem</h2>
-										<div className="content div">
-											<p className="p">Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article className="style4 article">
-									<span className="image span">
-										<img className="img" src={noimage} alt="No Image" />
-									</span>
-									<a href="#" className="a">
-										<h2 className="h2">Feugiat</h2>
-										<div className="content div">
-											<p className="p">Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-						
-							</section>
-						</div>
 					</div>
 				</div>
 			</div>
