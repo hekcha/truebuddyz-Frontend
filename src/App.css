@@ -1,0 +1,16 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.thumbnail {  
+    border-radius: 10px;
+    box-shadow: 0 10px 20px;
+    transition: transform 0.5s;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05)
+}
+

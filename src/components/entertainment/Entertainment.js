@@ -73,6 +73,10 @@ function Entertainment(props) {
 		if (i < 5)
 			return (
 				<div className="col-8 offset-2 row">
+					<div class="image-container">
+						<img class="thumbnail" src={que['image']} alt="user image" />
+					</div>
+					<br />
 					<div className="col-12 my-2 text-center">
 						<h1>{que[`que${i}`]}</h1>
 					</div>
