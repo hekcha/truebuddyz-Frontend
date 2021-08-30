@@ -18,7 +18,7 @@ import NotAllowed from "./components/page/NotAllowed";
 import Feedback from "./components/page/Feedback";
 import Contribution from "./components/page/Contribution";
 import IndexEntertainment from "./components/entertainment/IndexEntertainment";
-
+import Game from "./components/page/Game";
 
 
 function App() {
@@ -52,6 +52,7 @@ function App() {
 				<Router>
 					<Switch>
 						<Route path="/" exact component={() => <Home />} />
+						<Route path="/games" exact component={() => <Game />} />
 						<Route path="/feedback" exact component={() => <Feedback />} />
 						<Route path="/contribution" exact component={() => <Contribution />} />
 						<Route path="/notallowed" exact component={() => <NotAllowed />} />

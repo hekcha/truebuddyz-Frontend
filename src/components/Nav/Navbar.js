@@ -34,7 +34,7 @@ const Nav = styled.nav`
 
 const Navbar = () => {
 	return (
-		<Nav style={{padding: '23px 31px 57px 21px'}}>
+		<Nav style={{padding: '8px 31px 57px 21px'}}>
 			<div className="logo animate__animated animate__flash">
 				<a href="/home" style={{}}>
 					<img src="https://i.ibb.co/mqtjWzK/icon.png" alt="TRUE BFF" border="0" />
