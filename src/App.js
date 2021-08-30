@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import "./App.css";
 import Home from "./components/page/HomePage";
 // import Quizcreate from "./components/createQuiz";
-import CreateQuiz from "./components/quiz/CreateQuiz";
+import CreateQuiz from "./components/quiz/createQuiz";
 import Playquiz from "./components/quiz/playQuiz";
 import Quizhome from "./components/quiz/quizHome";
 import Quizshow from "./components/quiz/showQuiz";
