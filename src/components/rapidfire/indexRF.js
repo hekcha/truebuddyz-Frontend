@@ -8,9 +8,8 @@ function IndexRf() {
 	return (
 		<div id="indexrf" className="container">
 			<div class="cards-list">
-<<<<<<< HEAD
 				<div class="card 1">
-					<div class="card_image">
+					<div onClick={() => (window.location.href = "/rapidfire/friends")} class="card_image">
 						<img src={friends} />
 					</div>
 					<div class="card_title title-white">
@@ -18,7 +17,7 @@ function IndexRf() {
 					</div>
 				</div>
 				<div class="card 2">
-					<div class="card_image">
+					<div onClick={() => (window.location.href = "/rapidfire/couples")} class="card_image">
 						<img src={couples} />
 					</div>
 					<div class="card_title title-white">
@@ -26,25 +25,12 @@ function IndexRf() {
 					</div>
 				</div>
 				<div class="card 3">
-					<div class="card_image">
+					<div onClick={() => (window.location.href = "/rapidfire/bff")} class="card_image">
 						<img src={bff} />
 					</div>
 					<div class="card_title title-white">
 						<p>BFF RapidFire</p>
 					</div>
-=======
-				<div class="card 1" >
-					<div onClick={() => (window.location.href = "/rapidfire/friends")} class="card_image"><img src={friends} /></div>
-					<div class="card_title title-white"><p>Friend's RapidFire</p></div>
-				</div>
-				<div class="card 2">
-					<div onClick={() => (window.location.href = "/rapidfire/couples")} class="card_image"><img src={couples} /></div>
-					<div class="card_title title-white"><p>Couple's RapidFire</p></div>
-				</div>
-				<div class="card 3">
-					<div onClick={() => (window.location.href = "/rapidfire/bff")} class="card_image"><img src={bff} /></div>
-					<div class="card_title title-white"><p>BFF RapidFire</p></div>
->>>>>>> f14a87b8c29d7131b7a2edeac5cda15b4a6ad2e1
 				</div>
 				<div class="card 3">
 					<div class="card_image">

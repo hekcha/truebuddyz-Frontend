@@ -10,7 +10,7 @@ import QuizList from "./QuizList";
 
 const useStyles = makeStyles((theme) => ({
 	box: {
-		margin: "5vw",
+		margin: "30px 5vw",
 		// border: "double 10px",
 		display: "flex",
 		flexDirection: "column",
@@ -147,6 +147,15 @@ const useStyles = makeStyles((theme) => ({
 		},
 		fontWeight: "999",
 	},
+	stepper: {
+		minWidth: "370px",
+		maxWidth: "700px",
+		height: "90px",
+		margin: "8px auto",
+		borderRadius: "20px",
+		color: "white",
+		backgroundColor: "#e9e9e9",
+	},
 }));
 
 //********* THIS IS THE STEPS FOR STEPPER  ********/
@@ -171,8 +180,7 @@ function Quizcreate(props) {
 	const [j, setJ] = useState(0);
 	const [click, setClick] = useState(0);
 
-	
-	var ALLOWED_PAGES=['friends','couples', 'bff'];
+	var ALLOWED_PAGES = ["friends", "couples", "bff"];
 
 	var colourPalette = ["#55E6C1", "#FD7272", "#FEA47F", "#25CCF7", "#EAB543", "#FC427B", "#2C3A47", "#ffa801"];
 
@@ -181,12 +189,9 @@ function Quizcreate(props) {
 	const steps = getSteps();
 
 	useEffect(() => {
-		for(var i=0;i<ALLOWED_PAGES.length;i++)
-		{
-			if(ALLOWED_PAGES[i]===props.type)
-				break;
-			if(i===ALLOWED_PAGES.length-1)
-				window.location.href='/';     // SHOW 404 page
+		for (var i = 0; i < ALLOWED_PAGES.length; i++) {
+			if (ALLOWED_PAGES[i] === props.type) break;
+			if (i === ALLOWED_PAGES.length - 1) window.location.href = "/"; // SHOW 404 page
 		}
 		var date = new Date();
 		setCode(date.getTime().toString(31));
@@ -246,9 +251,8 @@ function Quizcreate(props) {
 		}
 	}, [i, queBank, username, click]);
 
-	useEffect(()=>{
-		if(j==10)
-		{
+	useEffect(() => {
+		if (j == 10) {
 			var formdata = new FormData();
 
 			for (var p = 0; p < 10; p++) {
@@ -271,12 +275,11 @@ function Quizcreate(props) {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
 			})
-			.then((resp) => resp.json())
-			.then((res) => console.log(res))
-			.catch((err) => console.log(err));
-
+				.then((resp) => resp.json())
+				.then((res) => console.log(res))
+				.catch((err) => console.log(err));
 		}
-},[j])
+	}, [j]);
 
 	function Showque() {
 		if (queBank.length === 0) return <div />;
@@ -471,15 +474,15 @@ function Quizcreate(props) {
 			);
 		}
 		// to avoid error resultant work of skip button is nothing
-		setI(i-1)
-		return <div/>
+		setI(i - 1);
+		return <div />;
 	}
 
 	/**************  THIS SHOW WHILE PLAYING QUIZ  ******************/
 	if (username)
 		return (
 			<div>
-				<Stepper activeStep={j < 10 ? "1" : "2"} alternativeLabel>
+				<Stepper className={classes.stepper} activeStep={j < 10 ? "1" : "2"} alternativeLabel>
 					{steps.map((label) => (
 						<Step key={label}>
 							<StepLabel className={classes.fontChange}>{label}</StepLabel>
@@ -497,9 +500,9 @@ function Quizcreate(props) {
 			<div>
 				{/* <h1>This is {props.type} quiz</h1> */}
 				<CreateQuiz setName={setUsername} />
-				<br/>
-				<br/>
-				<QuizList/>
+				<br />
+				<br />
+				<QuizList />
 			</div>
 		);
 }

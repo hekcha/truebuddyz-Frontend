@@ -5,7 +5,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import NeonCreateQuiz from "../Neon/NeonCreateQuiz";
 
-
 const useStyles = makeStyles({
 	root: {
 		position: "relative",
@@ -39,7 +38,15 @@ const useStyles = makeStyles({
 		textAlign: "center",
 		marginTop: "10px",
 		fontWeight: "999",
-		color: "whitesmoke",
+		backgroundColor: "whitesmoke",
+	},
+	stepper: {
+		minWidth: "370px",
+		maxWidth: "700px",
+		margin: "auto",
+		borderRadius: "20px",
+		color: "white",
+		backgroundColor: "#e9e9e9",
 	},
 	filledTextarea: {
 		backgroundColor: "white",
@@ -64,7 +71,7 @@ export default function SimpleCard(props) {
 
 	return (
 		<div>
-			<Stepper activeStep="0" alternativeLabel>
+			<Stepper className={classes.stepper} activeStep="0" alternativeLabel>
 				{steps.map((label) => (
 					<Step key={label}>
 						<StepLabel>{label}</StepLabel>
@@ -74,7 +81,7 @@ export default function SimpleCard(props) {
 			<NeonCreateQuiz />
 			<Card className={classes.root} raised>
 				<CardContent className={classes.content}>
-					<h1 style={{ color: "whitesmoke", fontWeight: "100 ", marginBottom: "30px", marginTop: "13px",textTransform:'none' }}>TrueBFF Quiz</h1>
+					<h1 style={{ color: "whitesmoke", fontWeight: "100 ", marginBottom: "30px", marginTop: "13px", textTransform: "none" }}>TrueBFF Quiz</h1>
 					{/* <h2 className={classes.subHeading}>How well do your friends know you🤝?</h2> */}
 					<TextField
 						className={classes.filledTextarea}
