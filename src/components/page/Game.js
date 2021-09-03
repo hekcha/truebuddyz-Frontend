@@ -3,6 +3,7 @@ import "./main.css";
 import IndexRf from "../rapidfire/indexRF";
 import QuizList from "../quiz/QuizList";
 import IndexEntertainment from "../entertainment/IndexEntertainment";
+import IndexHowWellUKnow from "../howWellUKnow/IndexHowWellUKnow";
 
 
 
@@ -30,7 +31,9 @@ function Game() {
 						<br />
 						<br />
 						<IndexEntertainment />
-
+						<br />
+						<br />
+						<IndexHowWellUKnow />
 					</div>
 				</div>
 			</div>

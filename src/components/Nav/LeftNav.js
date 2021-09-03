@@ -92,7 +92,7 @@ const Apply4 = styled.div`
 const LeftNav = ({ open }) => {
 	return (
 		<Ul open={open}>
-			<a href="/home">
+			<a href="/">
 				<li>
 					<Apply1 open={open}>Home</Apply1>
 				</li>
@@ -104,18 +104,13 @@ const LeftNav = ({ open }) => {
 			</a>
 			<li>
 				<Apply3 open={open}>
-					<a href="localhost:3000/contribution">Contribution </a>
+					<a href="/contribution">Contribution </a>
 				</Apply3>
 			</li>
 			{/* <a href="localhost:3000/feedback"> */}
 			<li>
-				<Apply4
-					open={open}
-					onClick={() => {
-						window.location.href = `/feedback`;
-					}}
-				>
-					Feedback
+				<Apply4 open={open} >
+					<a href="/feedback">Feedback </a>
 				</Apply4>
 			</li>
 			{/* </a> */}

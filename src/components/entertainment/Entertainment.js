@@ -25,12 +25,9 @@ function Entertainment(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-			.then((resp) => resp.json())
-			.then((res) => {
-				console.log(res);
-				setQue(res[0]);
-			})
-			.catch((err) => console.log(err));
+		.then((resp) => resp.json())
+		.then((res) => setQue(res[0]))
+		.catch((err) => console.log(err));
 
 		fetch(`${process.env.REACT_APP_API_URL}/api/quizquebank/entertainment/?category=${props.type}`, {
 			method: "GET",
@@ -39,12 +36,9 @@ function Entertainment(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-			.then((resp) => resp.json())
-			.then((res) => {
-				console.log(res);
-				setRandQue(res);
-			})
-			.catch((err) => console.log(err));
+		.then((resp) => resp.json())
+		.then((res) => setRandQue(res))
+		.catch((err) => console.log(err));
 	}, []);
 
 	const GetResult = () => {
@@ -350,14 +344,11 @@ function Entertainment(props) {
 	if (que && randQue)
 		return (
 			<div>
-				{/* Isko neon krna hai */}
-				{/* <h1>{props.type} quiz</h1> */}
-				<br />
 				{Showque()}
 			</div>
 		);
 
-	return <div>something went wrong</div>;
+	return <div>Loading...</div>;
 }
 
 export default Entertainment;

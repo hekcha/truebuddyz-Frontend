@@ -385,7 +385,6 @@ function Quizcreate(props) {
 				<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
 					<br />
 					<hr />
-					{console.log(i)}
 
 					<textarea className={`question ${classes.question}`} value={que} onChange={(event) => ChangeHandler(setQue, event)} />
 					<br />
