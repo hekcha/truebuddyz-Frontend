@@ -1,6 +1,6 @@
 import firebase from 'firebase/app'
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyA49E5UvQiEevXPoIwmLTcS6ii7mTsWyUk",
   authDomain: "truebff-d74db.firebaseapp.com",
   databaseURL: "https://truebff-d74db-default-rtdb.firebaseio.com",
@@ -14,3 +14,4 @@ var firebaseConfig = {
 var fireDb = firebase.initializeApp(firebaseConfig);
 
 export default fireDb.database().ref();
+export const firebaseAuth = fireDb.auth();

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as firebase from "firebase"; // important
-import firebaseDb from "../../firebase";
+import firebaseDb, { firebaseAuth } from "../../firebase";
 import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, TextField } from "@material-ui/core";
@@ -112,6 +112,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Rapidfire(props) {
+	firebaseAuth.signInAnonymously().catch(alert);
 	const [token] = useCookies("tb-token");
 	const classes = useStyles();
 
