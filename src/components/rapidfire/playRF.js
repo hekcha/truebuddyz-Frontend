@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, TextField } from "@material-ui/core";
 import "./playrf.css";
+import ShareLink from "../ShareLink";
 
 const useStyles = makeStyles((theme) => ({
 	btnGrad: {
@@ -327,6 +328,7 @@ function Rapidfire(props) {
 					})}
 				</ul>
 				<br />
+				<ShareLink game="rf" type={props.type} link={`${process.env.REACT_APP_URL}/rapidfire/${props.type}/${props.gameId}`} />
 				<h1 className="my-4">Instructions📖</h1>
 			</div>
 		);
@@ -335,7 +337,7 @@ function Rapidfire(props) {
 	if (y === 1)
 	{
 		return (
-			<div className="text-center">
+			<div className="text-center" style={{overflow:'hidden'}}>
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
 				<br />
 				<h3>Online🟢: {Object.values(users).length} </h3>
@@ -400,6 +402,7 @@ function Rapidfire(props) {
 						</Card>
 					</div>
 				</div>
+
 			</div>
 		);
 	}

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import Typical from "react-typical";
 import { Card } from "@material-ui/core";
-import copy from "copy-text-to-clipboard";
 import { makeStyles } from "@material-ui/core/styles";
+import ShareLink from "../ShareLink";
 
 const useStyles = makeStyles((theme) => ({
 	resPage: {
@@ -105,7 +105,7 @@ function Quizshow(props) {
 		})
 			.then((resp) => resp.json())
 			.then((res) => {
-				console.log(res);
+				console.log(res,"ffrsvf");
 				setQuizResp(res);
 			})
 			// .then((res) => setQuizResp(res))
@@ -141,6 +141,8 @@ function Quizshow(props) {
 					{quizResp.map((resp) => Showresp(resp))}
 					{/* <h2>Click to view Friend Response</h2> */}
 				</table>
+				<ShareLink game="quiz" type="response" link={`${process.env.REACT_APP_URL}/quiz/play/${props.code}`} />
+
 			</div>
 		);
 	else
@@ -155,7 +157,9 @@ function Quizshow(props) {
 					wrapper="h2"
 					steps={["No response yet📝. . .", 1500, "Till then Checkout some handpicked games for you 👇 ", 3000]}
 				></Typical>
-				<div className="container">
+				<ShareLink game="quiz" type="response" link={`${process.env.REACT_APP_URL}/quiz/play/${props.code}`} />
+
+				{/* <div className="container">
 					<div className="text-center col-md-12">
 						{" "}
 						<button
@@ -176,7 +180,7 @@ function Quizshow(props) {
 							Copy Quiz Link🔗
 						</button>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		);
 }
