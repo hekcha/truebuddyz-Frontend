@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import * as firebase from "firebase"; // important
-import firebaseDb from "../../firebase";
+import firebaseDb, { firebaseAuth } from "../../firebase";
 import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, TextField } from "@material-ui/core";
 import "./playrf.css";
+import ShareLink from "../ShareLink";
 
 const useStyles = makeStyles((theme) => ({
 	btnGrad: {
@@ -93,7 +94,9 @@ const useStyles = makeStyles((theme) => ({
 		width: "35vw",
 		margin: "15px",
 		borderRadius: "15px",
-		backgroundImage: `url("https://64.media.tumblr.com/381f6796a346a78af0420054c4f6b45f/tumblr_oi4nevXFWr1u01kfzo1_1280.png")`,
+		background: 'rgb(226,63,251)',
+		background: 'radial-gradient(circle, rgba(226,63,251,1) 0%, rgba(89,176,231,1) 50%, rgba(70,252,203,1) 100%)',
+		// backgroundImage: `url("https://64.media.tumblr.com/381f6796a346a78af0420054c4f6b45f/tumblr_oi4nevXFWr1u01kfzo1_1280.png")`,
 		backgroundSize: "cover",
 		backgroundRepeat: "no-repeat",
 		[theme.breakpoints.down("sm")]: {
@@ -109,6 +112,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Rapidfire(props) {
+	firebaseAuth.signInAnonymously().catch(alert);
 	const [token] = useCookies("tb-token");
 	const classes = useStyles();
 
@@ -221,7 +225,7 @@ function Rapidfire(props) {
 			.child(props.gameId)
 			.child("queNo")
 			.set(i + 1);
-		setI(i + 1);
+		setI((i + 1)%queBank.length);
 	};
 	useEffect(() => {
 		if (y == 1 && name != "") {
@@ -247,6 +251,7 @@ function Rapidfire(props) {
 		// document.getElementById(name).style.border = "5px solid green";
 		// document.getElementById(name).style.opacity = "1";
 	};
+
 
 	if (i === -1 || i === null) {
 		return (
@@ -282,37 +287,58 @@ function Rapidfire(props) {
 		return (
 			<div className="text-center" style={{ marginTop: "80px" }}>
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
-				<br />
-				<table className="table table-dark" style={{ width: "400px", margin: " 8px auto" }}>
-					<thead>
-						<tr>
-							<th scope="col">Online - (number)</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-						</tr>
-					</tbody>
-				</table>
+				<br />				
 				<Button variant="contained" color="primary" onClick={() => setY(1)}>
 					Start
 				</Button>
 				<br />
+				<ul>
+					<Card
+						style={{
+							width: "200px",
+							margin: "12px auto",
+							height: "40px",
+							fontSize: "28px",
+							textTransform: "capitalize",
+							borderRadius: "15px",
+							backgroundColor: 'var(--bs-table-bg)',
+							border: "1px solid gray",
+						}}
+						raised
+					>
+						Online - {Object.values(users).length}
+					</Card>
+					
+					{Object.values(users).map((item) => {
+						return (
+							<Card
+								style={{
+									width: "200px",
+									margin: "12px auto",
+									height: "40px",
+									fontSize: "28px",
+									textTransform: "capitalize",
+									borderRadius: "15px",
+									border: "1px solid gray",
+								}}
+								raised
+							>
+								{item}
+							</Card>
+						);
+					})}
+				</ul>
+				<br />
+				<ShareLink game="rf" type={props.type} link={`${process.env.REACT_APP_URL}/rapidfire/${props.type}/${props.gameId}`} />
 				<h1 className="my-4">Instructions📖</h1>
 			</div>
 		);
 	}
 
 	if (y === 1)
+	{
 		return (
-			<div className="text-center">
+			<div className="text-center" style={{overflow:'hidden'}}>
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
 				<br />
 				<h3>Online🟢: {Object.values(users).length} </h3>
@@ -377,9 +403,10 @@ function Rapidfire(props) {
 						</Card>
 					</div>
 				</div>
+
 			</div>
 		);
-
+	}
 	if (y === 2) {
 		if (ans != null && Object.values(users).length === Object.values(ans).length) setY(3);
 		return (

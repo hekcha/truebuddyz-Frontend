@@ -7,6 +7,7 @@ import rf_friends from "../assets/rf_friends.jpg";
 import quiz from "../assets/quiz.jpg";
 import rf from "../assets/rf.jpg";
 import Card from "../Card";
+import Trending from "./Trending";
 
 
 function Home() {
@@ -35,21 +36,8 @@ function Home() {
 						</div>
 						<br />
 						<br />
+						<Trending />
 
-						<div className="inner div">
-							<header className="header">
-								<h1 style={{marginBottom:'0em'}}>Hot & Trending🔥</h1>
-							</header>
-							<section className="tiles section" style={{marginTop:'0'}}>
-								<div id="indexrf" className="container">
-									<div className="cards-list">
-										<Card link="/quiz/friends" img={quiz_friends} text="Friend's Quiz" />
-										<Card link="/rapidfire/friends" img={rf_friends} text="Friend's RapidFire" />
-										<Card link="/quiz/couples" img={quiz_couples} text="Couple's Quiz" />
-									</div>
-								</div>
-							</section>
-						</div>
 						<br />
 						<br />
 
@@ -63,12 +51,11 @@ function Home() {
 										<Card link="/quiz" img={quiz} text="" />
 										<Card link="/rapidfire" img={rf} text="RapidFire" />
 										<Card link="/entertainment" img={noimage} text="Entertainment" />
+										<Card link="/uknow" img={noimage} text="How Well You Know" />
 									</div>
 								</div>
 							</section>
 						</div>
-
-
 					</div>
 				</div>
 			</div>

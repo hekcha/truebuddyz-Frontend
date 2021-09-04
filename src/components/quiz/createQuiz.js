@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import copy from "copy-text-to-clipboard";
 import { Button, Stepper, Step, StepLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card } from "react-bootstrap";
 import CreateQuiz from "../page/CreateQuiz";
 import QueNumber from "../QueNumber";
 import QuizList from "./QuizList";
+import Trending from "../page/Trending";
+import ShareLink from "../ShareLink";
 
 const useStyles = makeStyles((theme) => ({
 	box: {
@@ -111,42 +111,6 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 		cursor: "pointer",
 	},
-	cardBody: {
-		display: "flex",
-		justifyContent: "center",
-		maxWidth: "82vw",
-		height: "565px",
-		border: "solid 2px",
-		borderColor: "black",
-		borderRadius: "20px",
-		boxShadow: "10px 15px 10px rgba(0, 0, 1, 0.5)",
-	},
-	heading: {
-		fontSize: "2.4vw",
-		marginTop: "3px",
-		[theme.breakpoints.down("xs")]: {
-			fontSize: "12px",
-			fontWeight: "700",
-		},
-		fontFamily: "'Permanent Marker', cursive",
-	},
-	title: {
-		fontSize: "2.2vw",
-		[theme.breakpoints.down("xs")]: {
-			fontSize: "18px",
-			fontWeight: "999",
-		},
-		margin: "2vw",
-	},
-	text: {
-		fontFamily: "'Satisfy', cursive",
-		fontSize: "2.4vw",
-		[theme.breakpoints.down("xs")]: {
-			fontSize: "22px",
-			fontWeight: "999",
-		},
-		fontWeight: "999",
-	},
 	stepper: {
 		minWidth: "370px",
 		maxWidth: "700px",
@@ -236,10 +200,6 @@ function Quizcreate(props) {
 		setClick(1);
 	};
 
-	const ChangeHandler = (func, event) => {
-		func(event.target.value);
-	};
-
 	useEffect(() => {
 		if (queBank && username) {
 			setQue(`${queBank[i].part1} ${username} ${queBank[i].part2}`);
@@ -281,111 +241,27 @@ function Quizcreate(props) {
 		}
 	}, [j]);
 
+	const ChangeHandler = (func, event) => {
+		func(event.target.value);
+	};
+
 	function Showque() {
 		if (queBank.length === 0) return <div />;
-		if (j === 10) {
+		if (j === 10)
 			return (
-				<div style={{ display: "flex", justifyContent: "center", marginTop: "8vh" }}>
-					<Card className={`text-center ${classes.cardBody}`}>
-						<Card.Header className={classes.heading}>How well your friends know you??❤️</Card.Header>
-						<Card.Body>
-							<Card.Text className={classes.text}>Friendship isn’t a big thing—it’s a million little things.</Card.Text>
-							<Card.Title className={classes.title}>Share this Quiz with your friends</Card.Title>
-							<Card.Title className={classes.title}>
-								<textarea
-									id="link"
-									value={`${process.env.REACT_APP_URL}/quiz/play/${code}`}
-									style={{
-										padding: "0.5vw 2vw",
-										marginBottom: "-20px",
-										width: "60vw",
-										maxHeight: "7.8vh",
-										fontSize: "2.4vw",
-										fontFamily: "'Comic Neue', cursive",
-										justifyContent: "center",
-										alignItems: "center",
-										alignContent: "center",
-										border: "solid 3px",
-										borderColor: "black",
-										borderRadius: "20px",
-									}}
-									disabled
-								/>
-							</Card.Title>
-							<span>
-								<a href={`${process.env.REACT_APP_URL}/quiz/play/${code}`}>
-									<button
-										type="button"
-										className="btn btn-outline-dark btn-sm mx-1"
-										data-mdb-ripple-color="dark"
-										style={{ marginTop: "18px", marginBottom: "-25px", borderRadius: "10px" }}
-									>
-										Result
-									</button>
-								</a>
-								<button
-									type="button"
-									className="btn btn-success btn-sm mx-1"
-									data-mdb-ripple-color="dark"
-									style={{ marginTop: "18px", marginBottom: "-25px", borderRadius: "10px" }}
-									onClick={() => {
-										copy(`${process.env.REACT_APP_URL}/quiz/play/${code}`);
-										// alert("Copied!!");
-									}}
-								>
-									Copy link🔗
-								</button>
-							</span>
-						</Card.Body>
-						<Card.Footer className="text-muted p-3">
-							<h4 style={{ marginBottom: "-12px" }}>Share On</h4>
-							<br />
-							<div
-								className="socializer a sr-32px sr-circle sr-float sr-font-lg sr-icon-white sr-bdr-grey sr-sw-icon-1 sr-pad justify-content-center"
-								data-more="instagram,twitter,snapchat,telegram,reddit"
-								style={{ display: "flex", flexDirection: "row", fontSize: "12px" }}
-							>
-								<span className="sr-whatsapp sr-text-below">
-									<a href={`https://api.whatsapp.com/send?text=${process.env.REACT_APP_URL}/quiz/play/${code}`} target="_blank" title="WhatsApp">
-										<i className="fab fa-whatsapp"></i>
-									</a>
-									<span className="text">WhatsApp</span>
-								</span>
-								<span className="sr-telegram sr-text-below">
-									<a
-										href={`https://telegram.me/share/url?url=${process.env.REACT_APP_URL}/quiz/play/${code};text=Free%20Social%20Media%20Share%20Buttons%20Generator%20-%20Aakash%20Web`}
-										target="_blank"
-										title="Telegram"
-									>
-										<i className="fab fa-telegram-plane"></i>
-									</a>
-									<span className="text">Telegram</span>
-								</span>
-
-								<span className="sr-facebook sr-text-below ">
-									<a href={`https://www.facebook.com/share.php?u=${process.env.REACT_APP_URL}/quiz/play/${code}`} title="Facebook">
-										<i className="fab fa-facebook-f"></i>
-									</a>
-									<span className="text">Facebook</span>
-								</span>
-								<span className="sr-instagram sr-text-below">
-									<a href="https://instagram.com" target="_blank" title="Instagram">
-										<i className="fab fa-instagram"></i>
-									</a>
-									<span className="text">Instagram</span>
-								</span>
-							</div>
-						</Card.Footer>
-					</Card>
+				<div>
+					<ShareLink game="quiz" type={props.type} link={`${process.env.REACT_APP_URL}/quiz/play/${props.code}`} />
+					<br/>
+					<br/>
+					<Trending />	
 				</div>
 			);
-		}
+
 		if (i < queBank.length) {
 			return (
 				<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
 					<br />
 					<hr />
-					{console.log(i)}
 
 					<textarea className={`question ${classes.question}`} value={que} onChange={(event) => ChangeHandler(setQue, event)} />
 					<br />
