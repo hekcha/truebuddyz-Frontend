@@ -1,0 +1,124 @@
+:root {
+  --primary-clr: #00b0f0;
+  --secondary-clr: #f1540f;
+}
+
+#contribution p#break {
+  font-weight: lighter;
+  font-size: 0.85rem;
+  line-height: 1;
+  margin: 0;
+}
+
+#contribution .container {
+  width: 75%;
+  margin: auto;
+  max-width: 700px;
+}
+
+#contribution .card {
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.46);
+  border-radius: 10px;
+  margin-bottom: 2em;
+  padding: 2em;
+  background: rgba(247, 247, 247, 0.95);
+}
+
+#contribution .message-title {
+  margin-top: 0;
+  padding-bottom: 0.75em;
+  border-bottom: solid 1px rgb(221, 221, 221);
+  text-align: left;
+}
+
+#contribution .message-container {
+  margin-bottom: 8em;
+}
+
+#contribution form {
+  display: grid;
+  grid-template-columns: 90px auto auto;
+  grid-column-gap: 0.5em;
+  grid-row-gap: 2em;
+}
+
+#contribution label {
+  font-weight: bold;
+  grid-column: 1/2;
+}
+
+#contribution input {
+  grid-column: 2/4;
+  height: 3em;
+  border: solid 3px var(--primary-clr);
+  border-radius: 4em;
+  padding: 0 1em;
+}
+
+#contribution input,
+#contribution textarea {
+  font-family: "Roboto", sans-serif;
+}
+
+#contribution textarea {
+  grid-column: 2/4;
+  border-radius: 2em;
+  border: solid 3px var(--primary-clr);
+  padding: 0.5em 1em;
+}
+
+#contribution input:focus,
+#contribution textarea:focus {
+  background: rgb(211, 230, 253);
+}
+
+#contribution .first-name {
+  grid-column: 2/3;
+}
+
+#contribution .last-name {
+  grid-column: 3/4;
+}
+
+#contribution .button-container {
+  grid-column: 1/4;
+  display: flex;
+  justify-content: center;
+  
+}
+
+#contribution .button {
+  width: 100px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: .4s ease;
+}
+
+#contribution .button:hover {
+  opacity: 0.7;
+}
+
+
+/* For Mobile */
+@media (max-width: 750px) {
+  #contribution form {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 0;
+  }
+
+  #contribution .name {
+    grid-column-gap: 0;
+  }
+
+  #contribution input,
+  #contribution textarea {
+    margin: 1em 0;
+  }
+
+  #contribution p#break {
+    display: inline;
+  }
+}
