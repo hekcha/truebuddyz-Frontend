@@ -188,7 +188,7 @@ function Rapidfire(props) {
 					console.log("The read failed: " + errorObject.name);
 				}
 			);
-	}, [null]);
+	}, []);
 
 	useEffect(() => {
 		// alert(token['tb-user'])
@@ -208,6 +208,22 @@ function Rapidfire(props) {
 				);
 		}
 	}, [i]);
+	
+	useEffect(() => {
+		if (y == 1 && name != "") {
+			setCountDown(
+				setInterval(function () {
+					if (document.getElementById("time") && document.getElementById("time").innerHTML != null)
+						document.getElementById("time").innerHTML = document.getElementById("time").innerText - 1;
+				}, 1000)
+			);
+			startTimer(
+				setTimeout(function () {
+					AnsChoice("not selected");
+				}, 10000)
+			);
+		} else if (y != 1 && countdown) clearInterval(countdown);
+	}, [y, name]);
 
 	const Submit = () => {
 		var nme = document.getElementById("name").value;
@@ -227,21 +243,6 @@ function Rapidfire(props) {
 			.set(i + 1);
 		setI((i + 1)%queBank.length);
 	};
-	useEffect(() => {
-		if (y == 1 && name != "") {
-			setCountDown(
-				setInterval(function () {
-					if (document.getElementById("time") && document.getElementById("time").innerHTML != null)
-						document.getElementById("time").innerHTML = document.getElementById("time").innerText - 1;
-				}, 1000)
-			);
-			startTimer(
-				setTimeout(function () {
-					AnsChoice("not selected");
-				}, 10000)
-			);
-		} else if (y != 1 && countdown) clearInterval(countdown);
-	}, [y, name]);
 
 	const AnsChoice = (item) => {
 		// post answer
@@ -255,7 +256,7 @@ function Rapidfire(props) {
 
 	if (i === -1 || i === null) {
 		return (
-			<div>
+			<div id="playRF">
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
 				<br />
 				creating a room
@@ -266,7 +267,7 @@ function Rapidfire(props) {
 
 	if (name === "") {
 		return (
-			<div className="text-center" style={{ marginTop: "80px" }}>
+			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
 				<Card className={classes.card} raised>
 					<p className="my-3" style={{ fontSize: "34px", fontWeight: "00", color: "black" }}>
@@ -285,7 +286,7 @@ function Rapidfire(props) {
 
 	if (y === 0) {
 		return (
-			<div className="text-center" style={{ marginTop: "80px" }}>
+			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
 				<br />				
 				<Button variant="contained" color="primary" onClick={() => setY(1)}>
@@ -338,7 +339,7 @@ function Rapidfire(props) {
 	if (y === 1)
 	{
 		return (
-			<div className="text-center" style={{overflow:'hidden'}}>
+			<div id="playRF" className="text-center" style={{overflow:'hidden'}}>
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
 				<br />
 				<h3>Online🟢: {Object.values(users).length} </h3>
@@ -448,7 +449,7 @@ function Rapidfire(props) {
 
 	if (y === 3)
 		return (
-			<div style={{ textAlign: "center" }}>
+			<div id="playRF" style={{ textAlign: "center" }}>
 				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
 				<br />
 				<div>

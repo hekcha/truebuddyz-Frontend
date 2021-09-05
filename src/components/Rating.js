@@ -20,10 +20,10 @@ function Rating() {
 					},
 					})
 					.then((resp) => resp.json())
-					.then((res) => {
-						if(res['message']==='Ok')
-							alert('greets')
-					})
+					// .then((res) => {
+					// 	if(res['message']==='Ok')
+					// 		alert('greets')
+					// })
 					.catch((err) => console.log(err));
 				break;
 			}

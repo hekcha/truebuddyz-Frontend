@@ -158,29 +158,6 @@ function Quizshow(props) {
 					steps={["No response yet📝. . .", 1500, "Till then Checkout some handpicked games for you 👇 ", 3000]}
 				></Typical>
 				<ShareLink game="quiz" type="response" link={`${process.env.REACT_APP_URL}/quiz/play/${props.code}`} />
-
-				{/* <div className="container">
-					<div className="text-center col-md-12">
-						{" "}
-						<button
-							type="button"
-							className="btn btn-success btn-sm mx-1"
-							data-mdb-ripple-color="dark"
-							style={{
-								marginTop: "18px",
-								marginBottom: "-25px",
-								borderRadius: "10px",
-								width: "120px",
-							}}
-							onClick={() => {
-								copy(`${process.env.REACT_APP_URL}/quiz/play/${props.code}`);
-								alert("Copied!!");
-							}}
-						>
-							Copy Quiz Link🔗
-						</button>
-					</div>
-				</div> */}
 			</div>
 		);
 }

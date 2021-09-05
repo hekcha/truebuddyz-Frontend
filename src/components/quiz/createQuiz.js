@@ -250,7 +250,7 @@ function Quizcreate(props) {
 		if (j === 10)
 			return (
 				<div>
-					<ShareLink game="quiz" type={props.type} link={`${process.env.REACT_APP_URL}/quiz/play/${props.code}`} />
+					<ShareLink game="quiz" type={props.type} link={`${process.env.REACT_APP_URL}/quiz/play/${code}`} />
 					<br/>
 					<br/>
 					<Trending />	

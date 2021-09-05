@@ -3,7 +3,6 @@ import { CookiesProvider, useCookies } from "react-cookie";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Home from "./components/page/HomePage";
-// import Quizcreate from "./components/createQuiz";
 import CreateQuiz from "./components/quiz/createQuiz";
 import Playquiz from "./components/quiz/playQuiz";
 import Quizhome from "./components/quiz/quizHome";
