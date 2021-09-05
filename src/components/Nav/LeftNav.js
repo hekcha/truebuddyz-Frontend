@@ -27,6 +27,7 @@ const Ul = styled.ul`
 		font-weight: 999;
 		cursor: pointer;
 		color: black;
+		text-decoration: "none";
 	}
 
 	@media (max-width: 768px) {
@@ -92,28 +93,26 @@ const Apply4 = styled.div`
 const LeftNav = ({ open }) => {
 	return (
 		<Ul open={open}>
-			<a href="/">
+			<a href="/" style={{ textDecoration: "none" }}>
 				<li>
 					<Apply1 open={open}>Home</Apply1>
 				</li>
 			</a>
-			<a href="/games">
+			<a href="/games" style={{ textDecoration: "none" }}>
 				<li>
 					<Apply2 open={open}>Games</Apply2>
 				</li>
 			</a>
-			<li>
-				<Apply3 open={open}>
-					<a href="/contribution">Contribution </a>
-				</Apply3>
-			</li>
-			{/* <a href="localhost:3000/feedback"> */}
-			<li>
-				<Apply4 open={open} >
-					<a href="/feedback">Feedback </a>
-				</Apply4>
-			</li>
-			{/* </a> */}
+			<a href="/contribution" style={{ textDecoration: "none" }}>
+				<li>
+					<Apply3 open={open}>Contribution</Apply3>
+				</li>
+			</a>
+			<a href="/feedback" style={{ textDecoration: "none" }}>
+				<li>
+					<Apply4 open={open}>Feedback</Apply4>
+				</li>
+			</a>
 		</Ul>
 	);
 };

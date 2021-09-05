@@ -17,7 +17,7 @@
 	font: 400 65px "Vibur";
 	color: rgb(227, 252, 255);
 	opacity: "1";
-	text-shadow: 0 0 2px, 0 0 1em greenyellow, 0 0 0.5em pink, 0 0 0.1em red, 0 10px 3px #000;
+	text-shadow: 0 0 2px, 0 0 1em greenyellow, 0 0 2.5em pink, 0 0 0.1em red, 0 8px 5px #000;
 }
 .logoC b span {
 	animation: blink linear infinite 2s;

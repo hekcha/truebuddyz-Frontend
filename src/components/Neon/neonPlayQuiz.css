@@ -16,7 +16,7 @@
 .logo b {
 	font: 400 65px "Vibur";
 	color: #fee;
-	text-shadow: 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
+	text-shadow: 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 5px 9px #000;
 }
 .logo b span {
 	animation: blink linear infinite 2s;
