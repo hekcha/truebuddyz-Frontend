@@ -21,12 +21,12 @@
 	--ff-body: "IBM Plex Sans", sans-serif;
 }
 
-body {
+/* body {
 	color: var(--dark);
 	min-height: 100vh;
 	background: var(--bg);
 	display: grid;
-}
+} */
 
 #feedback main {
 	display: flex;

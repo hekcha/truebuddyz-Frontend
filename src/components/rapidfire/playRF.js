@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, TextField } from "@material-ui/core";
 import "./playrf.css";
+import NeonRapidfire from "../Neon/NeonRapidfire";
 import ShareLink from "../ShareLink";
 
 const useStyles = makeStyles((theme) => ({
@@ -94,8 +95,8 @@ const useStyles = makeStyles((theme) => ({
 		width: "35vw",
 		margin: "15px",
 		borderRadius: "15px",
-		background: 'rgb(226,63,251)',
-		background: 'radial-gradient(circle, rgba(226,63,251,1) 0%, rgba(89,176,231,1) 50%, rgba(70,252,203,1) 100%)',
+		background: "rgb(226,63,251)",
+		background: "radial-gradient(circle, rgba(226,63,251,1) 0%, rgba(89,176,231,1) 50%, rgba(70,252,203,1) 100%)",
 		// backgroundImage: `url("https://64.media.tumblr.com/381f6796a346a78af0420054c4f6b45f/tumblr_oi4nevXFWr1u01kfzo1_1280.png")`,
 		backgroundSize: "cover",
 		backgroundRepeat: "no-repeat",
@@ -110,11 +111,15 @@ const useStyles = makeStyles((theme) => ({
 		cursor: "pointer",
 	},
 }));
+function getRandomInt(max) {
+	return Math.floor(Math.random() * max);
+}
 
 function Rapidfire(props) {
 	firebaseAuth.signInAnonymously().catch(alert);
 	const [token] = useCookies("tb-token");
 	const classes = useStyles();
+	var colourPalette = ["#FFEDDA", "#FF2442", "#E7E0C9", "#FFF7AE", "#F6D167", "#FFBF86", "#F6A9A9", "#C2F784"];
 
 	// store no of user playing
 	const [users, setUsers] = useState({});
@@ -208,7 +213,7 @@ function Rapidfire(props) {
 				);
 		}
 	}, [i]);
-	
+
 	useEffect(() => {
 		if (y == 1 && name != "") {
 			setCountDown(
@@ -241,7 +246,7 @@ function Rapidfire(props) {
 			.child(props.gameId)
 			.child("queNo")
 			.set(i + 1);
-		setI((i + 1)%queBank.length);
+		setI((i + 1) % queBank.length);
 	};
 
 	const AnsChoice = (item) => {
@@ -253,11 +258,10 @@ function Rapidfire(props) {
 		// document.getElementById(name).style.opacity = "1";
 	};
 
-
 	if (i === -1 || i === null) {
 		return (
 			<div id="playRF">
-				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
+				<NeonRapidfire types={props.type} />
 				<br />
 				creating a room
 			</div>
@@ -268,7 +272,7 @@ function Rapidfire(props) {
 	if (name === "") {
 		return (
 			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
-				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
+				<NeonRapidfire types={props.type} />
 				<Card className={classes.card} raised>
 					<p className="my-3" style={{ fontSize: "34px", fontWeight: "00", color: "black" }}>
 						Enter Your Name
@@ -287,48 +291,51 @@ function Rapidfire(props) {
 	if (y === 0) {
 		return (
 			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
-				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
-				<br />				
+				<NeonRapidfire types={props.type} />
+				<br />
 				<Button variant="contained" color="primary" onClick={() => setY(1)}>
 					Start
 				</Button>
 				<br />
-				<ul>
-					<Card
-						style={{
-							width: "200px",
-							margin: "12px auto",
-							height: "40px",
-							fontSize: "28px",
-							textTransform: "capitalize",
-							borderRadius: "15px",
-							backgroundColor: 'var(--bs-table-bg)',
-							border: "1px solid gray",
-						}}
-						raised
-					>
-						Online - {Object.values(users).length}
-					</Card>
-					
+				<Card
+					style={{
+						width: "400px",
+						margin: "15px auto",
+						backgroundColor: "#F8E2CF" /* fallback for old browsers */,
+					}}
+					raised
+				>
+					<h1 style={{ color: "whitesmoke", textShadow: " -1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000" }}>
+						Online<i class="far fa-user fa-xs"></i> -{Object.values(users).length}
+					</h1>
+
 					{Object.values(users).map((item) => {
 						return (
 							<Card
 								style={{
-									width: "200px",
+									width: "300px",
 									margin: "12px auto",
-									height: "40px",
+									height: "48px",
 									fontSize: "28px",
 									textTransform: "capitalize",
-									borderRadius: "15px",
+									borderRadius: "8px",
+									color: "white",
+									backgroundColor: `${colourPalette[getRandomInt(8)]}`,
 									border: "1px solid gray",
+									verticalAlign: "center",
+									fontWeight: "600",
+									textShadow: "-1px -1px 5px black",
 								}}
-								raised
+								// raised
 							>
-								{item}
+								{item}{" "}
+								<i class="fas fa-check-circle fa-sm" style={{ color: "#01a4ef", textShadow: "1px 1px 3px black" }}>
+									{" "}
+								</i>
 							</Card>
 						);
 					})}
-				</ul>
+				</Card>
 				<br />
 				<ShareLink game="rf" type={props.type} link={`${process.env.REACT_APP_URL}/rapidfire/${props.type}/${props.gameId}`} />
 				<h1 className="my-4">Instructions📖</h1>
@@ -336,11 +343,11 @@ function Rapidfire(props) {
 		);
 	}
 
-	if (y === 1)
-	{
+	if (y === 1) {
 		return (
-			<div id="playRF" className="text-center" style={{overflow:'hidden'}}>
-				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
+			<div id="playRF" className="text-center" style={{ overflow: "hidden" }}>
+				{/* <h1 className={classes.heading1}>{props.type} Rapidfire</h1> */}
+				<NeonRapidfire types={props.type} />
 				<br />
 				<h3>Online🟢: {Object.values(users).length} </h3>
 				<br />
@@ -404,7 +411,6 @@ function Rapidfire(props) {
 						</Card>
 					</div>
 				</div>
-
 			</div>
 		);
 	}
@@ -412,7 +418,7 @@ function Rapidfire(props) {
 		if (ans != null && Object.values(users).length === Object.values(ans).length) setY(3);
 		return (
 			<div className="text-center m-auto">
-				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
+				<NeonRapidfire types={props.type} />
 				<br />
 				<div className="m-2">
 					<h1 style={{ fontFamily: "'ZCOOL KuaiLe', cursive" }}>Wait for your friend's response</h1>
@@ -450,7 +456,7 @@ function Rapidfire(props) {
 	if (y === 3)
 		return (
 			<div id="playRF" style={{ textAlign: "center" }}>
-				<h1 className={classes.heading1}>{props.type} Rapidfire</h1>
+				<NeonRapidfire types={props.type} />
 				<br />
 				<div>
 					<table style={{ margin: "auto", justifyContent: "center" }}>

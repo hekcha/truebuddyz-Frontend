@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
+import NeonRapidfire from "../Neon/NeonRapidfire";
 
 const useStyles = makeStyles({
 	heading1: {
@@ -36,13 +37,13 @@ function RfCreater(props) {
 	return (
 		<div className="text-center">
 			<span className="row " style={{ display: "inline", flexDirection: "row" }}>
-				<p className={classes.heading1}>{props.type} Rapidfire</p>
+				<NeonRapidfire types={props.type} />
 			</span>
-			<h1>Click to Start</h1>
+			<h1 style={{ color: "#404040" }}>Click to Start</h1>
 			<Button variant="contained" color="primary" onClick={() => Redirect()}>
 				Start
 			</Button>
-			<pre style={{ fontSize: "48px", fontWeight: "999" }}>How to Play?👇 </pre>
+			<pre style={{ fontSize: "48px", fontWeight: "999", fontFamily: "'Pacifico', cursive", color: "#404040" }}>How to Play?👇 </pre>
 		</div>
 	);
 }

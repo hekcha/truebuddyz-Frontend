@@ -15,7 +15,8 @@ const useStyles = makeStyles({
 		minWidth: 100,
 		maxWidth: 800,
 		minHeight: 300,
-		backgroundImage: `url("https://media.giphy.com/media/Jsi9OgtvGylZq3mcMw/giphy.gif")`,
+		backgroundImage: `url("https://bit.ly/3h5jAt4")`,
+		backfaceVisibility: "0.4",
 		backgroundSize: "cover",
 		backgroundRepeat: "no-repeat",
 		border: "solid 2px dark",
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
 		backgroundColor: "whitesmoke",
 	},
 	stepper: {
-		minWidth: "370px",
+		minWidth: "330px",
 		maxWidth: "700px",
 		margin: "auto",
 		borderRadius: "20px",
@@ -81,7 +82,9 @@ export default function SimpleCard(props) {
 			<NeonCreateQuiz />
 			<Card className={classes.root} raised>
 				<CardContent className={classes.content}>
-					<h1 style={{ color: "whitesmoke", fontWeight: "100 ", marginBottom: "30px", marginTop: "13px", textTransform: "none" }}>TrueBFF Quiz</h1>
+					<h1 style={{ color: "white", fontWeight: "bold", fontSize: "48px", marginBottom: "30px", marginTop: "13px", textTransform: "none" }}>
+						TrueBuddyz Quiz
+					</h1>
 					{/* <h2 className={classes.subHeading}>How well do your friends know you🤝?</h2> */}
 					<TextField
 						className={classes.filledTextarea}
