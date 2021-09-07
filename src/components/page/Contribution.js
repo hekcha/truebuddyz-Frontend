@@ -15,7 +15,7 @@ function Contribution() {
             formdata.append('email',`${document.getElementById("email").value}`);
             formdata.append('game',document.getElementById("game").value);
             formdata.append('message',document.getElementById("message").value);
-            fetch(`${process.env.REACT_APP_API_URL}/api/contribution/`, {
+            fetch(`${process.env.REACT_APP_API_URL}/core/contribution/`, {
                 method: "POST",
                 body:formdata,
                 headers: {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
 
-function Entertainment(props) {
+function YouLookLike(props) {
 	const [token] = useCookies(["tb-token"]);
 	const [que, setQue] = useState(null);
 	const [randQue, setRandQue] = useState(null);
@@ -18,7 +18,7 @@ function Entertainment(props) {
 			if (i === ALLOWED_PAGES.length - 1) window.location.href = "/"; // SHOW 404 page
 		}
 
-		fetch(`${process.env.REACT_APP_API_URL}/api/entertainment/?category=${props.type}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/youlooklike/que/?category=${props.type}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -29,7 +29,7 @@ function Entertainment(props) {
 		.then((res) => setQue(res[0]))
 		.catch((err) => console.log(err));
 
-		fetch(`${process.env.REACT_APP_API_URL}/api/quizquebank/entertainment/?category=${props.type}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/youlooklike/randque/?category=${props.type}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -42,7 +42,7 @@ function Entertainment(props) {
 	}, []);
 
 	const GetResult = () => {
-		fetch(`${process.env.REACT_APP_API_URL}/api/entresult/?category=${props.type}&code=${ans}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/youlooklike/score/?category=${props.type}&code=${ans}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -68,7 +68,7 @@ function Entertainment(props) {
 			return (
 				<div className="col-8 offset-2 row">
 					<div class="image-container">
-						<img class="thumbnail" src={que['image']} alt="user image" />
+						<img class="thumbnail" src={que[`image${i}`]} alt="user image" />
 					</div>
 					<br />
 					<div className="col-12 my-2 text-center">
@@ -190,6 +190,9 @@ function Entertainment(props) {
 		else if (i < 11)
 			return (
 				<div className="col-8 offset-2 row">
+					<div class="image-container">
+						<img class="thumbnail" src={randQue[i - 5][`image`]} alt="user image" />
+					</div>
 					<div className="col-12 my-2 text-center">
 						<h1>{randQue[i - 5][`part1`]}</h1>
 					</div>
@@ -305,25 +308,6 @@ function Entertainment(props) {
 						</Card>
 					</Card>
 				</div>
-				// <div>
-				// 	<div className="row" style={{ backgroundColor: "#e8b164", border: "2px solid black", width: "70%", marginLeft: "15%" }}>
-				// 		<div className="col-12" style={{ borderBottom: "2px solid black" }}>
-				// 			{randQue[i - 5][`part1`]}
-				// 		</div>
-				// 		<div onClick={() => setI(i + 1)} className="col-5" style={{ backgroundColor: "#79e0be", border: "1px solid yellow", padding: "2rem" }}>
-				// 			{randQue[i - 5][`optionA`]}
-				// 		</div>
-				// 		<div onClick={() => setI(i + 1)} className="col-5" style={{ backgroundColor: "#79e0be", border: "1px solid yellow", padding: "2rem" }}>
-				// 			{randQue[i - 5][`optionB`]}
-				// 		</div>
-				// 		<div onClick={() => setI(i + 1)} className="col-5" style={{ backgroundColor: "#79e0be", border: "1px solid yellow", padding: "2rem" }}>
-				// 			{randQue[i - 5][`optionC`]}
-				// 		</div>
-				// 		<div onClick={() => setI(i + 1)} className="col-5" style={{ backgroundColor: "#79e0be", border: "1px solid yellow", padding: "2rem" }}>
-				// 			{randQue[i - 5][`optionD`]}
-				// 		</div>
-				// 	</div>
-				// </div>
 			);
 		else if (!result)
 			return (
@@ -351,4 +335,4 @@ function Entertainment(props) {
 	return <div>Loading...</div>;
 }
 
-export default Entertainment;
+export default YouLookLike;

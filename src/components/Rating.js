@@ -12,7 +12,7 @@ function Rating() {
 				var form = new FormData();
 				form.append("user", '0');
 				form.append('value', ele[i].value);
-				fetch(`${process.env.REACT_APP_API_URL}/api/rating/`, {
+				fetch(`${process.env.REACT_APP_API_URL}/core/rating/`, {
 					method: "POST",
 					body: form,
 					headers: {

@@ -21,7 +21,7 @@ function HowWellUKnow(props) {
 			if (i === ALLOWED_PAGES.length - 1) window.location.href = "/"; // SHOW 404 page
 		}
 
-		fetch(`${process.env.REACT_APP_API_URL}/api/hwuk/?category=${props.type}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/howwelluknow/que/?category=${props.type}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -38,7 +38,7 @@ function HowWellUKnow(props) {
 
 
 	const GetResult = () => {
-		fetch(`${process.env.REACT_APP_API_URL}/api/hwuks/?category=${props.type}&score=${score}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/howwelluknow/score/?category=${props.type}&score=${score}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

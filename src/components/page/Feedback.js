@@ -20,7 +20,7 @@ function Feedback() {
             formdata.append('user',token['tb-user']);
             formdata.append('rating',emoji);
             formdata.append('text',document.getElementById("users-feedback").value);
-            fetch(`${process.env.REACT_APP_API_URL}/api/feedback/`, {
+            fetch(`${process.env.REACT_APP_API_URL}/core/feedback/`, {
                 method: "POST",
                 body:formdata,
                 headers: {

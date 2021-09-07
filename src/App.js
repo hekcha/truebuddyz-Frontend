@@ -12,11 +12,11 @@ import EachResponse from "./components/quiz/eachResponse";
 import RfCreater from "./components/rapidfire/RfCreater";
 import Rapidfire from "./components/rapidfire/playRF";
 import IndexRf from "./components/rapidfire/indexRF";
-import Entertainment from "./components/entertainment/Entertainment";
+import YouLookLike from "./components/youlooklike/YouLookLike";
 import NotAllowed from "./components/page/NotAllowed";
 import Feedback from "./components/page/Feedback";
 import Contribution from "./components/page/Contribution";
-import IndexEntertainment from "./components/entertainment/IndexEntertainment";
+import IndexYouLookLike from "./components/youlooklike/IndexYouLookLike";
 import Game from "./components/page/Game";
 import IndexHowWellUKnow from "./components/howWellUKnow/IndexHowWellUKnow";
 import HowWellUKnow from "./components/howWellUKnow/HowWellUKnow";
@@ -31,7 +31,7 @@ function App() {
 			form.append("username", date.getTime().toString(31));
 			form.append("password", "adminadmin");
 			date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
-			fetch(`${process.env.REACT_APP_API_URL}/api/user/`, {
+			fetch(`${process.env.REACT_APP_API_URL}/core/user/`, {
 				method: "POST",
 				body: form,
 			})
@@ -68,8 +68,8 @@ function App() {
 						<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
 						<Route path="/rapidfire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />} />
 						
-						<Route path="/entertainment" exact component={() => <IndexEntertainment />} />
-						<Route path="/entertainment/:type" exact component={(x) => <Entertainment type={x.match.params.type} />} />
+						<Route path="/youlooklike" exact component={() => <IndexYouLookLike />} />
+						<Route path="/youlooklike/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />
 						
 						<Route path="/uknow" exact component={() => <IndexHowWellUKnow />} />
 						<Route path="/uknow/:type" exact component={(x) => <HowWellUKnow type={x.match.params.type} />} />

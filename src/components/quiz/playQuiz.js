@@ -149,7 +149,7 @@ function Playquiz(props) {
 	var colourPalette = ["#55E6C1", "#FD7272", "#FEA47F", "#25CCF7", "#EAB543", "#FC427B", "#2C3A47", "#ffa801"];
 
 	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/api/quiz/?code=${props.code}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/quiz/que/?code=${props.code}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -161,7 +161,7 @@ function Playquiz(props) {
 		.catch((err) => console.log(err));
 
 		// for userID
-		fetch(`${process.env.REACT_APP_API_URL}/api/user/`, {
+		fetch(`${process.env.REACT_APP_API_URL}/core/user/`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -183,7 +183,7 @@ function Playquiz(props) {
 			formdata.append("marks", marks);
 			formdata.append("respcode", token["tb-user"]);
 			for (var j = 0; j < 10; j++) formdata.append(`ans${j + 1}`, ans[j]);
-			fetch(`${process.env.REACT_APP_API_URL}/api/quizresp/`, {
+			fetch(`${process.env.REACT_APP_API_URL}/quiz/resp/`, {
 				method: "POST",
 				body: formdata,
 				headers: {

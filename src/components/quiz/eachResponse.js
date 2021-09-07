@@ -10,7 +10,7 @@ function EachResponse(props) {
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/api/quizresp/?respcode=${props.responseCode}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/quiz/resp/?respcode=${props.responseCode}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -28,7 +28,7 @@ function EachResponse(props) {
 	useEffect(()=>{
 		if(quizCode)
 		{
-			fetch(`${process.env.REACT_APP_API_URL}/api/quiz/?code=${quizCode}`, {
+			fetch(`${process.env.REACT_APP_API_URL}/quiz/que/?code=${quizCode}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
@@ -44,7 +44,7 @@ function EachResponse(props) {
 	useEffect(()=>{
 		if(quizQue)
 		{
-			fetch(`${process.env.REACT_APP_API_URL}/api/user/`, {
+			fetch(`${process.env.REACT_APP_API_URL}/core/user/`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",

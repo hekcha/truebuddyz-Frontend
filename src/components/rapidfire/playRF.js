@@ -137,7 +137,7 @@ function Rapidfire(props) {
 	const [countdown, setCountDown] = useState(null);
 
 	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/api/rf/?category=${props.type}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/rf/que/?category=${props.type}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

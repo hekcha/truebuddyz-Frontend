@@ -96,7 +96,7 @@ function Quizshow(props) {
 
 	useEffect(() => {
 		console.log("quizhome");
-		fetch(`${process.env.REACT_APP_API_URL}/api/quizresp/?quizcode=${props.code}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/quiz/resp/?quizcode=${props.code}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
