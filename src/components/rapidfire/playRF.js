@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, TextField } from "@material-ui/core";
 import "./playrf.css";
+import finger from "../assets/finger.gif";
 import NeonRapidfire from "../Neon/NeonRapidfire";
 import ShareLink from "../ShareLink";
 
@@ -76,6 +77,34 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: "27px",
 		textTransform: "capitalize",
 	},
+	options: {
+		backgroundColor: "white",
+		maxWidth: "350px",
+		minWidth: "auto",
+		// fontSize: "35px",
+		fontWeight: "600",
+		color: "black",
+		margin: "10px auto",
+		// borderRadius: "15px",
+		opacity: "0.85",
+		wordWrap: "break-word",
+		backgroundColor: "white",
+		textAlign: "center",
+		pointer: "cursor",
+		border: "2px solid black",
+		"&:hover": {
+			scale: "1.1",
+			backgroundColor: "#2eb62c",
+		},
+		"&:active": {
+			scale: "1.1",
+			backgroundColor: "#2eb62c",
+		},
+		"&:click": {
+			scale: "1.1",
+			backgroundColor: "#06fd59",
+		},
+	},
 	voteHeading: {
 		display: "inline-block",
 		textAlign: "center",
@@ -95,9 +124,6 @@ const useStyles = makeStyles((theme) => ({
 		width: "35vw",
 		margin: "15px",
 		borderRadius: "15px",
-		background: "rgb(226,63,251)",
-		background: "radial-gradient(circle, rgba(226,63,251,1) 0%, rgba(89,176,231,1) 50%, rgba(70,252,203,1) 100%)",
-		// backgroundImage: `url("https://64.media.tumblr.com/381f6796a346a78af0420054c4f6b45f/tumblr_oi4nevXFWr1u01kfzo1_1280.png")`,
 		backgroundSize: "cover",
 		backgroundRepeat: "no-repeat",
 		[theme.breakpoints.down("sm")]: {
@@ -119,7 +145,24 @@ function Rapidfire(props) {
 	firebaseAuth.signInAnonymously().catch(alert);
 	const [token] = useCookies("tb-token");
 	const classes = useStyles();
-	var colourPalette = ["#FFEDDA", "#FF2442", "#E7E0C9", "#FFF7AE", "#F6D167", "#FFBF86", "#F6A9A9", "#C2F784"];
+	var colourPalette = [
+		"#FFEDDA",
+		"#FF2442",
+		"#E7E0C9",
+		"#FFF7AE",
+		"#F6D167",
+		"#FFBF86",
+		"#F6A9A9",
+		"#C2F784",
+		"#297F87",
+		"#7EB5A6",
+		"#FF4848",
+		"#F39189",
+		"#4EF037",
+		"#00FFF0",
+		"#FDFDC4",
+		"#85EF47",
+	];
 
 	// store no of user playing
 	const [users, setUsers] = useState({});
@@ -225,7 +268,8 @@ function Rapidfire(props) {
 			startTimer(
 				setTimeout(function () {
 					AnsChoice("not selected");
-				}, 10000)
+				}, 100000)
+				// yha shi krna time
 			);
 		} else if (y != 1 && countdown) clearInterval(countdown);
 	}, [y, name]);
@@ -260,10 +304,20 @@ function Rapidfire(props) {
 
 	if (i === -1 || i === null) {
 		return (
-			<div id="playRF">
-				<NeonRapidfire types={props.type} />
+			<div id="playRF" style={{ margin: "40px auto" }}>
+				<NeonRapidfire types={props.type} style={{ margin: "auto" }} />
 				<br />
-				creating a room
+				<div
+					className="card"
+					style={{
+						backgroundImage: `url(https://s9.gifyu.com/images/finger.gif)`,
+						margin: "8px auto",
+						width: "330px",
+						height: "243px",
+						borderRadius: "450px",
+					}}
+				></div>
+				<p style={{ textAlign: "center", fontSize: "50px" }}>Creating A Room</p>
 			</div>
 		);
 		//loading se bdhiya ye dikhate h
@@ -320,7 +374,7 @@ function Rapidfire(props) {
 									textTransform: "capitalize",
 									borderRadius: "8px",
 									color: "white",
-									backgroundColor: `${colourPalette[getRandomInt(8)]}`,
+									backgroundColor: `${colourPalette[getRandomInt(16)]}`,
 									border: "1px solid gray",
 									verticalAlign: "center",
 									fontWeight: "600",
@@ -345,14 +399,14 @@ function Rapidfire(props) {
 
 	if (y === 1) {
 		return (
-			<div id="playRF" className="text-center" style={{ overflow: "hidden" }}>
+			<div id="playRF" className="text-center mt-5" style={{ margin: "0px auto" }}>
 				{/* <h1 className={classes.heading1}>{props.type} Rapidfire</h1> */}
-				<NeonRapidfire types={props.type} />
+				<NeonRapidfire types={props.type} style={{ marginY: "25px" }} />
 				<br />
-				<h3>Online🟢: {Object.values(users).length} </h3>
+				<h3 className="my-2">Online🟢: {Object.values(users).length} </h3>
 				<br />
 				<div className="row">
-					<div id="countdown">
+					<div id="countdown" className="mb-3">
 						<div id="countdown-number">
 							<span id="time">10</span>
 						</div>
@@ -360,12 +414,14 @@ function Rapidfire(props) {
 							<circle r="18" cx="20" cy="20"></circle>
 						</svg>
 					</div>
+					<br />
+					<hr />
 					<h1>{/* time left - <span id="time">100</span> */}</h1>
 					<div className="col-8 offset-2 row">
 						<div className="col-12 my-2">
-							<h1>{queBank[parseInt(i)]["que"]}</h1>
+							<h3>{queBank[parseInt(i)]["que"]}</h3>
 						</div>
-						<Card
+						{/* <Card
 							style={{
 								minWidth: "250px",
 								maxWidth: "400px",
@@ -378,37 +434,17 @@ function Rapidfire(props) {
 								border: "2px solid",
 							}}
 							raised
-						>
-							{Object.values(users).map((item) => {
-								return (
-									<Card
-										onClick={() => AnsChoice(item)}
-										className="my-3"
-										id={item}
-										style={{
-											backgroundColor: "white",
-											maxWidth: "350px",
-											minWidth: "auto",
-											// fontSize: "35px",
-											fontWeight: "600",
-											color: "black",
-											margin: "10px auto",
-											borderRadius: "15px",
-											opacity: "0.85",
-											backgroundColor: "white",
-											textAlign: "center",
-											pointer: "cursor",
-											border: "2px solid black",
-										}}
-										raised
-									>
-										<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-											{item}
-										</h3>
-									</Card>
-								);
-							})}
-						</Card>
+						> */}
+						{Object.values(users).map((item) => {
+							return (
+								<Card onClick={() => AnsChoice(item)} className={classes.options} id={item} style={{}} raised>
+									<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+										{item}
+									</h3>
+								</Card>
+							);
+						})}
+						{/* </Card> */}
 					</div>
 				</div>
 			</div>
@@ -455,7 +491,7 @@ function Rapidfire(props) {
 
 	if (y === 3)
 		return (
-			<div id="playRF" style={{ textAlign: "center" }}>
+			<div id="playRF" className="mt-4" style={{ textAlign: "center" }}>
 				<NeonRapidfire types={props.type} />
 				<br />
 				<div>
@@ -471,7 +507,7 @@ function Rapidfire(props) {
 						{Object.entries(ans).map((item) => {
 							return (
 								<tr>
-									<Card className={classes.tableCard2} raised>
+									<Card className={classes.tableCard2} style={{ backgroundColor: `${colourPalette[getRandomInt(16)]}` }} raised>
 										<td className={`col-6 col-sm-6 ${classes.item0}`}>{item[0]}</td>
 										<td className={`col-6 col-sm-6 ${classes.item1}`}>{item[1]}</td>
 									</Card>
