@@ -7,7 +7,7 @@ function IndexYouLookLike(){
     return(
         <div className="inner div">
             <header className="header">
-                <h1 onClick={() => window.location.href='/youlooklike'} style={{marginBottom:'0em'}}>Entertainment</h1>
+                <h1 onClick={() => window.location.href='/youlooklike'} style={{marginBottom:'0em'}}>You Look Like</h1>
             </header>
             <section className="tiles section" style={{marginTop:'0'}}>
                 <div id="indexrf" className="container">
