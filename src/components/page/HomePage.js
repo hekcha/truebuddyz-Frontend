@@ -8,6 +8,7 @@ import quiz from "../assets/quiz.jpg";
 import rf from "../assets/rf.jpg";
 import Card from "../Card";
 import Trending from "./Trending";
+import NewGame from "./NewGame";
 
 
 function Home() {
@@ -37,7 +38,9 @@ function Home() {
 						<br />
 						<br />
 						<Trending />
-
+						<br />
+						<br />
+						<NewGame />
 						<br />
 						<br />
 
@@ -50,8 +53,8 @@ function Home() {
 									<div className="cards-list">
 										<Card link="/quiz" img={quiz} text="" />
 										<Card link="/rapidfire" img={rf} text="RapidFire" />
-										<Card link="/entertainment" img={noimage} text="Entertainment" />
-										<Card link="/uknow" img={noimage} text="How Well You Know" />
+										<Card link="/youlooklike" img={noimage} text="You Look Like" />
+										<Card link="/howwelluknow" img={noimage} text="How Well You Know" />
 									</div>
 								</div>
 							</section>

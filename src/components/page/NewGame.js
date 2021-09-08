@@ -2,12 +2,12 @@ import Card from "../Card";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
-function Trending() {
+function NewGame() {
 	const [token] = useCookies(["tb-token"]);
-	const [Trand, setTrand] = useState(null);
+	const [newGame, setNewGame] = useState(null);
 
 	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/core/trnd`, {
+		fetch(`${process.env.REACT_APP_API_URL}/core/new`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -15,20 +15,20 @@ function Trending() {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => setTrand(res))
+			.then((res) => setNewGame(res))
 			.catch((err) => console.log(err));
 	}, []);
 
-	if (Trand)
+	if (newGame)
 		return (
 			<div className="inner div">
 				<header className="header">
-					<h1 style={{ marginBottom: "0em" }}>Hot & Trending🔥</h1>
+					<h1 style={{ marginBottom: "0em" }}>New Games</h1>
 				</header>
 				<section className="tiles section" style={{ marginTop: "0" }}>
 					<div id="indexrf" className="container">
 						<div className="cards-list">
-							{Trand.map((item) => {
+							{newGame.map((item) => {
 								return <Card link={item.link} img={item.image} text={item.text} />;
 							})}
 						</div>
@@ -40,4 +40,4 @@ function Trending() {
 	return <div>loading....</div>;
 }
 
-export default Trending;
+export default NewGame;

@@ -161,7 +161,7 @@ function Quizcreate(props) {
 		setCode(date.getTime().toString(31));
 
 		// fetch questions
-		fetch(`${process.env.REACT_APP_API_URL}/api/quizquebank/?category=${props.type}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/quiz/quebank/?category=${props.type}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -173,7 +173,7 @@ function Quizcreate(props) {
 			.catch((err) => console.log(err));
 
 		// get id of user
-		fetch(`${process.env.REACT_APP_API_URL}/api/user/`, {
+		fetch(`${process.env.REACT_APP_API_URL}/core/user/`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -228,7 +228,7 @@ function Quizcreate(props) {
 			formdata.append("name", username);
 			formdata.append("category", props.type);
 
-			fetch(`${process.env.REACT_APP_API_URL}/api/quiz/`, {
+			fetch(`${process.env.REACT_APP_API_URL}/quiz/que/`, {
 				method: "POST",
 				body: formdata,
 				headers: {

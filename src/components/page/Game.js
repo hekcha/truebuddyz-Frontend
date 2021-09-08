@@ -2,7 +2,7 @@ import React from "react";
 import "./main.css";
 import IndexRf from "../rapidfire/indexRF";
 import QuizList from "../quiz/QuizList";
-import IndexEntertainment from "../entertainment/IndexEntertainment";
+import IndexYouLookLike from "../youlooklike/IndexYouLookLike";
 import IndexHowWellUKnow from "../howWellUKnow/IndexHowWellUKnow";
 
 
@@ -30,7 +30,7 @@ function Game() {
 						<IndexRf />
 						<br />
 						<br />
-						<IndexEntertainment />
+						<IndexYouLookLike />
 						<br />
 						<br />
 						<IndexHowWellUKnow />

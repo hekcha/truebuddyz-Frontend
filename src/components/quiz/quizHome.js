@@ -9,7 +9,7 @@ function Quizhome() {
 	const [quizList, setQuizList] = useState([]);
 	useEffect(() => {
 		console.log("quizhome");
-		fetch(`${process.env.REACT_APP_API_URL}/api/quiz/`, {
+		fetch(`${process.env.REACT_APP_API_URL}/quiz/que/`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

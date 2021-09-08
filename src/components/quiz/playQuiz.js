@@ -143,13 +143,12 @@ function Playquiz(props) {
 	const [marks, setMarks] = useState(0);
 	const [i, setI] = useState(0);
 	const [ans, setAns] = useState([]);
-	const [click, setClick] = useState(0);
 
 	const classes = useStyles();
 	var colourPalette = ["#55E6C1", "#FD7272", "#FEA47F", "#25CCF7", "#EAB543", "#FC427B", "#2C3A47", "#ffa801"];
 
 	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/api/quiz/?code=${props.code}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/quiz/que/?code=${props.code}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -161,7 +160,7 @@ function Playquiz(props) {
 		.catch((err) => console.log(err));
 
 		// for userID
-		fetch(`${process.env.REACT_APP_API_URL}/api/user/`, {
+		fetch(`${process.env.REACT_APP_API_URL}/core/user/`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -183,7 +182,7 @@ function Playquiz(props) {
 			formdata.append("marks", marks);
 			formdata.append("respcode", token["tb-user"]);
 			for (var j = 0; j < 10; j++) formdata.append(`ans${j + 1}`, ans[j]);
-			fetch(`${process.env.REACT_APP_API_URL}/api/quizresp/`, {
+			fetch(`${process.env.REACT_APP_API_URL}/quiz/resp/`, {
 				method: "POST",
 				body: formdata,
 				headers: {
@@ -191,16 +190,19 @@ function Playquiz(props) {
 				},
 			})
 			.then((resp) => resp.json())
-			.then((res) => console.log(res))
+			.then((res) => {
+				if(res.non_field_errors)
+					setI(-1);
+				// console.log(res);
+			})
 			.catch((err) => console.log(err));
 		}
 	},[i])
 
-	function Checkans(a) {
+	function Checkans(a,id) {
 		setAns([...ans, a]);
 		if (que[`ans${i+1}`] === a) setMarks(marks + 1);
-		// alert(marks)
-		setI(i + 1);
+		setI(i+1);
 	}
 
 	function Showque() {
@@ -208,74 +210,37 @@ function Playquiz(props) {
 		{
 			return (
 				<div style={{ position: "relative", top: "110px" }}>
+					<br />
+					{/* <hr /> */}
 					<div className="row justify-content-center align-items-center">
 						<QueNumber que={ans.length} />
 					</div>
-					<br />
-					<hr />
-					<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
+					<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}`,marginTop:'0' }}>
 
 						<textarea className={`question ${classes.question}`} value={que[`que${i + 1}`]} disabled />
 						<br />
-						<div className={`row ${classes.parentOption}`}>
-							<div className="col-md-6 col-xs-12  d-flex justify-content-center">
-								<span>
-									<i
-										className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
-										onClick={() => {
-											Checkans(0);
-											var v = document.getElementById("optionA").className;
-											v += " border-success ";
-										}}
-									></i>
-									<textarea
-										className={` border optionA ${classes.option} col-md-9 col-xs-11 `}
-										id="optionA"
-										value={que[`option${i + 1}A`]}
-										disabled
-									/>
+						<div className={`row ${classes.parentOption}`} style={{padding:'0',margin:'0',maxWidth:'100%'}}>
+							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{maxWidth:'100%'}}>
+								<span onClick={() => {Checkans(0,'optionA')}} style={{maxWidth:'100%',display:'block',textAlign:'-webkit-center'}}>
+									<textarea style={{maxWidth:'80%',margin:'0 auto'}} className={`optionA ${classes.option} col-md-9 col-xs-11 border-success `} id="optionA" value={que[`option${i + 1}A`]} disabled/>
 								</span>
 							</div>
 
-							<div className="col-md-6 col-xs-12  d-flex justify-content-center">
-								<span>
-									<i
-										className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
-										onClick={() => {
-											Checkans(1);
-											var v = document.getElementById("optionB").className;
-											v += " border-success ";
-										}}
-									></i>
-									<textarea className={`optionB ${classes.option} col-md-9 col-xs-11`} id="optionB" value={que[`option${i + 1}B`]} disabled />
+							<div className="col-md-6 col-xs-12  d-flex justify-content-center" style={{maxWidth:'100%'}}>
+								<span onClick={() => {Checkans(1,'optionB')}} style={{maxWidth:'100%',display:'block',textAlign:'-webkit-center'}}>
+									<textarea style={{maxWidth:'80%',margin:'0 auto'}} className={`optionB ${classes.option} col-md-9 col-xs-11`} id="optionB" value={que[`option${i + 1}B`]} disabled />
 								</span>
 							</div>
 
-							<div className="col-md-6 col-xs-12 d-flex justify-content-center">
-								<span>
-									<i
-										className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
-										onClick={() => {
-											Checkans(2);
-											var v = document.getElementById("optionC").className;
-											v += " border-success ";
-										}}
-									></i>
-									<textarea className={`optionC ${classes.option} col-md-9 col-xs-11`} id="optionC" value={que[`option${i + 1}C`]} disabled />
+							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{maxWidth:'100%'}}>
+								<span onClick={() => {Checkans(2,'optionC')}} style={{maxWidth:'100%',display:'block',textAlign:'-webkit-center'}}>
+									<textarea style={{maxWidth:'80%',margin:'0 auto'}} className={`optionC ${classes.option} col-md-9 col-xs-11`} id="optionC" value={que[`option${i + 1}C`]} disabled />
 								</span>
 							</div>
 
-							<div className="col-md-6 col-xs-12 d-flex justify-content-center">
-								<span>
-									<i
-										className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
-										onClick={() => {
-											Checkans(3);
-											var v = document.getElementById("optionD").className;
-											v += " border-success ";
-										}}
-									></i>
-									<textarea className={`optionD ${classes.option} col-md-9 col-xs-11`} id="optionD" value={que[`option${i + 1}D`]} disabled />
+							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{maxWidth:'100%'}}>
+								<span onClick={() => {Checkans(3,'optionC')}} style={{maxWidth:'100%',display:'block',textAlign:'-webkit-center'}}>
+									<textarea style={{maxWidth:'80%',margin:'0 auto'}} className={`optionD ${classes.option} col-md-9 col-xs-11`} id="optionD" value={que[`option${i + 1}D`]} disabled />
 								</span>
 							</div>
 						</div>
@@ -319,7 +284,16 @@ function Playquiz(props) {
 		}
 	}
 
-	if (name)
+	// if user already played the quiz
+	if(i===-1)
+	return (
+		<div>
+			<h1>You already played the quiz</h1>
+			<a>click here</a> to see the response
+		</div>
+	);
+
+	else if (name)
 		return (
 			<div>
 				<NeonPlayQuiz />
