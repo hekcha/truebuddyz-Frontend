@@ -71,10 +71,10 @@ function App() {
 						<Route path="/youlooklike" exact component={() => <IndexYouLookLike />} />
 						<Route path="/youlooklike/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />
 						
-						<Route path="/uknow" exact component={() => <IndexHowWellUKnow />} />
-						<Route path="/uknow/:type" exact component={(x) => <HowWellUKnow type={x.match.params.type} />} />
+						<Route path="/howwelluknow" exact component={() => <IndexHowWellUKnow />} />
+						<Route path="/howwelluknow/:type" exact component={(x) => <HowWellUKnow type={x.match.params.type} />} />
 						
-						<Redirect to="/uknow/marvel" />
+						<Redirect to="/" />
 					</Switch>
 				</Router>
 			</div>

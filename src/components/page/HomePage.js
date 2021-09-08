@@ -54,7 +54,7 @@ function Home() {
 										<Card link="/quiz" img={quiz} text="" />
 										<Card link="/rapidfire" img={rf} text="RapidFire" />
 										<Card link="/youlooklike" img={noimage} text="You Look Like" />
-										<Card link="/uknow" img={noimage} text="How Well You Know" />
+										<Card link="/howwelluknow" img={noimage} text="How Well You Know" />
 									</div>
 								</div>
 							</section>

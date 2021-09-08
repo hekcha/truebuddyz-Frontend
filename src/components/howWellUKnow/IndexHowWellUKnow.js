@@ -7,13 +7,13 @@ function IndexHowWellUKnow(){
     return(
         <div className="inner div">
             <header className="header">
-                <h1 onClick={() => window.location.href='/uknow'} style={{marginBottom:'0em'}}>How Well You Know</h1>
+                <h1 onClick={() => window.location.href='/howwelluknow'} style={{marginBottom:'0em'}}>How Well You Know</h1>
             </header>
             <section className="tiles section" style={{marginTop:'0'}}>
                 <div id="indexrf" className="container">
                     <div className="cards-list">
-                        <Card link="/uknow/marvel" img={noimage} text="Marvel" />
-                        <Card link="/uknow/bollywood" img={noimage} text="Bollywood" />
+                        <Card link="/howwelluknow/marvel" img={noimage} text="Marvel" />
+                        <Card link="/howwelluknow/bollywood" img={noimage} text="Bollywood" />
                         <Card link="" img={coming_soon} text="" />
                         <Card link="" img={coming_soon} text="" />
                         <Card link="" img={coming_soon} text="" />

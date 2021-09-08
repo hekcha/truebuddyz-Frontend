@@ -67,7 +67,7 @@ function HowWellUKnow(props) {
 		return (
 			<div className="col-8 offset-2 row">
 				<div class="image-container">
-					<img class="thumbnail" src={coming_soon} alt="user image" />
+					<img class="thumbnail" src={que[i][`image`]} alt="user image" />
 				</div>
 				<br />
 				<Card
