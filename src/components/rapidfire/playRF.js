@@ -88,7 +88,6 @@ const useStyles = makeStyles((theme) => ({
 		// borderRadius: "15px",
 		opacity: "0.85",
 		wordWrap: "break-word",
-		backgroundColor: "white",
 		textAlign: "center",
 		pointer: "cursor",
 		border: "2px solid black",
