@@ -192,20 +192,6 @@ function Rapidfire(props) {
 		.then((res) => setQueBank(res))
 		.catch((err) => console.log(err));
 
-		// create room
-		firebaseDb
-			.child("RapidFire")
-			.child(props.gameId)
-			.set(
-				{
-					queNo: 0,
-					users: "null",
-					ans: "null",
-				},
-				(err) => {
-					if (err) console.log("Error: ", err);
-				}
-			);
 			
 		// monitor changes in RapidFire -> GameID -> users (in firebase)
 		firebaseDb
@@ -254,6 +240,25 @@ function Rapidfire(props) {
 			);
 	}, []);
 
+	useEffect(()=>{
+		if(i===null)
+		{
+			// create room
+			firebaseDb
+				.child("RapidFire")
+				.child(props.gameId)
+				.set(
+					{
+						queNo: 0,
+						users: "null",
+						ans: "null",
+					},
+					(err) => {
+						if (err) console.log("Error: ", err);
+					}
+				);
+		}
+	},[i])
 
 	useEffect(() => {
 		if (y == 1 && name != "") {
