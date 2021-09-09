@@ -29,7 +29,6 @@ function YouLookLike(props) {
 		})
 		.then((resp) => resp.json())
 		.then((res) => {
-			console.log(res)
 			setQue(res['que'][0]);
 			setRandQue(res['randque']);
 		})
@@ -46,15 +45,11 @@ function YouLookLike(props) {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => {
-				console.log(res);
-				setResult(res[0]);
-			})
+			.then((res) => setResult(res[0]))
 			.catch((err) => console.log(err));
 	};
 
 	const StoreAns = (x) => {
-		console.log(ans);
 		setAns(ans * 10 + x);
 		setI(i + 1);
 	};

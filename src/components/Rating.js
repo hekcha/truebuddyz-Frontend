@@ -19,11 +19,6 @@ function Rating() {
 						"Authorization": `Token ${token["tb-token"]}`,
 					},
 					})
-					.then((resp) => resp.json())
-					// .then((res) => {
-					// 	if(res['message']==='Ok')
-					// 		alert('greets')
-					// })
 					.catch((err) => console.log(err));
 				break;
 			}

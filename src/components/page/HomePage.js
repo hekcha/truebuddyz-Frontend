@@ -53,8 +53,41 @@ function Home() {
 									<div className="cards-list">
 										<Card link="/quiz" img={quiz} text="" />
 										<Card link="/rapidfire" img={rf} text="RapidFire" />
-										<Card link="/youlooklike" img={noimage} text="You Look Like" />
-										<Card link="/howwelluknow" img={noimage} text="How Well You Know" />
+
+										<div 
+											className="card" 
+											onClick={()=>window.location.href="/howwelluknow"}
+											style={{
+												fontSize:'65px',
+												backgroundColor:'blue',
+												color:'white',
+												fontWeight:'700',
+												margin:'auto',
+												alignItems:'center',
+												justifyContent:'center',
+												textTransform:'capitalize',
+											}}
+										>
+											How Well You Know
+										</div>
+
+										<div 
+											className="card" 
+											onClick={()=>window.location.href="/youlooklike"}
+											style={{
+												fontSize:'65px',
+												backgroundColor:'blue',
+												color:'white',
+												fontWeight:'700',
+												margin:'auto',
+												alignItems:'center',
+												justifyContent:'center',
+												textTransform:'capitalize',
+											}}
+										>
+											You Look Like
+										</div>
+										
 									</div>
 								</div>
 							</section>

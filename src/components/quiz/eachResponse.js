@@ -111,8 +111,7 @@ function EachResponse(props) {
 		);
 		else return (
 			<div>
-				{console.log(quizQue,"user")}
-				loading
+				loading...
 			</div>
 		);
 }

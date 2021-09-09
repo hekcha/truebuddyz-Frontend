@@ -8,7 +8,6 @@ function Quizhome() {
 	const [token] = useCookies(["tb-token"]);
 	const [quizList, setQuizList] = useState([]);
 	useEffect(() => {
-		console.log("quizhome");
 		fetch(`${process.env.REACT_APP_API_URL}/quiz/que/`, {
 			method: "GET",
 			headers: {
@@ -17,17 +16,13 @@ function Quizhome() {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => {
-				setQuizList(res);
-				window.xyz = res;
-			})
+			.then((res) => setQuizList(res))
 			.catch((err) => console.log(err));
 	}, []);
 
 	function ShowQuiz(item) {
 		return (
 			<div>
-				{console.log(item.code)}
 				<h3 onClick={() => (window.location.href = "/item/view/" + item.code)}>item no {item.id}</h3>
 			</div>
 		);
@@ -40,7 +35,6 @@ function Quizhome() {
 		<div>
 			{quizList.length?
 				<div style={{ textAlign: "center" }}>
-					{console.log(quizList)}
 					<h1 style={{ fontFamily: "'Dancing Script', cursive", textTransform: "capitalize", fontSize: "58px" }}>Quiz home</h1>
 					<pre style={{ display: "inline", color: "black", verticalAlign: "text-bottom" }}>
 						<span style={{ fontSize: "24px", fontWeight: "500" }}>You created &nbsp;</span>

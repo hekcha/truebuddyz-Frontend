@@ -23,7 +23,7 @@ function NewGame() {
 		return (
 			<div className="inner div">
 				<header className="header">
-					<h1 style={{ marginBottom: "0em" }}>New Games</h1>
+					<h1 className="h1" style={{ marginBottom: "0em" }}>New Games</h1>
 				</header>
 				<section className="tiles section" style={{ marginTop: "0" }}>
 					<div id="indexrf" className="container">

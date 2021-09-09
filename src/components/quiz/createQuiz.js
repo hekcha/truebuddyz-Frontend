@@ -235,9 +235,7 @@ function Quizcreate(props) {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
 			})
-				.then((resp) => resp.json())
-				.then((res) => console.log(res))
-				.catch((err) => console.log(err));
+			.catch((err) => console.log(err));
 		}
 	}, [j]);
 

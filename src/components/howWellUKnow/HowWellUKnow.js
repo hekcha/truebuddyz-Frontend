@@ -29,10 +29,7 @@ function HowWellUKnow(props) {
 			},
 		})
 		.then((resp) => resp.json())
-		.then((res) => {
-			console.log(res);
-			setQue(res);
-		})
+		.then((res) => setQue(res))
 		.catch((err) => console.log(err));
 	},[])
 
@@ -46,10 +43,7 @@ function HowWellUKnow(props) {
 			},
 		})
 		.then((resp) => resp.json())
-		.then((res) => {
-			console.log(res[0]);
-			setResult(res[0]);
-		})
+		.then((res) => setResult(res[0]))
 		.catch((err) => console.log(err));
 		return null;
 	}

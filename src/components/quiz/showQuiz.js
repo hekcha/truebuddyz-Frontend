@@ -95,7 +95,6 @@ function Quizshow(props) {
 	const classes = useStyles();
 
 	useEffect(() => {
-		console.log("quizhome");
 		fetch(`${process.env.REACT_APP_API_URL}/quiz/resp/?quizcode=${props.code}`, {
 			method: "GET",
 			headers: {
@@ -104,11 +103,7 @@ function Quizshow(props) {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => {
-				console.log(res,"ffrsvf");
-				setQuizResp(res);
-			})
-			// .then((res) => setQuizResp(res))
+			.then((res) => setQuizResp(res))
 			.catch((err) => console.log(err));
 	}, []);
 
@@ -127,7 +122,6 @@ function Quizshow(props) {
 	if (quizResp.length)
 		return (
 			<div className={classes.table}>
-				{console.log(quizResp)}
 				<h1>Friend's Responded : {quizResp.length}</h1>
 				<br />
 				<table style={{ margin: "auto", justifyContent: "center" }}>
