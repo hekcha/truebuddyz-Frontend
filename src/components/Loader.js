@@ -65,13 +65,13 @@ const useStyles = makeStyles((theme) => ({
 function Loader() {
 	const classes = useStyles();
 	return (
-		<div class="container">
-			<div class="loader">
-				<div class="circle1"></div>
-				<div class="circle2"></div>
-				<div class="circle3"></div>
+		<div class={classes.container}>
+			<div className={classes.loader}>
+				<div className={classes.circle1}></div>
+				<div className={classes.circle2}></div>
+				<div className={classes.circle3}></div>
 			</div>
-			<div class="caption">We're testing your patience😉....</div>
+			<div class={classes.caption}>We're testing your patience😉....</div>
 		</div>
 	);
 }

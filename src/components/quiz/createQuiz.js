@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { Button, Stepper, Step, StepLabel } from "@material-ui/core";
+import { Button, Checkbox, Stepper, Step, StepLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import CreateQuiz from "../page/CreateQuiz";
 import QueNumber from "../QueNumber";
@@ -98,13 +98,15 @@ const useStyles = makeStyles((theme) => ({
 	unchecked: {
 		display: "flex",
 		flexDirection: "column",
-		margin: "2vw",
+		margin: "4vw",
 		position: "absolute",
-		left: "-20px",
+		top: "-20px",
+		verticalAlign: "center",
+		// padding: "-20px",
 		[theme.breakpoints.down("xs")]: {
 			position: "absolute",
-			top: "3.2vh",
-			left: "-2rem",
+			marginTop: "60px",
+			left: "-1rem",
 		},
 		transition: "all 0.3s ease-out",
 		justifyContent: "center",
@@ -142,7 +144,23 @@ function Quizcreate(props) {
 	const [quizData, setQuizData] = useState([]);
 	const [i, setI] = useState(0);
 	const [j, setJ] = useState(0);
-	const [click, setClick] = useState(0);
+	const [checked1, setChecked1] = useState(false);
+	const [checked2, setChecked2] = useState(false);
+	const [checked3, setChecked3] = useState(false);
+	const [checked4, setChecked4] = useState(false);
+
+	const handleChange1 = (event) => {
+		setChecked1(event.target.checked);
+	};
+	const handleChange2 = (event) => {
+		setChecked2(event.target.checked);
+	};
+	const handleChange3 = (event) => {
+		setChecked3(event.target.checked);
+	};
+	const handleChange4 = (event) => {
+		setChecked4(event.target.checked);
+	};
 
 	var ALLOWED_PAGES = ["friends", "couples", "bff"];
 
@@ -195,9 +213,6 @@ function Quizcreate(props) {
 			document.getElementsByClassName("optionD")[0].value,
 			item,
 		]);
-		setI((i + 1)%queBank.length);
-		setJ(j + 1);
-		setClick(1);
 	};
 
 	useEffect(() => {
@@ -207,9 +222,8 @@ function Quizcreate(props) {
 			setOptionB(queBank[i].optionB);
 			setOptionC(queBank[i].optionC);
 			setOptionD(queBank[i].optionD);
-			setClick(0);
 		}
-	}, [i, queBank, username, click]);
+	}, [i, queBank, username]);
 
 	useEffect(() => {
 		if (j == 10) {
@@ -249,9 +263,9 @@ function Quizcreate(props) {
 			return (
 				<div>
 					<ShareLink game="quiz" type={props.type} link={`${process.env.REACT_APP_URL}/quiz/play/${code}`} />
-					<br/>
-					<br/>
-					<Trending />	
+					<br />
+					<br />
+					<Trending />
 				</div>
 			);
 
@@ -266,16 +280,24 @@ function Quizcreate(props) {
 					<div className={`row ${classes.parentOption}`} value={optionA}>
 						<div className="col-md-6 col-xs-12  d-flex justify-content-center">
 							<span>
-								<i
-									className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
+								<Checkbox
+									className={`${classes.unchecked} col-1`}
+									style={{ top: "-40px" }}
+									checked={checked1}
+									onChange={handleChange1}
 									onClick={() => {
 										SelectAns(0);
-										var v = document.getElementById("optionA").className;
-										v += " border-success ";
 									}}
-								></i>
+									inputProps={{ "aria-label": "primary checkbox" }}
+								/>
+								{/* <i
+									className={`fas fa-check-circle fa-lg col-3 ${classes.checked}`}
+									onClick={() => {
+										SelectAns(0);
+									}}
+								></i> */}
 								<textarea
-									className={`border optionA ${classes.option} col-md-9 col-xs-11 `}
+									className={`border optionA ${classes.option} col-md-8 col-xs-11 `}
 									id="optionA"
 									value={optionA}
 									onChange={(event) => ChangeHandler(setOptionA, event)}
@@ -285,14 +307,24 @@ function Quizcreate(props) {
 
 						<div className="col-md-6 col-xs-12  d-flex justify-content-center">
 							<span>
-								<i
-									className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
+								<Checkbox
+									className={`${classes.unchecked} col-1`}
+									style={{ top: "-40px" }}
+									checked={checked2}
+									onChange={handleChange2}
+									onClick={() => {
+										SelectAns(1);
+									}}
+									inputProps={{ "aria-label": "primary checkbox" }}
+								/>
+								{/* <i
+									// className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
 									onClick={() => {
 										SelectAns(1);
 										var v = document.getElementById("optionB").className;
 										v += " border-success ";
 									}}
-								></i>
+								></i> */}
 								<textarea
 									className={`border optionB ${classes.option} col-md-9 col-xs-11`}
 									id="optionB"
@@ -304,14 +336,24 @@ function Quizcreate(props) {
 
 						<div className="col-md-6 col-xs-12 d-flex justify-content-center">
 							<span>
-								<i
-									className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
+								<Checkbox
+									className={`${classes.unchecked} col-1`}
+									style={{ top: "-40px" }}
+									checked={checked3}
+									onChange={handleChange3}
+									onClick={() => {
+										SelectAns(2);
+									}}
+									inputProps={{ "aria-label": "primary checkbox" }}
+								/>
+								{/* <i
+									// className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
 									onClick={() => {
 										SelectAns(2);
 										var v = document.getElementById("optionC").className;
 										v += " border-success ";
 									}}
-								></i>
+								></i> */}
 								<textarea
 									className={`border optionC ${classes.option} col-md-9 col-xs-11`}
 									id="optionC"
@@ -324,14 +366,24 @@ function Quizcreate(props) {
 
 						<div className="col-md-6 col-xs-12 d-flex justify-content-center">
 							<span>
-								<i
-									className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
+								<Checkbox
+									className={`${classes.unchecked} col-1`}
+									style={{ top: "-40px" }}
+									checked={checked4}
+									onChange={handleChange4}
+									onClick={() => {
+										SelectAns(3);
+									}}
+									inputProps={{ "aria-label": "primary checkbox" }}
+								/>
+								{/* <i
+									// className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
 									onClick={() => {
 										SelectAns(3);
 										var v = document.getElementById("optionD").className;
 										v += " border-success ";
 									}}
-								></i>
+								></i> */}
 								<textarea
 									className={`border optionD ${classes.option} col-md-9 col-xs-11`}
 									id="optionD"
@@ -341,9 +393,22 @@ function Quizcreate(props) {
 							</span>
 						</div>
 					</div>
-					<Button variant="contained" color="secondary" className="my-2" onClick={() => setI((i + 1)%queBank.length)} style={{}}>
-						Skip
-					</Button>
+					<span>
+						<Button variant="contained" color="secondary" className="my-2" onClick={() => setI(i + 1)} style={{}}>
+							Skip
+						</Button>
+						<Button
+							variant="contained"
+							className="my-2"
+							onClick={() => {
+								setI(i + 1);
+								setJ(j + 1);
+							}}
+							style={{ backgroundColor: "green", color: "white", marginLeft: "4px" }}
+						>
+							Next
+						</Button>
+					</span>
 				</div>
 			);
 		}

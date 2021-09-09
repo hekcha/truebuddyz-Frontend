@@ -3,18 +3,15 @@ import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
 import coming_soon from "../assets/coming_soon.jpg";
 
-
-
 function HowWellUKnow(props) {
 	const [token] = useCookies(["tb-token"]);
 	const [que, setQue] = useState(null);
 	const [i, setI] = useState(0);
 	const [result, setResult] = useState(null);
 	const [score, setScore] = useState(0);
-	
 
 	var ALLOWED_PAGES = ["marvel", "bollywood"];
-	
+
 	useEffect(() => {
 		for (var i = 0; i < ALLOWED_PAGES.length; i++) {
 			if (ALLOWED_PAGES[i] === props.type) break;
@@ -46,18 +43,15 @@ function HowWellUKnow(props) {
 		.then((res) => setResult(res[0]))
 		.catch((err) => console.log(err));
 		return null;
-	}
+	};
 
 	const StoreAns = (item) => {
-		if(item===que[i]['ans'])
-			setScore(score+1);
-		setI(i+1);
-	}
+		if (item === que[i]["ans"]) setScore(score + 1);
+		setI(i + 1);
+	};
 
-
-	if(!que)
-		return (<div>Loading.....</div>)
-	if(i<10)
+	if (!que) return <div>Loading.....</div>;
+	if (i < 10)
 		return (
 			<div className="col-8 offset-2 row">
 				<div class="image-container">
@@ -179,7 +173,7 @@ function HowWellUKnow(props) {
 				</Card>
 			</div>
 		);
-	if(!result)
+	if (!result)
 		return (
 			<div>
 				{GetResult()}
@@ -187,13 +181,17 @@ function HowWellUKnow(props) {
 			</div>
 		);
 	return (
-		<div>
-			<img src={result.image} />
-			<h1>Score- {result.score}</h1>
-			<h1>Message- {result.message}</h1>
+		<div style={{ textAlign: "center", margin: "auto" }}>
+			<img src={result.image} style={{ margin: "auto" }} />
+			<p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>Your Score Is- {result.score}</p>
+			<Card
+				style={{ width: "375px", margin: "auto", backgroundColor: "black", backgroundSize: "cover", border: "25px black", borderRadius: "12px" }}
+				raised
+			>
+				<p style={{ fontSize: "24px", color: "white", verticalAlign: "justify" }}>Message- {result.message}</p>
+			</Card>
 		</div>
 	);
-	
 }
 
-export default HowWellUKnow
+export default HowWellUKnow;
