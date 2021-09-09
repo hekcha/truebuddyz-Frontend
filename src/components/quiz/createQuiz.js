@@ -415,7 +415,6 @@ function Quizcreate(props) {
 			);
 		}
 		// to avoid error resultant work of skip button is nothing
-		setI(i - 1);
 		return <div />;
 	}
 

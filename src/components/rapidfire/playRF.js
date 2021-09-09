@@ -88,7 +88,6 @@ const useStyles = makeStyles((theme) => ({
 		// borderRadius: "15px",
 		opacity: "0.85",
 		wordWrap: "break-word",
-		backgroundColor: "white",
 		textAlign: "center",
 		pointer: "cursor",
 		border: "2px solid black",
@@ -180,6 +179,8 @@ function Rapidfire(props) {
 	const [countdown, setCountDown] = useState(null);
 
 	useEffect(() => {
+		
+		// fetch questions
 		fetch(`${process.env.REACT_APP_API_URL}/rf/que/?category=${props.type}`, {
 			method: "GET",
 			headers: {
@@ -187,10 +188,25 @@ function Rapidfire(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-			.then((resp) => resp.json())
-			.then((res) => setQueBank(res))
-			.catch((err) => console.log(err));
+		.then((resp) => resp.json())
+		.then((res) => setQueBank(res))
+		.catch((err) => console.log(err));
 
+		// create room
+		firebaseDb
+			.child("RapidFire")
+			.child(props.gameId)
+			.set(
+				{
+					queNo: 0,
+					users: "null",
+					ans: "null",
+				},
+				(err) => {
+					if (err) console.log("Error: ", err);
+				}
+			);
+			
 		// monitor changes in RapidFire -> GameID -> users (in firebase)
 		firebaseDb
 			.child("RapidFire")
@@ -238,24 +254,6 @@ function Rapidfire(props) {
 			);
 	}, []);
 
-	useEffect(() => {
-		// alert(token['tb-user'])
-		if (i === null) {
-			firebaseDb
-				.child("RapidFire")
-				.child(props.gameId)
-				.set(
-					{
-						queNo: 0,
-						users: "null",
-						ans: "null",
-					},
-					(err) => {
-						if (err) console.log("Error: ", err);
-					}
-				);
-		}
-	}, [i]);
 
 	useEffect(() => {
 		if (y == 1 && name != "") {
@@ -268,7 +266,7 @@ function Rapidfire(props) {
 			startTimer(
 				setTimeout(function () {
 					AnsChoice("not selected");
-				}, 100000)
+				}, 10000)
 				// yha shi krna time
 			);
 		} else if (y != 1 && countdown) clearInterval(countdown);
@@ -276,9 +274,25 @@ function Rapidfire(props) {
 
 	const Submit = () => {
 		var nme = document.getElementById("name").value;
+		var formdata=new FormData();
+		formdata.append('category',props.type)
+		formdata.append('roomId',props.gameId)
+		formdata.append('playerId',token["tb-user"])
+		formdata.append('playerName',nme)
+
+		fetch(`${process.env.REACT_APP_API_URL}/rf/room/`, {
+			method: "POST",
+			body:formdata,
+			headers: {
+				"Authorization": `Token ${token["tb-token"]}`,
+			},
+		})
+		.catch((err) => console.log(err));
+
 		firebaseDb.child("RapidFire").child(props.gameId).child("users").child(token["tb-user"]).set(nme);
 		setName(nme);
 		setY(0);
+
 	};
 
 	const NextQue = () => {
@@ -298,8 +312,6 @@ function Rapidfire(props) {
 		firebaseDb.child("RapidFire").child(props.gameId).child("ans").child(name).set(item);
 		setY(2);
 		clearTimeout(timer);
-		// document.getElementById(name).style.border = "5px solid green";
-		// document.getElementById(name).style.opacity = "1";
 	};
 
 	if (i === -1 || i === null) {
@@ -310,7 +322,7 @@ function Rapidfire(props) {
 				<div
 					className="card"
 					style={{
-						backgroundImage: `url(https://s9.gifyu.com/images/finger.gif)`,
+						backgroundImage: finger,
 						margin: "8px auto",
 						width: "330px",
 						height: "243px",
@@ -320,7 +332,6 @@ function Rapidfire(props) {
 				<p style={{ textAlign: "center", fontSize: "50px" }}>Creating A Room</p>
 			</div>
 		);
-		//loading se bdhiya ye dikhate h
 	}
 
 	if (name === "") {
@@ -336,12 +347,12 @@ function Rapidfire(props) {
 					<Button className="my-3" variant="contained" color="primary" onClick={() => Submit()}>
 						Play
 					</Button>
-					{/* <button onClick={() => Submit()}>submit</button> */}
 				</Card>
 			</div>
 		);
 	}
 
+	// display game start button 
 	if (y === 0) {
 		return (
 			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
@@ -397,13 +408,14 @@ function Rapidfire(props) {
 		);
 	}
 
+	// display questions
 	if (y === 1) {
 		return (
 			<div id="playRF" className="text-center mt-5" style={{ margin: "0px auto" }}>
 				{/* <h1 className={classes.heading1}>{props.type} Rapidfire</h1> */}
 				<NeonRapidfire types={props.type} style={{ marginY: "25px" }} />
 				<br />
-				<h3 className="my-2">Online🟢: {Object.values(users).length} </h3>
+				<h3 className="my-2">Participants🟢: {Object.values(users).length} </h3>
 				<br />
 				<div className="row">
 					<div id="countdown" className="mb-3">
@@ -421,20 +433,6 @@ function Rapidfire(props) {
 						<div className="col-12 my-2">
 							<h3>{queBank[parseInt(i)]["que"]}</h3>
 						</div>
-						{/* <Card
-							style={{
-								minWidth: "250px",
-								maxWidth: "400px",
-
-								margin: "auto",
-								backgroundImage: " linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%)",
-								backgroundColor: " #00DBDE",
-								opacity: "0.5",
-								borderRadius: "20px",
-								border: "2px solid",
-							}}
-							raised
-						> */}
 						{Object.values(users).map((item) => {
 							return (
 								<Card onClick={() => AnsChoice(item)} className={classes.options} id={item} style={{}} raised>
@@ -444,7 +442,11 @@ function Rapidfire(props) {
 								</Card>
 							);
 						})}
-						{/* </Card> */}
+						<Card onClick={() => AnsChoice("Skiped")} className={classes.options} id="skip" style={{}} raised>
+							<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+								Skip
+							</h3>
+						</Card>
 					</div>
 				</div>
 			</div>
@@ -482,8 +484,6 @@ function Rapidfire(props) {
 							);
 						})}
 					</ul>
-					{/* Yha pr next button bhi tha kya??
-					 */}
 				</div>
 			</div>
 		);

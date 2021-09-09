@@ -1,23 +1,71 @@
 import Card from '../Card' 
 import coming_soon from "../assets/coming_soon.jpg";
-import noimage from "../assets/noimage.jpg";
 
 
 function IndexYouLookLike(){
     return(
         <div className="inner div">
             <header className="header">
-                <h1 onClick={() => window.location.href='/youlooklike'} style={{marginBottom:'0em'}}>Entertainment</h1>
+                <h1 onClick={() => window.location.href='/youlooklike'} style={{marginBottom:'0em'}}>You Look Like</h1>
             </header>
-            <section className="tiles section" style={{marginTop:'0'}}>
+            <section className="tiles section" style={{marginTop:'30px'}}>
                 <div id="indexrf" className="container">
                     <div className="cards-list">
-                        <Card link="/youlooklike/anime" img={noimage} text="anime" />
-                        <Card link="/youlooklike/dog" img={noimage} text="dog" />
-                        <Card link="/youlooklike/entrepreneur" img={noimage} text="entrepreneur" />
+                        <div 
+                            className="card" 
+                            onClick={()=>window.location.href="/youlooklike/anime"}
+                            style={{
+                                fontSize:'65px',
+                                backgroundColor:'blue',
+                                color:'white',
+                                fontWeight:'700',
+                                margin:'auto',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                textTransform:'capitalize',
+                            }}
+                        >
+                            Anime
+                        </div>
+
+                        <div 
+                            className="card" 
+                            onClick={()=>window.location.href="/youlooklike/dog"}
+                            style={{
+                                fontSize:'65px',
+                                backgroundColor:'blue',
+                                color:'white',
+                                fontWeight:'700',
+                                margin:'auto',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                textTransform:'capitalize',
+                            }}
+                        >
+                            Dog
+                        </div>
+
+                        <div 
+                            className="card" 
+                            onClick={()=>window.location.href="/youlooklike/entrepreneur"}
+                            style={{
+                                fontSize:'45px',
+                                backgroundColor:'blue',
+                                color:'white',
+                                fontWeight:'700',
+                                margin:'auto',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                textTransform:'capitalize',
+                            }}
+                        >
+                            entrepreneur
+                        </div>
+
                         <Card link="" img={coming_soon} text="" />
                         <Card link="" img={coming_soon} text="" />
                         <Card link="" img={coming_soon} text="" />
+
                     </div>
                 </div>
             </section>
