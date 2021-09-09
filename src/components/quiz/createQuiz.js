@@ -195,7 +195,7 @@ function Quizcreate(props) {
 			document.getElementsByClassName("optionD")[0].value,
 			item,
 		]);
-		setI(i + 1);
+		setI((i + 1)%queBank.length);
 		setJ(j + 1);
 		setClick(1);
 	};
@@ -343,14 +343,13 @@ function Quizcreate(props) {
 							</span>
 						</div>
 					</div>
-					<Button variant="contained" color="secondary" className="my-2" onClick={() => setI(i + 1)} style={{}}>
+					<Button variant="contained" color="secondary" className="my-2" onClick={() => setI((i + 1)%queBank.length)} style={{}}>
 						Skip
 					</Button>
 				</div>
 			);
 		}
 		// to avoid error resultant work of skip button is nothing
-		setI(i - 1);
 		return <div />;
 	}
 
