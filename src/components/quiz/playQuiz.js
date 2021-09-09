@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Loader from "../Loader";
 import NeonPlayQuiz from "../Neon/NeonPlayQuiz";
 import QueNumber from "../QueNumber";
 import { Card } from "react-bootstrap";
 import Rating from "../Rating.js";
 import CountUp from "react-countup";
+import Loading from "../page/Loading";
 
 const useStyles = makeStyles((theme) => ({
 	box: {
@@ -155,9 +155,9 @@ function Playquiz(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-		.then((resp) => resp.json())
-		.then((res) => setQue(res[0]))
-		.catch((err) => console.log(err));
+			.then((resp) => resp.json())
+			.then((res) => setQue(res[0]))
+			.catch((err) => console.log(err));
 
 		// for userID
 		fetch(`${process.env.REACT_APP_API_URL}/core/user/`, {
@@ -172,9 +172,8 @@ function Playquiz(props) {
 			.catch((err) => console.log(err));
 	}, []);
 
-	useEffect(()=>{
-		if(i===10)
-		{
+	useEffect(() => {
+		if (i === 10) {
 			var formdata = new FormData();
 			formdata.append("quizcode", que.code);
 			formdata.append("user", que.user);
@@ -189,25 +188,23 @@ function Playquiz(props) {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
 			})
-			.then((resp) => resp.json())
-			.then((res) => {
-				if(res.non_field_errors)
-					setI(-1);
-				// console.log(res);
-			})
-			.catch((err) => console.log(err));
+				.then((resp) => resp.json())
+				.then((res) => {
+					if (res.non_field_errors) setI(-1);
+					// console.log(res);
+				})
+				.catch((err) => console.log(err));
 		}
-	},[i])
+	}, [i]);
 
-	function Checkans(a,id) {
+	function Checkans(a, id) {
 		setAns([...ans, a]);
-		if (que[`ans${i+1}`] === a) setMarks(marks + 1);
-		setI(i+1);
+		if (que[`ans${i + 1}`] === a) setMarks(marks + 1);
+		setI(i + 1);
 	}
 
 	function Showque() {
-		if (i < 10)
-		{
+		if (i < 10) {
 			return (
 				<div style={{ position: "relative", top: "110px" }}>
 					<br />
@@ -215,40 +212,82 @@ function Playquiz(props) {
 					<div className="row justify-content-center align-items-center">
 						<QueNumber que={ans.length} />
 					</div>
-					<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}`,marginTop:'0' }}>
-
+					<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}`, marginTop: "0" }}>
 						<textarea className={`question ${classes.question}`} value={que[`que${i + 1}`]} disabled />
 						<br />
-						<div className={`row ${classes.parentOption}`} style={{padding:'0',margin:'0',maxWidth:'100%'}}>
-							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{maxWidth:'100%'}}>
-								<span onClick={() => {Checkans(0,'optionA')}} style={{maxWidth:'100%',display:'block',textAlign:'-webkit-center'}}>
-									<textarea style={{maxWidth:'80%',margin:'0 auto'}} className={`optionA ${classes.option} col-md-9 col-xs-11 border-success `} id="optionA" value={que[`option${i + 1}A`]} disabled/>
+						<div className={`row ${classes.parentOption}`} style={{ padding: "0", margin: "0", maxWidth: "100%" }}>
+							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
+								<span
+									onClick={() => {
+										Checkans(0, "optionA");
+									}}
+									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center" }}
+								>
+									<textarea
+										style={{ maxWidth: "80%", margin: "0 auto" }}
+										className={`optionA ${classes.option} col-md-9 col-xs-11 border-success `}
+										id="optionA"
+										value={que[`option${i + 1}A`]}
+										disabled
+									/>
 								</span>
 							</div>
 
-							<div className="col-md-6 col-xs-12  d-flex justify-content-center" style={{maxWidth:'100%'}}>
-								<span onClick={() => {Checkans(1,'optionB')}} style={{maxWidth:'100%',display:'block',textAlign:'-webkit-center'}}>
-									<textarea style={{maxWidth:'80%',margin:'0 auto'}} className={`optionB ${classes.option} col-md-9 col-xs-11`} id="optionB" value={que[`option${i + 1}B`]} disabled />
+							<div className="col-md-6 col-xs-12  d-flex justify-content-center" style={{ maxWidth: "100%" }}>
+								<span
+									onClick={() => {
+										Checkans(1, "optionB");
+									}}
+									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center" }}
+								>
+									<textarea
+										style={{ maxWidth: "80%", margin: "0 auto" }}
+										className={`optionB ${classes.option} col-md-9 col-xs-11`}
+										id="optionB"
+										value={que[`option${i + 1}B`]}
+										disabled
+									/>
 								</span>
 							</div>
 
-							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{maxWidth:'100%'}}>
-								<span onClick={() => {Checkans(2,'optionC')}} style={{maxWidth:'100%',display:'block',textAlign:'-webkit-center'}}>
-									<textarea style={{maxWidth:'80%',margin:'0 auto'}} className={`optionC ${classes.option} col-md-9 col-xs-11`} id="optionC" value={que[`option${i + 1}C`]} disabled />
+							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
+								<span
+									onClick={() => {
+										Checkans(2, "optionC");
+									}}
+									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center" }}
+								>
+									<textarea
+										style={{ maxWidth: "80%", margin: "0 auto" }}
+										className={`optionC ${classes.option} col-md-9 col-xs-11`}
+										id="optionC"
+										value={que[`option${i + 1}C`]}
+										disabled
+									/>
 								</span>
 							</div>
 
-							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{maxWidth:'100%'}}>
-								<span onClick={() => {Checkans(3,'optionC')}} style={{maxWidth:'100%',display:'block',textAlign:'-webkit-center'}}>
-									<textarea style={{maxWidth:'80%',margin:'0 auto'}} className={`optionD ${classes.option} col-md-9 col-xs-11`} id="optionD" value={que[`option${i + 1}D`]} disabled />
+							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
+								<span
+									onClick={() => {
+										Checkans(3, "optionC");
+									}}
+									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center" }}
+								>
+									<textarea
+										style={{ maxWidth: "80%", margin: "0 auto" }}
+										className={`optionD ${classes.option} col-md-9 col-xs-11`}
+										id="optionD"
+										value={que[`option${i + 1}D`]}
+										disabled
+									/>
 								</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			);
-		}
-		else {
+		} else {
 			return (
 				<div style={{ position: "relative", top: "80px" }}>
 					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "28px" }}>How much you liked us?😍</h1>
@@ -269,8 +308,14 @@ function Playquiz(props) {
 							Your score is
 						</h1>
 						<h1 style={{ fontSize: "58px", textAlign: "center" }}>
-							<CountUp start={0} end={marks} duration={0.7} onEnd={() => console.log("Ended! 👏")} onStart={() => console.log("Started! 💨")}></CountUp>
-						</h1> 
+							<CountUp
+								start={0}
+								end={marks}
+								duration={0.7}
+								onEnd={() => console.log("Ended! 👏")}
+								onStart={() => console.log("Started! 💨")}
+							></CountUp>
+						</h1>
 					</Card>
 					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "30px" }}>
 						Click{" "}
@@ -285,14 +330,13 @@ function Playquiz(props) {
 	}
 
 	// if user already played the quiz
-	if(i===-1)
-	return (
-		<div>
-			<h1>You already played the quiz</h1>
-			<a>click here</a> to see the response
-		</div>
-	);
-
+	if (i === -1)
+		return (
+			<div>
+				<h1>You already played the quiz</h1>
+				<a>click here</a> to see the response
+			</div>
+		);
 	else if (name)
 		return (
 			<div>
@@ -304,11 +348,10 @@ function Playquiz(props) {
 	else if (!que || !user)
 		return (
 			<div>
-				<Loader />
+				<Loading />
 			</div>
 		);
-	else if (user === que.user)
-		window.location.href = `/quiz/view/${que.code}`;
+	else if (user === que.user) window.location.href = `/quiz/view/${que.code}`;
 	// ask user to enter name
 	else
 		return (
