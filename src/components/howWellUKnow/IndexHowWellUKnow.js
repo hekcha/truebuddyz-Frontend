@@ -1,4 +1,4 @@
-import Card, { BlueCard } from '../Card' 
+import Card, { GradientCard } from '../Card' 
 import coming_soon from "../assets/coming_soon.jpg";
 
 
@@ -11,8 +11,8 @@ function IndexHowWellUKnow(){
             <section className="tiles section" style={{marginTop:'0'}}>
                 <div id="indexrf" className="container">
                     <div className="cards-list">
-                        <BlueCard link="/howwelluknow/marvel" text="marvel" />
-                        <BlueCard link="/howwelluknow/bollywood " text="bollywood " />
+                        <GradientCard link="/howwelluknow/marvel" text="marvel" />
+                        <GradientCard link="/howwelluknow/bollywood " text="bollywood " />
 
                         <Card link="#" img={coming_soon} text="" />
                         <Card link="#" img={coming_soon} text="" />

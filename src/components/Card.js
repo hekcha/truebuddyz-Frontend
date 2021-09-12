@@ -7,9 +7,12 @@ function Card(props){
     );
 }
 
-function BlueCard(props){
+function GradientCard(props){
     return(
-        <div className="card" style={{backgroundColor:'blue',}} onClick={()=>window.location.href=props.link}>
+        <div className="card" onClick={()=>window.location.href=props.link} style={{
+            backgroundColor:'#4158D0',
+            backgroundImage: 'linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)',
+        }} >
             <div 
                 style={{
                     fontSize:'65px',
@@ -26,5 +29,5 @@ function BlueCard(props){
 }
 
 
-export {BlueCard}
+export {GradientCard}
 export default Card

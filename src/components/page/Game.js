@@ -3,7 +3,7 @@ import "./main.css";
 import quiz from "../assets/quiz.jpg";
 import rf from "../assets/rf.jpg";
 import NewGame from "./NewGame";
-import Card, { BlueCard } from "../Card";
+import Card, { GradientCard } from "../Card";
 
 
 function Game() {
@@ -22,8 +22,8 @@ function Game() {
 							<Card link="/quiz" img={quiz} text="" />
 							<Card link="/rapidfire" img={rf} text="RapidFire" />
 
-							<BlueCard link="/howwelluknow" text="How Well You Know" />
-							<BlueCard link="/youlooklike" text="you look like" />
+							<GradientCard link="/howwelluknow" text="How Well You Know" />
+							<GradientCard link="/youlooklike" text="you look like" />
 						</div>
 					</div>
 				</section>
