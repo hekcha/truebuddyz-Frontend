@@ -10,22 +10,23 @@ import Card from "../Card";
 import Trending from "./Trending";
 import NewGame from "./NewGame";
 
-
 function Home() {
 	return (
 		<React.Fragment>
 			<div className="is-preload">
-				<div className="row">
-				</div>
+				<div className="row"></div>
 				<div id="wrapper" className="div mx-4">
 					<div id="main" className="div">
-
 						<div className="inner div">
 							<header className="header">
-								<h1 className="h1" style={{marginBottom:'0.2em'}}>Most Liked💗</h1>
-								<h2 className="h2" style={{marginBottom:'0.5em'}}>Most loved❤️‍🔥 and played🃏 Games by TrueBff Family.</h2>
+								<h1 className="h1" style={{ marginBottom: "0.2em" }}>
+									Most Liked💗
+								</h1>
+								<h2 className="h2" style={{ marginBottom: "0.5em" }}>
+									Most loved❤️‍🔥 and played🃏 Games by TrueBff Family.
+								</h2>
 							</header>
-							<section className="tiles section" style={{marginTop:'0'}}>
+							<section className="tiles section" style={{ marginTop: "0" }}>
 								<div id="indexrf" className="container">
 									<div className="cards-list">
 										<Card link="/quiz/friends" img={quiz_friends} text="Friend's Quiz" />
@@ -46,48 +47,49 @@ function Home() {
 
 						<div className="inner div">
 							<header className="header">
-								<h1 style={{marginBottom:'0em'}}>Our games🔥</h1>
+								<h1 style={{ marginBottom: "0em" }}>Our games🔥</h1>
 							</header>
-							<section className="tiles section" style={{marginTop:'0'}}>
+							<section className="tiles section" style={{ marginTop: "0" }}>
 								<div id="indexrf" className="container">
 									<div className="cards-list">
 										<Card link="/quiz" img={quiz} text="" />
 										<Card link="/rapidfire" img={rf} text="RapidFire" />
 
-										<div 
-											className="card" 
-											onClick={()=>window.location.href="/howwelluknow"}
+										<div
+											className="card"
+											onClick={() => (window.location.href = "/howwelluknow")}
 											style={{
-												fontSize:'65px',
-												backgroundColor:'blue',
-												color:'white',
-												fontWeight:'700',
-												margin:'auto',
-												alignItems:'center',
-												justifyContent:'center',
-												textTransform:'capitalize',
+												fontSize: "65px",
+												backgroundColor: "black",
+												color: "white",
+												fontWeight: "700",
+												margin: "auto",
+												alignItems: "center",
+												justifyContent: "center",
+												textTransform: "capitalize",
+												textAlign: "center",
 											}}
 										>
 											How Well You Know
 										</div>
 
-										<div 
-											className="card" 
-											onClick={()=>window.location.href="/youlooklike"}
+										<div
+											className="card"
+											onClick={() => (window.location.href = "/youlooklike")}
 											style={{
-												fontSize:'65px',
-												backgroundColor:'blue',
-												color:'white',
-												fontWeight:'700',
-												margin:'auto',
-												alignItems:'center',
-												justifyContent:'center',
-												textTransform:'capitalize',
+												fontSize: "65px",
+												backgroundColor: "black",
+												color: "white",
+												fontWeight: "700",
+												margin: "auto",
+												alignItems: "center",
+												justifyContent: "center",
+												textTransform: "capitalize",
+												textAlign: "center",
 											}}
 										>
 											You Look Like
 										</div>
-										
 									</div>
 								</div>
 							</section>
