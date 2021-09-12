@@ -221,7 +221,7 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(0, "optionA");
 									}}
-									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center" }}
+									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center", textAlign: '-moz-center' }}
 								>
 									<textarea
 										style={{ maxWidth: "80%", margin: "0 auto" }}
@@ -238,7 +238,7 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(1, "optionB");
 									}}
-									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center" }}
+									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center", textAlign: '-moz-center' }}
 								>
 									<textarea
 										style={{ maxWidth: "80%", margin: "0 auto" }}
@@ -255,7 +255,7 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(2, "optionC");
 									}}
-									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center" }}
+									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center", textAlign: '-moz-center' }}
 								>
 									<textarea
 										style={{ maxWidth: "80%", margin: "0 auto" }}
@@ -272,7 +272,7 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(3, "optionC");
 									}}
-									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center" }}
+									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center", textAlign: '-moz-center' }}
 								>
 									<textarea
 										style={{ maxWidth: "80%", margin: "0 auto" }}

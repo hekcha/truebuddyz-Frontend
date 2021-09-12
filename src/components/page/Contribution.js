@@ -41,10 +41,10 @@ function Contribution() {
                     <input class="last-name" type="text" name="last-name" placeholder="Last Name" maxlength="30" />
                     
                     <label for="email" class="email">Email<p id="break">(Optional)</p></label>
-                    <input id="email" type="email" name="email" placeholder="example@TrueBFF.com" />
+                    <input id="email" type="email" name="email" placeholder="example@TrueBuddyZ.com" />
                     
                     <label for="game" class="game">Game<p id="break">(Optional)</p></label>
-                    <input id="game" type="text" name="game" maxlength="45" placeholder="Game" />
+                    <input id="game" type="text" name="game" maxlength="45" placeholder="Quiz" />
 
                     <label></label>
                     <label for="message" class="message">Message<span style={{color:'red'}}>*</span><p className="error" id="break" style={{color:'red',opacity:'0'}}>Required</p></label>

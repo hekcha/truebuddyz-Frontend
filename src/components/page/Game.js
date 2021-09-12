@@ -1,41 +1,32 @@
 import React from "react";
 import "./main.css";
-import IndexRf from "../rapidfire/indexRF";
-import QuizList from "../quiz/QuizList";
-import IndexYouLookLike from "../youlooklike/IndexYouLookLike";
-import IndexHowWellUKnow from "../howWellUKnow/IndexHowWellUKnow";
-
-
+import quiz from "../assets/quiz.jpg";
+import rf from "../assets/rf.jpg";
+import NewGame from "./NewGame";
+import Card, { BlueCard } from "../Card";
 
 
 function Game() {
 	return (
 		<React.Fragment>
-			<div className="is-preload">
-				<div className="row">
-				</div>
-				<div id="wrapper" className="div mx-4">
-					<div id="main" className="div">
+			<NewGame />
+			<br />
+			<br />
+			<div className="inner div">
+				<header className="header">
+					<h1 className="h1" style={{marginBottom:'0em'}}>Our games🔥</h1>
+				</header>
+				<section className="tiles section" style={{marginTop:'0'}}>
+					<div id="indexrf" className="container">
+						<div className="cards-list">
+							<Card link="/quiz" img={quiz} text="" />
+							<Card link="/rapidfire" img={rf} text="RapidFire" />
 
-						<div className="inner div">
-							<header className="header">
-								<h1 onClick={() => window.location.href='/quiz'} style={{marginBottom:'0em'}}>Quizzes</h1>
-							</header>
-							<section className="tiles section" style={{marginTop:'0'}}>
-								<QuizList />
-							</section>
+							<BlueCard link="/howwelluknow" text="How Well You Know" />
+							<BlueCard link="/youlooklike" text="you look like" />
 						</div>
-						<br />
-						<br />
-						<IndexRf />
-						<br />
-						<br />
-						<IndexYouLookLike />
-						<br />
-						<br />
-						<IndexHowWellUKnow />
 					</div>
-				</div>
+				</section>
 			</div>
 		</React.Fragment>
 	);

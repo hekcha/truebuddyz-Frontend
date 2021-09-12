@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
-import coming_soon from "../assets/coming_soon.jpg";
 
 function HowWellUKnow(props) {
 	const [token] = useCookies(["tb-token"]);

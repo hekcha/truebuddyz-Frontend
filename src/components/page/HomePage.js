@@ -1,14 +1,11 @@
 import React from "react";
 import "./main.css";
-import noimage from "../assets/noimage.jpg";
 import quiz_friends from "../assets/quiz_friends.jpg";
 import quiz_couples from "../assets/quiz_couples.jfif";
 import rf_friends from "../assets/rf_friends.jpg";
-import quiz from "../assets/quiz.jpg";
-import rf from "../assets/rf.jpg";
 import Card from "../Card";
 import Trending from "./Trending";
-import NewGame from "./NewGame";
+import Game from "./Game";
 
 
 function Home() {
@@ -23,7 +20,7 @@ function Home() {
 						<div className="inner div">
 							<header className="header">
 								<h1 className="h1" style={{marginBottom:'0.2em'}}>Most Liked💗</h1>
-								<h2 className="h2" style={{marginBottom:'0.5em'}}>Most loved❤️‍🔥 and played🃏 Games by TrueBff Family.</h2>
+								<h2 className="h2" style={{marginBottom:'0.5em'}}>Most loved❤️‍🔥 and played🃏 Games by TrueBuddyZ Family.</h2>
 							</header>
 							<section className="tiles section" style={{marginTop:'0'}}>
 								<div id="indexrf" className="container">
@@ -40,58 +37,7 @@ function Home() {
 						<Trending />
 						<br />
 						<br />
-						<NewGame />
-						<br />
-						<br />
-
-						<div className="inner div">
-							<header className="header">
-								<h1 style={{marginBottom:'0em'}}>Our games🔥</h1>
-							</header>
-							<section className="tiles section" style={{marginTop:'0'}}>
-								<div id="indexrf" className="container">
-									<div className="cards-list">
-										<Card link="/quiz" img={quiz} text="" />
-										<Card link="/rapidfire" img={rf} text="RapidFire" />
-
-										<div 
-											className="card" 
-											onClick={()=>window.location.href="/howwelluknow"}
-											style={{
-												fontSize:'65px',
-												backgroundColor:'blue',
-												color:'white',
-												fontWeight:'700',
-												margin:'auto',
-												alignItems:'center',
-												justifyContent:'center',
-												textTransform:'capitalize',
-											}}
-										>
-											How Well You Know
-										</div>
-
-										<div 
-											className="card" 
-											onClick={()=>window.location.href="/youlooklike"}
-											style={{
-												fontSize:'65px',
-												backgroundColor:'blue',
-												color:'white',
-												fontWeight:'700',
-												margin:'auto',
-												alignItems:'center',
-												justifyContent:'center',
-												textTransform:'capitalize',
-											}}
-										>
-											You Look Like
-										</div>
-										
-									</div>
-								</div>
-							</section>
-						</div>
+						<Game />
 					</div>
 				</div>
 			</div>

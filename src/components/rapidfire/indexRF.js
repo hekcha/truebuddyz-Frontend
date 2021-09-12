@@ -9,7 +9,7 @@ function IndexRf() {
 	return (
 		<div className="inner div">
 			<header className="header">
-				<h1 onClick={() => window.location.href='/rapidfire'} style={{marginBottom:'0em'}}>RapidFire</h1>
+				<h1 className="h1" onClick={() => window.location.href='/rapidfire'} style={{marginBottom:'0em'}}>RapidFire</h1>
 			</header>
 			<section className="tiles section" style={{marginTop:'0'}}>
 				<div id="indexrf" className="container">
@@ -17,9 +17,9 @@ function IndexRf() {
 						<Card link="/rapidfire/friends" img={friends} text="Friend's RapidFire" />
 						<Card link="/rapidfire/couples" img={couples} text="Couple's RapidFire" />
 						<Card link="/rapidfire/bff" img={bff} text="BFF RapidFire" />
-						<Card link="" img={coming_soon} text="" />
-						<Card link="" img={coming_soon} text="" />
-						<Card link="" img={coming_soon} text="" />
+						<Card link="#" img={coming_soon} text="" />
+						<Card link="#" img={coming_soon} text="" />
+						<Card link="#" img={coming_soon} text="" />
 					</div>
 				</div>
 			</section>

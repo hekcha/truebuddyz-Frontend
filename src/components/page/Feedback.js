@@ -49,7 +49,7 @@ function Feedback() {
                 <div class="card-layout layout-medium">
                     <div class="content">
                         <h1 class="title">Give feedback</h1>
-                        <p>What do you think of TrueBFF?<span style={{color:'red'}}>*</span></p>
+                        <p>What do you think of TrueBuddyZ?<span style={{color:'red'}}>*</span></p>
                         <i id="error" style={{color:'red',opacity:'0'}}>Please select any one option</i>
                         <div class="emojis">
                             <span onClick={()=> SelectEmoji(1)} id="eachEmoji1" class="eachEmoji">😥</span>
