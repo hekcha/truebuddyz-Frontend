@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { Button, Checkbox, Stepper, Step, StepLabel } from "@material-ui/core";
+import { Button, Stepper, Step, StepLabel } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import CreateQuiz from "../page/CreateQuiz";
 import QueNumber from "../QueNumber";
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
 		color: "#22ca62",
 		display: "flex",
 		flexDirection: "column",
-		margin: "2.7vw",
+		margin: "2vw",
 		position: "absolute",
 		left: "-20px",
 		[theme.breakpoints.down("xs")]: {
@@ -98,15 +98,13 @@ const useStyles = makeStyles((theme) => ({
 	unchecked: {
 		display: "flex",
 		flexDirection: "column",
-		margin: "4vw",
+		margin: "2vw",
 		position: "absolute",
-		top: "-20px",
-		verticalAlign: "center",
-		// padding: "-20px",
+		left: "-20px",
 		[theme.breakpoints.down("xs")]: {
 			position: "absolute",
-			marginTop: "60px",
-			left: "-1rem",
+			top: "3.2vh",
+			left: "-2rem",
 		},
 		transition: "all 0.3s ease-out",
 		justifyContent: "center",
@@ -144,23 +142,7 @@ function Quizcreate(props) {
 	const [quizData, setQuizData] = useState([]);
 	const [i, setI] = useState(0);
 	const [j, setJ] = useState(0);
-	const [checked1, setChecked1] = useState(false);
-	const [checked2, setChecked2] = useState(false);
-	const [checked3, setChecked3] = useState(false);
-	const [checked4, setChecked4] = useState(false);
-
-	const handleChange1 = (event) => {
-		setChecked1(event.target.checked);
-	};
-	const handleChange2 = (event) => {
-		setChecked2(event.target.checked);
-	};
-	const handleChange3 = (event) => {
-		setChecked3(event.target.checked);
-	};
-	const handleChange4 = (event) => {
-		setChecked4(event.target.checked);
-	};
+	const [item, setItem] = useState(null);
 
 	var ALLOWED_PAGES = ["friends", "couples", "bff"];
 
@@ -203,18 +185,6 @@ function Quizcreate(props) {
 			.catch((err) => console.log(err));
 	}, []);
 
-	const SelectAns = (item) => {
-		setQuizData([
-			...quizData,
-			document.getElementsByClassName("question")[0].value,
-			document.getElementsByClassName("optionA")[0].value,
-			document.getElementsByClassName("optionB")[0].value,
-			document.getElementsByClassName("optionC")[0].value,
-			document.getElementsByClassName("optionD")[0].value,
-			item,
-		]);
-	};
-
 	useEffect(() => {
 		if (queBank && username) {
 			setQue(`${queBank[i].part1} ${username} ${queBank[i].part2}`);
@@ -248,7 +218,10 @@ function Quizcreate(props) {
 				headers: {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
-			}).catch((err) => console.log(err));
+			})
+				.then((resp) => resp.json())
+				.then((res) => console.log(res))
+				.catch((err) => console.log(err));
 		}
 	}, [j]);
 
@@ -256,15 +229,64 @@ function Quizcreate(props) {
 		func(event.target.value);
 	};
 
+	const SelectAns = (ans) => {
+		setItem(ans);
+		for(var w=0;w<4;w++)
+		{
+			if(w===ans)
+			{
+				document.getElementById(`option${w}`).classList.remove(`${classes.unchecked}`)
+				document.getElementById(`option${w}`).classList.remove(`fa-circle`)
+				document.getElementById(`option${w}`).classList.add(`${classes.checked}`)
+				document.getElementById(`option${w}`).classList.add(`fa-check-circle`)
+			}
+			else
+			{
+				document.getElementById(`option${w}`).classList.remove(`${classes.checked}`)
+				document.getElementById(`option${w}`).classList.remove(`fa-check-circle`)
+				document.getElementById(`option${w}`).classList.add(`${classes.unchecked}`)
+				document.getElementById(`option${w}`).classList.add(`fa-circle`)
+			}
+			
+		}
+	};
+
+	const NextQue = () => {
+		if(item)
+		{
+			setQuizData([
+				...quizData,
+				document.getElementsByClassName("question")[0].value,
+				document.getElementsByClassName("optionA")[0].value,
+				document.getElementsByClassName("optionB")[0].value,
+				document.getElementsByClassName("optionC")[0].value,
+				document.getElementsByClassName("optionD")[0].value,
+				item,
+			]);
+	
+			for(var w=0;w<4;w++)
+			{
+				document.getElementById(`option${w}`).classList.remove(`${classes.checked}`)
+				document.getElementById(`option${w}`).classList.remove(`fa-check-circle`)
+				document.getElementById(`option${w}`).classList.add(`${classes.unchecked}`)
+				document.getElementById(`option${w}`).classList.add(`fa-circle`)
+			}
+			setI((i + 1)%queBank.length);
+			setJ(j + 1);
+			setItem(null)
+		}
+			
+	}
+
 	function Showque() {
 		if (queBank.length === 0) return <div />;
 		if (j === 10)
 			return (
 				<div>
 					<ShareLink game="quiz" type={props.type} link={`${process.env.REACT_APP_URL}/quiz/play/${code}`} />
-					<br />
-					<br />
-					<Trending />
+					<br/>
+					<br/>
+					<Trending />	
 				</div>
 			);
 
@@ -279,51 +301,37 @@ function Quizcreate(props) {
 					<div className={`row ${classes.parentOption}`} value={optionA}>
 						<div className="col-md-6 col-xs-12  d-flex justify-content-center">
 							<span>
-								<Checkbox
-									className={`${classes.unchecked} col-1`}
-									style={{ top: "-40px" }}
-									checked={checked1}
-									onChange={handleChange1}
+								<i
+									id="option0"
+									className={`far fa-circle fa-lg col-3 ${classes.unchecked}`}
+									// className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
 									onClick={() => {
 										SelectAns(0);
+										var v = document.getElementById("optionA").className;
+										v += " border-success ";
 									}}
-									inputProps={{ "aria-label": "primary checkbox" }}
-								/>
-								{/* <i
-									className={`fas fa-check-circle fa-lg col-3 ${classes.checked}`}
-									onClick={() => {
-										SelectAns(0);
-									}}
-								></i> */}
+									></i>
 								<textarea
-									className={`border optionA ${classes.option} col-md-8 col-xs-11 `}
+									className={`border optionA ${classes.option} col-md-9 col-xs-11 `}
 									id="optionA"
 									value={optionA}
 									onChange={(event) => ChangeHandler(setOptionA, event)}
-								/>
+									/>
 							</span>
 						</div>
 
 						<div className="col-md-6 col-xs-12  d-flex justify-content-center">
 							<span>
-								<Checkbox
-									className={`${classes.unchecked} col-1`}
-									style={{ top: "-40px" }}
-									checked={checked2}
-									onChange={handleChange2}
-									onClick={() => {
-										SelectAns(1);
-									}}
-									inputProps={{ "aria-label": "primary checkbox" }}
-								/>
-								{/* <i
+								<i
+									id="option1"
+									className={`far fa-circle fa-lg col-3 ${classes.unchecked}`}
 									// className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
 									onClick={() => {
 										SelectAns(1);
 										var v = document.getElementById("optionB").className;
 										v += " border-success ";
 									}}
-								></i> */}
+								></i>
 								<textarea
 									className={`border optionB ${classes.option} col-md-9 col-xs-11`}
 									id="optionB"
@@ -335,24 +343,15 @@ function Quizcreate(props) {
 
 						<div className="col-md-6 col-xs-12 d-flex justify-content-center">
 							<span>
-								<Checkbox
-									className={`${classes.unchecked} col-1`}
-									style={{ top: "-40px" }}
-									checked={checked3}
-									onChange={handleChange3}
-									onClick={() => {
-										SelectAns(2);
-									}}
-									inputProps={{ "aria-label": "primary checkbox" }}
-								/>
-								{/* <i
-									// className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
+								<i
+									id="option2"
+									className={`far fa-circle fa-lg col-3 ${classes.unchecked}`}
 									onClick={() => {
 										SelectAns(2);
 										var v = document.getElementById("optionC").className;
 										v += " border-success ";
 									}}
-								></i> */}
+								></i>
 								<textarea
 									className={`border optionC ${classes.option} col-md-9 col-xs-11`}
 									id="optionC"
@@ -365,24 +364,15 @@ function Quizcreate(props) {
 
 						<div className="col-md-6 col-xs-12 d-flex justify-content-center">
 							<span>
-								<Checkbox
-									className={`${classes.unchecked} col-1`}
-									style={{ top: "-40px" }}
-									checked={checked4}
-									onChange={handleChange4}
-									onClick={() => {
-										SelectAns(3);
-									}}
-									inputProps={{ "aria-label": "primary checkbox" }}
-								/>
-								{/* <i
-									// className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
+								<i
+									id="option3"
+									className={`far fa-circle fa-lg col-3 ${classes.unchecked}`}
 									onClick={() => {
 										SelectAns(3);
 										var v = document.getElementById("optionD").className;
 										v += " border-success ";
 									}}
-								></i> */}
+								></i>
 								<textarea
 									className={`border optionD ${classes.option} col-md-9 col-xs-11`}
 									id="optionD"
@@ -392,22 +382,17 @@ function Quizcreate(props) {
 							</span>
 						</div>
 					</div>
-					<span>
-						<Button variant="contained" color="secondary" className="my-2" onClick={() => setI(i + 1)} style={{}}>
-							Skip
-						</Button>
-						<Button
+					<Button variant="contained" color="secondary" className="my-2" onClick={() => setI((i + 1)%queBank.length)} style={{}}>
+						Skip
+					</Button>
+					<Button
 							variant="contained"
 							className="my-2"
-							onClick={() => {
-								setI(i + 1);
-								setJ(j + 1);
-							}}
+							onClick={() => NextQue()}
 							style={{ backgroundColor: "green", color: "white", marginLeft: "4px" }}
 						>
 							Next
 						</Button>
-					</span>
 				</div>
 			);
 		}
@@ -418,7 +403,7 @@ function Quizcreate(props) {
 	/**************  THIS SHOW WHILE PLAYING QUIZ  ******************/
 	if (username)
 		return (
-			<div>
+			<div id="createquiz">
 				<Stepper className={classes.stepper} activeStep={j < 10 ? "1" : "2"} alternativeLabel>
 					{steps.map((label) => (
 						<Step key={label}>
@@ -434,7 +419,7 @@ function Quizcreate(props) {
 	else
 		return (
 			// Here I am rendering to create the quiz
-			<div>
+			<div id="createquiz">
 				{/* <h1>This is {props.type} quiz</h1> */}
 				<CreateQuiz setName={setUsername} />
 				<br />

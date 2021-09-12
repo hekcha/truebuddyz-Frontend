@@ -5,9 +5,9 @@ import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, TextField } from "@material-ui/core";
 import "./playrf.css";
-import finger from "../assets/finger.gif";
 import NeonRapidfire from "../Neon/NeonRapidfire";
 import ShareLink from "../ShareLink";
+import CreateRoom from "./CreateRoom";
 
 const useStyles = makeStyles((theme) => ({
 	btnGrad: {
@@ -172,14 +172,15 @@ function Rapidfire(props) {
 	// to switch btw "display question", "wating window", and "result component"
 	const [y, setY] = useState(null);
 	// store RF que fetch form backend
-	const [queBank, setQueBank] = useState(null);
+	const [queBank, setQueBank] = useState([]);
 	// store name
 	const [name, setName] = useState("");
 	const [timer, startTimer] = useState(null);
 	const [countdown, setCountDown] = useState(null);
 
+
 	useEffect(() => {
-		
+
 		// fetch questions
 		fetch(`${process.env.REACT_APP_API_URL}/rf/que/?category=${props.type}`, {
 			method: "GET",
@@ -189,7 +190,10 @@ function Rapidfire(props) {
 			},
 		})
 		.then((resp) => resp.json())
-		.then((res) => setQueBank(res))
+		.then((res) => {
+			console.log(res)
+			setQueBank(res);
+		})
 		.catch((err) => console.log(err));
 
 			
@@ -222,7 +226,6 @@ function Rapidfire(props) {
 					console.log("The read failed: " + errorObject.name);
 				}
 			);
-
 		// monitor changes in RapidFire -> GameID -> queNo (in firebase)
 		firebaseDb
 			.child("RapidFire")
@@ -231,7 +234,7 @@ function Rapidfire(props) {
 			.on(
 				"value",
 				(snapshot) => {
-					setI(snapshot.val());
+					setI(snapshot.val()%(queBank.length?queBank.length:1));
 					setY(1);
 				},
 				(errorObject) => {
@@ -240,10 +243,10 @@ function Rapidfire(props) {
 			);
 	}, []);
 
+	// for only creating room if not created
 	useEffect(()=>{
 		if(i===null)
 		{
-			// create room
 			firebaseDb
 				.child("RapidFire")
 				.child(props.gameId)
@@ -320,23 +323,7 @@ function Rapidfire(props) {
 	};
 
 	if (i === -1 || i === null) {
-		return (
-			<div id="playRF" style={{ margin: "40px auto" }}>
-				<NeonRapidfire types={props.type} style={{ margin: "auto" }} />
-				<br />
-				<div
-					className="card"
-					style={{
-						backgroundImage: finger,
-						margin: "8px auto",
-						width: "330px",
-						height: "243px",
-						borderRadius: "450px",
-					}}
-				></div>
-				<p style={{ textAlign: "center", fontSize: "50px" }}>Creating A Room</p>
-			</div>
-		);
+		return (<CreateRoom type={props.type} />);
 	}
 
 	if (name === "") {
@@ -423,7 +410,7 @@ function Rapidfire(props) {
 				<h3 className="my-2">Participants🟢: {Object.values(users).length} </h3>
 				<br />
 				<div className="row">
-					<div id="countdown" className="mb-3">
+					<div id="countdown" className="mb-3 col-12">
 						<div id="countdown-number">
 							<span id="time">10</span>
 						</div>
@@ -433,7 +420,6 @@ function Rapidfire(props) {
 					</div>
 					<br />
 					<hr />
-					<h1>{/* time left - <span id="time">100</span> */}</h1>
 					<div className="col-8 offset-2 row">
 						<div className="col-12 my-2">
 							<h3>{queBank[parseInt(i)]["que"]}</h3>
@@ -447,16 +433,15 @@ function Rapidfire(props) {
 								</Card>
 							);
 						})}
-						<Card onClick={() => AnsChoice("Skiped")} className={classes.options} id="skip" style={{}} raised>
-							<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-								Skip
-							</h3>
-						</Card>
 					</div>
 				</div>
+				<button className={`${classes.btnGrad}` } onClick={() => AnsChoice("Skiped")} style={{width:'10%'}}>
+				Skip
+				</button>
 			</div>
 		);
 	}
+	// display who voted
 	if (y === 2) {
 		if (ans != null && Object.values(users).length === Object.values(ans).length) setY(3);
 		return (
@@ -493,10 +478,11 @@ function Rapidfire(props) {
 			</div>
 		);
 	}
-
+	// display result
 	if (y === 3)
 		return (
 			<div id="playRF" className="mt-4" style={{ textAlign: "center" }}>
+				{console.log(ans,"ans")}
 				<NeonRapidfire types={props.type} />
 				<br />
 				<div>

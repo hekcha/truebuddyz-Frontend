@@ -303,10 +303,16 @@ function YouLookLike(props) {
 		);
 	else
 		return (
-			<div>
-				<img src={result.image} alt={result.code} />
-				<p>{result.text}</p>
-			</div>
+			<div style={{ textAlign: "center", margin: "auto" }}>
+			<img src={result.image} style={{ margin: "auto" }} />
+			<p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>You Are More Likly To- {result.text}</p>
+			<Card
+				style={{ width: "375px", margin: "auto", backgroundColor: "black", backgroundSize: "cover", border: "25px black", borderRadius: "12px" }}
+				raised
+			>
+				<p style={{ fontSize: "24px", color: "white", verticalAlign: "justify" }}>Message- {result.message}</p>
+			</Card>
+		</div>
 		);
 }
 

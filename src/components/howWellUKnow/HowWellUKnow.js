@@ -187,7 +187,8 @@ function HowWellUKnow(props) {
 				style={{ width: "375px", margin: "auto", backgroundColor: "black", backgroundSize: "cover", border: "25px black", borderRadius: "12px" }}
 				raised
 			>
-				<p style={{ fontSize: "24px", color: "white", verticalAlign: "justify" }}>Message- {result.message}</p>
+				<p style={{ fontSize: "24px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.text}</p>
+				<p style={{ fontSize: "24px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.message}</p>
 			</Card>
 		</div>
 	);

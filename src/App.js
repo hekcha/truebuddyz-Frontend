@@ -66,8 +66,8 @@ function App() {
 						
 						<Route path="/rapidfire" exact component={() => <IndexRf />} />
 						<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
-						<Route path="/rapidfire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />} />
 						
+						<Route path="/rapidfire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />} />
 						<Route path="/youlooklike" exact component={() => <IndexYouLookLike />} />
 						<Route path="/youlooklike/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />
 						

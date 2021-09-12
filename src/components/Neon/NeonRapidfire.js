@@ -6,9 +6,9 @@ function NeonRapidfire(props) {
 		<div className="logoR row">
 			<b>
 				<span style={{ textTransform: "capitalize" }}>{props.types}</span>
-				<span> Q</span>
-				<span>ui</span>
-				<span>z</span>
+				<span> Ra</span>
+				<span>pid</span>
+				<span>Fire</span>
 			</b>
 		</div>
 	);

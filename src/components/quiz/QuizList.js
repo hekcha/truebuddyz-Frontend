@@ -7,6 +7,8 @@ import Card from "../Card";
 function QuizList(){
     return (
 		<div className="inner div">
+			<br />
+			<br />
 			<header className="header">
 				<h1 className="h1" onClick={() => window.location.href='/quiz'} style={{marginBottom:'0em'}}>Quiz</h1>
 			</header>
