@@ -1,5 +1,7 @@
 import Card, { GradientCard } from '../Card' 
 import coming_soon from "../assets/coming_soon.jpg";
+import YLL_TRANS_main from "../assets/YLL_TRANS_main-min.jpg";
+import YLL_NARUTO_main from "../assets/YLL_NARUTO_main.gif";
 
 
 function IndexYouLookLike(){
@@ -11,10 +13,10 @@ function IndexYouLookLike(){
             <section className="tiles section" style={{marginTop:'30px'}}>
                 <div id="indexrf" className="container">
                     <div className="cards-list">
-                        <GradientCard link="/youlooklike/anime" text="Anime" />
-                        <GradientCard link="/youlooklike/dog" text="dog" />
-                        <GradientCard link="/youlooklike/entrepreneur" text="entrepreneur" />
+                        <Card img={YLL_NARUTO_main} link="/youlooklike/naruto" text="Which Naruto character you are?" />
+                        <Card img={YLL_TRANS_main} link="/youlooklike/transformer" text="Which Transformer Are You? Take the Quiz to Find Out" />
 
+                        <Card link="#" img={coming_soon} text="" />
                         <Card link="#" img={coming_soon} text="" />
                         <Card link="#" img={coming_soon} text="" />
                         <Card link="#" img={coming_soon} text="" />

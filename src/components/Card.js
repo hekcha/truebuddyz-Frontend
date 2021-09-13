@@ -15,7 +15,7 @@ function GradientCard(props){
         }} >
             <div 
                 style={{
-                    fontSize:'65px',
+                    fontSize:'40px',
                     color:'white',
                     fontWeight:'700',
                     textTransform:'capitalize',

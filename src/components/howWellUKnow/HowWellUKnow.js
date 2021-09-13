@@ -9,7 +9,7 @@ function HowWellUKnow(props) {
 	const [result, setResult] = useState(null);
 	const [score, setScore] = useState(0);
 
-	var ALLOWED_PAGES = ["marvel", "bollywood"];
+	var ALLOWED_PAGES = ["marvel", "fastandfurious"];
 
 	useEffect(() => {
 		for (var i = 0; i < ALLOWED_PAGES.length; i++) {
@@ -187,7 +187,7 @@ function HowWellUKnow(props) {
 				style={{ width: "375px", margin: "auto", backgroundColor: "black", backgroundSize: "cover", border: "25px black", borderRadius: "12px" }}
 				raised
 			>
-				<p style={{ fontSize: "24px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.text}</p>
+				<p style={{ fontSize: "24px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.complement}</p>
 				<p style={{ fontSize: "24px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.message}</p>
 			</Card>
 		</div>

@@ -12,7 +12,7 @@ function YouLookLike(props) {
 	const [ans, setAns] = useState(0);
 	const [result, setResult] = useState(null);
 
-	var ALLOWED_PAGES = ["anime", "dog", "entrepreneur"];
+	var ALLOWED_PAGES = ["transformer", "naruto"];
 
 	useEffect(() => {
 		for (var i = 0; i < ALLOWED_PAGES.length; i++) {

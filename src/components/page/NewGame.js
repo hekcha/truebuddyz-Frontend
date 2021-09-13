@@ -1,4 +1,4 @@
-import Card from "../Card";
+import Card, { GradientCard } from "../Card";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
@@ -29,7 +29,11 @@ function NewGame() {
 					<div id="indexrf" className="container">
 						<div className="cards-list">
 							{newGame.map((item) => {
-								return <Card link={item.link} img={item.image} text={item.text} />;
+								console.log(item.is_GradientCard)
+								if(item.is_GradientCard)
+									return <GradientCard link={item.link} text={item.text} />;
+								else
+									return <Card link={item.link} img={item.image} text={item.text} />;
 							})}
 						</div>
 					</div>
