@@ -35,8 +35,9 @@
     font-family: sans-serif;
     font-weight: bold;
     font-size: 30px;
-    margin-top: -80px;
+    margin-top: -245px;
     height: 40px;
+    color: #79d6ed;
 }
 
 #indexrf .card:hover {
@@ -45,9 +46,9 @@
       -5px -5px 30px 15px rgba(0,0,0,0.22);
 }
 
-#indexrf .title-white {
-    color: white;
-}
+/* #indexrf .title-white {
+    color: #3079d9;
+} */
 
 #indexrf .title-black {
     color: black;
@@ -59,5 +60,3 @@
       flex-direction: column;
     }
 }
-
-

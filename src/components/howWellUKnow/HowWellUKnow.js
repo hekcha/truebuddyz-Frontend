@@ -74,7 +74,7 @@ function HowWellUKnow(props) {
 						<h1>{que[i][`que`]}</h1>
 					</div>
 					<Card
-						onClick={() => StoreAns(1)}
+						onClick={() => StoreAns(0)}
 						className="my-3"
 						style={{
 							backgroundColor: "white",
@@ -98,7 +98,7 @@ function HowWellUKnow(props) {
 						</h3>
 					</Card>
 					<Card
-						onClick={() => StoreAns(2)}
+						onClick={() => StoreAns(1)}
 						className="my-3"
 						style={{
 							backgroundColor: "white",
@@ -122,7 +122,7 @@ function HowWellUKnow(props) {
 						</h3>
 					</Card>
 					<Card
-						onClick={() => StoreAns(3)}
+						onClick={() => StoreAns(2)}
 						className="my-3"
 						style={{
 							backgroundColor: "white",
@@ -146,7 +146,7 @@ function HowWellUKnow(props) {
 						</h3>
 					</Card>
 					<Card
-						onClick={() => StoreAns(4)}
+						onClick={() => StoreAns(3)}
 						className="my-3"
 						style={{
 							backgroundColor: "white",
