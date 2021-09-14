@@ -144,7 +144,7 @@ function Quizcreate(props) {
 	const [j, setJ] = useState(0);
 	const [item, setItem] = useState(null);
 
-	var ALLOWED_PAGES = ["friends", "couples", "bff"];
+	var ALLOWED_PAGES = ["friends", "couple", "siblings"];
 
 	var colourPalette = ["#55E6C1", "#FD7272", "#FEA47F", "#25CCF7", "#EAB543", "#FC427B", "#2C3A47", "#ffa801"];
 
@@ -252,7 +252,7 @@ function Quizcreate(props) {
 	};
 
 	const NextQue = () => {
-		if(item)
+		if(item!==null)
 		{
 			setQuizData([
 				...quizData,
@@ -304,12 +304,7 @@ function Quizcreate(props) {
 								<i
 									id="option0"
 									className={`far fa-circle fa-lg col-3 ${classes.unchecked}`}
-									// className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
-									onClick={() => {
-										SelectAns(0);
-										var v = document.getElementById("optionA").className;
-										v += " border-success ";
-									}}
+									onClick={() => SelectAns(0)}
 									></i>
 								<textarea
 									className={`border optionA ${classes.option} col-md-9 col-xs-11 `}
@@ -325,12 +320,7 @@ function Quizcreate(props) {
 								<i
 									id="option1"
 									className={`far fa-circle fa-lg col-3 ${classes.unchecked}`}
-									// className={click == 1 ? `fas fa-check-circle fa-lg col-3 ${classes.checked}` : `far fa-circle fa-lg col-3 ${classes.unchecked}`}
-									onClick={() => {
-										SelectAns(1);
-										var v = document.getElementById("optionB").className;
-										v += " border-success ";
-									}}
+									onClick={() => SelectAns(1)}
 								></i>
 								<textarea
 									className={`border optionB ${classes.option} col-md-9 col-xs-11`}
@@ -346,18 +336,13 @@ function Quizcreate(props) {
 								<i
 									id="option2"
 									className={`far fa-circle fa-lg col-3 ${classes.unchecked}`}
-									onClick={() => {
-										SelectAns(2);
-										var v = document.getElementById("optionC").className;
-										v += " border-success ";
-									}}
+									onClick={() => SelectAns(2)}
 								></i>
 								<textarea
 									className={`border optionC ${classes.option} col-md-9 col-xs-11`}
 									id="optionC"
 									value={optionC}
 									onChange={(event) => ChangeHandler(setOptionC, event)}
-									// style={{ borderColor: `${click == 1} ? "red" : "blue"` }}
 								/>
 							</span>
 						</div>
@@ -367,11 +352,7 @@ function Quizcreate(props) {
 								<i
 									id="option3"
 									className={`far fa-circle fa-lg col-3 ${classes.unchecked}`}
-									onClick={() => {
-										SelectAns(3);
-										var v = document.getElementById("optionD").className;
-										v += " border-success ";
-									}}
+									onClick={() => SelectAns(3)}
 								></i>
 								<textarea
 									className={`border optionD ${classes.option} col-md-9 col-xs-11`}

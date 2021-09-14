@@ -178,8 +178,14 @@ function Rapidfire(props) {
 	const [timer, startTimer] = useState(null);
 	const [countdown, setCountDown] = useState(null);
 
+	var ALLOWED_PAGES = ["friends", "couple", "siblings"];
+
 
 	useEffect(() => {
+		for (var i = 0; i < ALLOWED_PAGES.length; i++) {	
+			if (ALLOWED_PAGES[i] === props.type) break;
+			if (i === ALLOWED_PAGES.length - 1) window.location.href = "/"; // SHOW 404 page
+		}
 
 		// fetch questions
 		fetch(`${process.env.REACT_APP_API_URL}/rf/que/?category=${props.type}`, {

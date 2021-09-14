@@ -38,7 +38,7 @@ const Navbar = () => {
 		<Nav style={{padding: '8px 31px 57px 21px'}}>
 			<div className="logo animate__animated animate__flash">
 				<a href="/home" style={{}}>
-					<img src={logo} alt="TRUE BFF" border="0" />
+					<img src={logo} alt="TRUE BUDDYZ" border="0" />
 				</a>
 			</div>
 			<Burger />

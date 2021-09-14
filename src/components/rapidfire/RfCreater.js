@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 });
 
 function RfCreater(props) {
-	var ALLOWED_PAGES = ["friends", "couples", "bff"];
+	var ALLOWED_PAGES = ["friends", "couple", "siblings"];
 	const classes = useStyles();
 
 	useEffect(() => {

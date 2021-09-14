@@ -20,13 +20,13 @@ function Quizhome() {
 			.catch((err) => console.log(err));
 	}, []);
 
-	function ShowQuiz(item) {
-		return (
-			<div>
-				<h3 onClick={() => (window.location.href = "/item/view/" + item.code)}>item no {item.id}</h3>
-			</div>
-		);
-	}
+	// function ShowQuiz(item) {
+	// 	return (
+	// 		<div>
+	// 			<h3 onClick={() => (window.location.href = "/item/view/" + item.code)}>item no {item.id}</h3>
+	// 		</div>
+	// 	);
+	// }
 
 	var options = { year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric" };
 	

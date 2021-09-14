@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import "../css/eachResponse.css";
-import Loading from "../page/Loading";
 
 function EachResponse(props) {
 	const [token] = useCookies(["tb-token"]);

@@ -360,7 +360,7 @@ function Playquiz(props) {
 					</Card.Header>
 					<Card.Body>
 						<Card.Title as="h1" style={{ fontFamily: "'Monofett', cursive", color: "rgb(0,0,0,0.75)", fontSize: "39px", fontWeight: "999" }}>
-							True BFF Quiz
+							True BuddyZ Quiz
 						</Card.Title>
 						<Card.Text>
 							<TextField
