@@ -16,7 +16,7 @@ function QuizList(){
 				<div id="indexrf" className="container">
 					<div className="cards-list">
                         <Card link="/quiz/friends" img={friends} text="Friend's Quiz" />
-                        <Card link="/quiz/couples" img={couples} text="Couples's Quiz" />
+                        <Card link="/quiz/couple" img={couples} text="Couple's Quiz" />
                         <Card link="/quiz/siblings" img={siblings} text="Siblings Quiz" />
                         <Card link="#" img={coming_soon} text="" />
                         <Card link="#" img={coming_soon} text="" />

@@ -44,34 +44,34 @@ const useStyles = makeStyles((theme) => ({
 const TEXT = {
     'quiz':{
         'friends':"How well your friends know you??❤️",
-        'couples':"How well your partner know you??❤️",
+        'couple':"How well your partner know you??❤️",
         'response':"Your quiz link😎",
     },
     'rf':{
         'friends':"Play With friends ❤️",
-        'couples':"Play with your partner ❤️",
+        'couple':"Play with your partner ❤️",
     },
 }
 const QUOTES = {
     'quiz':{
         'friends':"Friendship isn’t a big thing—it’s a million little things.",
-        'couples':"Relationship isn’t a big thing—it’s a million little things.",
+        'couple':"Relationship isn’t a big thing—it’s a million little things.",
         'response':"Share Your quiz to See more intresting response😜",
     },
     'rf':{
         'friends':"Friendship isn’t a big thing—it’s a million little things.",
-        'couples':"Relationship isn’t a big thing—it’s a million little things.",
+        'couple':"Relationship isn’t a big thing—it’s a million little things.",
     },
 }
 
 const SHARE = {
     'quiz':{
         'friends':"SHARE THIS QUIZ WITH YOUR FRIENDS",
-        'couples':"SHARE THIS QUIZ WITH YOUR PARTNER",
+        'couple':"SHARE THIS QUIZ WITH YOUR PARTNER",
     },
     'rf':{
         'friends':"SHARE THIS rapidfire WITH YOUR FRIENDS",
-        'couples':"SHARE THIS rapidfire WITH YOUR PARTNER",
+        'couple':"SHARE THIS rapidfire WITH YOUR PARTNER",
     },
     
 }
@@ -148,7 +148,7 @@ function ShareLink(props) {
                         </span>
                         <span className="sr-telegram sr-text-below">
                             <a
-                                href={`https://telegram.me/share/url?url=${props.link};text=Free%20Social%20Media%20Share%20Buttons%20Generator%20-%20Aakash%20Web`}
+                                href={`https://telegram.me/share/url?url=${props.link};`}
                                 target="_blank"
                                 title="Telegram"
                             >
@@ -163,12 +163,12 @@ function ShareLink(props) {
                             </a>
                             <span className="text">Facebook</span>
                         </span>
-                        <span className="sr-instagram sr-text-below">
+                        {/* <span className="sr-instagram sr-text-below">
                             <a href="https://instagram.com" target="_blank" title="Instagram">
                                 <i className="fab fa-instagram"></i>
                             </a>
                             <span className="text">Instagram</span>
-                        </span>
+                        </span> */}
                     </div>
                 </Card.Footer>
             </Card>
