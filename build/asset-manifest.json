@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f7f52571.chunk.css",
+    "main.js": "/static/js/main.882950a6.chunk.js",
+    "main.js.map": "/static/js/main.882950a6.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e45aa1ee.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e45aa1ee.js.map",
+    "static/js/2.aee32c4b.chunk.js": "/static/js/2.aee32c4b.chunk.js",
+    "static/js/2.aee32c4b.chunk.js.map": "/static/js/2.aee32c4b.chunk.js.map",
+    "static/js/3.43baac0f.chunk.js": "/static/js/3.43baac0f.chunk.js",
+    "static/js/3.43baac0f.chunk.js.map": "/static/js/3.43baac0f.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.f7f52571.chunk.css.map": "/static/css/main.f7f52571.chunk.css.map",
+    "static/js/2.aee32c4b.chunk.js.LICENSE.txt": "/static/js/2.aee32c4b.chunk.js.LICENSE.txt",
+    "static/media/HWYN_FAF_main-min.7c435437.jpg": "/static/media/HWYN_FAF_main-min.7c435437.jpg",
+    "static/media/YLL_NARUTO_main.b1b94418.gif": "/static/media/YLL_NARUTO_main.b1b94418.gif",
+    "static/media/YLL_TRANS_main-min.1adec4b5.jpg": "/static/media/YLL_TRANS_main-min.1adec4b5.jpg",
+    "static/media/coming_soon.99d69463.jpg": "/static/media/coming_soon.99d69463.jpg",
+    "static/media/finger.538bb16b.gif": "/static/media/finger.538bb16b.gif",
+    "static/media/logo.462be290.png": "/static/media/logo.462be290.png",
+    "static/media/quiz.07ba2db0.jpg": "/static/media/quiz.07ba2db0.jpg",
+    "static/media/quiz_couples.a4ed164a.jfif": "/static/media/quiz_couples.a4ed164a.jfif",
+    "static/media/quiz_friends.4a36fed4.jpg": "/static/media/quiz_friends.4a36fed4.jpg",
+    "static/media/quiz_siblings.01d38b5e.jfif": "/static/media/quiz_siblings.01d38b5e.jfif",
+    "static/media/rf.91e2acd6.jpg": "/static/media/rf.91e2acd6.jpg",
+    "static/media/rf_couples.c8aa634f.jpg": "/static/media/rf_couples.c8aa634f.jpg",
+    "static/media/rf_friends.015e5537.jpg": "/static/media/rf_friends.015e5537.jpg",
+    "static/media/rf_siblings.8d8d3a01.jpg": "/static/media/rf_siblings.8d8d3a01.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e45aa1ee.js",
+    "static/js/2.aee32c4b.chunk.js",
+    "static/css/main.f7f52571.chunk.css",
+    "static/js/main.882950a6.chunk.js"
+  ]
+}
