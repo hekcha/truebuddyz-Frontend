@@ -5,7 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import NeonCreateQuiz from "../Neon/NeonCreateQuiz";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		position: "relative",
 		display: "flex",
@@ -15,9 +15,9 @@ const useStyles = makeStyles({
 		minWidth: 100,
 		maxWidth: 800,
 		minHeight: 300,
-		backgroundImage: `url("https://bit.ly/3h5jAt4")`,
-		backfaceVisibility: "0.4",
+		backgroundImage: `url("https://images.unsplash.com/photo-1516534775068-ba3e7458af70?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80")`,
 		backgroundSize: "cover",
+		backgroundPositionY: "top",
 		backgroundRepeat: "no-repeat",
 		border: "solid 2px dark",
 		borderRadius: "20px",
@@ -31,6 +31,21 @@ const useStyles = makeStyles({
 		flexDirection: "column",
 		marginTop: "-30px",
 		color: "white",
+	},
+	contentTitle: {
+		color: "black",
+		fontWeight: "bold",
+		fontSize: "44px",
+		marginBottom: "30px",
+		marginTop: "13px",
+		textTransform: "none",
+		opacity: "0.85",
+		WebkitTextFillColor: "whitesmoke",
+		WebkitTextStroke: "1px",
+		textAlign: "center",
+		[theme.breakpoints.down("xs")]: {
+			fontSize: "38px",
+		},
 	},
 	subHeading: {
 		// Add media breakpoint Material UI
@@ -61,7 +76,7 @@ const useStyles = makeStyles({
 		borderWidth: "0 2px 3px 0",
 		boxShadow: "0 2px 10px 0 whitesmoke",
 	},
-});
+}));
 function getSteps() {
 	return ["Create a Quiz", "Share", "Result"];
 }
@@ -82,9 +97,7 @@ export default function SimpleCard(props) {
 			<NeonCreateQuiz />
 			<Card className={classes.root} raised>
 				<CardContent className={classes.content}>
-					<h1 style={{ color: "white", fontWeight: "bold", fontSize: "48px", marginBottom: "30px", marginTop: "13px", textTransform: "none" }}>
-						TrueBuddyz Quiz
-					</h1>
+					<h1 className={classes.contentTitle}>TrueBuddyz Quiz</h1>
 					{/* <h2 className={classes.subHeading}>How well do your friends know you🤝?</h2> */}
 					<TextField
 						className={classes.filledTextarea}

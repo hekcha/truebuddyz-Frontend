@@ -32,8 +32,8 @@ const Ul = styled.ul`
 
 	@media (max-width: 768px) {
 		flex-flow: column nowrap;
-		background-color: #585858;
-		opacity: 0.9;
+		background-color: #f0eee4;
+		opacity: 0.95;
 		position: fixed;
 		transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
 		/* font-family: "Bangers", cursive; */

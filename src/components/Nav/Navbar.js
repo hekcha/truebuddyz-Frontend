@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Burger from "./Burger";
-import logo from '../assets/logo.png'
+import logo from "../assets/logo.png";
 
 const Nav = styled.nav`
 	position: fixed;
@@ -20,7 +20,7 @@ const Nav = styled.nav`
 		padding: 0px 0;
 		margin: 0;
 		width: 57%;
-	    max-width: 13rem;
+		max-width: 13rem;
 	}
 	//below code is not necessary
 	.logo a img {
@@ -35,10 +35,10 @@ const Nav = styled.nav`
 
 const Navbar = () => {
 	return (
-		<Nav style={{padding: '8px 31px 57px 21px'}}>
+		<Nav style={{ padding: "8px 31px 67px 21px" }}>
 			<div className="logo animate__animated animate__flash">
 				<a href="/home" style={{}}>
-					<img src={logo} alt="TRUE BUDDYZ" border="0" />
+					<img src={logo} alt="TRUE BUDDYZ" border="0" style={{ marginTop: "-3px" }} />
 				</a>
 			</div>
 			<Burger />
