@@ -5,7 +5,9 @@ function IndexHowWellUKnow(){
     return(
         <div className="inner div">
             <header className="header">
-                <h1 onClick={() => window.location.href='/howwelluknow'} style={{marginBottom:'0em'}}>How Well You Know</h1>
+                <a href="/howwelluknow">
+                    <h1 style={{marginBottom:'0em'}}>How Well You Know</h1>
+                </a>
             </header>
             <section className="tiles section" style={{marginTop:'0'}}>
                 <div id="indexrf" className="container">

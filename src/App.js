@@ -20,6 +20,7 @@ import IndexYouLookLike from "./components/youlooklike/IndexYouLookLike";
 import Game from "./components/page/Game";
 import IndexHowWellUKnow from "./components/howWellUKnow/IndexHowWellUKnow";
 import HowWellUKnow from "./components/howWellUKnow/HowWellUKnow";
+import Loading from "./components/page/Loading";
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
 				.then((res) => {
 					document.cookie = "tb-token=" + res + "; expires=" + date.toGMTString() + ";path=/;";
 					document.cookie = "tb-user=" + form.get("username") + "; expires=" + date.toGMTString() + ";path=/;";
-					window.location.reload();
+					// window.location.reload();
 				})
 				.catch((err) => console.log(err));
 		}
@@ -67,7 +68,9 @@ function App() {
 						<Route path="/rapidfire" exact component={() => <IndexRf />} />
 						<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
 						
-						<Route path="/rapidfire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />} />
+						<Route path="/rapidfire/:type/:code" exact component={(x) => 
+						token["tb-token"]?<Rapidfire gameId={x.match.params.code} type={x.match.params.type} />:<Loading />
+						} />
 						<Route path="/youlooklike" exact component={() => <IndexYouLookLike />} />
 						<Route path="/youlooklike/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />
 						
