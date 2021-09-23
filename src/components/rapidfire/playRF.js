@@ -196,10 +196,7 @@ function Rapidfire(props) {
 			},
 		})
 		.then((resp) => resp.json())
-		.then((res) => {
-			console.log(res)
-			setQueBank(res);
-		})
+		.then((res) => setQueBank(res))
 		.catch((err) => console.log(err));
 
 			

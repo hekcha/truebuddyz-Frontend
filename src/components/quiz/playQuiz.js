@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: "5px",
 		padding: "12px 20px",
 		width: "69vw",
-		maxHeight: "10vh",
+		// maxHeight: "10vh",
 		minWidth: "180px",
 		maxWidth: "270px",
 		fontSize: "22px",
@@ -221,8 +221,9 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(0, "optionA");
 									}}
-									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center", textAlign: '-moz-center' }}
+									style={{ maxWidth: "100%", display: "block"}}
 								>
+									<center>
 									<textarea
 										style={{ maxWidth: "80%", margin: "0 auto" }}
 										className={`optionA ${classes.option} col-md-9 col-xs-11 border-success `}
@@ -230,6 +231,7 @@ function Playquiz(props) {
 										value={que[`option${i + 1}A`]}
 										disabled
 									/>
+									</center>
 								</span>
 							</div>
 
@@ -238,8 +240,9 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(1, "optionB");
 									}}
-									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center", textAlign: '-moz-center' }}
+									style={{ maxWidth: "100%", display: "block"}}
 								>
+									<center>
 									<textarea
 										style={{ maxWidth: "80%", margin: "0 auto" }}
 										className={`optionB ${classes.option} col-md-9 col-xs-11`}
@@ -247,6 +250,7 @@ function Playquiz(props) {
 										value={que[`option${i + 1}B`]}
 										disabled
 									/>
+									</center>
 								</span>
 							</div>
 
@@ -255,8 +259,9 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(2, "optionC");
 									}}
-									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center", textAlign: '-moz-center' }}
+									style={{ maxWidth: "100%", display: "block"}}
 								>
+									<center>
 									<textarea
 										style={{ maxWidth: "80%", margin: "0 auto" }}
 										className={`optionC ${classes.option} col-md-9 col-xs-11`}
@@ -264,6 +269,7 @@ function Playquiz(props) {
 										value={que[`option${i + 1}C`]}
 										disabled
 									/>
+									</center>
 								</span>
 							</div>
 
@@ -272,8 +278,9 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(3, "optionC");
 									}}
-									style={{ maxWidth: "100%", display: "block", textAlign: "-webkit-center", textAlign: '-moz-center' }}
+									style={{ maxWidth: "100%", display: "block"}}
 								>
+									<center>
 									<textarea
 										style={{ maxWidth: "80%", margin: "0 auto" }}
 										className={`optionD ${classes.option} col-md-9 col-xs-11`}
@@ -281,6 +288,7 @@ function Playquiz(props) {
 										value={que[`option${i + 1}D`]}
 										disabled
 									/>
+									</center>
 								</span>
 							</div>
 						</div>

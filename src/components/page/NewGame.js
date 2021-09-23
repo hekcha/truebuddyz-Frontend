@@ -29,7 +29,6 @@ function NewGame() {
 					<div id="indexrf" className="container">
 						<div className="cards-list">
 							{newGame.map((item) => {
-								console.log(item.is_GradientCard)
 								if(item.is_GradientCard)
 									return <GradientCard link={item.link} text={item.text} />;
 								else

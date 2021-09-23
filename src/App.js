@@ -20,7 +20,7 @@ import IndexYouLookLike from "./components/youlooklike/IndexYouLookLike";
 import Game from "./components/page/Game";
 import IndexHowWellUKnow from "./components/howWellUKnow/IndexHowWellUKnow";
 import HowWellUKnow from "./components/howWellUKnow/HowWellUKnow";
-import Loading from "./components/page/Loading";
+import { LoadingReload } from "./components/page/Loading";
 
 
 function App() {
@@ -61,15 +61,17 @@ function App() {
 
 						<Route path="/quiz" exact component={() => <Quizhome />} />
 						<Route path="/quiz/:type" exact component={(x) => <CreateQuiz type={x.match.params.type} />} />
-						<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />
+						<Route path="/quiz/play/:code" exact component={(x) => 
+						token["tb-token"]?<Playquiz code={x.match.params.code} />:<LoadingReload />
+						} />
 						<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 						<Route path="/quiz/response/:code" exact component={(x) => <EachResponse responseCode={x.match.params.code} />} />
-						
+
 						<Route path="/rapidfire" exact component={() => <IndexRf />} />
 						<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
 						
 						<Route path="/rapidfire/:type/:code" exact component={(x) => 
-						token["tb-token"]?<Rapidfire gameId={x.match.params.code} type={x.match.params.type} />:<Loading />
+						token["tb-token"]?<Rapidfire gameId={x.match.params.code} type={x.match.params.type} />:<LoadingReload />
 						} />
 						<Route path="/youlooklike" exact component={() => <IndexYouLookLike />} />
 						<Route path="/youlooklike/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />

@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 		border: "solid 1px black",
 		borderRadius: "20px",
 		boxShadow: "8px 5px 15px 7px rgba(0, 0, 0, 0.3), -3px -7px 10px 8px rgba(255, 255, 255, 1)",
-		overflowY: "scroll",
+		// overflowY: "scroll",
 	},
 
 	parentOption: {
@@ -59,15 +59,16 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	option: {
-		marginLeft: "6.5vw",
-		marginRight: "3vw",
+		marginLeft: "25px",
+		marginRight: "0",
 		marginTop: "5px",
 		marginBottom: "5px",
 		padding: "12px 20px",
-		width: "69vw",
-		maxHeight: "10vh",
-		minWidth: "180px",
-		maxWidth: "270px",
+		// zindex:"2",
+		width: "80%",
+		// maxHeight: "10vh",
+		// minWidth: "180px",
+		// maxWidth: "270px",
 		fontSize: "22px",
 		fontFamily: "'Acme', sans-serif",
 		fontWeight: "700	",
@@ -101,7 +102,8 @@ const useStyles = makeStyles((theme) => ({
 	unchecked: {
 		display: "flex",
 		flexDirection: "column",
-		margin: "2vw",
+		width:'20%',
+		margin: "30px 0 0 1.5vw",
 		position: "absolute",
 		left: "-20px",
 		[theme.breakpoints.down("xs")]: {
@@ -293,9 +295,9 @@ function Quizcreate(props) {
 
 					<textarea className={`question ${classes.question}`} value={que} onChange={(event) => ChangeHandler(setQue, event)} />
 					<br />
-					<div className={`row ${classes.parentOption}`} value={optionA}>
-						<div className="col-md-6 col-xs-12  d-flex justify-content-center">
-							<span>
+					<div className={`row ${classes.parentOption}`} style={{ padding: "0", margin: "0", maxWidth: "100%" }}>
+						<div className="col-md-6 col-xs-12  d-flex justify-content-center" style={{ maxWidth: "100%" }}>
+							<span style={{ maxWidth: "100%", display: "block"}}>
 								<i id="option0" className={`far fa-circle fa-lg col-3 ${classes.unchecked}`} onClick={() => SelectAns(0)}></i>
 								<textarea
 									className={`border optionA ${classes.option} col-md-9 col-xs-11 `}
@@ -306,8 +308,8 @@ function Quizcreate(props) {
 							</span>
 						</div>
 
-						<div className="col-md-6 col-xs-12  d-flex justify-content-center">
-							<span>
+						<div className="col-md-6 col-xs-12  d-flex justify-content-center" style={{ maxWidth: "100%" }}>
+							<span style={{ maxWidth: "100%", display: "block"}}>
 								<i id="option1" className={`far fa-circle fa-lg col-3 ${classes.unchecked}`} onClick={() => SelectAns(1)}></i>
 								<textarea
 									className={`border optionB ${classes.option} col-md-9 col-xs-11`}
@@ -318,8 +320,8 @@ function Quizcreate(props) {
 							</span>
 						</div>
 
-						<div className="col-md-6 col-xs-12 d-flex justify-content-center">
-							<span>
+						<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
+							<span style={{ maxWidth: "100%", display: "block"}}>
 								<i id="option2" className={`far fa-circle fa-lg col-3 ${classes.unchecked}`} onClick={() => SelectAns(2)}></i>
 								<textarea
 									className={`border optionC ${classes.option} col-md-9 col-xs-11`}
@@ -330,8 +332,8 @@ function Quizcreate(props) {
 							</span>
 						</div>
 
-						<div className="col-md-6 col-xs-12 d-flex justify-content-center">
-							<span>
+						<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
+							<span style={{ maxWidth: "100%", display: "block"}}>
 								<i id="option3" className={`far fa-circle fa-lg col-3 ${classes.unchecked}`} onClick={() => SelectAns(3)}></i>
 								<textarea
 									className={`border optionD ${classes.option} col-md-9 col-xs-11`}
@@ -342,17 +344,25 @@ function Quizcreate(props) {
 							</span>
 						</div>
 					</div>
-					<Button variant="contained" color="secondary" className="my-2" onClick={() => setI((i + 1) % queBank.length)} style={{}}>
+					<div className="row d-flex justify-content-center" style={{width:'100%'}}>
+						<div className="col-8">
+							<div className="row d-flex justify-content-center">
+					<Button variant="contained" color="secondary" className="mx-3  col-4" onClick={() => setI((i + 1) % queBank.length)} >
 						Skip
 					</Button>
 					<Button
 						variant="contained"
-						className="my-2"
+						className="mx-3 col-4"
 						onClick={() => NextQue()}
-						style={{ backgroundColor: "green", color: "white", marginLeft: "4px" }}
+						style={{ backgroundColor: "green", color: "white" }}
 					>
 						Next
 					</Button>
+
+							</div>
+
+						</div>
+					</div>
 				</div>
 			);
 		}
