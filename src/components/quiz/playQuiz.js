@@ -340,12 +340,7 @@ function Playquiz(props) {
 			</div>
 		);
 	// wait until question is fetched
-	else if (!que || !user)
-		return (
-			<div>
-				<Loading />
-			</div>
-		);
+	else if (!que || !user) return <Loading />
 	else if (user === que.user) window.location.href = `/quiz/view/${que.code}`;
 	// ask user to enter name
 	else

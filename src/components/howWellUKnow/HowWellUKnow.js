@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
+import Loading from "../page/Loading";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -60,7 +61,7 @@ function HowWellUKnow(props) {
 		setI(i + 1);
 	};
 
-	if (!que) return <div>Loading.....</div>;
+	if (!que) return <Loading />;
 	if (i < 10)
 		return (
 			<div className="text-center">

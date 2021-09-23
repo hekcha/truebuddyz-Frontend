@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
+import Loading from "../page/Loading";
 
 const NUMBER_OF_QUESTIONS=8+Math.floor(Math.random() * 3)
 
@@ -54,8 +55,7 @@ function YouLookLike(props) {
 		setI(i + 1);
 	};
 
-	if (!(que && randQue))
-		return <div>Loading...</div>;
+	if (!(que && randQue)) return <Loading />
 
 	else if (i < 5)
 		return (

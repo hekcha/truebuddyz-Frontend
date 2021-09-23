@@ -41,7 +41,7 @@ function NewGame() {
 			</div>
 		);
 
-	return <div>loading....</div>;
+	return <div>loading....</div>; // dont use loading.js
 }
 
 export default NewGame;

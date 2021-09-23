@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import finger from "../assets/finger.gif";
 
 function Loading() {
+	useEffect(()=>{
+		setTimeout(function(){
+			window.location.reload();
+		},3000)	
+	},[])
 	return (
 		<div>
-			<div
+			<img
 				className="card"
 				style={{
-					backgroundImage: `url(https://s9.gifyu.com/images/finger.gif)`,
 					margin: "8px auto",
 					width: "330px",
 					height: "243px",
 					borderRadius: "450px",
 				}}
-			></div>
+				src={finger}
+			/>
 			<p style={{ textAlign: "center", fontSize: "50px" }}>Loading . . .</p>
 		</div>
 	);

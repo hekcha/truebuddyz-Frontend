@@ -4,6 +4,7 @@ import NeonRapidfire from "../Neon/NeonRapidfire";
 
 
 function CreateRoom(props) {
+    
     return (
         <div id="playRF" style={{ margin: "40px auto" }}>
             <NeonRapidfire types={props.type} style={{ margin: "auto",}} />

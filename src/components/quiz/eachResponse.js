@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import "../css/eachResponse.css";
+import Loading from "../page/Loading";
 
 function EachResponse(props) {
 	const [token] = useCookies(["tb-token"]);
@@ -109,11 +110,7 @@ function EachResponse(props) {
 				</div>
 			</div>
 		);
-		else return (
-			<div>
-				loading...
-			</div>
-		);
+		else return <Loading />
 }
 
 export default EachResponse;
