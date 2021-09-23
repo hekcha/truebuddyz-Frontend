@@ -342,25 +342,37 @@ function Quizcreate(props) {
 							</span>
 						</div>
 					</div>
-					<Button variant="contained" color="secondary" className="my-2" onClick={() => setI((i + 1) % queBank.length)} style={{}}>
-						Skip
-					</Button>
-					<Button
-						variant="contained"
-						className="my-2"
-						onClick={() => NextQue()}
-						style={{ backgroundColor: "green", color: "white", marginLeft: "4px" }}
-					>
-						Next
-					</Button>
+					<div className="row my-2">
+						<div className="col-6">
+							<Button variant="contained" color="secondary" className="my-2" onClick={() => setI((i + 1) % queBank.length)} style={{}}>
+								Skip
+							</Button>
+						</div>
+						<div className="col-6">
+							<Button
+								variant="contained"
+								className="my-2 col-6"
+								onClick={() => NextQue()}
+								style={{ backgroundColor: "green", color: "white", marginLeft: "4px" }}
+							>
+								Next
+							</Button>
+						</div>
+					</div>
 				</div>
 			);
 		}
-		// to avoid error resultant work of skip button is nothing
-		return <div />;
+		{
+			/* // to avoid error resultant work of skip button is nothing */
+		}
+		{
+			/* return */
+		}
 	}
 
-	/**************  THIS SHOW WHILE PLAYING QUIZ  ******************/
+	{
+		/* /**************  THIS SHOW WHILE PLAYING QUIZ  ******************/
+	}
 	if (username)
 		return (
 			<div id="createquiz">
@@ -375,10 +387,8 @@ function Quizcreate(props) {
 				{Showque()}
 			</div>
 		);
-	//////////////////////////////////////////////////////////////
 	else
 		return (
-			// Here I am rendering to create the quiz
 			<div id="createquiz">
 				{/* <h1>This is {props.type} quiz</h1> */}
 				<CreateQuiz setName={setUsername} />

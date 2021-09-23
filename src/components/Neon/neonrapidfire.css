@@ -4,7 +4,7 @@
 	text-align: center;
 	width: auto;
 	height: 1vw;
-	margin: auto;
+
 	position: relative;
 	top: -50px;
 	left: 0;
@@ -15,6 +15,7 @@
 
 .logoR b {
 	font: 400 65px "Vibur";
+	margin: 10px auto;
 	color: #fee;
 	text-shadow: 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 5px 9px #000;
 }
@@ -57,5 +58,15 @@
 	92.5% {
 		color: inherit;
 		text-shadow: inherit;
+	}
+}
+@media only screen and (max-width: 500px) {
+	.logoR b {
+		font: 400 54px "Vibur";
+	}
+}
+@media only screen and (max-width: 360px) {
+	.logoR b {
+		font: 400 44px "Vibur";
 	}
 }

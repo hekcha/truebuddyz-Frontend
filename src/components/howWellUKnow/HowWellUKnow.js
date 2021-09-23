@@ -1,6 +1,17 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+	imageContainer: {
+		margin: "auto",
+		width: "100 %",
+		height: "60vw",
+		maxHeight: "360px",
+	},
+	thumbnail: {},
+}));
 
 function HowWellUKnow(props) {
 	const [token] = useCookies(["tb-token"]);
@@ -8,6 +19,7 @@ function HowWellUKnow(props) {
 	const [i, setI] = useState(0);
 	const [result, setResult] = useState(null);
 	const [score, setScore] = useState(0);
+	const classes = useStyles();
 
 	var ALLOWED_PAGES = ["marvel", "fastandfurious"];
 
@@ -24,11 +36,10 @@ function HowWellUKnow(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-		.then((resp) => resp.json())
-		.then((res) => setQue(res))
-		.catch((err) => console.log(err));
-	},[])
-
+			.then((resp) => resp.json())
+			.then((res) => setQue(res))
+			.catch((err) => console.log(err));
+	}, []);
 
 	const GetResult = () => {
 		fetch(`${process.env.REACT_APP_API_URL}/howwelluknow/score/?category=${props.type}&score=${score}`, {
@@ -38,9 +49,9 @@ function HowWellUKnow(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-		.then((resp) => resp.json())
-		.then((res) => setResult(res[0]))
-		.catch((err) => console.log(err));
+			.then((resp) => resp.json())
+			.then((res) => setResult(res[0]))
+			.catch((err) => console.log(err));
 		return null;
 	};
 
@@ -52,9 +63,9 @@ function HowWellUKnow(props) {
 	if (!que) return <div>Loading.....</div>;
 	if (i < 10)
 		return (
-			<div className="col-8 offset-2 row">
-				<div class="image-container">
-					<img class="thumbnail" src={que[i][`image`]} alt="user image" />
+			<div className="text-center">
+				<div className={`${classes.imageContainer} image-container`}>
+					<img className={`${classes.thumbnail} thumbnail`} src={que[i][`image`]} alt="user image" />
 				</div>
 				<br />
 				<Card
