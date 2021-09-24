@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+// eslint-disable-next-line
 import * as firebase from "firebase"; // important
 import firebaseDb, { firebaseAuth } from "../../firebase";
 import { useCookies } from "react-cookie";
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	card: {
-		margin: "5px",
+		// margin: "5px",
 		minWidth: "350px",
 		maxWidth: "500px",
 		height: "250px",
@@ -180,9 +181,8 @@ function Rapidfire(props) {
 
 	var ALLOWED_PAGES = ["friends", "couple", "siblings"];
 
-
 	useEffect(() => {
-		for (var i = 0; i < ALLOWED_PAGES.length; i++) {	
+		for (var i = 0; i < ALLOWED_PAGES.length; i++) {
 			if (ALLOWED_PAGES[i] === props.type) break;
 			if (i === ALLOWED_PAGES.length - 1) window.location.href = "/"; // SHOW 404 page
 		}
@@ -199,7 +199,6 @@ function Rapidfire(props) {
 		.then((res) => setQueBank(res))
 		.catch((err) => console.log(err));
 
-			
 		// monitor changes in RapidFire -> GameID -> users (in firebase)
 		firebaseDb
 			.child("RapidFire")
@@ -237,19 +236,19 @@ function Rapidfire(props) {
 			.on(
 				"value",
 				(snapshot) => {
-					setI(snapshot.val()%(queBank.length?queBank.length:1));
+					setI(snapshot.val() % (queBank.length ? queBank.length : 1));
 					setY(1);
 				},
 				(errorObject) => {
 					console.log("The read failed: " + errorObject.name);
 				}
 			);
+	// eslint-disable-next-line
 	}, []);
 
 	// for only creating room if not created
-	useEffect(()=>{
-		if(i===null)
-		{
+	useEffect(() => {
+		if (i === null) {
 			firebaseDb
 				.child("RapidFire")
 				.child(props.gameId)
@@ -264,15 +263,16 @@ function Rapidfire(props) {
 					}
 				);
 		}
-	},[i])
+	// eslint-disable-next-line
+	}, [i]);
 
 	useEffect(() => {
-		if (y == 1 && name != "") {
+		if (y === 1 && name !== "") {
 			setCountDown(
 				setInterval(function () {
 					if (document.getElementById("time") && document.getElementById("time").innerHTML != null)
 						document.getElementById("time").innerHTML = document.getElementById("time").innerText - 1;
-				}, 1000)
+				}, 10000)
 			);
 			startTimer(
 				setTimeout(function () {
@@ -280,30 +280,29 @@ function Rapidfire(props) {
 				}, 10000)
 				// yha shi krna time
 			);
-		} else if (y != 1 && countdown) clearInterval(countdown);
+		} else if (y !== 1 && countdown) clearInterval(countdown);
+	// eslint-disable-next-line
 	}, [y, name]);
 
 	const Submit = () => {
 		var nme = document.getElementById("name").value;
-		var formdata=new FormData();
-		formdata.append('category',props.type)
-		formdata.append('roomId',props.gameId)
-		formdata.append('playerId',token["tb-user"])
-		formdata.append('playerName',nme)
+		var formdata = new FormData();
+		formdata.append("category", props.type);
+		formdata.append("roomId", props.gameId);
+		formdata.append("playerId", token["tb-user"]);
+		formdata.append("playerName", nme);
 
 		fetch(`${process.env.REACT_APP_API_URL}/rf/room/`, {
 			method: "POST",
-			body:formdata,
+			body: formdata,
 			headers: {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
-		})
-		.catch((err) => console.log(err));
+		}).catch((err) => console.log(err));
 
 		firebaseDb.child("RapidFire").child(props.gameId).child("users").child(token["tb-user"]).set(nme);
 		setName(nme);
 		setY(0);
-
 	};
 
 	const NextQue = () => {
@@ -326,7 +325,7 @@ function Rapidfire(props) {
 	};
 
 	if (i === -1 || i === null) {
-		return (<CreateRoom type={props.type} />);
+		return <CreateRoom type={props.type} />;
 	}
 
 	if (name === "") {
@@ -337,7 +336,7 @@ function Rapidfire(props) {
 					<p className="my-3" style={{ fontSize: "34px", fontWeight: "00", color: "black" }}>
 						Enter Your Name
 					</p>
-					<TextField id="name" id="name" name="name" label="Name" variant="filled" style={{ border: "4px" }} required />
+					<TextField id="name" name="name" label="Name" variant="filled" style={{ border: "4px" }} required />
 					<br />
 					<Button className="my-3" variant="contained" color="primary" onClick={() => Submit()}>
 						Play
@@ -347,7 +346,7 @@ function Rapidfire(props) {
 		);
 	}
 
-	// display game start button 
+	// display game start button
 	if (y === 0) {
 		return (
 			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
@@ -408,9 +407,13 @@ function Rapidfire(props) {
 		return (
 			<div id="playRF" className="text-center mt-5" style={{ margin: "0px auto" }}>
 				{/* <h1 className={classes.heading1}>{props.type} Rapidfire</h1> */}
-				<NeonRapidfire types={props.type} style={{ marginY: "25px" }} />
+				<div className="my-2">
+					<NeonRapidfire types={props.type} style={{ marginY: "25px" }} />
+				</div>
 				<br />
-				<h3 className="my-2">Participants🟢: {Object.values(users).length} </h3>
+				<h3 className="my-2">
+					Participants<i class="fas fa-circle fa-xs" style={{ color: "#05b714" }}></i>: {Object.values(users).length}{" "}
+				</h3>
 				<br />
 				<div className="row">
 					<div id="countdown" className="mb-3 col-12">
@@ -424,7 +427,7 @@ function Rapidfire(props) {
 					<br />
 					<hr />
 					<div className="col-8 offset-2 row">
-						<div className="col-12 my-2">
+						<div style={{ textAlign: "center", marginX: "0" }}>
 							<h3>{queBank[parseInt(i)]["que"]}</h3>
 						</div>
 						{Object.values(users).map((item) => {
@@ -438,8 +441,8 @@ function Rapidfire(props) {
 						})}
 					</div>
 				</div>
-				<button className={`${classes.btnGrad}` } onClick={() => AnsChoice("Skiped")} style={{width:'10%'}}>
-				Skip
+				<button className={`${classes.btnGrad}`} onClick={() => AnsChoice("Skiped")} style={{ width: "80px" }}>
+					Skip
 				</button>
 			</div>
 		);
@@ -485,9 +488,10 @@ function Rapidfire(props) {
 	if (y === 3)
 		return (
 			<div id="playRF" className="mt-4" style={{ textAlign: "center" }}>
-				{console.log(ans,"ans")}
-				<NeonRapidfire types={props.type} />
-				<br />
+				{console.log(ans, "ans")}
+				<div className="my-5">
+					<NeonRapidfire types={props.type} />
+				</div>
 				<div>
 					<table style={{ margin: "auto", justifyContent: "center" }}>
 						<tr>

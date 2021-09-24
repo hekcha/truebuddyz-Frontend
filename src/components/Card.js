@@ -19,21 +19,32 @@ function Card(props) {
 	return (
 		<a href={props.link}>
 			<div className={`${classes.card} card`}>
-				<div className={`${classes.cardImage} card_image`} style={{ opacity: "1", zIndex: "0" }}>
-					<img src={props.img} />
+				<div className={`${classes.cardImage} card_image`} style={{ opacity: "0.93", zIndex: "0" }}>
+					<img src={props.img} alt="Logo" />
 				</div>
 				<div
 					className={`${classes.cardTitle} card_title`}
 					style={{
-						color: "#e8e8e8",
 						zIndex: "2",
 						textAlign: "center",
-						webkitTextFillColor: "white",
+						fontFamily: "'Architects Daughter', cursive",
+						fontWeight: "999",
+						webkitTextFillColor: "#e8e8e8",
 						webkitTextStroke: "1.2px black",
+						// textShadow: "1px 0.5px white , 0 0 5px gray",
 						fontSize: "34px",
 					}}
 				>
-					<p style={{ filter: "brightness(10)", filter: "contrast(10)", filter: "grayscale(4.2)" }}>{props.text}</p>
+					
+					<p 
+						style={{ 
+							filter: "brightness(10)", 
+							// eslint-disable-next-line
+							filter: "contrast(10)", 
+							// eslint-disable-next-line
+							filter: "grayscale(4.2)" 
+						}}
+					>{props.text}</p>
 				</div>
 			</div>
 		</a>
@@ -44,27 +55,43 @@ function GradientCard(props) {
 	const classes = useStyles();
 	return (
 		<a href={props.link}>
-			<div
-				className={`${classes.card} card`}
-				style={{
-					backgroundColor: "#4158D0",
-					backgroundImage: "linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
-				}}
-			>
+			<div>
+				<div
+					className={`${classes.card} card`}
+					style={{
+						backgroundColor: "#4158D0",
+						backgroundImage: "linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
+						opacity: "0.9",
+					}}
+				></div>
 				<div
 					style={{
-						color: "#e8e8e8",
 						zIndex: "2",
 						textAlign: "center",
-						webkitTextFillColor: "white",
+						webkitTextFillColor: "#e8e8e8",
 						webkitTextStroke: "1px black",
-						fontSize: "34px",
+						fontFamily: "'Architects Daughter', cursive",
 						fontWeight: "999",
-						textTransform: "capitalize",
+						// textShadow: "1px 0.5px white , 0 0 5px gray",
+						fontSize: "34px",
 						marginBlock: "auto",
 					}}
 				>
-					<center>{props.text}</center>
+					<div
+						style={{
+							color: "#e8e8e8",
+							zIndex: "2",
+							textAlign: "center",
+							webkitTextFillColor: "white",
+							webkitTextStroke: "1px black",
+							fontSize: "34px",
+							fontWeight: "999",
+							textTransform: "capitalize",
+							marginBlock: "auto",
+						}}
+					>
+						<center>{props.text}</center>
+					</div>
 				</div>
 			</div>
 		</a>

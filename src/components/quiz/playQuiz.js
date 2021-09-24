@@ -170,6 +170,7 @@ function Playquiz(props) {
 			.then((resp) => resp.json())
 			.then((res) => setUser(res))
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line
 	}, []);
 
 	useEffect(() => {
@@ -195,6 +196,7 @@ function Playquiz(props) {
 			})
 			.catch((err) => console.log(err));
 		}
+	// eslint-disable-next-line
 	}, [i]);
 
 	function Checkans(a, id) {
@@ -334,12 +336,13 @@ function Playquiz(props) {
 
 	// if user already played the quiz
 	if (i === -1)
-		return (
-			<div>
-				<h1>You already played the quiz</h1>
-				<a>click here</a> to see the response
-			</div>
-		);
+		window.location.href=`/quiz/view/${props.code}`;
+		// return (
+		// 	<div>
+		// 		{/* <h1>You already played the quiz</h1>
+		// 		<a href="{#}">click here</a> to see the response */}
+		// 	</div>
+		// );
 	else if (name)
 		return (
 			<div>

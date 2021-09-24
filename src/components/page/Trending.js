@@ -17,6 +17,7 @@ function Trending() {
 			.then((resp) => resp.json())
 			.then((res) => setTrand(res))
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line
 	}, []);
 
 	if (Trand)

@@ -17,6 +17,7 @@ function NewGame() {
 			.then((resp) => resp.json())
 			.then((res) => setNewGame(res))
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line
 	}, []);
 
 	if (newGame)

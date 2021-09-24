@@ -15,6 +15,12 @@ function YouLookLike(props) {
 
 	var ALLOWED_PAGES = ["transformer", "naruto"];
 
+	var frmdata =new FormData()
+	frmdata.append('game','YLL');
+	frmdata.append('subGame',props.type);
+	frmdata.append('user',token["tb-user"]);
+	frmdata.append('text',ans);
+
 	useEffect(() => {
 		for (var i = 0; i < ALLOWED_PAGES.length; i++) {
 			if (ALLOWED_PAGES[i] === props.type) break;
@@ -30,25 +36,40 @@ function YouLookLike(props) {
 		})
 		.then((resp) => resp.json())
 		.then((res) => {
+			console.log(res)
 			setQue(res['que'][0]);
 			setRandQue(res['randque']);
 		})
 		.catch((err) => console.log(err));
-
+	// eslint-disable-next-line
 	}, []);
 
-	const GetResult = () => {
-		fetch(`${process.env.REACT_APP_API_URL}/youlooklike/score/?category=${props.type}&code=${ans}`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": `Token ${token["tb-token"]}`,
-			},
-		})
+
+	useEffect(()=>{
+		if(i > NUMBER_OF_QUESTIONS)
+		{
+			fetch(`${process.env.REACT_APP_API_URL}/youlooklike/score/?category=${props.type}&code=${ans}`, {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Token ${token["tb-token"]}`,
+				},
+			})
 			.then((resp) => resp.json())
 			.then((res) => setResult(res[0]))
 			.catch((err) => console.log(err));
-	};
+	
+			fetch(`${process.env.REACT_APP_API_URL}/core/data/`, {
+				method: "POST",
+				body: frmdata,
+				headers: {
+					"Authorization": `Token ${token["tb-token"]}`,
+				},
+			})
+			.catch((err) => console.log(err));
+		}
+		// eslint-disable-next-line
+	},[i])
 
 	const StoreAns = (x) => {
 		setAns(ans * 10 + x);
@@ -60,8 +81,8 @@ function YouLookLike(props) {
 	else if (i < 5)
 		return (
 			<div className="col-8 offset-2 row">
-				<div class="image-container">
-					<img class="thumbnail" src={que[`image${i}`]} alt="user image" />
+				<div className="image-container">
+					<img className="thumbnail" src={que[`image${i}`]} alt="Question" />
 				</div>
 				<br />
 				<div className="col-12 my-2 text-center">
@@ -179,8 +200,8 @@ function YouLookLike(props) {
 	else if (i <= NUMBER_OF_QUESTIONS)
 		return (
 			<div className="col-8 offset-2 row">
-				<div class="image-container">
-					<img class="thumbnail" src={randQue[i - 5][`image`]} alt="user image" />
+				<div className="image-container">
+					<img className="thumbnail" src={randQue[i - 5][`image`]} alt="Question" />
 				</div>
 				<div className="col-12 my-2 text-center">
 					<h1>{randQue[i - 5][`que`]}</h1>
@@ -295,22 +316,17 @@ function YouLookLike(props) {
 			</div>
 		);
 	else if (!result)
-		return (
-			<div>
-				{GetResult()}
-				we are procesing your response
-			</div>
-		);
+		return <Loading />
 	else
 		return (
 			<div style={{ textAlign: "center", margin: "auto" }}>
-			<img src={result.image} style={{ margin: "auto" }} />
-			<p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>You Are More Likly To- {result.text}</p>
+			<img src={result.image} style={{ margin: "auto" }} alt="Result" />
+			<p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>You Are More Likly To- {result.name}</p>
 			<Card
 				style={{ width: "375px", margin: "auto", backgroundColor: "black", backgroundSize: "cover", border: "25px black", borderRadius: "12px" }}
 				raised
 			>
-				<p style={{ fontSize: "24px", color: "white", verticalAlign: "justify" }}>Message- {result.message}</p>
+				<p style={{ fontSize: "24px", color: "white", verticalAlign: "justify" }}>Message- {result.text}</p>
 			</Card>
 		</div>
 		);

@@ -11,12 +11,10 @@ import ShareLink from "../ShareLink";
 const useStyles = makeStyles((theme) => ({
 	box: {
 		margin: "30px 5vw",
-		// border: "double 10px",
 		display: "flex",
 		flexDirection: "column",
 		minWidth: "50vw",
 		maxWidth: "400px",
-		// maxHeight: "600px",
 		backgroundColor: "#FFFAFA",
 		position: "absolute",
 		justifyContent: "center",
@@ -49,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
 		border: "solid 1px black",
 		borderRadius: "20px",
 		boxShadow: "8px 5px 15px 7px rgba(0, 0, 0, 0.3), -3px -7px 10px 8px rgba(255, 255, 255, 1)",
-		// overflowY: "scroll",
 	},
 
 	parentOption: {
@@ -64,11 +61,7 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: "5px",
 		marginBottom: "5px",
 		padding: "12px 20px",
-		// zindex:"2",
 		width: "80%",
-		// maxHeight: "10vh",
-		// minWidth: "180px",
-		// maxWidth: "270px",
 		fontSize: "22px",
 		fontFamily: "'Acme', sans-serif",
 		fontWeight: "700	",
@@ -85,7 +78,8 @@ const useStyles = makeStyles((theme) => ({
 		color: "#22ca62",
 		display: "flex",
 		flexDirection: "column",
-		margin: "2vw",
+		width:'20%',
+		margin: "30px 0 0 1.5vw",
 		position: "absolute",
 		left: "-20px",
 		[theme.breakpoints.down("xs")]: {
@@ -188,6 +182,7 @@ function Quizcreate(props) {
 			.then((resp) => resp.json())
 			.then((res) => setUser(res))
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line
 	}, []);
 
 	useEffect(() => {
@@ -198,10 +193,11 @@ function Quizcreate(props) {
 			setOptionC(queBank[i].optionC);
 			setOptionD(queBank[i].optionD);
 		}
+	// eslint-disable-next-line
 	}, [i, queBank, username]);
 
 	useEffect(() => {
-		if (j == 10) {
+		if (j === 10) {
 			var formdata = new FormData();
 
 			for (var p = 0; p < 10; p++) {
@@ -228,6 +224,7 @@ function Quizcreate(props) {
 				.then((res) => console.log(res))
 				.catch((err) => console.log(err));
 		}
+	// eslint-disable-next-line
 	}, [j]);
 
 	const ChangeHandler = (func, event) => {
@@ -366,11 +363,17 @@ function Quizcreate(props) {
 				</div>
 			);
 		}
-		// to avoid error resultant work of skip button is nothing
-		return <div />;
+		// {
+		// 	/* // to avoid error resultant work of skip button is nothing */
+		// }
+		// {
+		// 	/* return */
+		// }
 	}
 
-	/**************  THIS SHOW WHILE PLAYING QUIZ  ******************/
+	// {
+	// 	/* /**************  THIS SHOW WHILE PLAYING QUIZ  ******************/
+	// }
 	if (username)
 		return (
 			<div id="createquiz">
@@ -381,14 +384,12 @@ function Quizcreate(props) {
 						</Step>
 					))}
 				</Stepper>
-				<QueNumber que={j} />
+				{j===10?null:<QueNumber que={j} />}
 				{Showque()}
 			</div>
 		);
-	//////////////////////////////////////////////////////////////
 	else
 		return (
-			// Here I am rendering to create the quiz
 			<div id="createquiz">
 				{/* <h1>This is {props.type} quiz</h1> */}
 				<CreateQuiz setName={setUsername} />

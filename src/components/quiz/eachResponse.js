@@ -24,6 +24,7 @@ function EachResponse(props) {
 			setQuizCode(res[0].quizcode);
 		})
 		.catch((err) => console.log(err));
+	// eslint-disable-next-line
 	}, []);
 
 	useEffect(()=>{
@@ -40,6 +41,7 @@ function EachResponse(props) {
 			.then((res) => setQuizQue(res[0]))
 			.catch((err) => console.log(err));
 		}
+	// eslint-disable-next-line
 	},[quizCode])
 
 	useEffect(()=>{
@@ -55,12 +57,13 @@ function EachResponse(props) {
 			.then((resp) => resp.json())
 			.then((res) => {
 				if(quizQue['user']!==res)
-					window.location.href='/notallowed';
+					window.location.href=`/quiz/view/${quizCode}`;
 				else
 					setUser(res);
 			})
 			.catch((err) => console.log(err));
 		}
+	// eslint-disable-next-line
 	},[quizQue])
 
 

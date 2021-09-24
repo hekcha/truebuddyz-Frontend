@@ -18,6 +18,7 @@ function Quizhome() {
 			.then((resp) => resp.json())
 			.then((res) => setQuizList(res))
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line
 	}, []);
 
 	var options = { year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric" };

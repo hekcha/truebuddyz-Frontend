@@ -2,6 +2,17 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
 import Loading from "../page/Loading";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+	imageContainer: {
+		margin: "auto",
+		width: "100 %",
+		height: "60vw",
+		maxHeight: "360px",
+	},
+	thumbnail: {},
+}));
 
 function HowWellUKnow(props) {
 	const [token] = useCookies(["tb-token"]);
@@ -9,8 +20,15 @@ function HowWellUKnow(props) {
 	const [i, setI] = useState(0);
 	const [result, setResult] = useState(null);
 	const [score, setScore] = useState(0);
+	const classes = useStyles();
 
 	var ALLOWED_PAGES = ["marvel", "fastandfurious"];
+
+	var frmdata =new FormData()
+	frmdata.append('game','HWUK');
+	frmdata.append('subGame',props.type);
+	frmdata.append('user',token["tb-user"]);
+	frmdata.append('text',score);
 
 	useEffect(() => {
 		for (var i = 0; i < ALLOWED_PAGES.length; i++) {
@@ -25,37 +43,50 @@ function HowWellUKnow(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-		.then((resp) => resp.json())
-		.then((res) => setQue(res))
-		.catch((err) => console.log(err));
-	},[])
+			.then((resp) => resp.json())
+			.then((res) => setQue(res))
+			.catch((err) => console.log(err));
+	// eslint-disable-next-line
+	}, []);
 
 
-	const GetResult = () => {
-		fetch(`${process.env.REACT_APP_API_URL}/howwelluknow/score/?category=${props.type}&score=${score}`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": `Token ${token["tb-token"]}`,
-			},
-		})
-		.then((resp) => resp.json())
-		.then((res) => setResult(res[0]))
-		.catch((err) => console.log(err));
-		return null;
-	};
+	useEffect(()=>{
+		if(i===10)
+		{
+			fetch(`${process.env.REACT_APP_API_URL}/howwelluknow/score/?category=${props.type}&score=${score}`, {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Token ${token["tb-token"]}`,
+				},
+			})
+			.then((resp) => resp.json())
+			.then((res) => setResult(res[0]))
+			.catch((err) => console.log(err));
+			
+			fetch(`${process.env.REACT_APP_API_URL}/core/data/`, {
+				method: "POST",
+				body:frmdata,
+				headers: {
+					"Authorization": `Token ${token["tb-token"]}`,
+				},
+			})
+			.catch((err) => console.log(err));
+		}		
+	// eslint-disable-next-line
+	},[i])
 
 	const StoreAns = (item) => {
 		if (item === que[i]["ans"]) setScore(score + 1);
 		setI(i + 1);
 	};
 
-	if (!que) return <Loading />
+	if (!que) return <Loading />;
 	if (i < 10)
 		return (
-			<div className="col-8 offset-2 row">
-				<div class="image-container">
-					<img class="thumbnail" src={que[i][`image`]} alt="user image" />
+			<div className="text-center">
+				<div className={`${classes.imageContainer} image-container`}>
+					<img className={`${classes.thumbnail} thumbnail`} src={que[i][`image`]} alt="Question" />
 				</div>
 				<br />
 				<Card
@@ -81,13 +112,11 @@ function HowWellUKnow(props) {
 							backgroundColor: "white",
 							maxWidth: "350px",
 							minWidth: "auto",
-							// fontSize: "35px",
 							fontWeight: "600",
 							color: "black",
 							margin: "10px auto",
 							borderRadius: "15px",
 							opacity: "0.85",
-							backgroundColor: "white",
 							textAlign: "center",
 							pointer: "cursor",
 							border: "2px solid black",
@@ -105,13 +134,11 @@ function HowWellUKnow(props) {
 							backgroundColor: "white",
 							maxWidth: "350px",
 							minWidth: "auto",
-							// fontSize: "35px",
 							fontWeight: "600",
 							color: "black",
 							margin: "10px auto",
 							borderRadius: "15px",
 							opacity: "0.85",
-							backgroundColor: "white",
 							textAlign: "center",
 							pointer: "cursor",
 							border: "2px solid black",
@@ -129,13 +156,11 @@ function HowWellUKnow(props) {
 							backgroundColor: "white",
 							maxWidth: "350px",
 							minWidth: "auto",
-							// fontSize: "35px",
 							fontWeight: "600",
 							color: "black",
 							margin: "10px auto",
 							borderRadius: "15px",
 							opacity: "0.85",
-							backgroundColor: "white",
 							textAlign: "center",
 							pointer: "cursor",
 							border: "2px solid black",
@@ -153,13 +178,11 @@ function HowWellUKnow(props) {
 							backgroundColor: "white",
 							maxWidth: "350px",
 							minWidth: "auto",
-							// fontSize: "35px",
 							fontWeight: "600",
 							color: "black",
 							margin: "10px auto",
 							borderRadius: "15px",
 							opacity: "0.85",
-							backgroundColor: "white",
 							textAlign: "center",
 							pointer: "cursor",
 							border: "2px solid black",
@@ -176,13 +199,13 @@ function HowWellUKnow(props) {
 	if (!result)
 		return (
 			<div>
-				{GetResult()}
+				{/* {GetResult()} */}
 				getting your result ready...
 			</div>
 		);
 	return (
 		<div style={{ textAlign: "center", margin: "auto" }}>
-			<img src={result.image} style={{ margin: "auto" }} />
+			<img src={result.image} style={{ margin: "auto" }} alt="Result" />
 			<p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>Your Score Is- {result.score}</p>
 			<Card
 				style={{ width: "375px", margin: "auto", backgroundColor: "black", backgroundSize: "cover", border: "25px black", borderRadius: "12px" }}

@@ -5,6 +5,7 @@ function Loading() {
 	return (
 		<div>
 			<img
+				alt="Loading"
 				className="card"
 				style={{
 					margin: "8px auto",
@@ -28,6 +29,7 @@ function LoadingReload() {
 	return (
 		<div>
 			<img
+				alt="Loading Reload"
 				className="card"
 				style={{
 					margin: "8px auto",

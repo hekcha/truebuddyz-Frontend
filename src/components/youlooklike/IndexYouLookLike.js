@@ -1,4 +1,4 @@
-import Card, { GradientCard } from '../Card' 
+import Card from '../Card' 
 import coming_soon from "../assets/coming_soon.jpg";
 import YLL_TRANS_main from "../assets/YLL_TRANS_main-min.jpg";
 import YLL_NARUTO_main from "../assets/YLL_NARUTO_main.gif";

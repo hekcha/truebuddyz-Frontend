@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
 		alignContent: "center",
 		alignSelf: "center",
 		alignItems: "center",
-		textAlign: "center",
 		justifyItems: "center",
 		justifySelf: "center",
 	},
@@ -51,7 +50,9 @@ const useStyles = makeStyles((theme) => ({
 			transform: "scale(1.1)",
 			transition: " 0.5s",
 			background: "#ada996",
+			// eslint-disable-next-line
 			background: "-webkit-linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea)",
+			// eslint-disable-next-line
 			background: "linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea)",
 			backgroundPosition: "-150px",
 		},
@@ -105,6 +106,7 @@ function Quizshow(props) {
 			.then((resp) => resp.json())
 			.then((res) => setQuizResp(res))
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line
 	}, []);
 
 	function Showresp(resp) {
@@ -122,7 +124,7 @@ function Quizshow(props) {
 	if (quizResp.length)
 		return (
 			<div className={classes.table}>
-				<h1>Friend's Responded : {quizResp.length}</h1>
+				<h1>You got {quizResp.length} responses</h1>
 				<br />
 				<table style={{ margin: "auto", justifyContent: "center" }}>
 					<tr>
