@@ -8,6 +8,11 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	cardImage: {
+		zIndex: "0",
+		overflow: "hidden",
+		textAlign: "center",
+		backgroundPosition: "center",
+		backgroundSize: "cover",
 		[theme.breakpoints.down("xs")]: {
 			width: "100% !important",
 		},
@@ -19,11 +24,14 @@ function Card(props) {
 	return (
 		<a href={props.link}>
 			<div className={`${classes.card} card`}>
-				<div className={`${classes.cardImage} card_image`} style={{ opacity: "0.93", zIndex: "0" }}>
+				<div
+					className={`${classes.cardImage} card_image`}
+					// style={{ zIndex: "0", overflow: "hidden", textAlign: "center", backgroundPosition: "center" }}
+				>
 					<img src={props.img} alt="Logo" />
 				</div>
 				<div
-					className={`${classes.cardTitle} card_title`}
+					className={"card_title"}
 					style={{
 						zIndex: "8",
 						textAlign: "center",
@@ -62,7 +70,7 @@ function GradientCard(props) {
 					style={{
 						backgroundColor: "#4158D0",
 						backgroundImage: "linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
-						opacity: "0.9",
+						// opacity: "0.9",
 					}}
 				>
 					<div

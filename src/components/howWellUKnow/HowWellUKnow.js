@@ -6,10 +6,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
-		margin: "auto",
-		width: "100 %",
+		margin: "-5px auto",
+		width: "100%",
 		height: "60vw",
 		maxHeight: "360px",
+		backgroundSize: "cover",
 	},
 	options: {
 		backgroundColor: "white",
@@ -35,6 +36,35 @@ const useStyles = makeStyles((theme) => ({
 			background: " #1D976C",
 			background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
 			background: "linear-gradient(to right, #93F9B9, #1D976C)",
+		},
+	},
+	messageCard: {
+		width: "375px",
+		margin: "-18px auto",
+		// backgroundColor: "black",
+		backgroundSize: "cover",
+		border: "25px black",
+		borderRadius: "12px",
+		animation: `$colorChange 10000ms ${theme.transitions.easing.easeInOut} infinite `,
+	},
+	"@keyframes colorChange": {
+		"0%": {
+			backgroundColor: "teal",
+		},
+		"20%": {
+			backgroundColor: "gold",
+		},
+		"40%": {
+			backgroundColor: "indianred",
+		},
+		"60%": {
+			backgroundColor: "violet",
+		},
+		"80%": {
+			backgroundColor: "green",
+		},
+		"100%": {
+			backgroundColor: "teal",
 		},
 	},
 }));
@@ -108,7 +138,7 @@ function HowWellUKnow(props) {
 		return (
 			<div className="text-center">
 				<div className={`${classes.imageContainer} image-container`}>
-					<img className={`${classes.thumbnail} thumbnail`} src={que[i][`image`]} alt="Question" />
+					<img className=" thumbnail" src={que[i][`image`]} alt="Question" />
 				</div>
 				<br />
 				<div className="text-center col-12">
@@ -146,13 +176,15 @@ function HowWellUKnow(props) {
 		);
 	return (
 		<div style={{ textAlign: "center", margin: "auto" }}>
-			<img src={result.image} style={{ margin: "auto" }} alt="Result" />
-			<p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>Your Score Is- {result.score}</p>
-			<Card
-				style={{ width: "375px", margin: "auto", backgroundColor: "black", backgroundSize: "cover", border: "25px black", borderRadius: "12px" }}
-				raised
-			>
+			<div className={`${classes.imageContainer} image-container`}>
+				<img className=" thumbnail" src={result.image} alt="Question" />
+			</div>
+			<p style={{ fontSize: "54px", marginTop: "-15px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>Your Score Is </p>
+			<p style={{ fontSize: "84px", marginTop: "-74px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}> {result.score}</p>
+			<p style={{ fontSize: "60px", marginTop: "-74px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}> Performance</p>
+			<Card className={classes.messageCard} raised>
 				<p style={{ fontSize: "24px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.complement}</p>
+				{/* to feed message in database */}
 				<p style={{ fontSize: "24px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.message}</p>
 			</Card>
 		</div>

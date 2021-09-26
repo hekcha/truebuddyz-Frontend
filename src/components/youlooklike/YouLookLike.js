@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
 		margin: "auto",
-		width: "100 %",
+		width: "100%",
 		height: "60vw",
 		maxHeight: "360px",
 	},
@@ -142,76 +142,6 @@ function YouLookLike(props) {
 						{que[`option${i}D`]}
 					</h3>
 				</Card>
-
-				{/* <Card
-					onClick={() => StoreAns(2)}
-					className="my-3"
-					style={{
-						backgroundColor: "white",
-						maxWidth: "350px",
-						minWidth: "auto",
-						// fontSize: "35px",
-						fontWeight: "600",
-						color: "black",
-						margin: "10px auto",
-						borderRadius: "15px",
-						opacity: "0.85",
-						textAlign: "center",
-						pointer: "cursor",
-						border: "2px solid black",
-					}}
-					raised
-				>
-					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-						{que[`option${i}B`]}
-					</h3>
-				</Card>
-				<Card
-					onClick={() => StoreAns(3)}
-					className="my-3"
-					style={{
-						backgroundColor: "white",
-						maxWidth: "350px",
-						minWidth: "auto",
-						// fontSize: "35px",
-						fontWeight: "600",
-						color: "black",
-						margin: "10px auto",
-						borderRadius: "15px",
-						opacity: "0.85",
-						textAlign: "center",
-						pointer: "cursor",
-						border: "2px solid black",
-					}}
-					raised
-				>
-					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-						{que[`option${i}C`]}
-					</h3>
-				</Card>
-				<Card
-					onClick={() => StoreAns(4)}
-					className="my-3"
-					style={{
-						backgroundColor: "white",
-						maxWidth: "350px",
-						minWidth: "auto",
-						// fontSize: "35px",
-						fontWeight: "600",
-						color: "black",
-						margin: "10px auto",
-						borderRadius: "15px",
-						opacity: "0.85",
-						textAlign: "center",
-						pointer: "cursor",
-						border: "2px solid black",
-					}}
-					raised
-				>
-					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-						{que[`option${i}D`]}
-					</h3>
-				</Card> */}
 			</div>
 		);
 	else if (i <= NUMBER_OF_QUESTIONS)
