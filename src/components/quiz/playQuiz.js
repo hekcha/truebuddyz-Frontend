@@ -170,7 +170,7 @@ function Playquiz(props) {
 			.then((resp) => resp.json())
 			.then((res) => setUser(res))
 			.catch((err) => console.log(err));
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, []);
 
 	useEffect(() => {
@@ -189,14 +189,13 @@ function Playquiz(props) {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
 			})
-			.then((resp) => resp.json())
-			.then((res) => {
-				if(res.non_field_errors)
-					setI(-1);
-			})
-			.catch((err) => console.log(err));
+				.then((resp) => resp.json())
+				.then((res) => {
+					if (res.non_field_errors) setI(-1);
+				})
+				.catch((err) => console.log(err));
 		}
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [i]);
 
 	function Checkans(a, id) {
@@ -223,16 +222,16 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(0, "optionA");
 									}}
-									style={{ maxWidth: "100%", display: "block"}}
+									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
-									<textarea
-										style={{ maxWidth: "80%", margin: "0 auto" }}
-										className={`optionA ${classes.option} col-md-9 col-xs-11 border-success `}
-										id="optionA"
-										value={que[`option${i + 1}A`]}
-										disabled
-									/>
+										<textarea
+											style={{ maxWidth: "80%", margin: "0 auto" }}
+											className={`optionA ${classes.option} col-md-9 col-xs-11 border-success `}
+											id="optionA"
+											value={que[`option${i + 1}A`]}
+											disabled
+										/>
 									</center>
 								</span>
 							</div>
@@ -242,16 +241,16 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(1, "optionB");
 									}}
-									style={{ maxWidth: "100%", display: "block"}}
+									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
-									<textarea
-										style={{ maxWidth: "80%", margin: "0 auto" }}
-										className={`optionB ${classes.option} col-md-9 col-xs-11`}
-										id="optionB"
-										value={que[`option${i + 1}B`]}
-										disabled
-									/>
+										<textarea
+											style={{ maxWidth: "80%", margin: "0 auto" }}
+											className={`optionB ${classes.option} col-md-9 col-xs-11`}
+											id="optionB"
+											value={que[`option${i + 1}B`]}
+											disabled
+										/>
 									</center>
 								</span>
 							</div>
@@ -261,16 +260,16 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(2, "optionC");
 									}}
-									style={{ maxWidth: "100%", display: "block"}}
+									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
-									<textarea
-										style={{ maxWidth: "80%", margin: "0 auto" }}
-										className={`optionC ${classes.option} col-md-9 col-xs-11`}
-										id="optionC"
-										value={que[`option${i + 1}C`]}
-										disabled
-									/>
+										<textarea
+											style={{ maxWidth: "80%", margin: "0 auto" }}
+											className={`optionC ${classes.option} col-md-9 col-xs-11`}
+											id="optionC"
+											value={que[`option${i + 1}C`]}
+											disabled
+										/>
 									</center>
 								</span>
 							</div>
@@ -280,16 +279,16 @@ function Playquiz(props) {
 									onClick={() => {
 										Checkans(3, "optionC");
 									}}
-									style={{ maxWidth: "100%", display: "block"}}
+									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
-									<textarea
-										style={{ maxWidth: "80%", margin: "0 auto" }}
-										className={`optionD ${classes.option} col-md-9 col-xs-11`}
-										id="optionD"
-										value={que[`option${i + 1}D`]}
-										disabled
-									/>
+										<textarea
+											style={{ maxWidth: "80%", margin: "0 auto" }}
+											className={`optionD ${classes.option} col-md-9 col-xs-11`}
+											id="optionD"
+											value={que[`option${i + 1}D`]}
+											disabled
+										/>
 									</center>
 								</span>
 							</div>
@@ -318,9 +317,9 @@ function Playquiz(props) {
 							Your score is
 						</h1>
 						<h1 style={{ fontSize: "58px", textAlign: "center" }}>
-							<CountUp start={0} end={marks} duration={0.7} ></CountUp>
+							<CountUp start={0} end={marks} duration={0.7}></CountUp>
 							{/* <CountUp start={0} end={marks} duration={0.7} onEnd={() => console.log("Ended! 👏")} onStart={() => console.log("Started! 💨")}></CountUp> */}
-						</h1> 
+						</h1>
 					</Card>
 					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "30px" }}>
 						Click{" "}
@@ -335,14 +334,13 @@ function Playquiz(props) {
 	}
 
 	// if user already played the quiz
-	if (i === -1)
-		window.location.href=`/quiz/view/${props.code}`;
-		// return (
-		// 	<div>
-		// 		{/* <h1>You already played the quiz</h1>
-		// 		<a href="{#}">click here</a> to see the response */}
-		// 	</div>
-		// );
+	if (i === -1) window.location.href = `/quiz/view/${props.code}`;
+	// return (
+	// 	<div>
+	// 		{/* <h1>You already played the quiz</h1>
+	// 		<a href="{#}">click here</a> to see the response */}
+	// 	</div>
+	// );
 	else if (name)
 		return (
 			<div>
@@ -351,7 +349,7 @@ function Playquiz(props) {
 			</div>
 		);
 	// wait until question is fetched
-	else if (!que || !user) return <Loading />
+	else if (!que || !user) return <Loading />;
 	else if (user === que.user) window.location.href = `/quiz/view/${que.code}`;
 	// ask user to enter name
 	else
@@ -378,6 +376,7 @@ function Playquiz(props) {
 								multiline
 								variant="filled"
 								name="name"
+								inputProps={{ maxLength: 18 }}
 								gutterbottom
 								raised
 								required

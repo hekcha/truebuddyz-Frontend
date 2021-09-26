@@ -25,26 +25,27 @@ function Card(props) {
 				<div
 					className={`${classes.cardTitle} card_title`}
 					style={{
-						zIndex: "2",
+						zIndex: "8",
 						textAlign: "center",
 						fontFamily: "'Architects Daughter', cursive",
 						fontWeight: "999",
-						webkitTextFillColor: "#e8e8e8",
-						webkitTextStroke: "1.2px black",
-						// textShadow: "1px 0.5px white , 0 0 5px gray",
+						webkitTextFillColor: "#fdfffe",
+						webkitTextStroke: "0.9px black",
+						textShadow: "2px 1px black , 2px 0 5px gray",
 						fontSize: "34px",
 					}}
 				>
-					
-					<p 
-						style={{ 
-							filter: "brightness(10)", 
+					<p
+						style={{
+							filter: "brightness(10)",
 							// eslint-disable-next-line
-							filter: "contrast(10)", 
+							filter: "contrast(10)",
 							// eslint-disable-next-line
-							filter: "grayscale(4.2)" 
+							filter: "grayscale(4.2)",
 						}}
-					>{props.text}</p>
+					>
+						{props.text}
+					</p>
 				</div>
 			</div>
 		</a>
@@ -63,34 +64,35 @@ function GradientCard(props) {
 						backgroundImage: "linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
 						opacity: "0.9",
 					}}
-				></div>
-				<div
-					style={{
-						zIndex: "2",
-						textAlign: "center",
-						webkitTextFillColor: "#e8e8e8",
-						webkitTextStroke: "1px black",
-						fontFamily: "'Architects Daughter', cursive",
-						fontWeight: "999",
-						// textShadow: "1px 0.5px white , 0 0 5px gray",
-						fontSize: "34px",
-						marginBlock: "auto",
-					}}
 				>
 					<div
 						style={{
-							color: "#e8e8e8",
-							zIndex: "2",
 							textAlign: "center",
-							webkitTextFillColor: "white",
+							webkitTextFillColor: "#fdfffe",
 							webkitTextStroke: "1px black",
-							fontSize: "34px",
+							fontFamily: "'Architects Daughter', cursive",
 							fontWeight: "999",
-							textTransform: "capitalize",
+							textShadow: "2px 2px black , 0 0 5px gray",
+							fontSize: "34px",
 							marginBlock: "auto",
 						}}
 					>
-						<center>{props.text}</center>
+						<div
+							style={{
+								color: "white",
+								zIndex: "8",
+								textAlign: "center",
+								verticalAlign: "center",
+								webkitTextFillColor: "white",
+								webkitTextStroke: "0.8px black",
+								fontSize: "34px",
+								fontWeight: "999",
+								textTransform: "capitalize",
+								// marginBlock: "auto",
+							}}
+						>
+							<p>{props.text}</p>
+						</div>
 					</div>
 				</div>
 			</div>

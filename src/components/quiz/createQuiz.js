@@ -18,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: "#FFFAFA",
 		position: "absolute",
 		justifyContent: "center",
+		wordWrap: "break-word",
+		overflow: " visible",
 		alignItems: "center",
 		borderRadius: "20px",
 		border: "solid 2px",
@@ -62,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: "5px",
 		padding: "12px 20px",
 		width: "80%",
-		fontSize: "22px",
+		fontSize: "18px",
 		fontFamily: "'Acme', sans-serif",
 		fontWeight: "700	",
 		lineHeight: "1.2em",
@@ -70,6 +72,8 @@ const useStyles = makeStyles((theme) => ({
 		background: "#f0f0f6",
 		border: "solid 1px dark",
 		borderRadius: "20px",
+		wordWrap: "break-word",
+		overflow: " visible",
 		boxShadow:
 			"8px 8px 10px rgba( 0, 0, 0, 0.2), -8px -8px 10px rgba(255, 255, 255, 0.8), inset 6px 6px 10px rgba( 0, 0, 0, 0.2), inset -6px -6px 10px rgba(255, 255, 255, 0.8)",
 	},
@@ -78,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
 		color: "#22ca62",
 		display: "flex",
 		flexDirection: "column",
-		width:'20%',
+		width: "20%",
 		margin: "30px 0 0 1.5vw",
 		position: "absolute",
 		left: "-20px",
@@ -96,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
 	unchecked: {
 		display: "flex",
 		flexDirection: "column",
-		width:'20%',
+		width: "20%",
 		margin: "30px 0 0 1.5vw",
 		position: "absolute",
 		left: "-20px",
@@ -182,7 +186,7 @@ function Quizcreate(props) {
 			.then((resp) => resp.json())
 			.then((res) => setUser(res))
 			.catch((err) => console.log(err));
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, []);
 
 	useEffect(() => {
@@ -193,7 +197,7 @@ function Quizcreate(props) {
 			setOptionC(queBank[i].optionC);
 			setOptionD(queBank[i].optionD);
 		}
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [i, queBank, username]);
 
 	useEffect(() => {
@@ -224,7 +228,7 @@ function Quizcreate(props) {
 				.then((res) => console.log(res))
 				.catch((err) => console.log(err));
 		}
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [j]);
 
 	const ChangeHandler = (func, event) => {
@@ -294,7 +298,7 @@ function Quizcreate(props) {
 					<br />
 					<div className={`row ${classes.parentOption}`} style={{ padding: "0", margin: "0", maxWidth: "100%" }}>
 						<div className="col-md-6 col-xs-12  d-flex justify-content-center" style={{ maxWidth: "100%" }}>
-							<span style={{ maxWidth: "100%", display: "block"}}>
+							<span style={{ maxWidth: "100%", display: "block" }}>
 								<i id="option0" className={`far fa-circle fa-lg col-3 ${classes.unchecked}`} onClick={() => SelectAns(0)}></i>
 								<textarea
 									className={`border optionA ${classes.option} col-md-9 col-xs-11 `}
@@ -306,7 +310,7 @@ function Quizcreate(props) {
 						</div>
 
 						<div className="col-md-6 col-xs-12  d-flex justify-content-center" style={{ maxWidth: "100%" }}>
-							<span style={{ maxWidth: "100%", display: "block"}}>
+							<span style={{ maxWidth: "100%", display: "block" }}>
 								<i id="option1" className={`far fa-circle fa-lg col-3 ${classes.unchecked}`} onClick={() => SelectAns(1)}></i>
 								<textarea
 									className={`border optionB ${classes.option} col-md-9 col-xs-11`}
@@ -318,7 +322,7 @@ function Quizcreate(props) {
 						</div>
 
 						<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
-							<span style={{ maxWidth: "100%", display: "block"}}>
+							<span style={{ maxWidth: "100%", display: "block" }}>
 								<i id="option2" className={`far fa-circle fa-lg col-3 ${classes.unchecked}`} onClick={() => SelectAns(2)}></i>
 								<textarea
 									className={`border optionC ${classes.option} col-md-9 col-xs-11`}
@@ -330,7 +334,7 @@ function Quizcreate(props) {
 						</div>
 
 						<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
-							<span style={{ maxWidth: "100%", display: "block"}}>
+							<span style={{ maxWidth: "100%", display: "block" }}>
 								<i id="option3" className={`far fa-circle fa-lg col-3 ${classes.unchecked}`} onClick={() => SelectAns(3)}></i>
 								<textarea
 									className={`border optionD ${classes.option} col-md-9 col-xs-11`}
@@ -341,23 +345,16 @@ function Quizcreate(props) {
 							</span>
 						</div>
 					</div>
-					<div className="row d-flex justify-content-center" style={{width:'100%'}}>
+					<div className="row d-flex justify-content-center my-3" style={{ width: "100%" }}>
 						<div className="col-8">
 							<div className="row d-flex justify-content-center">
-					<Button variant="contained" color="secondary" className="mx-3  col-4" onClick={() => setI((i + 1) % queBank.length)} >
-						Skip
-					</Button>
-					<Button
-						variant="contained"
-						className="mx-3 col-4"
-						onClick={() => NextQue()}
-						style={{ backgroundColor: "green", color: "white" }}
-					>
-						Next
-					</Button>
-
+								<Button variant="contained" color="secondary" className="mx-3  col-4" onClick={() => setI((i + 1) % queBank.length)}>
+									Skip
+								</Button>
+								<Button variant="contained" className="mx-3 col-4" onClick={() => NextQue()} style={{ backgroundColor: "green", color: "white" }}>
+									Next
+								</Button>
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -384,7 +381,7 @@ function Quizcreate(props) {
 						</Step>
 					))}
 				</Stepper>
-				{j===10?null:<QueNumber que={j} />}
+				{j === 10 ? null : <QueNumber que={j} />}
 				{Showque()}
 			</div>
 		);

@@ -11,7 +11,32 @@ const useStyles = makeStyles((theme) => ({
 		height: "60vw",
 		maxHeight: "360px",
 	},
-	thumbnail: {},
+	options: {
+		backgroundColor: "white",
+		maxWidth: "450px",
+		// minWidth: "auto",
+		width: "100%",
+		// opacity: "0.85",
+		fontWeight: "600",
+		color: "black",
+		margin: "10px auto",
+		borderRadius: "8px",
+		textAlign: "center",
+		cursor: "pointer",
+		border: "2px solid black",
+		"&:hover": {
+			scale: "1.05",
+			background: " #1D976C",
+			background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
+			background: "linear-gradient(to right, #93F9B9, #1D976C)",
+		},
+		"&:active": {
+			scale: "1.05",
+			background: " #1D976C",
+			background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
+			background: "linear-gradient(to right, #93F9B9, #1D976C)",
+		},
+	},
 }));
 
 function HowWellUKnow(props) {
@@ -24,11 +49,11 @@ function HowWellUKnow(props) {
 
 	var ALLOWED_PAGES = ["marvel", "fastandfurious"];
 
-	var frmdata =new FormData()
-	frmdata.append('game','HWUK');
-	frmdata.append('subGame',props.type);
-	frmdata.append('user',token["tb-user"]);
-	frmdata.append('text',score);
+	var frmdata = new FormData();
+	frmdata.append("game", "HWUK");
+	frmdata.append("subGame", props.type);
+	frmdata.append("user", token["tb-user"]);
+	frmdata.append("text", score);
 
 	useEffect(() => {
 		for (var i = 0; i < ALLOWED_PAGES.length; i++) {
@@ -46,13 +71,11 @@ function HowWellUKnow(props) {
 			.then((resp) => resp.json())
 			.then((res) => setQue(res))
 			.catch((err) => console.log(err));
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, []);
 
-
-	useEffect(()=>{
-		if(i===10)
-		{
+	useEffect(() => {
+		if (i === 10) {
 			fetch(`${process.env.REACT_APP_API_URL}/howwelluknow/score/?category=${props.type}&score=${score}`, {
 				method: "GET",
 				headers: {
@@ -60,21 +83,20 @@ function HowWellUKnow(props) {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
 			})
-			.then((resp) => resp.json())
-			.then((res) => setResult(res[0]))
-			.catch((err) => console.log(err));
-			
+				.then((resp) => resp.json())
+				.then((res) => setResult(res[0]))
+				.catch((err) => console.log(err));
+
 			fetch(`${process.env.REACT_APP_API_URL}/core/data/`, {
 				method: "POST",
-				body:frmdata,
+				body: frmdata,
 				headers: {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
-			})
-			.catch((err) => console.log(err));
-		}		
-	// eslint-disable-next-line
-	},[i])
+			}).catch((err) => console.log(err));
+		}
+		// eslint-disable-next-line
+	}, [i]);
 
 	const StoreAns = (item) => {
 		if (item === que[i]["ans"]) setScore(score + 1);
@@ -89,110 +111,29 @@ function HowWellUKnow(props) {
 					<img className={`${classes.thumbnail} thumbnail`} src={que[i][`image`]} alt="Question" />
 				</div>
 				<br />
-				<Card
-					style={{
-						minWidth: "250px",
-						maxWidth: "400px",
-						margin: "auto",
-						backgroundImage: " linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%)",
-						backgroundColor: " #00DBDE",
-						opacity: "0.5",
-						borderRadius: "20px",
-						border: "2px solid",
-					}}
-					raised
-				>
-					<div className="col-12 my-2 text-center">
-						<h1>{que[i][`que`]}</h1>
-					</div>
-					<Card
-						onClick={() => StoreAns(0)}
-						className="my-3"
-						style={{
-							backgroundColor: "white",
-							maxWidth: "350px",
-							minWidth: "auto",
-							fontWeight: "600",
-							color: "black",
-							margin: "10px auto",
-							borderRadius: "15px",
-							opacity: "0.85",
-							textAlign: "center",
-							pointer: "cursor",
-							border: "2px solid black",
-						}}
-						raised
-					>
-						<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-							{que[i][`optionA`]}
-						</h3>
-					</Card>
-					<Card
-						onClick={() => StoreAns(1)}
-						className="my-3"
-						style={{
-							backgroundColor: "white",
-							maxWidth: "350px",
-							minWidth: "auto",
-							fontWeight: "600",
-							color: "black",
-							margin: "10px auto",
-							borderRadius: "15px",
-							opacity: "0.85",
-							textAlign: "center",
-							pointer: "cursor",
-							border: "2px solid black",
-						}}
-						raised
-					>
-						<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-							{que[i][`optionB`]}
-						</h3>
-					</Card>
-					<Card
-						onClick={() => StoreAns(2)}
-						className="my-3"
-						style={{
-							backgroundColor: "white",
-							maxWidth: "350px",
-							minWidth: "auto",
-							fontWeight: "600",
-							color: "black",
-							margin: "10px auto",
-							borderRadius: "15px",
-							opacity: "0.85",
-							textAlign: "center",
-							pointer: "cursor",
-							border: "2px solid black",
-						}}
-						raised
-					>
-						<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-							{que[i][`optionC`]}
-						</h3>
-					</Card>
-					<Card
-						onClick={() => StoreAns(3)}
-						className="my-3"
-						style={{
-							backgroundColor: "white",
-							maxWidth: "350px",
-							minWidth: "auto",
-							fontWeight: "600",
-							color: "black",
-							margin: "10px auto",
-							borderRadius: "15px",
-							opacity: "0.85",
-							textAlign: "center",
-							pointer: "cursor",
-							border: "2px solid black",
-						}}
-						raised
-					>
-						<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-							{que[i][`optionD`]}
-						</h3>
-					</Card>
+				<div className="text-center col-12">
+					<h1 style={{ fontWeight: "bold", width: "auto", maxWidth: "800px", textAlign: "text-center", margin: "auto" }}>{que[i][`que`]}</h1>
+				</div>
+
+				<Card onClick={() => StoreAns(0)} className={`${classes.options} my-3`} raised>
+					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+						{que[i][`optionA`]}
+					</h3>
+				</Card>
+				<Card onClick={() => StoreAns(1)} className={`${classes.options} my-3`} raised>
+					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+						{que[i][`optionB`]}
+					</h3>
+				</Card>
+				<Card onClick={() => StoreAns(2)} className={`${classes.options} my-3`} raised>
+					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+						{que[i][`optionC`]}
+					</h3>
+				</Card>
+				<Card onClick={() => StoreAns(3)} className={`${classes.options} my-3`} raised>
+					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+						{que[i][`optionD`]}
+					</h3>
 				</Card>
 			</div>
 		);

@@ -22,7 +22,6 @@ const Ul = styled.ul`
 
 	li {
 		padding: 2px 38px;
-		/* font-family: "Bungee Shade", cursive; */
 		font-size: 24px;
 		font-weight: 999;
 		cursor: pointer;
@@ -36,7 +35,6 @@ const Ul = styled.ul`
 		opacity: 0.95;
 		position: fixed;
 		transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
-		/* font-family: "Bangers", cursive; */
 		font-size: 24px;
 		top: 80px;
 		left: 0;

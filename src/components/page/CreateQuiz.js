@@ -108,6 +108,7 @@ export default function SimpleCard(props) {
 						multiline
 						variant="filled"
 						name="name"
+						inputProps={{ maxLength: 18 }}
 						gutterbottom
 						raised
 						required

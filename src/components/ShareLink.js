@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
 		fontFamily: "'Permanent Marker', cursive",
 	},
 	link: {
-		overflow: "hidden",
+		color: "black",
+		overflow: "scrollY",
 		padding: "0vw 2vw",
 		marginBottom: "-20px",
 		width: "60vw",
@@ -130,7 +131,7 @@ function ShareLink(props) {
 							style={{ marginTop: "18px", marginBottom: "-25px", borderRadius: "10px" }}
 							onClick={() => {
 								copy(props.link);
-								alert("Yuhuu😄...Share it😉");
+								alert("Bingo😄...Share this with friends😉");
 							}}
 						>
 							Copy link🔗
@@ -146,20 +147,29 @@ function ShareLink(props) {
 						style={{ display: "flex", flexDirection: "row", fontSize: "12px" }}
 					>
 						<span className="sr-whatsapp sr-text-below">
-							<a href={`https://api.whatsapp.com/send?text=${props.link}`} title="WhatsApp">
+							<a
+								href={`https://api.whatsapp.com/send?text="Your friend share this **TrueBuddyz Quiz** :\n ${props.link} \n Click on the link☝ to show some love❤ to your friend."`}
+								title="WhatsApp"
+							>
 								<i className="fab fa-whatsapp"></i>
 							</a>
 							<span className="text">WhatsApp</span>
 						</span>
 						<span className="sr-telegram sr-text-below">
-							<a href={`https://telegram.me/share/url?url=${props.link};`} title="Telegram">
+							<a
+								href={`https://telegram.me/share/url?url=Your friend share this **TrueBuddyz Quiz** :\n ${props.link} \n Click on the link☝ to show some love❤ to your friend.`}
+								title="Telegram"
+							>
 								<i className="fab fa-telegram-plane"></i>
 							</a>
 							<span className="text">Telegram</span>
 						</span>
 
 						<span className="sr-facebook sr-text-below ">
-							<a href={`https://www.facebook.com/share.php?u=${props.link}`} title="Facebook">
+							<a
+								href={`https://www.facebook.com/share.php?u=Your friend share this **TrueBuddyz Quiz** :\n ${props.link} \n Click on the link☝ to show some love❤ to your friend.`}
+								title="Facebook"
+							>
 								<i className="fab fa-facebook-f"></i>
 							</a>
 							<span className="text">Facebook</span>

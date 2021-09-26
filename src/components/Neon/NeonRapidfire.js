@@ -1,5 +1,4 @@
 import React from "react";
-import "./neonrapidfire.css";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles((theme) => ({
@@ -12,8 +11,8 @@ const useStyle = makeStyles((theme) => ({
 function NeonRapidfire(props) {
 	const classes = useStyle();
 	return (
-		<div className={`${classes.logoR} logoR row`}>
-			<b>
+		<div className={`${classes.logoR} logoR row `}>
+			<b className="mb-5">
 				<span style={{ textTransform: "capitalize" }}>{props.types}</span>
 				<span> Ra</span>
 				<span>pid</span>

@@ -145,6 +145,8 @@ function Rapidfire(props) {
 	firebaseAuth.signInAnonymously().catch(alert);
 	const [token] = useCookies("tb-token");
 	const classes = useStyles();
+	// Check which colour to delete.
+	// ["#FF00E4", "#28FFBF", "#C400FF", "#F7FD04", "#FF5200", "#FA163F", "#FF00C8", "#D80E70", "#00541A"];
 	var colourPalette = [
 		"#FFEDDA",
 		"#FF2442",
@@ -195,9 +197,9 @@ function Rapidfire(props) {
 				"Authorization": `Token ${token["tb-token"]}`,
 			},
 		})
-		.then((resp) => resp.json())
-		.then((res) => setQueBank(res))
-		.catch((err) => console.log(err));
+			.then((resp) => resp.json())
+			.then((res) => setQueBank(res))
+			.catch((err) => console.log(err));
 
 		// monitor changes in RapidFire -> GameID -> users (in firebase)
 		firebaseDb
@@ -243,7 +245,7 @@ function Rapidfire(props) {
 					console.log("The read failed: " + errorObject.name);
 				}
 			);
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, []);
 
 	// for only creating room if not created
@@ -263,7 +265,7 @@ function Rapidfire(props) {
 					}
 				);
 		}
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [i]);
 
 	useEffect(() => {
@@ -281,7 +283,7 @@ function Rapidfire(props) {
 				// yha shi krna time
 			);
 		} else if (y !== 1 && countdown) clearInterval(countdown);
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [y, name]);
 
 	const Submit = () => {
@@ -336,7 +338,7 @@ function Rapidfire(props) {
 					<p className="my-3" style={{ fontSize: "34px", fontWeight: "00", color: "black" }}>
 						Enter Your Name
 					</p>
-					<TextField id="name" name="name" label="Name" variant="filled" style={{ border: "4px" }} required />
+					<TextField id="name" name="name" label="Name" variant="filled" style={{ border: "4px" }} inputProps={{ maxLength: 18 }} required />
 					<br />
 					<Button className="my-3" variant="contained" color="primary" onClick={() => Submit()}>
 						Play
@@ -441,7 +443,7 @@ function Rapidfire(props) {
 						})}
 					</div>
 				</div>
-				<button className={`${classes.btnGrad}`} onClick={() => AnsChoice("Skiped")} style={{ width: "80px" }}>
+				<button className={`${classes.btnGrad}`} onClick={() => AnsChoice("Skipped")} style={{ width: "80px" }}>
 					Skip
 				</button>
 			</div>

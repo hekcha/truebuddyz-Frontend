@@ -1,5 +1,4 @@
 import React from "react";
-import "./neonPlayQuiz.css";
 
 function NeonPlayQuiz() {
 	return (
