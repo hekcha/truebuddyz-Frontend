@@ -5,7 +5,7 @@ import firebaseDb, { firebaseAuth } from "../../firebase";
 import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, TextField } from "@material-ui/core";
-import "./playrf.css";
+// import "./playrf.css";
 import NeonRapidfire from "../Neon/NeonRapidfire";
 import ShareLink from "../ShareLink";
 import CreateRoom from "./CreateRoom";

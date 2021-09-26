@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCookies } from "react-cookie";
-import './feedback.css'
+// import './feedback.css'
 function Feedback() {
 
     const [emoji, setEmoji] = useState(0);
