@@ -1,5 +1,5 @@
 import { useCookies } from "react-cookie";
-import "./css/rating.css";
+// import "./css/rating.css";
 
 function Rating() {
 	const [token] = useCookies("tb-token");

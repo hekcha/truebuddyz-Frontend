@@ -1,5 +1,5 @@
 import React from "react";
-import "./main.css";
+// import "./main.css";
 import quiz_friends from "../assets/quiz_friends.jpg";
 import quiz_couples from "../assets/quiz_couples.jfif";
 import rf_friends from "../assets/rf_friends.jpg";

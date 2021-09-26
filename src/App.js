@@ -13,7 +13,6 @@ import RfCreater from "./components/rapidfire/RfCreater";
 import Rapidfire from "./components/rapidfire/playRF";
 import IndexRf from "./components/rapidfire/indexRF";
 import YouLookLike from "./components/youlooklike/YouLookLike";
-import NotAllowed from "./components/page/NotAllowed";
 import Feedback from "./components/page/Feedback";
 import Contribution from "./components/page/Contribution";
 import IndexYouLookLike from "./components/youlooklike/IndexYouLookLike";
@@ -58,27 +57,34 @@ function App() {
 						<Route path="/games" exact component={() => <Game />} />
 						<Route path="/feedback" exact component={() => <Feedback />} />
 						<Route path="/contribution" exact component={() => <Contribution />} />
-						<Route path="/notallowed" exact component={() => <NotAllowed />} />
 
 						<Route path="/quiz" exact component={() => <Quizhome />} />
-						<Route path="/quiz/:type" exact component={(x) => <CreateQuiz type={x.match.params.type} />} />
+						<Route path="/quiz/:type" exact component={(x) => 
+							token["tb-token"]?<CreateQuiz type={x.match.params.type} />:<LoadingReload />
+						} />
 						<Route path="/quiz/play/:code" exact component={(x) => 
-						token["tb-token"]?<Playquiz code={x.match.params.code} />:<LoadingReload />
+							token["tb-token"]?<Playquiz code={x.match.params.code} />:<LoadingReload />
 						} />
 						<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 						<Route path="/quiz/response/:code" exact component={(x) => <EachResponse responseCode={x.match.params.code} />} />
 
 						<Route path="/rapidfire" exact component={() => <IndexRf />} />
-						<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
+						<Route path="/rapidfire/:type" exact component={(x) => 
+							token["tb-token"]?<RfCreater type={x.match.params.type} />:<LoadingReload />
+						} />
 						
 						<Route path="/rapidfire/:type/:code" exact component={(x) => 
-						token["tb-token"]?<Rapidfire gameId={x.match.params.code} type={x.match.params.type} />:<LoadingReload />
+							token["tb-token"]?<Rapidfire gameId={x.match.params.code} type={x.match.params.type} />:<LoadingReload />
 						} />
 						<Route path="/youlooklike" exact component={() => <IndexYouLookLike />} />
-						<Route path="/youlooklike/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />
+						<Route path="/youlooklike/:type" exact component={(x) => 
+							token["tb-token"]?<YouLookLike type={x.match.params.type} />:<LoadingReload />
+						} />
 						
 						<Route path="/howwelluknow" exact component={() => <IndexHowWellUKnow />} />
-						<Route path="/howwelluknow/:type" exact component={(x) => <HowWellUKnow type={x.match.params.type} />} />
+						<Route path="/howwelluknow/:type" exact component={(x) => 
+							token["tb-token"]?<HowWellUKnow type={x.match.params.type} />:<LoadingReload />
+						} />
 						
 						<Redirect to="/" />
 					</Switch>

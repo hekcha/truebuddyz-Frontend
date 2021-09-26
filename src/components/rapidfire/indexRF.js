@@ -1,4 +1,4 @@
-import "./indexrf.css";
+// import "./indexrf.css";
 import friends from "../assets/rf_friends.jpg";
 import couples from "../assets/rf_couples.jpg";
 import siblings from "../assets/rf_siblings.jpg";

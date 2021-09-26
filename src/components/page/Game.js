@@ -1,5 +1,5 @@
 import React from "react";
-import "./main.css";
+// import "./main.css";
 import quiz from "../assets/quiz.jpg";
 import rf from "../assets/rf.jpg";
 import NewGame from "./NewGame";

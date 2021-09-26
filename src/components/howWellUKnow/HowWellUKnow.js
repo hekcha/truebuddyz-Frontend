@@ -27,14 +27,20 @@ const useStyles = makeStyles((theme) => ({
 		border: "2px solid black",
 		"&:hover": {
 			scale: "1.05",
+			// eslint-disable-next-line
 			background: " #1D976C",
+			// eslint-disable-next-line
 			background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
+			// eslint-disable-next-line
 			background: "linear-gradient(to right, #93F9B9, #1D976C)",
 		},
 		"&:active": {
 			scale: "1.05",
+			// eslint-disable-next-line
 			background: " #1D976C",
+			// eslint-disable-next-line
 			background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
+			// eslint-disable-next-line
 			background: "linear-gradient(to right, #93F9B9, #1D976C)",
 		},
 	},
