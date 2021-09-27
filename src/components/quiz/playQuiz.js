@@ -83,8 +83,9 @@ const useStyles = makeStyles((theme) => ({
 		lineHeight: "1.2em",
 		color: "#435560",
 		background: "#f0f0f6",
-		border: "solid 1px dark",
+		// border: "solid 1px dark",
 		borderRadius: "20px",
+		cursor:'pointer',
 		boxShadow:
 			"8px 8px 10px rgba( 0, 0, 0, 0.2), -8px -8px 10px rgba(255, 255, 255, 0.8), inset 6px 6px 10px rgba( 0, 0, 0, 0.2), inset -6px -6px 10px rgba(255, 255, 255, 0.8)",
 	},
@@ -227,7 +228,7 @@ function Playquiz(props) {
 									<center>
 										<textarea
 											style={{ maxWidth: "80%", margin: "0 auto" }}
-											className={`optionA ${classes.option} col-md-9 col-xs-11 border-success `}
+											className={`optionA ${classes.option} col-md-9 col-xs-11 `}
 											id="optionA"
 											value={que[`option${i + 1}A`]}
 											disabled
@@ -393,9 +394,9 @@ function Playquiz(props) {
 							Play Quiz
 						</Button>
 					</Card.Body>
-					<Card.Footer>
+					{/* <Card.Footer>
 						<h6>Have to ADD Recommendation down below👇</h6>
-					</Card.Footer>
+					</Card.Footer> */}
 				</Card>
 			</div>
 		);

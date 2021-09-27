@@ -15,7 +15,7 @@ function Loading() {
 				}}
 				src={finger}
 			/>
-			<p style={{ textAlign: "center", fontSize: "50px" }}>Loading . . .</p>
+			<p style={{ textAlign: "center", fontSize: "50px" }}>Loading . . . .</p>
 		</div>
 	);
 }

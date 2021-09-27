@@ -9,7 +9,7 @@ function IndexRf() {
 	return (
 		<div className="inner div">
 			<header className="header">
-				<h1 className="h1" onClick={() => window.location.href='/rapidfire'} style={{marginBottom:'0em'}}>RapidFire</h1>
+				<h1 className="h1" style={{marginBottom:'0em'}}>RapidFire</h1>
 			</header>
 			<section className="tiles section" style={{marginTop:'0'}}>
 				<div id="indexrf" className="container">

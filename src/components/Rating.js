@@ -30,15 +30,15 @@ function Rating() {
 			<div class="wrapper">
 				<i class="fa fa-null">
 					<input name="ratingRadio" type="radio" id="st5" value="5" onChange={()=>Submit()} />
-					<label for="st5"></label>
+					<label for="st5" style={{cursor:'pointer'}} />
 					<input name="ratingRadio" type="radio" id="st4" value="4" onChange={()=>Submit()} />
-					<label for="st4"></label>
+					<label for="st4" style={{cursor:'pointer'}} />
 					<input name="ratingRadio" type="radio" id="st3" value="3" onChange={()=>Submit()} />
-					<label for="st3"></label>
+					<label for="st3" style={{cursor:'pointer'}} />
 					<input name="ratingRadio" type="radio" id="st2" value="2" onChange={()=>Submit()} />
-					<label for="st2"></label>
+					<label for="st2" style={{cursor:'pointer'}} />
 					<input name="ratingRadio" type="radio" id="st1" value="1" onChange={()=>Submit()} />
-					<label for="st1"></label>
+					<label for="st1" style={{cursor:'pointer'}} />
 				</i>
 			</div>
 		</div>

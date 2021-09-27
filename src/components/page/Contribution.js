@@ -23,7 +23,7 @@ function Contribution() {
                 },
             })
             .then((resp) => resp.json())
-            .then((res) => window.location.href='/')
+            .then((res) => {alert("Thankyou for your contribution and support");window.location.reload()})
             .catch((err) => console.log(err));
         }
         else

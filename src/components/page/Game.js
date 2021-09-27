@@ -6,10 +6,10 @@ import NewGame from "./NewGame";
 import Card, { GradientCard } from "../Card";
 
 
-function Game() {
+function Game(props) {
 	return (
 		<React.Fragment>
-			<NewGame />
+			<NewGame newGame={props.newGame} />
 			<br />
 			<br />
 			<div className="inner div">

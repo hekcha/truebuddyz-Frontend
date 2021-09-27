@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import CreateQuiz from "../page/CreateQuiz";
 import QueNumber from "../QueNumber";
 import QuizList from "./QuizList";
-import Trending from "../page/Trending";
 import ShareLink from "../ShareLink";
 
 const useStyles = makeStyles((theme) => ({
@@ -73,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
 		border: "solid 1px dark",
 		borderRadius: "20px",
 		wordWrap: "break-word",
-		overflow: " visible",
+		// overflow: " visible",
 		boxShadow:
 			"8px 8px 10px rgba( 0, 0, 0, 0.2), -8px -8px 10px rgba(255, 255, 255, 0.8), inset 6px 6px 10px rgba( 0, 0, 0, 0.2), inset -6px -6px 10px rgba(255, 255, 255, 0.8)",
 	},
@@ -216,7 +215,7 @@ function Quizcreate(props) {
 			formdata.append("code", code);
 			formdata.append("name", username);
 			formdata.append("category", props.type);
-
+			console.log(formdata)
 			fetch(`${process.env.REACT_APP_API_URL}/quiz/que/`, {
 				method: "POST",
 				body: formdata,
@@ -284,7 +283,6 @@ function Quizcreate(props) {
 					<ShareLink game="quiz" type={props.type} link={`${process.env.REACT_APP_URL}/quiz/play/${code}`} />
 					<br />
 					<br />
-					<Trending />
 				</div>
 			);
 
