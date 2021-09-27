@@ -1,47 +1,30 @@
 import Card, { GradientCard } from "../Card";
-import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 
-function NewGame() {
-	const [token] = useCookies(["tb-token"]);
-	const [newGame, setNewGame] = useState(null);
+function NewGame(props) {
 
-	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/core/new`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": `Token ${token["tb-token"]}`,
-			},
-		})
-			.then((resp) => resp.json())
-			.then((res) => setNewGame(res))
-			.catch((err) => console.log(err));
-	// eslint-disable-next-line
-	}, []);
-
-	if (newGame)
-		return (
-			<div className="inner div">
-				<header className="header">
-					<h1 className="h1" style={{ marginBottom: "0em" }}>New Games</h1>
-				</header>
-				<section className="tiles section" style={{ marginTop: "0" }}>
-					<div id="indexrf" className="container">
+	return (
+		<div className="inner div">
+			<header className="header">
+				<h1 className="h1" style={{ marginBottom: "0em" }}>New Games</h1>
+			</header>
+			<section className="tiles section" style={{ marginTop: "0" }}>
+				<div id="indexrf" className="container">
+					{props.newGame?
 						<div className="cards-list">
-							{newGame.map((item) => {
+							{props.newGame.map((item) => {
 								if(item.is_GradientCard)
 									return <GradientCard link={item.link} text={item.text} />;
 								else
 									return <Card link={item.link} img={item.image} text={item.text} />;
 							})}
 						</div>
-					</div>
-				</section>
-			</div>
-		);
-
-	return <div>loading....</div>; // dont use loading.js
+					:
+						<div>loading....</div>
+					}
+				</div>
+			</section>
+		</div>
+	);
 }
 
 export default NewGame;

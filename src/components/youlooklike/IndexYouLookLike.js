@@ -9,7 +9,6 @@ function IndexYouLookLike() {
 			<header className="header">
 				<h1
 					className="h1"
-					onClick={() => (window.location.href = "/youlooklike")}
 					style={{ marginBottom: "0em", textAlign: "center", fontFamily: "Permanent Marker" }}
 				>
 					You Look Like

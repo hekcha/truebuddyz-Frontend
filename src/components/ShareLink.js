@@ -109,7 +109,7 @@ function ShareLink(props) {
 					<Card.Text className={classes.text}>{QUOTES[props.game][props.type]}</Card.Text>
 					<Card.Title className={classes.title}>{SHARE[props.game][props.type]}</Card.Title>
 					<Card.Title className={classes.title}>
-						<textarea id="link" className={classes.link} value={props.link} style={{}} disabled />
+						<textarea id="link" className={classes.link} value={props.link} style={{cursor:'auto'}} disabled />
 					</Card.Title>
 					<span>
 						{props.game === "rf" ? null : (

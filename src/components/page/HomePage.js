@@ -8,7 +8,7 @@ import Trending from "./Trending";
 import Game from "./Game";
 import Footer from "./Footer";
 
-function Home() {
+function Home(props) {
 	return (
 		<React.Fragment>
 			<div className="is-preload">
@@ -36,10 +36,10 @@ function Home() {
 						</div>
 						<br />
 						<br />
-						<Trending />
+						<Trending trand={props.trand} />
 						<br />
 						<br />
-						<Game />
+						<Game newGame={props.newGame} />
 						<br />
 						<hr />
 						<Footer />

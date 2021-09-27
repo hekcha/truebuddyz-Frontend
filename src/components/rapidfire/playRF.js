@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // eslint-disable-next-line
 import * as firebase from "firebase"; // important
-import firebaseDb, { firebaseAuth } from "../../firebase";
+import firebaseDb from "../../firebase";
 import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, TextField } from "@material-ui/core";
@@ -142,7 +142,7 @@ function getRandomInt(max) {
 }
 
 function Rapidfire(props) {
-	firebaseAuth.signInAnonymously().catch(alert);
+	// firebaseAuth.signInAnonymously().catch(alert);
 	const [token] = useCookies("tb-token");
 	const classes = useStyles();
 	// Check which colour to delete.

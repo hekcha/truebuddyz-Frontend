@@ -12,7 +12,6 @@ function QuizList() {
 			<header className="header">
 				<h1
 					className="h1"
-					onClick={() => (window.location.href = "/quiz")}
 					style={{ marginTop: "0px", marginBottom: "0em", textAlign: "center", fontFamily: "'Permanent Marker', cursive", fontSize: "72px" }}
 				>
 					Quiz

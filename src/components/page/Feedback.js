@@ -28,7 +28,7 @@ function Feedback() {
                 },
             })
             .then((resp) => resp.json())
-            .then((res) => window.location.href='/')
+            .then((res) => {alert("Thankyou for your valuable feedback");window.location.reload()})
             .catch((err) => console.log(err));
         }
         else

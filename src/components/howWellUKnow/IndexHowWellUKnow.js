@@ -5,17 +5,16 @@ function IndexHowWellUKnow() {
 	return (
 		<div className="inner div">
 			<header className="header">
-				<a href="/howwelluknow">
-					<h1
-						style={{
-							marginBottom: "0em",
-							textAlign: "center",
-							fontFamily: "Permanent Marker",
-						}}
-					>
-						How Well You Know
-					</h1>
-				</a>
+				<h1
+					className="h1"
+					style={{
+						marginBottom: "0em",
+						textAlign: "center",
+						fontFamily: "Permanent Marker",
+					}}
+				>
+					How Well You Know
+				</h1>
 			</header>
 			<section className="tiles section" style={{ marginTop: "0" }}>
 				<div id="indexrf" className="container">
