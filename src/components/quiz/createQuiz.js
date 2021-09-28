@@ -213,9 +213,9 @@ function Quizcreate(props) {
 			}
 			formdata.append("user", user);
 			formdata.append("code", code);
+			formdata.append("is_active", true);
 			formdata.append("name", username);
 			formdata.append("category", props.type);
-			console.log(formdata)
 			fetch(`${process.env.REACT_APP_API_URL}/quiz/que/`, {
 				method: "POST",
 				body: formdata,
@@ -223,9 +223,7 @@ function Quizcreate(props) {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
 			})
-				.then((resp) => resp.json())
-				.then((res) => console.log(res))
-				.catch((err) => console.log(err));
+			.catch((err) => console.log(err));
 		}
 		// eslint-disable-next-line
 	}, [j]);

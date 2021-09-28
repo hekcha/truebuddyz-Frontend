@@ -79,7 +79,6 @@ function YouLookLike(props) {
 		})
 			.then((resp) => resp.json())
 			.then((res) => {
-				console.log(res);
 				setQue(res["que"][0]);
 				setRandQue(res["randque"]);
 			})
@@ -96,9 +95,9 @@ function YouLookLike(props) {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
 			})
-				.then((resp) => resp.json())
-				.then((res) => setResult(res[0]))
-				.catch((err) => console.log(err));
+			.then((resp) => resp.json())
+			.then((res) => setResult(res[0]))
+			.catch((err) => console.log(err));
 
 			fetch(`${process.env.REACT_APP_API_URL}/core/data/`, {
 				method: "POST",

@@ -319,7 +319,6 @@ function Playquiz(props) {
 						</h1>
 						<h1 style={{ fontSize: "58px", textAlign: "center" }}>
 							<CountUp start={0} end={marks} duration={0.7}></CountUp>
-							{/* <CountUp start={0} end={marks} duration={0.7} onEnd={() => console.log("Ended! 👏")} onStart={() => console.log("Started! 💨")}></CountUp> */}
 						</h1>
 					</Card>
 					<h1 style={{ fontSize: "34px", textAlign: "center", marginTop: "30px" }}>

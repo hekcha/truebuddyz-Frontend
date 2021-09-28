@@ -490,7 +490,6 @@ function Rapidfire(props) {
 	if (y === 3)
 		return (
 			<div id="playRF" className="mt-4" style={{ textAlign: "center" }}>
-				{console.log(ans, "ans")}
 				<div className="my-5">
 					<NeonRapidfire types={props.type} />
 				</div>
