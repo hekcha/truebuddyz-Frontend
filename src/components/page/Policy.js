@@ -61,10 +61,10 @@ function Policy() {
 					</p>
 					<p className={classes.heading}>What Data We Collect and Why?</p>
 					<p className={classes.text} style={{ maxWidth: "880px", margin: "auto" }}>
-						We may collect personal data that identifies you if you submit it to us (for example if send us an email query regarding our services). We
-						may use this data to provide Services to you, improve our Services and contact you. We don’t collect personal data providing our game
-						services. We do not collect personal data from children under 13. If you believe we have inadvertently collected such data, then please
-						contact us so we can remove such data.
+						We may collect personal data that identifies you if you submit it to us (for example if send us an email query regarding our services or
+						on Contribution & Feedback). We may use this data to provide Services to you, improve our Services and contact you. We don’t collect
+						personal data providing our game services.Every user is only a timestamp in records.We don't have any access to their data. If you believe
+						we have inadvertently collected such data, then please contact us so we can remove such data.
 					</p>
 					<p className={classes.heading}>Analytics Data</p>
 					<p className={classes.text} style={{ maxWidth: "880px", margin: "auto" }}>

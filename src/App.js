@@ -90,6 +90,7 @@ function App() {
 							<Suspense fallback={<div />}>
 								<Route path="/feedback" exact component={() => <Feedback />} />
 								<Route path="/contribution" exact component={() => <Contribution />} />
+								<Route path="/policy" exact component={() => <Policy />} />
 								<Route path="/rapidfire" exact component={() => <IndexRf />} />
 								<Route path="/youlooklike" exact component={() => <IndexYouLookLike />} />
 								<Route path="/howwelluknow" exact component={() => <IndexHowWellUKnow />} />

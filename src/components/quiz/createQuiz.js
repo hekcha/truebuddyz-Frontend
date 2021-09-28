@@ -215,7 +215,7 @@ function Quizcreate(props) {
 			formdata.append("code", code);
 			formdata.append("name", username);
 			formdata.append("category", props.type);
-			console.log(formdata)
+			console.log(formdata);
 			fetch(`${process.env.REACT_APP_API_URL}/quiz/que/`, {
 				method: "POST",
 				body: formdata,
@@ -291,8 +291,13 @@ function Quizcreate(props) {
 				<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
 					<br />
 					<hr />
-
-					<textarea className={`question ${classes.question}`} value={que} onChange={(event) => ChangeHandler(setQue, event)} />
+					inputProps={{ maxLength: 18 }}
+					<textarea
+						className={`question ${classes.question}`}
+						value={que}
+						onChange={(event) => ChangeHandler(setQue, event)}
+						inputProps={{ maxLength: 200 }}
+					/>
 					<br />
 					<div className={`row ${classes.parentOption}`} style={{ padding: "0", margin: "0", maxWidth: "100%" }}>
 						<div className="col-md-6 col-xs-12  d-flex justify-content-center" style={{ maxWidth: "100%" }}>
@@ -303,6 +308,7 @@ function Quizcreate(props) {
 									id="optionA"
 									value={optionA}
 									onChange={(event) => ChangeHandler(setOptionA, event)}
+									inputProps={{ maxLength: 80 }}
 								/>
 							</span>
 						</div>
@@ -315,6 +321,7 @@ function Quizcreate(props) {
 									id="optionB"
 									value={optionB}
 									onChange={(event) => ChangeHandler(setOptionB, event)}
+									inputProps={{ maxLength: 80 }}
 								/>
 							</span>
 						</div>
@@ -327,6 +334,7 @@ function Quizcreate(props) {
 									id="optionC"
 									value={optionC}
 									onChange={(event) => ChangeHandler(setOptionC, event)}
+									inputProps={{ maxLength: 80 }}
 								/>
 							</span>
 						</div>
@@ -339,6 +347,7 @@ function Quizcreate(props) {
 									id="optionD"
 									value={optionD}
 									onChange={(event) => ChangeHandler(setOptionD, event)}
+									inputProps={{ maxLength: 80 }}
 								/>
 							</span>
 						</div>

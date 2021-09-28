@@ -12,16 +12,12 @@ function Footer() {
 
 			<div class="col-md-4 col-sm-6 col-xs-12" style={{ display: "flex" }}>
 				{/* <span className="row"> */}
-				<p className="col-6">
+				<p className="col-6 offset-6">
 					<a href="/policy" style={{ fontWeight: "700", fontSize: "28px" }}>
 						Privacy Policy
 					</a>
 				</p>
-				<p className="col-6">
-					<a href="#" style={{ fontWeight: "700", fontSize: "28px" }}>
-						About Us
-					</a>
-				</p>
+
 				{/* </span> */}
 			</div>
 		</div>

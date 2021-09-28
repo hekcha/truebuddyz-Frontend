@@ -119,8 +119,6 @@ function Quizshow(props) {
 			</tr>
 		);
 	}
-	//text-capitalize me show hoga name ka
-	// hover effect daalna hai card me
 	if (quizResp.length)
 		return (
 			<div className={classes.table}>

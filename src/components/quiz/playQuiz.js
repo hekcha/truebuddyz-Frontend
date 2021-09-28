@@ -215,7 +215,7 @@ function Playquiz(props) {
 						<QueNumber que={ans.length} />
 					</div>
 					<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}`, marginTop: "0" }}>
-						<textarea className={`question ${classes.question}`} value={que[`que${i + 1}`]} disabled />
+						<textarea className={`question ${classes.question}`} value={que[`que${i + 1}`]}  disabled />
 						<br />
 						<div className={`row ${classes.parentOption}`} style={{ padding: "0", margin: "0", maxWidth: "100%" }}>
 							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
