@@ -20,6 +20,8 @@ function EachResponse(props) {
 		})
 		.then((resp) => resp.json())
 		.then((res) => {
+			if(res.length===0)
+				window.location.href="/";
 			setQuizResp(res[0]);
 			setQuizCode(res[0].quizcode);
 		})
