@@ -1,3 +1,4 @@
+// have to add share option in you look like??
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
@@ -6,10 +7,20 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
-		margin: "auto",
+		margin: "10px auto",
 		width: "100%",
+		minWidth: "315px",
 		height: "60vw",
 		maxHeight: "360px",
+	},
+	messageCard: {
+		maxWidth: "675px",
+		margin: "-18px auto",
+		// backgroundColor: "black",
+		backgroundSize: "cover",
+		border: "2px",
+		borderRadius: "12px",
+		animation: `$colorChange 10000ms ${theme.transitions.easing.easeInOut} infinite `,
 	},
 	options: {
 		backgroundColor: "white",
@@ -151,119 +162,37 @@ function YouLookLike(props) {
 		);
 	else if (i <= NUMBER_OF_QUESTIONS)
 		return (
-			<div className="col-8 offset-2 row">
-				<div className="image-container">
-					<img className="thumbnail" src={randQue[i - 5][`image`]} alt="Question" />
+			<div className="text-center">
+				<div className={`${classes.imageContainer} image-container`}>
+					<img className={`${classes.thumbnail} thumbnail`} src={randQue[i - 5][`image`]} alt="Question" />
 				</div>
-				<div className="col-12 my-2 text-center">
-					<h1>{randQue[i - 5][`que`]}</h1>
+				<br />
+				<div className="text-center col-12">
+					<h1 style={{ fontWeight: "bold", width: "auto", maxWidth: "800px", textAlign: "text-center", margin: "auto" }}>
+						{" "}
+						{randQue[i - 5][`que`]}{" "}
+					</h1>
 				</div>
-				<Card
-					style={{
-						minWidth: "250px",
-						maxWidth: "400px",
 
-						margin: "auto",
-						backgroundImage: " linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%)",
-						backgroundColor: " #00DBDE",
-						opacity: "0.5",
-						borderRadius: "20px",
-						border: "2px solid",
-					}}
-					raised
-				>
-					<Card
-						onClick={() => setI(i + 1)}
-						className="my-3"
-						style={{
-							backgroundColor: "white",
-							maxWidth: "350px",
-							minWidth: "auto",
-							// fontSize: "35px",
-							fontWeight: "600",
-							color: "black",
-							margin: "10px auto",
-							borderRadius: "15px",
-							opacity: "0.85",
-							textAlign: "center",
-							pointer: "cursor",
-							border: "2px solid black",
-						}}
-						raised
-					>
-						<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-							{randQue[i - 5][`optionA`]}
-						</h3>
-					</Card>
-					<Card
-						onClick={() => setI(i + 1)}
-						className="my-3"
-						style={{
-							backgroundColor: "white",
-							maxWidth: "350px",
-							minWidth: "auto",
-							// fontSize: "35px",
-							fontWeight: "600",
-							color: "black",
-							margin: "10px auto",
-							borderRadius: "15px",
-							opacity: "0.85",
-							textAlign: "center",
-							pointer: "cursor",
-							border: "2px solid black",
-						}}
-						raised
-					>
-						<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-							{randQue[i - 5][`optionB`]}
-						</h3>
-					</Card>
-					<Card
-						onClick={() => setI(i + 1)}
-						className="my-3"
-						style={{
-							backgroundColor: "white",
-							maxWidth: "350px",
-							minWidth: "auto",
-							// fontSize: "35px",
-							fontWeight: "600",
-							color: "black",
-							margin: "10px auto",
-							borderRadius: "15px",
-							opacity: "0.85",
-							textAlign: "center",
-							pointer: "cursor",
-							border: "2px solid black",
-						}}
-						raised
-					>
-						<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-							{randQue[i - 5][`optionC`]}
-						</h3>
-					</Card>
-					<Card
-						onClick={() => setI(i + 1)}
-						className="my-3"
-						style={{
-							backgroundColor: "white",
-							maxWidth: "350px",
-							minWidth: "auto",
-							// fontSize: "35px",
-							fontWeight: "600",
-							color: "black",
-							margin: "10px auto",
-							borderRadius: "15px",
-							opacity: "0.85",
-							textAlign: "center",
-							pointer: "cursor",
-							border: "2px solid black",
-						}}
-						raised
-					>
-						<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-							{randQue[i - 5][`optionD`]}
-						</h3>
-					</Card>
+				<Card onClick={() => setI(i + 1)} className={`${classes.options} my-3`} raised>
+					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
+						{randQue[i - 5][`optionA`]}
+					</h3>
+				</Card>
+				<Card onClick={() => setI(i + 1)} className={`${classes.options} my-3`} raised>
+					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
+						{randQue[i - 5][`optionB`]}
+					</h3>
+				</Card>
+				<Card onClick={() => setI(i + 1)} className={`${classes.options} my-3`} raised>
+					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
+						{randQue[i - 5][`optionC`]}
+					</h3>
+				</Card>
+				<Card onClick={() => setI(i + 1)} className={`${classes.options} my-3`} raised>
+					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
+						{randQue[i - 5][`optionD`]}
+					</h3>
 				</Card>
 			</div>
 		);
@@ -271,14 +200,15 @@ function YouLookLike(props) {
 	else
 		return (
 			<div style={{ textAlign: "center", margin: "auto" }}>
-				<img src={result.image} style={{ margin: "auto" }} alt="Result" />
-				<p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>You Are More Likly To- {result.name}</p>
-				<Card
-					style={{ width: "375px", margin: "auto", backgroundColor: "black", backgroundSize: "cover", border: "25px black", borderRadius: "12px" }}
-					raised
-				>
-					<p style={{ fontSize: "24px", color: "white", verticalAlign: "justify" }}>Message- {result.text}</p>
-				</Card>
+				<p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>{result.name} </p>
+				<div className={`${classes.imageContainer} image-container`}>
+					<img className=" thumbnail" src={result.image} style={{ margin: "18px auto" }} alt="Result" />
+				</div>
+				<div>
+					<Card className={classes.messageCard} raised>
+						<p style={{ fontSize: "28px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", verticalAlign: "justify" }}>{result.text}</p>
+					</Card>
+				</div>
 			</div>
 		);
 }

@@ -6,6 +6,7 @@ import rf_friends from "../assets/rf_friends.jpg";
 import Card from "../Card";
 import Trending from "./Trending";
 import Game from "./Game";
+import Footer from "./Footer";
 
 function Home(props) {
 	return (
@@ -16,8 +17,12 @@ function Home(props) {
 					<div id="main" className="div">
 						<div className="inner div">
 							<header className="header">
-								<h1 className="h1" style={{marginBottom:'0.2em'}}>Most Liked💗</h1>
-								<h2 className="h2" style={{marginBottom:'0.5em'}}>Most loved❤️‍🔥 and played🃏 Games by TrueBuddyZ Family.</h2>
+								<h1 className="h1" style={{ marginBottom: "0.2em" }}>
+									Most Liked💗
+								</h1>
+								<h2 className="h2" style={{ marginBottom: "0.5em" }}>
+									Most loved❤️‍🔥 and played🃏 Games by TrueBuddyZ Family.
+								</h2>
 							</header>
 							<section className="tiles section" style={{ marginTop: "0" }}>
 								<div id="indexrf" className="container">
@@ -35,6 +40,9 @@ function Home(props) {
 						<br />
 						<br />
 						<Game newGame={props.newGame} />
+						<br />
+						<hr />
+						<Footer />
 					</div>
 				</div>
 			</div>
