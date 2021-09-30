@@ -68,26 +68,22 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	option: {
-		marginLeft: "6.5vw",
-		marginRight: "3vw",
-		marginTop: "5px",
-		marginBottom: "5px",
 		padding: "12px 20px",
 		width: "69vw",
-		// maxHeight: "10vh",
 		minWidth: "180px",
-		maxWidth: "270px",
+		maxWidth: "90%",
 		fontSize: "22px",
 		fontFamily: "'Acme', sans-serif",
 		fontWeight: "700	",
 		lineHeight: "1.2em",
 		color: "#435560",
 		background: "#f0f0f6",
-		// border: "solid 1px dark",
 		borderRadius: "20px",
 		cursor:'pointer',
 		boxShadow:
 			"8px 8px 10px rgba( 0, 0, 0, 0.2), -8px -8px 10px rgba(255, 255, 255, 0.8), inset 6px 6px 10px rgba( 0, 0, 0, 0.2), inset -6px -6px 10px rgba(255, 255, 255, 0.8)",
+		transition: 'background 301ms ease-in-out',
+		
 	},
 	checked: {
 		color: "#22ca62",
@@ -147,7 +143,7 @@ function Playquiz(props) {
 
 	const classes = useStyles();
 	var colourPalette = ["#55E6C1", "#FD7272", "#FEA47F", "#25CCF7", "#EAB543", "#FC427B", "#2C3A47", "#ffa801"];
-
+	var opt = ["optionA", "optionB", "optionC", "optionD"]
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/quiz/que/?code=${props.code}`, {
 			method: "GET",
@@ -199,10 +195,25 @@ function Playquiz(props) {
 		// eslint-disable-next-line
 	}, [i]);
 
-	function Checkans(a, id) {
+	function Checkans(a) {
 		setAns([...ans, a]);
-		if (que[`ans${i + 1}`] === a) setMarks(marks + 1);
-		setI(i + 1);
+		if (que[`ans${i + 1}`] === a)
+		{
+			setMarks(marks + 1);
+			document.getElementById(opt[a]).style.backgroundColor="#5dc760";
+		}
+		else
+		{
+			document.getElementById(opt[a]).style.backgroundColor="#d96a6a";
+			document.getElementById(opt[que[`ans${i + 1}`]]).style.backgroundColor="#5dc760";
+		}
+		setTimeout(() => {
+			document.getElementById(opt[0]).style.backgroundColor="inherit";
+			document.getElementById(opt[1]).style.backgroundColor="inherit";
+			document.getElementById(opt[2]).style.backgroundColor="inherit";
+			document.getElementById(opt[3]).style.backgroundColor="inherit";
+			setI(i + 1);
+		}, 700);
 	}
 
 	function Showque() {
@@ -210,7 +221,6 @@ function Playquiz(props) {
 			return (
 				<div style={{ position: "relative", top: "110px" }}>
 					<br />
-					{/* <hr /> */}
 					<div className="row justify-content-center align-items-center">
 						<QueNumber que={ans.length} />
 					</div>
@@ -221,13 +231,12 @@ function Playquiz(props) {
 							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
 								<span
 									onClick={() => {
-										Checkans(0, "optionA");
+										Checkans(0);
 									}}
 									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
 										<textarea
-											style={{ maxWidth: "80%", margin: "0 auto" }}
 											className={`optionA ${classes.option} col-md-9 col-xs-11 `}
 											id="optionA"
 											value={que[`option${i + 1}A`]}
@@ -240,13 +249,12 @@ function Playquiz(props) {
 							<div className="col-md-6 col-xs-12  d-flex justify-content-center" style={{ maxWidth: "100%" }}>
 								<span
 									onClick={() => {
-										Checkans(1, "optionB");
+										Checkans(1);
 									}}
 									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
 										<textarea
-											style={{ maxWidth: "80%", margin: "0 auto" }}
 											className={`optionB ${classes.option} col-md-9 col-xs-11`}
 											id="optionB"
 											value={que[`option${i + 1}B`]}
@@ -259,13 +267,12 @@ function Playquiz(props) {
 							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
 								<span
 									onClick={() => {
-										Checkans(2, "optionC");
+										Checkans(2);
 									}}
 									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
 										<textarea
-											style={{ maxWidth: "80%", margin: "0 auto" }}
 											className={`optionC ${classes.option} col-md-9 col-xs-11`}
 											id="optionC"
 											value={que[`option${i + 1}C`]}
@@ -278,13 +285,12 @@ function Playquiz(props) {
 							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
 								<span
 									onClick={() => {
-										Checkans(3, "optionC");
+										Checkans(3);
 									}}
 									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
 										<textarea
-											style={{ maxWidth: "80%", margin: "0 auto" }}
 											className={`optionD ${classes.option} col-md-9 col-xs-11`}
 											id="optionD"
 											value={que[`option${i + 1}D`]}
@@ -335,12 +341,6 @@ function Playquiz(props) {
 
 	// if user already played the quiz
 	if (i === -1) window.location.href = `/quiz/view/${props.code}`;
-	// return (
-	// 	<div>
-	// 		{/* <h1>You already played the quiz</h1>
-	// 		<a href="{#}">click here</a> to see the response */}
-	// 	</div>
-	// );
 	else if (name)
 		return (
 			<div>

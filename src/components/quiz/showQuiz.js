@@ -104,7 +104,8 @@ function Quizshow(props) {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => res.length?setQuizResp(res):window.location.href="/")
+			.then((res) => setQuizResp(res))
+			// .then((res) => res.length?setQuizResp(res):window.location.href="/")
 			.catch((err) => console.log(err));
 	// eslint-disable-next-line
 	}, []);

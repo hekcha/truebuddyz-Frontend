@@ -24,10 +24,7 @@ function Card(props) {
 	return (
 		<a href={props.link}>
 			<div className={`${classes.card} card`}>
-				<div
-					className={`${classes.cardImage} card_image`}
-					// style={{ zIndex: "0", overflow: "hidden", textAlign: "center", backgroundPosition: "center" }}
-				>
+				<div className={`${classes.cardImage} card_image`}>
 					<img src={props.img} alt="Logo" />
 				</div>
 				<div
@@ -35,7 +32,7 @@ function Card(props) {
 					style={{
 						zIndex: "8",
 						textAlign: "center",
-						fontFamily: "'Architects Daughter', cursive",
+						fontFamily: "cursive",
 						fontWeight: "999",
 						webkitTextFillColor: "#fdfffe",
 						webkitTextStroke: "0.9px black",
@@ -70,7 +67,6 @@ function GradientCard(props) {
 					style={{
 						backgroundColor: "#4158D0",
 						backgroundImage: "linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
-						// opacity: "0.9",
 					}}
 				>
 					<div
@@ -78,7 +74,7 @@ function GradientCard(props) {
 							textAlign: "center",
 							webkitTextFillColor: "#fdfffe",
 							webkitTextStroke: "1px black",
-							fontFamily: "'Architects Daughter', cursive",
+							fontFamily: "cursive",
 							fontWeight: "999",
 							textShadow: "2px 2px black , 0 0 5px gray",
 							fontSize: "34px",
