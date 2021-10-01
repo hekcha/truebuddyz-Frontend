@@ -5,7 +5,7 @@ import QuizList from "./QuizList";
 
 
 function Quizhome() {
-	const [token] = useCookies(["tb-token"]);
+	const [token] = useCookies(['tb-token','tb-user']);
 	const [quizList, setQuizList] = useState([]);
 	const [isUpdate, setIsUpdate] = useState(false);
 	useEffect(() => {

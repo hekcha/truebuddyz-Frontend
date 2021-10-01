@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Quizshow(props) {
-	const [token] = useCookies(["tb-token"]);
+	const [token] = useCookies(['tb-token','tb-user']);
 	const [quizResp, setQuizResp] = useState([]);
 
 	const classes = useStyles();

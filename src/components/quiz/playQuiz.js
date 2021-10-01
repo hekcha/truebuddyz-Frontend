@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Playquiz(props) {
-	const [token] = useCookies("tb-token");
+	const [token] = useCookies(['tb-token','tb-user']);
 	const [name, setName] = useState(null);
 	const [user, setUser] = useState(null);
 	const [que, setQue] = useState(null);

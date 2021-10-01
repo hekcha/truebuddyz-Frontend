@@ -131,7 +131,7 @@ function getSteps() {
 // **********************************************//
 
 function Quizcreate(props) {
-	const [token] = useCookies("tb-token");
+	const [token] = useCookies(['tb-token','tb-user']);
 	const [username, setUsername] = useState(null);
 	const [user, setUser] = useState(null);
 	const [code, setCode] = useState("");

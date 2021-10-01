@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function HowWellUKnow(props) {
-	const [token] = useCookies(["tb-token"]);
+	const [token] = useCookies(['tb-token','tb-user']);
 	const [que, setQue] = useState(null);
 	const [i, setI] = useState(0);
 	const [result, setResult] = useState(null);

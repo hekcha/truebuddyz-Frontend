@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import Loading from "../page/Loading";
 
 function EachResponse(props) {
-	const [token] = useCookies(["tb-token"]);
+	const [token] = useCookies(['tb-token','tb-user']);
 	const [quizResp, setQuizResp] = useState(null);
 	const [quizQue, setQuizQue] = useState(null);
 	const [quizCode, setQuizCode] = useState(null);

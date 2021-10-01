@@ -3,8 +3,8 @@ import { useCookies } from "react-cookie";
 // import './feedback.css'
 function Feedback() {
 
+	const [token] = useCookies(['tb-token','tb-user']);
     const [emoji, setEmoji] = useState(0);
-	const [token] = useCookies("tb-token");
     
 
     const SelectEmoji = (i) => {

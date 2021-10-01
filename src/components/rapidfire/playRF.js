@@ -8,7 +8,8 @@ import { Button, Card, TextField } from "@material-ui/core";
 // import "./playrf.css";
 import NeonRapidfire from "../Neon/NeonRapidfire";
 import ShareLink from "../ShareLink";
-import CreateRoom from "./CreateRoom";
+import finger from "../assets/finger.gif";
+
 
 const useStyles = makeStyles((theme) => ({
 	btnGrad: {
@@ -143,7 +144,7 @@ function getRandomInt(max) {
 
 function Rapidfire(props) {
 	// firebaseAuth.signInAnonymously().catch(alert);
-	const [token] = useCookies("tb-token");
+	const [token] = useCookies(['tb-token','tb-user']);
 	const classes = useStyles();
 	// Check which colour to delete.
 	// ["#FF00E4", "#28FFBF", "#C400FF", "#F7FD04", "#FF5200", "#FA163F", "#FF00C8", "#D80E70", "#00541A"];
@@ -248,26 +249,6 @@ function Rapidfire(props) {
 		// eslint-disable-next-line
 	}, []);
 
-	// for only creating room if not created
-	useEffect(() => {
-		if (i === null) {
-			firebaseDb
-				.child("RapidFire")
-				.child(props.gameId)
-				.set(
-					{
-						queNo: 0,
-						users: "null",
-						ans: "null",
-					},
-					(err) => {
-						if (err) console.log("Error: ", err);
-					}
-				);
-		}
-		// eslint-disable-next-line
-	}, [i]);
-
 	useEffect(() => {
 		if (y === 1 && name !== "") {
 			setCountDown(
@@ -308,14 +289,10 @@ function Rapidfire(props) {
 	};
 
 	const NextQue = () => {
+		// increse the count in queNo
+		firebaseDb.child("RapidFire").child(props.gameId).child("queNo").set((i + 1) % queBank.length);
 		// Set ans to null
 		firebaseDb.child("RapidFire").child(props.gameId).child("ans").set("null");
-		// increse the count in queNo
-		firebaseDb
-			.child("RapidFire")
-			.child(props.gameId)
-			.child("queNo")
-			.set(i + 1);
 		setI((i + 1) % queBank.length);
 	};
 
@@ -326,8 +303,28 @@ function Rapidfire(props) {
 		clearTimeout(timer);
 	};
 
-	if (i === -1 || i === null) {
-		return <CreateRoom type={props.type} />;
+	if (i === -1) {
+		return (
+			<div id="playRF" style={{ margin: "40px auto" }}>
+				<NeonRapidfire types={props.type} style={{ margin: "auto",}} />
+				<br />
+				<div
+					className="card"
+					style={{border:'0', zIndex: '-1'}}
+				><img
+				src={finger} 
+				alt="finger" 
+				style={{
+					backgroundImage: finger,
+					margin: "8px auto",
+					width: "330px",
+					height: "243px",
+					borderRadius: "450px",
+				}}
+			/></div>
+				<p style={{ textAlign: "center", fontSize: "50px" }}>Loading Your Room...</p>
+			</div>
+		);
 	}
 
 	if (name === "") {
@@ -490,6 +487,7 @@ function Rapidfire(props) {
 	if (y === 3)
 		return (
 			<div id="playRF" className="mt-4" style={{ textAlign: "center" }}>
+				{ans===null?NextQue():null}
 				<div className="my-5">
 					<NeonRapidfire types={props.type} />
 				</div>

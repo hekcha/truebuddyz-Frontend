@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 const NUMBER_OF_QUESTIONS = 8 + Math.floor(Math.random() * 3);
 
 function YouLookLike(props) {
-	const [token] = useCookies(["tb-token"]);
+	const [token] = useCookies(['tb-token','tb-user']);
 	const [que, setQue] = useState(null);
 	const [randQue, setRandQue] = useState(null);
 	const [i, setI] = useState(1);
