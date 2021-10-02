@@ -70,6 +70,16 @@ const TEXT = {
 		"couple": "Play with your partner ❤️",
 		"siblings": "Play with your siblings ❤️",
 	},
+	"thisorthat": {
+		"friends": "Play With friends ❤️",
+		"couple": "Play with your partner ❤️",
+		"siblings": "Play with your siblings ❤️",
+	},
+	"wouldyourather": {
+		"friends": "Play With friends ❤️",
+		"couple": "Play with your partner ❤️",
+		"siblings": "Play with your siblings ❤️",
+	},
 };
 const QUOTES = {
 	"quiz": {
@@ -81,6 +91,16 @@ const QUOTES = {
 	"rf": {
 		"friends": "Friendship isn’t a big thing—it’s a million little things.",
 		"couple": "Relationship isn’t a big thing—it’s a million little things.",
+		"siblings": "Relationship isn’t a big thing—it’s a million little things.",
+	},
+	"thisorthat": {
+		"friends": "Friendship isn’t a big thing—it’s a million little things.",
+		"students": "Relationship isn’t a big thing—it’s a million little things.",
+		"siblings": "Relationship isn’t a big thing—it’s a million little things.",
+	},
+	"wouldyourather": {
+		"friends": "Friendship isn’t a big thing—it’s a million little things.",
+		"students": "Relationship isn’t a big thing—it’s a million little things.",
 		"siblings": "Relationship isn’t a big thing—it’s a million little things.",
 	},
 };
@@ -96,6 +116,16 @@ const SHARE = {
 		"couple": "SHARE THIS rapidfire WITH YOUR PARTNER",
 		"siblings": "SHARE THIS rapidfire WITH YOUR SIBLINGS",
 	},
+	"thisorthat": {
+		"friends": "SHARE THIS rapidfire WITH YOUR FRIENDS",
+		"students": "SHARE THIS rapidfire WITH YOUR PARTNER",
+		"siblings": "SHARE THIS rapidfire WITH YOUR SIBLINGS",
+	},
+	"wouldyourather": {
+		"friends": "SHARE THIS rapidfire WITH YOUR FRIENDS",
+		"students": "SHARE THIS rapidfire WITH YOUR PARTNER",
+		"siblings": "SHARE THIS rapidfire WITH YOUR SIBLINGS",
+	},
 };
 
 function ShareLink(props) {
@@ -103,6 +133,7 @@ function ShareLink(props) {
 
 	return (
 		<div style={{ display: "flex", justifyContent: "center", marginTop: "8vh" }}>
+			{console.log(props.link,"link")}
 			<Card className={`text-center ${classes.cardBody}`}>
 				<Card.Header className={classes.heading}>{TEXT[props.game][props.type]}</Card.Header>
 				<Card.Body style={{ height: "300px" }}>

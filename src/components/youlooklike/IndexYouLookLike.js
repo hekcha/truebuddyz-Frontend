@@ -17,8 +17,8 @@ function IndexYouLookLike() {
 			<section className="tiles section" style={{ marginTop: "30px" }}>
 				<div id="indexrf" className="container">
 					<div className="cards-list">
-						<Card img={YLL_NARUTO_main} link="/youlooklike/naruto" text="Which Naruto character you are?" />
-						<Card img={YLL_TRANS_main} link="/youlooklike/transformer" text="Which Transformer Are You? Take the Quiz to Find Out" />
+						<Card img={YLL_NARUTO_main} link="/you-look-like/naruto" text="Which Naruto character you are?" />
+						<Card img={YLL_TRANS_main} link="/you-look-like/transformer" text="Which Transformer Are You? Take the Quiz to Find Out" />
 
 						<Card link="#" img={coming_soon} text="" />
 						<Card link="#" img={coming_soon} text="" />

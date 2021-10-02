@@ -27,6 +27,7 @@ const Ul = styled.ul`
 		cursor: pointer;
 		color: black;
 		text-decoration: "none";
+		font-family: cursive;
 	}
 
 	@media (max-width: 768px) {

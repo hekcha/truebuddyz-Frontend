@@ -20,6 +20,10 @@ import IndexYouLookLike from "./components/youlooklike/IndexYouLookLike";
 import IndexHowWellUKnow from "./components/howWellUKnow/IndexHowWellUKnow";
 import HowWellUKnow from "./components/howWellUKnow/HowWellUKnow";
 import Policy from "./components/page/Policy";
+import IndexThisOrThat from "./components/TwoOptionQue/ThisOrThatIndex";
+import IndexWouldYouRather from "./components/TwoOptionQue/WouldYouRatherIndex";
+import TwoOptRoom from "./components/TwoOptionQue/CreateTwoOptionsRoom";
+import PlayTwoOpt from "./components/TwoOptionQue/PlayTwoOpt";
 
 
 function App() {
@@ -80,15 +84,23 @@ function App() {
 							<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
 							<Route path="/quiz/response/:code" exact component={(x) => <EachResponse responseCode={x.match.params.code} />} />
 
-							<Route path="/rapidfire" exact component={() => <IndexRf />} />
-							<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
-							<Route path="/rapidfire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />}/>
+							<Route path="/rapid-fire" exact component={() => <IndexRf />} />
+							<Route path="/rapid-fire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
+							<Route path="/rapid-fire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />}/>
 
-							<Route path="/youlooklike" exact component={() => <IndexYouLookLike />} />
-							<Route path="/youlooklike/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />
+							<Route path="/you-look-like" exact component={() => <IndexYouLookLike />} />
+							<Route path="/you-look-like/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />
 
-							<Route path="/howwelluknow" exact component={() => <IndexHowWellUKnow />} />
-							<Route path="/howwelluknow/:type" exact component={(x) => <HowWellUKnow type={x.match.params.type} />} />
+							<Route path="/how-well-u-know" exact component={() => <IndexHowWellUKnow />} />
+							<Route path="/how-well-u-know/:type" exact component={(x) => <HowWellUKnow type={x.match.params.type} />} />
+						
+							<Route path="/this-or-that" exact component={(x) => <IndexThisOrThat />} />
+							<Route path="/this-or-that/:type" exact component={(x) => <TwoOptRoom game="thisorthat" subGame={x.match.params.type} />} />
+							<Route path="/this-or-that/:type/:code" exact component={(x) => <PlayTwoOpt game="thisorthat" subGame={x.match.params.type} gameId={x.match.params.code} />} />
+
+							<Route path="/would-you-rather" exact component={(x) => <IndexWouldYouRather />} />
+							<Route path="/would-you-rather/:type" exact component={(x) => <TwoOptRoom game="wouldyourather" subGame={x.match.params.type} />} />
+							<Route path="/would-you-rather/:type/:code" exact component={(x) => <PlayTwoOpt game="wouldyourather" subGame={x.match.params.type} gameId={x.match.params.code} />} />
 							<Redirect to="/" />
 						</Switch>
 					</Router>

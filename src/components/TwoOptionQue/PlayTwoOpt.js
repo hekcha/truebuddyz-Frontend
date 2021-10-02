@@ -6,9 +6,9 @@ import { useCookies } from "react-cookie";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, TextField } from "@material-ui/core";
 // import "./playrf.css";
-import NeonRapidfire from "../Neon/NeonRapidfire";
 import ShareLink from "../ShareLink";
 import finger from "../assets/finger.gif";
+import NeonTwoOpt from "../Neon/NeonTwoOpt";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -143,7 +143,7 @@ function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
 }
 
-function Rapidfire(props) {
+function PlayTwoOpt(props) {
 	// firebaseAuth.signInAnonymously().catch(alert);
 	const [token] = useCookies(['tb-token','tb-user']);
 	const classes = useStyles();
@@ -183,16 +183,35 @@ function Rapidfire(props) {
 	const [timer, startTimer] = useState(null);
 	const [countdown, setCountDown] = useState(null);
 
-	var ALLOWED_PAGES = ["friends", "couple", "siblings"];
+	var ALLOWED_GAMES = ["wouldyourather", "thisorthat"];
+    var ALLOWED_PAGES = {
+        "wouldyourather":["friends", "students"],
+        "thisorthat":["friends", "students"],
+    }
 
-	useEffect(() => {
-		for (var i = 0; i < ALLOWED_PAGES.length; i++) {
-			if (ALLOWED_PAGES[i] === props.type) break;
-			if (i === ALLOWED_PAGES.length - 1) window.location.href = "/"; // SHOW 404 page
+    var link;
+    if(props.game==='wouldyourather')
+        link =`${process.env.REACT_APP_URL}/would-you-rather/${props.subGame}/${props.gameId}`
+    if(props.game==='thisorthat')
+        link =`${process.env.REACT_APP_URL}/this-or-that/${props.subGame}/${props.gameId}`
+
+    useEffect(() => {
+
+		for (var i = 0; i < ALLOWED_GAMES.length; i++) {
+			if (ALLOWED_GAMES[i] === props.game)
+            {
+                for(var j = 0; j < ALLOWED_PAGES[props.game].length; j++)
+                {
+                    if(ALLOWED_PAGES[props.game][j] === props.subGame) break;
+                    if(j === ALLOWED_PAGES[props.game].length - 1) window.location.href = "/";
+                }
+                break;
+            }
+			if (i === ALLOWED_GAMES.length - 1) window.location.href = "/"; // SHOW 404 page
 		}
 
 		// fetch questions
-		fetch(`${process.env.REACT_APP_API_URL}/rf/que/?category=${props.type}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/twooptions/${props.game}/?category=${props.subGame}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -200,17 +219,14 @@ function Rapidfire(props) {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => setQueBank(res))
+			.then((res) => {setQueBank(res);console.log(res)})
 			.catch((err) => console.log(err));
 
-		// monitor changes in RapidFire -> GameID -> users (in firebase)
-		firebaseDb
-			.child("RapidFire")
-			.child(props.gameId)
-			.child("users")
-			.on(
+		// monitor changes in props.game -> GameID -> users (in firebase)
+		firebaseDb.child(props.game).child(props.gameId).child("users").on(
 				"value",
 				(snapshot) => {
+                    console.log(snapshot.val())
 					setUsers(snapshot.val());
 				},
 				(errorObject) => {
@@ -218,28 +234,22 @@ function Rapidfire(props) {
 				}
 			);
 
-		// monitor changes in RapidFire -> GameID -> ans (in firebase)
-		firebaseDb
-			.child("RapidFire")
-			.child(props.gameId)
-			.child("ans")
-			.on(
+		// monitor changes in props.game -> GameID -> ans (in firebase)
+		firebaseDb.child(props.game).child(props.gameId).child("ans").on(
 				"value",
 				(snapshot) => {
+                    console.log(snapshot.val())
 					setAns(snapshot.val());
 				},
 				(errorObject) => {
 					console.log("The read failed: " + errorObject.name);
 				}
 			);
-		// monitor changes in RapidFire -> GameID -> queNo (in firebase)
-		firebaseDb
-			.child("RapidFire")
-			.child(props.gameId)
-			.child("queNo")
-			.on(
+		// monitor changes in props.game -> GameID -> queNo (in firebase)
+		firebaseDb.child(props.game).child(props.gameId).child("queNo").on(
 				"value",
 				(snapshot) => {
+                    console.log(snapshot.val())
 					setI(snapshot.val());
 					setY(1);
 				},
@@ -270,36 +280,36 @@ function Rapidfire(props) {
 
 	const Submit = () => {
 		var nme = document.getElementById("name").value;
-		var formdata = new FormData();
-		formdata.append("category", props.type);
-		formdata.append("roomId", props.gameId);
-		formdata.append("playerId", token["tb-user"]);
-		formdata.append("playerName", nme);
+		// var formdata = new FormData();
+		// formdata.append("category", props.type);
+		// formdata.append("roomId", props.gameId);
+		// formdata.append("playerId", token["tb-user"]);
+		// formdata.append("playerName", nme);
 
-		fetch(`${process.env.REACT_APP_API_URL}/rf/room/`, {
-			method: "POST",
-			body: formdata,
-			headers: {
-				"Authorization": `Token ${token["tb-token"]}`,
-			},
-		}).catch((err) => console.log(err));
+		// fetch(`${process.env.REACT_APP_API_URL}/rf/room/`, {
+		// 	method: "POST",
+		// 	body: formdata,
+		// 	headers: {
+		// 		"Authorization": `Token ${token["tb-token"]}`,
+		// 	},
+		// }).catch((err) => console.log(err));
 
-		firebaseDb.child("RapidFire").child(props.gameId).child("users").child(token["tb-user"]).set(nme);
+		firebaseDb.child(props.game).child(props.gameId).child("users").child(token["tb-user"]).set(nme);
 		setName(nme);
 		setY(0);
 	};
 
 	const NextQue = () => {
 		// increse the count in queNo
-		firebaseDb.child("RapidFire").child(props.gameId).child("queNo").set((i + 1) % queBank.length);
+		firebaseDb.child(props.game).child(props.gameId).child("queNo").set((i + 1) % queBank.length);
 		// Set ans to null
-		firebaseDb.child("RapidFire").child(props.gameId).child("ans").set("null");
-		setI((i + 1) % queBank.length);
+		firebaseDb.child(props.game).child(props.gameId).child("ans").set("null");
+		// setI((i + 1) % queBank.length);
 	};
 
 	const AnsChoice = (item) => {
 		// post answer
-		firebaseDb.child("RapidFire").child(props.gameId).child("ans").child(name).set(item);
+		firebaseDb.child(props.game).child(props.gameId).child("ans").child(name).set(item);
 		setY(2);
 		clearTimeout(timer);
 	};
@@ -307,7 +317,7 @@ function Rapidfire(props) {
 	if (i === -1) {
 		return (
 			<div id="playRF" style={{ margin: "40px auto" }}>
-				<NeonRapidfire types={props.type} style={{ margin: "auto",}} />
+                <NeonTwoOpt game={props.game} />
 				<br />
 				<div
 					className="card"
@@ -331,7 +341,7 @@ function Rapidfire(props) {
 	if (name === "") {
 		return (
 			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
-				<NeonRapidfire types={props.type} />
+                <NeonTwoOpt game={props.game} />
 				<Card className={classes.card} raised>
 					<p className="my-3" style={{ fontSize: "34px", fontWeight: "00", color: "black" }}>
 						Enter Your Name
@@ -350,7 +360,7 @@ function Rapidfire(props) {
 	if (y === 0) {
 		return (
 			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
-				<NeonRapidfire types={props.type} />
+                <NeonTwoOpt game={props.game} />
 				<br />
 				<Button variant="contained" color="primary" onClick={() => setY(1)}>
 					Start
@@ -396,7 +406,7 @@ function Rapidfire(props) {
 					})}
 				</Card>
 				<br />
-				<ShareLink game="rf" type={props.type} link={`${process.env.REACT_APP_URL}/rapid-fire/${props.type}/${props.gameId}`} />
+				<ShareLink game={props.game} type={props.subGame} link={link} />
 				<h1 className="my-4">Instructions📖</h1>
 			</div>
 		);
@@ -406,9 +416,8 @@ function Rapidfire(props) {
 	if (y === 1) {
 		return (
 			<div id="playRF" className="text-center mt-5" style={{ margin: "0px auto" }}>
-				{/* <h1 className={classes.heading1}>{props.type} Rapidfire</h1> */}
 				<div className="my-2">
-					<NeonRapidfire types={props.type} style={{ marginY: "25px" }} />
+                    <NeonTwoOpt game={props.game} />
 				</div>
 				<br />
 				<h3 className="my-2">
@@ -427,18 +436,20 @@ function Rapidfire(props) {
 					<br />
 					<hr />
 					<div className="col-8 offset-2 row">
-						<div style={{ textAlign: "center", marginX: "0" }}>
-							<h3>{queBank[parseInt(i)]["que"]}</h3>
+                        <div style={{ textAlign: "center", marginX: "0" }}>
+							{/* <h3>{queBank[parseInt(i)]["que"]}</h3> */}
+                            {console.log(queBank[parseInt(i)],' ' ,i)}
 						</div>
-						{Object.values(users).map((item) => {
-							return (
-								<Card onClick={() => AnsChoice(item)} className={classes.options} id={item} style={{}} raised>
-									<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-										{item}
-									</h3>
-								</Card>
-							);
-						})}
+                        <Card onClick={() => AnsChoice(queBank[parseInt(i)]['optionA'])} className={classes.options} style={{}} raised>
+                            <h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+                                {queBank[parseInt(i)]['optionA']}
+                            </h3>
+                        </Card>
+                        <Card onClick={() => AnsChoice(queBank[parseInt(i)]['optionB'])} className={classes.options} style={{}} raised>
+                            <h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+                            {queBank[parseInt(i)]['optionB']}
+                            </h3>
+                        </Card>
 					</div>
 				</div>
 				<button className={`${classes.btnGrad}`} onClick={() => AnsChoice("Skipped")} style={{ width: "80px" }}>
@@ -452,7 +463,7 @@ function Rapidfire(props) {
 		if (ans != null && Object.values(users).length === Object.values(ans).length) setY(3);
 		return (
 			<div className="text-center m-auto">
-				<NeonRapidfire types={props.type} />
+                <NeonTwoOpt game={props.game} />
 				<br />
 				<div className="m-2">
 					<h1 style={{ fontFamily: "'ZCOOL KuaiLe', cursive" }}>Wait for your friend's response</h1>
@@ -460,6 +471,7 @@ function Rapidfire(props) {
 						these people voted✔️
 					</h3>
 					<ul>
+                        {console.log(ans)}
 						{Object.getOwnPropertyNames(ans).map((item) => {
 							return (
 								<Card
@@ -490,7 +502,7 @@ function Rapidfire(props) {
 			<div id="playRF" className="mt-4" style={{ textAlign: "center" }}>
 				{ans===null?NextQue():null}
 				<div className="my-5">
-					<NeonRapidfire types={props.type} />
+                    <NeonTwoOpt game={props.game} />
 				</div>
 				<div>
 					<table style={{ margin: "auto", justifyContent: "center" }}>
@@ -519,7 +531,10 @@ function Rapidfire(props) {
 				</button>
 			</div>
 		);
-	window.location.href = `/rapid-fire`;
+	// window.location.href = `/rapid-fire`;
+    <div>
+        test
+    </div>
 }
 
-export default Rapidfire;
+export default PlayTwoOpt;

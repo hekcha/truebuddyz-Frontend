@@ -34,7 +34,7 @@ function RfCreater(props) {
 					if(err)
 						console.log("Error: ", err);
 					else
-						window.location.href = `/rapidfire/${props.type}/${gameId}`;
+						window.location.href = `/rapid-fire/${props.type}/${gameId}`;
 				}
 			);
 	};
