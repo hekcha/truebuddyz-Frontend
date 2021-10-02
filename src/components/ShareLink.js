@@ -133,7 +133,6 @@ function ShareLink(props) {
 
 	return (
 		<div style={{ display: "flex", justifyContent: "center", marginTop: "8vh" }}>
-			{console.log(props.link,"link")}
 			<Card className={`text-center ${classes.cardBody}`}>
 				<Card.Header className={classes.heading}>{TEXT[props.game][props.type]}</Card.Header>
 				<Card.Body style={{ height: "300px" }}>

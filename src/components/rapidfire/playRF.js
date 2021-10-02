@@ -294,7 +294,7 @@ function Rapidfire(props) {
 		firebaseDb.child("RapidFire").child(props.gameId).child("queNo").set((i + 1) % queBank.length);
 		// Set ans to null
 		firebaseDb.child("RapidFire").child(props.gameId).child("ans").set("null");
-		setI((i + 1) % queBank.length);
+		// setI((i + 1) % queBank.length);
 	};
 
 	const AnsChoice = (item) => {
@@ -412,7 +412,7 @@ function Rapidfire(props) {
 				</div>
 				<br />
 				<h3 className="my-2">
-					Participants<i class="fas fa-circle fa-xs" style={{ color: "#05b714" }}></i>: {Object.values(users).length}{" "}
+					<i class="fas fa-circle fa-xs" style={{ color: "#05b714" }}></i> Online: {Object.values(users).length}{" "}
 				</h3>
 				<br />
 				<div className="row">

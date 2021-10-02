@@ -81,7 +81,6 @@ function TwoOptRoom(props) {
 		);
 	return (
 		<div className="text-center">
-            {console.log(props.game,props.subGame)}
 			<span className="row " style={{ display: "inline", flexDirection: "row" }}>
                 <NeonTwoOpt game={props.game} />
 			</span>

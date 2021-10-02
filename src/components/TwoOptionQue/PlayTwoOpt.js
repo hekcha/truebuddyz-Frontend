@@ -219,14 +219,13 @@ function PlayTwoOpt(props) {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => {setQueBank(res);console.log(res)})
+			.then((res) => setQueBank(res))
 			.catch((err) => console.log(err));
 
 		// monitor changes in props.game -> GameID -> users (in firebase)
 		firebaseDb.child(props.game).child(props.gameId).child("users").on(
 				"value",
 				(snapshot) => {
-                    console.log(snapshot.val())
 					setUsers(snapshot.val());
 				},
 				(errorObject) => {
@@ -238,7 +237,6 @@ function PlayTwoOpt(props) {
 		firebaseDb.child(props.game).child(props.gameId).child("ans").on(
 				"value",
 				(snapshot) => {
-                    console.log(snapshot.val())
 					setAns(snapshot.val());
 				},
 				(errorObject) => {
@@ -249,7 +247,6 @@ function PlayTwoOpt(props) {
 		firebaseDb.child(props.game).child(props.gameId).child("queNo").on(
 				"value",
 				(snapshot) => {
-                    console.log(snapshot.val())
 					setI(snapshot.val());
 					setY(1);
 				},
@@ -280,19 +277,19 @@ function PlayTwoOpt(props) {
 
 	const Submit = () => {
 		var nme = document.getElementById("name").value;
-		// var formdata = new FormData();
-		// formdata.append("category", props.type);
-		// formdata.append("roomId", props.gameId);
-		// formdata.append("playerId", token["tb-user"]);
-		// formdata.append("playerName", nme);
+		var formdata = new FormData();
+		formdata.append("game", props.game);
+		formdata.append("subGame", props.subGame);
+		formdata.append("user", token["tb-user"]);
+		formdata.append("text", props.gameId);
 
-		// fetch(`${process.env.REACT_APP_API_URL}/rf/room/`, {
-		// 	method: "POST",
-		// 	body: formdata,
-		// 	headers: {
-		// 		"Authorization": `Token ${token["tb-token"]}`,
-		// 	},
-		// }).catch((err) => console.log(err));
+		fetch(`${process.env.REACT_APP_API_URL}/core/data/`, {
+			method: "POST",
+			body: formdata,
+			headers: {
+				"Authorization": `Token ${token["tb-token"]}`,
+			},
+		}).catch((err) => console.log(err));
 
 		firebaseDb.child(props.game).child(props.gameId).child("users").child(token["tb-user"]).set(nme);
 		setName(nme);
@@ -421,7 +418,7 @@ function PlayTwoOpt(props) {
 				</div>
 				<br />
 				<h3 className="my-2">
-					Participants<i class="fas fa-circle fa-xs" style={{ color: "#05b714" }}></i>: {Object.values(users).length}{" "}
+				<i class="fas fa-circle fa-xs" style={{ color: "#05b714" }}></i> Online: {Object.values(users).length}{" "}
 				</h3>
 				<br />
 				<div className="row">
@@ -436,10 +433,11 @@ function PlayTwoOpt(props) {
 					<br />
 					<hr />
 					<div className="col-8 offset-2 row">
-                        <div style={{ textAlign: "center", marginX: "0" }}>
-							{/* <h3>{queBank[parseInt(i)]["que"]}</h3> */}
-                            {console.log(queBank[parseInt(i)],' ' ,i)}
-						</div>
+						{props.game==='wouldyourather'?
+							<div style={{ textAlign: "center", marginX: "0" }}>
+								<h3>{queBank[parseInt(i)]['que']}</h3>
+							</div>
+						:null}
                         <Card onClick={() => AnsChoice(queBank[parseInt(i)]['optionA'])} className={classes.options} style={{}} raised>
                             <h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
                                 {queBank[parseInt(i)]['optionA']}
@@ -471,7 +469,6 @@ function PlayTwoOpt(props) {
 						these people voted✔️
 					</h3>
 					<ul>
-                        {console.log(ans)}
 						{Object.getOwnPropertyNames(ans).map((item) => {
 							return (
 								<Card
