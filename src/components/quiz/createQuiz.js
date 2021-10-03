@@ -289,7 +289,7 @@ function Quizcreate(props) {
 				<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
 					<br />
 					<hr />
-					inputProps={{ maxLength: 18 }}
+					
 					<textarea
 						className={`question ${classes.question}`}
 						value={que}
