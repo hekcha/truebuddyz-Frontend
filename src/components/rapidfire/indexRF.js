@@ -14,9 +14,9 @@ function IndexRf() {
 			<section className="tiles section" style={{marginTop:'0'}}>
 				<div id="indexrf" className="container">
 					<div className="cards-list">
-						<Card link="/rapidfire/friends" img={friends} text="Friend's RapidFire" />
-						<Card link="/rapidfire/couple" img={couples} text="Couple's RapidFire" />
-						<Card link="/rapidfire/siblings" img={siblings} text="Siblings's RapidFire" />
+						<Card link="/rapid-fire/friends" img={friends} text="Friend's RapidFire" />
+						<Card link="/rapid-fire/couple" img={couples} text="Couple's RapidFire" />
+						<Card link="/rapid-fire/siblings" img={siblings} text="Siblings's RapidFire" />
 						<Card link="#" img={coming_soon} text="" />
 						<Card link="#" img={coming_soon} text="" />
 						<Card link="#" img={coming_soon} text="" />

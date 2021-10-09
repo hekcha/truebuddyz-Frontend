@@ -1,6 +1,11 @@
-import { useEffect } from "react";
+// eslint-disable-next-line
+import * as firebase from "firebase"; // important
+import firebaseDb from "../../firebase";
+import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import NeonRapidfire from "../Neon/NeonRapidfire";
+import finger from "../assets/finger.gif";
+
 
 function RfCreater(props) {
 	var ALLOWED_PAGES = ["friends", "couple", "siblings"];
@@ -13,12 +18,48 @@ function RfCreater(props) {
 	// eslint-disable-next-line
 	}, []);
 
+	const [isLoading, setIsLoading] = useState(false)
 	const Redirect = () => {
+		setIsLoading(true);
 		var date = new Date();
 		var gameId = date.getTime().toString(31);
-		window.location.href = `/rapidfire/${props.type}/${gameId}`;
+		var x=Math.floor(Math.random()*50);
+		firebaseDb.child("RapidFire").child(gameId).set(
+				{
+					queNo: x,
+					users: "null",
+					ans: "null",
+				},
+				(err) => {
+					if(err)
+						console.log("Error: ", err);
+					else
+						window.location.href = `/rapid-fire/${props.type}/${gameId}`;
+				}
+			);
 	};
-
+	if(isLoading)
+		return (
+			<div id="playRF" style={{ margin: "40px auto" }}>
+				<NeonRapidfire types={props.type} style={{ margin: "auto",}} />
+				<br />
+				<div
+					className="card"
+					style={{border:'0', zIndex: '-1'}}
+				><img
+				src={finger} 
+				alt="finger" 
+				style={{
+					backgroundImage: finger,
+					margin: "8px auto",
+					width: "330px",
+					height: "243px",
+					borderRadius: "450px",
+				}}
+			/></div>
+				<p style={{ textAlign: "center", fontSize: "50px" }}>Creating A Room For You...</p>
+			</div>
+		);
 	return (
 		<div className="text-center">
 			<span className="row " style={{ display: "inline", flexDirection: "row" }}>

@@ -5,7 +5,7 @@ import QuizList from "./QuizList";
 
 
 function Quizhome() {
-	const [token] = useCookies(["tb-token"]);
+	const [token] = useCookies(['tb-token','tb-user']);
 	const [quizList, setQuizList] = useState([]);
 	const [isUpdate, setIsUpdate] = useState(false);
 	useEffect(() => {
@@ -25,7 +25,7 @@ function Quizhome() {
 	var options = { year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric" };
 	
 	const Delete = (item) => {
-		if(window.confirm("del"))
+		if(window.confirm("Are you sure you want to delete"))
 		{
 			fetch(`${process.env.REACT_APP_API_URL}/quiz/que/${item.id}/`, {
 				method: "PUT",

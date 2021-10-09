@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 
 function Contribution() {
 
-    const [token] = useCookies("tb-token");
+	const [token] = useCookies(['tb-token','tb-user']);
 
     const Send = () => {
         if(document.getElementById("message").value !== "")

@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import Loading from "../page/Loading";
 
 function EachResponse(props) {
-	const [token] = useCookies(["tb-token"]);
+	const [token] = useCookies(['tb-token','tb-user']);
 	const [quizResp, setQuizResp] = useState(null);
 	const [quizQue, setQuizQue] = useState(null);
 	const [quizCode, setQuizCode] = useState(null);
@@ -87,16 +87,16 @@ function EachResponse(props) {
 	if (quizQue&&user)
 		return (
 			<div className="container">
-				<h1>{quizResp.name} responses</h1> <br />
-				<h3>{quizResp.name} Score = {quizResp.marks}</h3>
+				<h1 style={{textTransform:'capitalize'}}>{quizResp.name} responses</h1> <br />
+				<h3 style={{textTransform:'capitalize'}}>{quizResp.name} Score = {quizResp.marks}</h3>
 				<div class="table-wrapper ">
 					<table class="fl-table" style={{fontSize:'2rem'}}>
 						<thead>
 							<tr>
-								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>question</th>
-								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>correct ans</th>
-								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>answer</th>
-								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>status</th>
+								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>Questions</th>
+								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>Correct Answer</th>
+								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>Answer</th>
+								<th style={{ border: "1px solid black",fontSize:'1.2rem' }}>Status</th>
 							</tr>
 						</thead>
 						<tbody>

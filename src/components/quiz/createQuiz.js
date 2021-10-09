@@ -131,7 +131,7 @@ function getSteps() {
 // **********************************************//
 
 function Quizcreate(props) {
-	const [token] = useCookies("tb-token");
+	const [token] = useCookies(["tb-token", "tb-user"]);
 	const [username, setUsername] = useState(null);
 	const [user, setUser] = useState(null);
 	const [code, setCode] = useState("");
@@ -222,8 +222,7 @@ function Quizcreate(props) {
 				headers: {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
-			})
-			.catch((err) => console.log(err));
+			}).catch((err) => console.log(err));
 		}
 		// eslint-disable-next-line
 	}, [j]);
@@ -289,7 +288,6 @@ function Quizcreate(props) {
 				<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}` }}>
 					<br />
 					<hr />
-					
 					<textarea
 						className={`question ${classes.question}`}
 						value={que}

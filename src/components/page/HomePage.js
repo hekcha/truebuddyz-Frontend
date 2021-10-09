@@ -29,7 +29,7 @@ function Home(props) {
 									<div className="cards-list">
 										<Card link="/quiz/friends" img={quiz_friends} text="Friend's Quiz" />
 										<Card link="/quiz/couple" img={quiz_couples} text="Couple's Quiz" />
-										<Card link="/rapidfire/friends" img={rf_friends} text="Friend's RapidFire" />
+										<Card link="/rapid-fire/friends" img={rf_friends} text="Friend's RapidFire" />
 									</div>
 								</div>
 							</section>

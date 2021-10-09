@@ -20,10 +20,12 @@ function Game(props) {
 					<div id="indexrf" className="container">
 						<div className="cards-list">
 							<Card link="/quiz" img={quiz} text="" />
-							<Card link="/rapidfire" img={rf} text="RapidFire" />
+							<Card link="/rapid-fire" img={rf} text="RapidFire" />
 
-							<GradientCard link="/howwelluknow" text="How Well You Know" />
-							<GradientCard link="/youlooklike" text="you look like" />
+							<GradientCard link="/how-well-u-know" text="How Well You Know" />
+							<GradientCard link="/you-look-like" text="You look like" />
+							<GradientCard link="/this-or-that" text="this or that" />
+							<GradientCard link="/would-you-rather" text="would you rather" />
 						</div>
 					</div>
 				</section>

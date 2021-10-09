@@ -2,7 +2,7 @@ import { useCookies } from "react-cookie";
 // import "./css/rating.css";
 
 function Rating() {
-	const [token] = useCookies("tb-token");
+	const [token] = useCookies(['tb-token','tb-user']);
 	
 	const Submit = () => {
 		var ele = document.getElementsByName('ratingRadio');

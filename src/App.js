@@ -1,45 +1,33 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Home from "./components/page/HomePage";
 import Navbar from "./components/Nav/Navbar";
-import { LoadingReload } from "./components/page/Loading";
 import Game from "./components/page/Game";
+import CreateQuiz from "./components/quiz/createQuiz";
+import Playquiz from "./components/quiz/playQuiz";
+import Quizhome from "./components/quiz/quizHome";
+import Quizshow from "./components/quiz/showQuiz";
+import EachResponse from "./components/quiz/eachResponse";
+import RfCreater from "./components/rapidfire/RfCreater";
+import Rapidfire from "./components/rapidfire/playRF";
+import IndexRf from "./components/rapidfire/indexRF";
+import YouLookLike from "./components/youlooklike/YouLookLike";
+import Feedback from "./components/page/Feedback";
+import Contribution from "./components/page/Contribution";
+import IndexYouLookLike from "./components/youlooklike/IndexYouLookLike";
+import IndexHowWellUKnow from "./components/howWellUKnow/IndexHowWellUKnow";
+import HowWellUKnow from "./components/howWellUKnow/HowWellUKnow";
+import Policy from "./components/page/Policy";
+import IndexThisOrThat from "./components/TwoOptionQue/ThisOrThatIndex";
+import IndexWouldYouRather from "./components/TwoOptionQue/WouldYouRatherIndex";
+import TwoOptRoom from "./components/TwoOptionQue/CreateTwoOptionsRoom";
+import PlayTwoOpt from "./components/TwoOptionQue/PlayTwoOpt";
 
-// import CreateQuiz from "./components/quiz/createQuiz";
-// import Playquiz from "./components/quiz/playQuiz";
-// import Quizhome from "./components/quiz/quizHome";
-// import Quizshow from "./components/quiz/showQuiz";
-// import EachResponse from "./components/quiz/eachResponse";
-// import RfCreater from "./components/rapidfire/RfCreater";
-// import Rapidfire from "./components/rapidfire/playRF";
-// import IndexRf from "./components/rapidfire/indexRF";
-// import YouLookLike from "./components/youlooklike/YouLookLike";
-// import Feedback from "./components/page/Feedback";
-// import Contribution from "./components/page/Contribution";
-// import IndexYouLookLike from "./components/youlooklike/IndexYouLookLike";
-// import IndexHowWellUKnow from "./components/howWellUKnow/IndexHowWellUKnow";
-// import HowWellUKnow from "./components/howWellUKnow/HowWellUKnow";
-
-const CreateQuiz = lazy(() => import("./components/quiz/createQuiz"));
-const Playquiz = lazy(() => import("./components/quiz/playQuiz"));
-const Quizhome = lazy(() => import("./components/quiz/quizHome"));
-const Quizshow = lazy(() => import("./components/quiz/showQuiz"));
-const EachResponse = lazy(() => import("./components/quiz/eachResponse"));
-const RfCreater = lazy(() => import("./components/rapidfire/RfCreater"));
-const Rapidfire = lazy(() => import("./components/rapidfire/playRF"));
-const IndexRf = lazy(() => import("./components/rapidfire/indexRF"));
-const YouLookLike = lazy(() => import("./components/youlooklike/YouLookLike"));
-const Feedback = lazy(() => import("./components/page/Feedback"));
-const Contribution = lazy(() => import("./components/page/Contribution"));
-const IndexYouLookLike = lazy(() => import("./components/youlooklike/IndexYouLookLike"));
-const IndexHowWellUKnow = lazy(() => import("./components/howWellUKnow/IndexHowWellUKnow"));
-const HowWellUKnow = lazy(() => import("./components/howWellUKnow/HowWellUKnow"));
-const Policy = lazy(() => import("./components/page/Policy"));
 
 function App() {
-	const [token] = useCookies("tb-token");
+	const [token,setToken] = useCookies(['tb-token','tb-user']);
 	const [trand, setTrand] = useState(null);
 	const [newGame, setNewGame] = useState(null);
 
@@ -56,9 +44,8 @@ function App() {
 			})
 				.then((resp) => resp.json())
 				.then((res) => {
-					document.cookie = "tb-token=" + res + "; expires=" + date.toGMTString() + ";path=/;";
-					document.cookie = "tb-user=" + form.get("username") + "; expires=" + date.toGMTString() + ";path=/;";
-					// window.location.reload();
+					setToken("tb-token",res,{expires:date});
+					setToken("tb-user",form.get("username"),{expires:date});
 				})
 				.catch((err) => console.log(err));
 		}
@@ -87,37 +74,33 @@ function App() {
 						<Switch>
 							<Route path="/" exact component={() => <Home trand={trand} newGame={newGame} />} />
 							<Route path="/games" exact component={() => <Game trand={trand} newGame={newGame} />} />
-							<Suspense fallback={<div />}>
-								<Route path="/feedback" exact component={() => <Feedback />} />
-								<Route path="/contribution" exact component={() => <Contribution />} />
-								<Route path="/policy" exact component={() => <Policy />} />
-								<Route path="/rapidfire" exact component={() => <IndexRf />} />
-								<Route path="/youlooklike" exact component={() => <IndexYouLookLike />} />
-								<Route path="/howwelluknow" exact component={() => <IndexHowWellUKnow />} />
-								{token["tb-token"] ? (
-									<div>
-										<Route path="/quiz" exact component={() => <Quizhome />} />
-										<Route path="/quiz/:type" exact component={(x) => <CreateQuiz type={x.match.params.type} />} />
-										<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />
-										<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
-										<Route path="/quiz/response/:code" exact component={(x) => <EachResponse responseCode={x.match.params.code} />} />
+							<Route path="/feedback" exact component={() => <Feedback />} />
+							<Route path="/contribution" exact component={() => <Contribution />} />
+							<Route path="/policy" exact component={() => <Policy />} />
 
-										<Route path="/rapidfire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
+							<Route path="/quiz" exact component={() => <Quizhome />} />
+							<Route path="/quiz/:type" exact component={(x) => <CreateQuiz type={x.match.params.type} />} />
+							<Route path="/quiz/play/:code" exact component={(x) => <Playquiz code={x.match.params.code} />} />
+							<Route path="/quiz/view/:code" exact component={(x) => <Quizshow code={x.match.params.code} />} />
+							<Route path="/quiz/response/:code" exact component={(x) => <EachResponse responseCode={x.match.params.code} />} />
 
-										<Route
-											path="/rapidfire/:type/:code"
-											exact
-											component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />}
-										/>
-										<Route path="/youlooklike/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />
+							<Route path="/rapid-fire" exact component={() => <IndexRf />} />
+							<Route path="/rapid-fire/:type" exact component={(x) => <RfCreater type={x.match.params.type} />} />
+							<Route path="/rapid-fire/:type/:code" exact component={(x) => <Rapidfire gameId={x.match.params.code} type={x.match.params.type} />}/>
 
-										<Route path="/howwelluknow/:type" exact component={(x) => <HowWellUKnow type={x.match.params.type} />} />
-										{/* <Route path="/*" component={() => window.location.href="/"} /> */}
-									</div>
-								) : (
-									<Route path="/*" exact component={() => <LoadingReload />} />
-								)}
-							</Suspense>
+							<Route path="/you-look-like" exact component={() => <IndexYouLookLike />} />
+							<Route path="/you-look-like/:type" exact component={(x) => <YouLookLike type={x.match.params.type} />} />
+
+							<Route path="/how-well-u-know" exact component={() => <IndexHowWellUKnow />} />
+							<Route path="/how-well-u-know/:type" exact component={(x) => <HowWellUKnow type={x.match.params.type} />} />
+						
+							<Route path="/this-or-that" exact component={(x) => <IndexThisOrThat />} />
+							<Route path="/this-or-that/:type" exact component={(x) => <TwoOptRoom game="thisorthat" subGame={x.match.params.type} />} />
+							<Route path="/this-or-that/:type/:code" exact component={(x) => <PlayTwoOpt game="thisorthat" subGame={x.match.params.type} gameId={x.match.params.code} />} />
+
+							<Route path="/would-you-rather" exact component={(x) => <IndexWouldYouRather />} />
+							<Route path="/would-you-rather/:type" exact component={(x) => <TwoOptRoom game="wouldyourather" subGame={x.match.params.type} />} />
+							<Route path="/would-you-rather/:type/:code" exact component={(x) => <PlayTwoOpt game="wouldyourather" subGame={x.match.params.type} gameId={x.match.params.code} />} />
 							<Redirect to="/" />
 						</Switch>
 					</Router>
