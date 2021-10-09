@@ -61,9 +61,7 @@ const NUMBER_OF_QUESTIONS = 8 + Math.floor(Math.random() * 3);
 function YouLookLike(props) {
 	const [token] = useCookies(['tb-token','tb-user']);
 	const [que, setQue] = useState(null);
-	const [randQue, setRandQue] = useState(null);
-	const [i, setI] = useState(1);
-	const [ans, setAns] = useState(0);
+	const [i, setI] = useState(0);
 	const [result, setResult] = useState(null);
 	const classes = useStyles();
 
@@ -73,7 +71,6 @@ function YouLookLike(props) {
 	frmdata.append("game", "YLL");
 	frmdata.append("subGame", props.type);
 	frmdata.append("user", token["tb-user"]);
-	frmdata.append("text", ans);
 
 	useEffect(() => {
 		for (var i = 0; i < ALLOWED_PAGES.length; i++) {
@@ -90,16 +87,16 @@ function YouLookLike(props) {
 		})
 			.then((resp) => resp.json())
 			.then((res) => {
-				setQue(res["que"][0]);
-				setRandQue(res["randque"]);
+				console.log(res)
+				setQue(res);
 			})
 			.catch((err) => console.log(err));
 		// eslint-disable-next-line
 	}, []);
 
 	useEffect(() => {
-		if (i > NUMBER_OF_QUESTIONS) {
-			fetch(`${process.env.REACT_APP_API_URL}/youlooklike/score/?category=${props.type}&code=${ans}`, {
+		if (i >= NUMBER_OF_QUESTIONS) {
+			fetch(`${process.env.REACT_APP_API_URL}/youlooklike/result/?category=${props.type}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
@@ -121,77 +118,39 @@ function YouLookLike(props) {
 		// eslint-disable-next-line
 	}, [i]);
 
-	const StoreAns = (x) => {
-		setAns(ans * 10 + x);
-		setI(i + 1);
-	};
-
-	if (!(que && randQue)) return <Loading />;
-	else if (i < 5)
+	if (!que) return <Loading />;
+	else if (i < NUMBER_OF_QUESTIONS)
 		return (
 			<div className="text-center">
 				<div className={`${classes.imageContainer} image-container`}>
-					<img className={`${classes.thumbnail} thumbnail`} src={que[`image${i}`]} alt="Question" />
-				</div>
-				<br />
-				<div className="text-center col-12">
-					<h1 style={{ fontWeight: "bold", width: "auto", maxWidth: "800px", textAlign: "text-center", margin: "auto" }}> {que[`que${i}`]} </h1>
-				</div>
-
-				<Card onClick={() => StoreAns(1)} className={`${classes.options} my-3`} raised>
-					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
-						{que[`option${i}A`]}
-					</h3>
-				</Card>
-				<Card onClick={() => StoreAns(2)} className={`${classes.options} my-3`} raised>
-					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
-						{que[`option${i}B`]}
-					</h3>
-				</Card>
-				<Card onClick={() => StoreAns(1)} className={`${classes.options} my-3`} raised>
-					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
-						{que[`option${i}C`]}
-					</h3>
-				</Card>
-				<Card onClick={() => StoreAns(1)} className={`${classes.options} my-3`} raised>
-					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
-						{que[`option${i}D`]}
-					</h3>
-				</Card>
-			</div>
-		);
-	else if (i <= NUMBER_OF_QUESTIONS)
-		return (
-			<div className="text-center">
-				<div className={`${classes.imageContainer} image-container`}>
-					<img className={`${classes.thumbnail} thumbnail`} src={randQue[i - 5][`image`]} alt="Question" />
+					<img key={Date.now()} className={`${classes.thumbnail} thumbnail`} src={que[i][`image`]} alt="Question" />
 				</div>
 				<br />
 				<div className="text-center col-12">
 					<h1 style={{ fontWeight: "bold", width: "auto", maxWidth: "800px", textAlign: "text-center", margin: "auto" }}>
 						{" "}
-						{randQue[i - 5][`que`]}{" "}
+						{que[i][`que`]}{" "}
 					</h1>
 				</div>
 
 				<Card onClick={() => setI(i + 1)} className={`${classes.options} my-3`} raised>
 					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
-						{randQue[i - 5][`optionA`]}
+						{que[i][`optionA`]}
 					</h3>
 				</Card>
 				<Card onClick={() => setI(i + 1)} className={`${classes.options} my-3`} raised>
 					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
-						{randQue[i - 5][`optionB`]}
+						{que[i][`optionB`]}
 					</h3>
 				</Card>
 				<Card onClick={() => setI(i + 1)} className={`${classes.options} my-3`} raised>
 					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
-						{randQue[i - 5][`optionC`]}
+						{que[i][`optionC`]}
 					</h3>
 				</Card>
 				<Card onClick={() => setI(i + 1)} className={`${classes.options} my-3`} raised>
 					<h3 className="text-capitalize text-center" style={{ fontSize: "23px", margin: "5px" }}>
-						{randQue[i - 5][`optionD`]}
+						{que[i][`optionD`]}
 					</h3>
 				</Card>
 			</div>

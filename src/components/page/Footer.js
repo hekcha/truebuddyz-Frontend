@@ -5,7 +5,7 @@ function Footer() {
 		<div class="row">
 			<div class="col-md-8 col-sm-6 col-xs-12">
 				<p class="copyright-text" style={{ fontWeight: "700", fontSize: "28px" }}>
-					Copyright &copy; 2021 All Rights Reserved by
+					Copyright &copy; 2021 All Rights Reserved by{" "}
 					<a href="{#}">TrueBuddyz</a>.
 				</p>
 			</div>
