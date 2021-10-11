@@ -132,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+var optionList = ["optionA", "optionB", "optionC", "optionD"]
 function Playquiz(props) {
 	const [token] = useCookies(['tb-token','tb-user']);
 	const [name, setName] = useState(null);
@@ -143,7 +144,6 @@ function Playquiz(props) {
 
 	const classes = useStyles();
 	var colourPalette = ["#55E6C1", "#FD7272", "#FEA47F", "#25CCF7", "#EAB543", "#FC427B", "#2C3A47", "#ffa801"];
-	var opt = ["optionA", "optionB", "optionC", "optionD"]
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/quiz/que/?code=${props.code}`, {
 			method: "GET",
@@ -197,21 +197,14 @@ function Playquiz(props) {
 
 	function Checkans(a) {
 		setAns([...ans, a]);
-		if (que[`ans${i + 1}`] === a)
-		{
-			setMarks(marks + 1);
-			document.getElementById(opt[a]).style.backgroundColor="#5dc760";
-		}
-		else
-		{
-			document.getElementById(opt[a]).style.backgroundColor="#d96a6a";
-			document.getElementById(opt[que[`ans${i + 1}`]]).style.backgroundColor="#5dc760";
-		}
+		if (que[`ans${i + 1}`] === a) setMarks(marks + 1);
+		document.getElementById(optionList[a]).style.backgroundColor="#d96a6a";
+		document.getElementById(optionList[que[`ans${i + 1}`]]).style.backgroundColor="#5dc760";
 		setTimeout(() => {
-			document.getElementById(opt[0]).style.backgroundColor="inherit";
-			document.getElementById(opt[1]).style.backgroundColor="inherit";
-			document.getElementById(opt[2]).style.backgroundColor="inherit";
-			document.getElementById(opt[3]).style.backgroundColor="inherit";
+			document.getElementById(optionList[0]).style.backgroundColor="inherit";
+			document.getElementById(optionList[1]).style.backgroundColor="inherit";
+			document.getElementById(optionList[2]).style.backgroundColor="inherit";
+			document.getElementById(optionList[3]).style.backgroundColor="inherit";
 			setI(i + 1);
 		}, 700);
 	}

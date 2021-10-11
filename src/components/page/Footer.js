@@ -17,7 +17,6 @@ function Footer() {
 					</a>
 				</p>
 
-				{/* </span> */}
 			</div>
 		</div>
 	);

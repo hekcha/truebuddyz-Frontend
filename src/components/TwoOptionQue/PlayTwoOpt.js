@@ -185,13 +185,13 @@ function PlayTwoOpt(props) {
 
 	var ALLOWED_GAMES = ["wouldyourather", "thisorthat"];
     var ALLOWED_PAGES = {
-        "wouldyourather":["friends", "students"],
+        "wouldyourather":["all"],
         "thisorthat":["friends", "students"],
     }
 
     var link;
     if(props.game==='wouldyourather')
-        link =`${process.env.REACT_APP_URL}/would-you-rather/${props.subGame}/${props.gameId}`
+        link =`${process.env.REACT_APP_URL}/would-you-rather/${props.gameId}`
     if(props.game==='thisorthat')
         link =`${process.env.REACT_APP_URL}/this-or-that/${props.subGame}/${props.gameId}`
 
@@ -434,7 +434,7 @@ function PlayTwoOpt(props) {
 					<hr />
 					<div className="col-8 offset-2 row">
 						{props.game==='wouldyourather'?
-							<div style={{ textAlign: "center", marginX: "0" }}>
+							<div style={{ textAlign: "center", marginX: "0", fontFamily:'Dancing Script'}}>
 								<h3>{queBank[parseInt(i)]['que']}</h3>
 							</div>
 						:null}
@@ -443,6 +443,7 @@ function PlayTwoOpt(props) {
                                 {queBank[parseInt(i)]['optionA']}
                             </h3>
                         </Card>
+						<span style={{fontFamily:'Dancing Script'}}>OR</span>
                         <Card onClick={() => AnsChoice(queBank[parseInt(i)]['optionB'])} className={classes.options} style={{}} raised>
                             <h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
                             {queBank[parseInt(i)]['optionB']}

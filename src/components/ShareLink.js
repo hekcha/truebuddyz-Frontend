@@ -76,9 +76,7 @@ const TEXT = {
 		"siblings": "Play with your siblings ❤️",
 	},
 	"wouldyourather": {
-		"friends": "Play With friends ❤️",
-		"couple": "Play with your partner ❤️",
-		"siblings": "Play with your siblings ❤️",
+		"all": "Play With friends ❤️",
 	},
 };
 const QUOTES = {
@@ -99,9 +97,7 @@ const QUOTES = {
 		"siblings": "Relationship isn’t a big thing—it’s a million little things.",
 	},
 	"wouldyourather": {
-		"friends": "Friendship isn’t a big thing—it’s a million little things.",
-		"students": "Relationship isn’t a big thing—it’s a million little things.",
-		"siblings": "Relationship isn’t a big thing—it’s a million little things.",
+		"all": "Friendship isn’t a big thing—it’s a million little things.",
 	},
 };
 
@@ -122,9 +118,7 @@ const SHARE = {
 		"siblings": "SHARE THIS rapidfire WITH YOUR SIBLINGS",
 	},
 	"wouldyourather": {
-		"friends": "SHARE THIS rapidfire WITH YOUR FRIENDS",
-		"students": "SHARE THIS rapidfire WITH YOUR PARTNER",
-		"siblings": "SHARE THIS rapidfire WITH YOUR SIBLINGS",
+		"all": "SHARE THIS rapidfire WITH YOUR FRIENDS",
 	},
 };
 

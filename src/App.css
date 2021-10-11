@@ -1,5 +1,11 @@
 @import url(//fonts.googleapis.com/css?family=Vibur);
 
+#howwellyouknow .optionHover:hover {
+	background: #1D976C;
+	background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);
+	background: linear-gradient(to right, #93F9B9, #1D976C);
+}
+
 .logoC {
 	text-align: center;
 	width: auto;

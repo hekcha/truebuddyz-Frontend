@@ -3,6 +3,7 @@ import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
 import Loading from "../page/Loading";
 import { makeStyles } from "@material-ui/core/styles";
+import CssGauge from "../page/CssGauge";
 
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
@@ -15,9 +16,7 @@ const useStyles = makeStyles((theme) => ({
 	options: {
 		backgroundColor: "white",
 		maxWidth: "450px",
-		// minWidth: "auto",
 		width: "100%",
-		// opacity: "0.85",
 		fontWeight: "600",
 		color: "black",
 		margin: "10px auto",
@@ -25,24 +24,6 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: "center",
 		cursor: "pointer",
 		border: "2px solid black",
-		"&:hover": {
-			scale: "1.05",
-			// eslint-disable-next-line
-			background: " #1D976C",
-			// eslint-disable-next-line
-			background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
-			// eslint-disable-next-line
-			background: "linear-gradient(to right, #93F9B9, #1D976C)",
-		},
-		"&:active": {
-			scale: "1.05",
-			// eslint-disable-next-line
-			background: " #1D976C",
-			// eslint-disable-next-line
-			background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
-			// eslint-disable-next-line
-			background: "linear-gradient(to right, #93F9B9, #1D976C)",
-		},
 	},
 	messageCard: {
 		width: "375px",
@@ -75,8 +56,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+var optionList = ["optionA", "optionB", "optionC", "optionD"];
+
 function HowWellUKnow(props) {
-	const [token] = useCookies(['tb-token','tb-user']);
+	const [token] = useCookies(["tb-token", "tb-user"]);
 	const [que, setQue] = useState(null);
 	const [i, setI] = useState(0);
 	const [result, setResult] = useState(null);
@@ -135,14 +118,32 @@ function HowWellUKnow(props) {
 	}, [i]);
 
 	const StoreAns = (item) => {
+		document.getElementById(optionList[0]).classList.remove("optionHover");
+		document.getElementById(optionList[1]).classList.remove("optionHover");
+		document.getElementById(optionList[2]).classList.remove("optionHover");
+		document.getElementById(optionList[3]).classList.remove("optionHover");
+		document.getElementById(optionList[item]).style.backgroundColor = "#d96a6a";
+		document.getElementById(optionList[que[i]["ans"]]).style.backgroundColor = "#5dc760";
+
 		if (item === que[i]["ans"]) setScore(score + 1);
-		setI(i + 1);
+		setTimeout(() => {
+			document.getElementById(optionList[0]).classList.add("optionHover");
+			document.getElementById(optionList[1]).classList.add("optionHover");
+			document.getElementById(optionList[2]).classList.add("optionHover");
+			document.getElementById(optionList[3]).classList.add("optionHover");
+
+			document.getElementById(optionList[0]).style.backgroundColor = "inherit";
+			document.getElementById(optionList[1]).style.backgroundColor = "inherit";
+			document.getElementById(optionList[2]).style.backgroundColor = "inherit";
+			document.getElementById(optionList[3]).style.backgroundColor = "inherit";
+			setI(i + 1);
+		}, 800);
 	};
 
 	if (!que) return <Loading />;
 	if (i < 10)
 		return (
-			<div className="text-center">
+			<div id="howwellyouknow" className="text-center">
 				<div className={`${classes.imageContainer} image-container`}>
 					<img className=" thumbnail" src={que[i][`image`]} alt="Question" />
 				</div>
@@ -151,22 +152,22 @@ function HowWellUKnow(props) {
 					<h1 style={{ fontWeight: "bold", width: "auto", maxWidth: "800px", textAlign: "text-center", margin: "auto" }}>{que[i][`que`]}</h1>
 				</div>
 
-				<Card onClick={() => StoreAns(0)} className={`${classes.options} my-3`} raised>
+				<Card onClick={() => StoreAns(0)} className={`${classes.options} my-3 optionHover`} id="optionA" raised>
 					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
 						{que[i][`optionA`]}
 					</h3>
 				</Card>
-				<Card onClick={() => StoreAns(1)} className={`${classes.options} my-3`} raised>
+				<Card onClick={() => StoreAns(1)} className={`${classes.options} my-3 optionHover`} id="optionB" raised>
 					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
 						{que[i][`optionB`]}
 					</h3>
 				</Card>
-				<Card onClick={() => StoreAns(2)} className={`${classes.options} my-3`} raised>
+				<Card onClick={() => StoreAns(2)} className={`${classes.options} my-3 optionHover`} id="optionC" raised>
 					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
 						{que[i][`optionC`]}
 					</h3>
 				</Card>
-				<Card onClick={() => StoreAns(3)} className={`${classes.options} my-3`} raised>
+				<Card onClick={() => StoreAns(3)} className={`${classes.options} my-3 optionHover`} id="optionD" raised>
 					<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
 						{que[i][`optionD`]}
 					</h3>
@@ -185,6 +186,7 @@ function HowWellUKnow(props) {
 			<div className={`${classes.imageContainer} image-container`}>
 				<img className=" thumbnail" src={result.image} alt="Question" />
 			</div>
+			<CssGauge score={result.score} message="good" />
 			<p style={{ fontSize: "54px", marginTop: "-15px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>Your Score Is </p>
 			<p style={{ fontSize: "84px", marginTop: "-74px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}> {result.score}</p>
 			<p style={{ fontSize: "60px", marginTop: "-74px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}> Performance</p>

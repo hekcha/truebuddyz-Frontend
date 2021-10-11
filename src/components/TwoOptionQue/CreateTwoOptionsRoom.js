@@ -12,7 +12,7 @@ function TwoOptRoom(props) {
 
 	var ALLOWED_GAMES = ["wouldyourather", "thisorthat"];
     var ALLOWED_PAGES = {
-        "wouldyourather":["friends", "students"],
+        "wouldyourather":["all"],
         "thisorthat":["friends", "students"],
     }
 
@@ -50,7 +50,7 @@ function TwoOptRoom(props) {
 					else
 					{
 						if(props.game==='wouldyourather')
-							window.location.href = `/would-you-rather/${props.subGame}/${gameId}`;
+							window.location.href = `/would-you-rather/${gameId}`;
 						if(props.game==='thisorthat')
 							window.location.href = `/this-or-that/${props.subGame}/${gameId}`;
 					}
@@ -84,7 +84,9 @@ function TwoOptRoom(props) {
 			<span className="row " style={{ display: "inline", flexDirection: "row" }}>
                 <NeonTwoOpt game={props.game} />
 			</span>
-			<h1 style={{ color: "#404040" }}>Click to Create a room for {props.subGame}</h1>
+			{props.game==='wouldyourather'? <div />:
+				<h1 style={{ color: "#404040" }}>Click to Create a room for {props.subGame}</h1>
+			}
 			<Button variant="contained" color="primary" onClick={() => Redirect()}>
 				Create a room
 			</Button>
