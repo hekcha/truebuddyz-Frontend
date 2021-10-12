@@ -7,6 +7,7 @@ import Card from "../Card";
 import Trending from "./Trending";
 import Game from "./Game";
 import Footer from "./Footer";
+import CssGauge from "./CssGauge";
 
 function Home(props) {
 	return (
@@ -41,6 +42,7 @@ function Home(props) {
 						<br />
 						<Game newGame={props.newGame} />
 						<br />
+						<CssGauge />
 						<hr />
 						<Footer />
 					</div>

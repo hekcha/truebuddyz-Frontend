@@ -102,8 +102,8 @@ function Policy() {
 					</p>
 					<p className={classes.heading}>Contact Us</p>
 					<p className={classes.text} style={{ maxWidth: "880px", margin: "auto" }}>
-						Should you have any questions regarding this privacy policy or the processing of your personal data, please contact us by Email @
-						truebuddyz.official@gmail.com
+						Should you have any questions regarding this privacy policy or the processing of your personal data, please contact us by <br />
+						Email : truebuddyz.official@gmail.com
 					</p>
 				</div>
 			</div>

@@ -3,6 +3,7 @@ import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
 import Loading from "../page/Loading";
 import { makeStyles } from "@material-ui/core/styles";
+import CssGauge from "../page/CssGauge";
 
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
@@ -55,10 +56,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-var optionList =["optionA", "optionB", "optionC", "optionD"]
+var optionList = ["optionA", "optionB", "optionC", "optionD"];
 
 function HowWellUKnow(props) {
-	const [token] = useCookies(['tb-token','tb-user']);
+	const [token] = useCookies(["tb-token", "tb-user"]);
 	const [que, setQue] = useState(null);
 	const [i, setI] = useState(0);
 	const [result, setResult] = useState(null);
@@ -186,6 +187,7 @@ function HowWellUKnow(props) {
 			<div className={`${classes.imageContainer} image-container`}>
 				<img className=" thumbnail" src={result.image} alt="Question" />
 			</div>
+			<CssGauge score={result.score} message="good" />
 			<p style={{ fontSize: "54px", marginTop: "-15px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>Your Score Is </p>
 			<p style={{ fontSize: "84px", marginTop: "-74px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}> {result.score}</p>
 			<p style={{ fontSize: "60px", marginTop: "-74px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}> Performance</p>

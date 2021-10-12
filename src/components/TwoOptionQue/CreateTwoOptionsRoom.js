@@ -36,7 +36,7 @@ function TwoOptRoom(props) {
 		setIsLoading(true);
 		var date = new Date();
 		var gameId = date.getTime().toString(31);
-		var x=Math.floor(Math.random()*10);
+		var x=Math.floor(Math.random()*20);
 		firebaseDb.child(props.game).child(gameId).set(
 				{
                     subGame:props.subGame,
@@ -66,8 +66,8 @@ function TwoOptRoom(props) {
 					className="card"
 					style={{border:'0', zIndex: '-1'}}
 				><img
-				src={finger} 
-				alt="finger" 
+				src={finger}
+				alt="finger"
 				style={{
 					backgroundImage: finger,
 					margin: "8px auto",
