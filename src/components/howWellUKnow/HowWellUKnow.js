@@ -65,7 +65,7 @@ function HowWellUKnow(props) {
 	const [score, setScore] = useState(0);
 	const classes = useStyles();
 
-	var ALLOWED_PAGES = ["marvel", "fastandfurious"];
+	var ALLOWED_PAGES = ["fastandfurious", "marvel", "hungergames", "loki", "onepunchman", "breakingbad", "strangerthings", "wandavision", "valorant", "friends"]
 
 	var frmdata = new FormData();
 	frmdata.append("game", "HWUK");
@@ -124,20 +124,20 @@ function HowWellUKnow(props) {
 		document.getElementById(optionList[item]).style.backgroundColor="#d96a6a";
 		document.getElementById(optionList[que[i]["ans"]]).style.backgroundColor="#5dc760";
 		
-		if (item === que[i]["ans"]) setScore(score + 1);
 		setTimeout(() => {
 			document.getElementById(optionList[0]).classList.add("optionHover")
 			document.getElementById(optionList[1]).classList.add("optionHover")
 			document.getElementById(optionList[2]).classList.add("optionHover")
 			document.getElementById(optionList[3]).classList.add("optionHover")
-
+			
 			document.getElementById(optionList[0]).style.backgroundColor="inherit";
 			document.getElementById(optionList[1]).style.backgroundColor="inherit";
 			document.getElementById(optionList[2]).style.backgroundColor="inherit";
 			document.getElementById(optionList[3]).style.backgroundColor="inherit";
+			if (item === que[i]["ans"]) setScore(score + 1);
 			setI(i + 1);
 			
-		}, 800);
+		}, 400);
 	};
 
 	if (!que) return <Loading />;

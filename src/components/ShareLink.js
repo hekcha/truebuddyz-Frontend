@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		justifyContent: "center",
 		maxWidth: "82vw",
-		height: "565px",
+		// height: "565px",
 		border: "solid 2px",
 		borderColor: "black",
 		borderRadius: "20px",
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	title: {
 		fontSize: "2.2vw",
+		fontFamily: "cursive",
 		[theme.breakpoints.down("xs")]: {
 			fontSize: "18px",
 			fontWeight: "999",
@@ -60,65 +61,48 @@ const useStyles = makeStyles((theme) => ({
 
 const TEXT = {
 	"quiz": {
-		"friends": "How well your friends know you??❤️",
-		"couple": "How well your partner know you??❤️",
-		"siblings": "How well your siblings know you??❤️",
-		"response": "Your quiz link😎",
+		"friends": "Share This Link to your Friends.",
+		"couple": "Share This Link to your Love.",
+		"siblings": "Share This Link to your Friendly-enemy.",
+		"response": "Your quiz link😎.",
 	},
 	"rf": {
-		"friends": "Play With friends ❤️",
-		"couple": "Play with your partner ❤️",
-		"siblings": "Play with your siblings ❤️",
+		"friends": "Share This link to play the game with your friends.",
+		"couple": "Share This link to play the game with your Love.",
+		"siblings": "Share This link to play the game with your Friendly-enemy.",
 	},
 	"thisorthat": {
-		"friends": "Play With friends ❤️",
-		"couple": "Play with your partner ❤️",
-		"siblings": "Play with your siblings ❤️",
+		"dirty": "Share This link to play the game.",
+		"friends": "Share This link to play the game with your Friends.",
+		"couple": "Share This link to play the game with your Love.",
+		"funny": "Share This link to play the funny game.",
+		"hard": "Share This link to play the game.",
 	},
 	"wouldyourather": {
-		"all": "Play With friends ❤️",
+		"all": "Share This link to play the game with your Friends.",
 	},
 };
 const QUOTES = {
 	"quiz": {
 		"friends": "Friendship isn’t a big thing—it’s a million little things.",
-		"couple": "Relationship isn’t a big thing—it’s a million little things.",
-		"siblings": "Relationship isn’t a big thing—it’s a million little things.",
-		"response": "Share Your quiz to See more intresting response😜",
+		"couple": "A relationship is when one person is always right and the other person is the boyfriend.",
+		"siblings": "Our parents made us siblings, but we choose to be best friends.",
+		"response": "Share Your quiz to See more intresting response😜.",
 	},
 	"rf": {
-		"friends": "Friendship isn’t a big thing—it’s a million little things.",
-		"couple": "Relationship isn’t a big thing—it’s a million little things.",
-		"siblings": "Relationship isn’t a big thing—it’s a million little things.",
+		"friends": "Life is partly what we make it, and partly what it is made by the friends we choose.",
+		"couple": "I’ve tried so many times to think of a new way to love you.",
+		"siblings": "Siblings are put on this Earth to love, to entertain, and to annoy each other. It's part of their job requirements.",
 	},
 	"thisorthat": {
-		"friends": "Friendship isn’t a big thing—it’s a million little things.",
-		"students": "Relationship isn’t a big thing—it’s a million little things.",
-		"siblings": "Relationship isn’t a big thing—it’s a million little things.",
+		"dirty": "Slightly Dirty And Fantastically Flirty “This Or That” Questions.",
+		"friends": "Funny This or That Questions Enjoy With Your Friends.",
+		"couple": "Thought-Provoking Questions for Couples.",
+		"funny": "Funny This or That Questions.",
+		"hard": "Extremely Challenging and Hilarious ‘This or That’ Game.",
 	},
 	"wouldyourather": {
-		"all": "Friendship isn’t a big thing—it’s a million little things.",
-	},
-};
-
-const SHARE = {
-	"quiz": {
-		"friends": "SHARE THIS QUIZ WITH YOUR FRIENDS",
-		"couple": "SHARE THIS QUIZ WITH YOUR PARTNER",
-		"siblings": "SHARE THIS QUIZ WITH YOUR SIBLINGS",
-	},
-	"rf": {
-		"friends": "SHARE THIS rapidfire WITH YOUR FRIENDS",
-		"couple": "SHARE THIS rapidfire WITH YOUR PARTNER",
-		"siblings": "SHARE THIS rapidfire WITH YOUR SIBLINGS",
-	},
-	"thisorthat": {
-		"friends": "SHARE THIS rapidfire WITH YOUR FRIENDS",
-		"students": "SHARE THIS rapidfire WITH YOUR PARTNER",
-		"siblings": "SHARE THIS rapidfire WITH YOUR SIBLINGS",
-	},
-	"wouldyourather": {
-		"all": "SHARE THIS rapidfire WITH YOUR FRIENDS",
+		"all": 'These "Would You Rather" Questions Are Actually Pretty Difficult To Answer.',
 	},
 };
 
@@ -129,14 +113,13 @@ function ShareLink(props) {
 		<div style={{ display: "flex", justifyContent: "center", marginTop: "8vh" }}>
 			<Card className={`text-center ${classes.cardBody}`}>
 				<Card.Header className={classes.heading}>{TEXT[props.game][props.type]}</Card.Header>
-				<Card.Body style={{ height: "300px" }}>
+				<Card.Body style={{ height: "15rem" }}>
 					<Card.Text className={classes.text}>{QUOTES[props.game][props.type]}</Card.Text>
-					<Card.Title className={classes.title}>{SHARE[props.game][props.type]}</Card.Title>
 					<Card.Title className={classes.title}>
 						<textarea id="link" className={classes.link} value={props.link} style={{cursor:'auto'}} disabled />
 					</Card.Title>
 					<span>
-						{props.game === "rf" ? null : (
+						{props.game !== "quiz" ? null : (
 							<a href={props.link}>
 								<button
 									type="button"

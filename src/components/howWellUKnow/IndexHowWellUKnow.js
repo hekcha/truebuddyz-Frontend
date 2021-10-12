@@ -1,6 +1,13 @@
 import Card, { GradientCard } from "../Card";
-import coming_soon from "../assets/coming_soon.jpg";
-import HWYN_FAF_main from "../assets/HWYN_FAF_main-min.jpg";
+import fastandfurious from "../assets/HWUK/HWUK_fastandfurious.jpg";
+import marvel from "../assets/HWUK/HWUK_marvel.jpg";
+import hungergames from "../assets/HWUK/HWUK_hungergames.jpg";
+import loki from "../assets/HWUK/HWUK_loki.jpg";
+import onepunchman from "../assets/HWUK/HWUK_onepunchman.jpg";
+import breakingbad from "../assets/HWUK/HWUK_breakingbad.jfif";
+import strangerthings from "../assets/HWUK/HWUK_strangerthings.jpg";
+import wandavision from "../assets/HWUK/HWUK_wandavision.jpg";
+import valorant from "../assets/HWUK/HWUK_valorant.jpg";
 function IndexHowWellUKnow() {
 	return (
 		<div className="inner div">
@@ -19,13 +26,17 @@ function IndexHowWellUKnow() {
 			<section className="tiles section" style={{ marginTop: "0" }}>
 				<div id="indexrf" className="container">
 					<div className="cards-list">
-						<Card img={HWYN_FAF_main} link="/how-well-u-know/fastandfurious" text="The Hardest Fast & Furious Quiz You’ll Ever Take" />
-						<GradientCard link="/how-well-u-know/marvel" text="A Marvel Trivia Quiz Only True MCU Fans Can Ace" />
 
-						<Card link="#" img={coming_soon} text="" />
-						<Card link="#" img={coming_soon} text="" />
-						<Card link="#" img={coming_soon} text="" />
-						<Card link="#" img={coming_soon} text="" />
+						<Card link="/how-well-u-know/fastandfurious"	img={fastandfurious}	text="The Hardest Fast & Furious Quiz You’ll Ever Take" />
+						<Card link="/how-well-u-know/marvel"			img={marvel}			text="A Marvel Trivia Quiz Only True MCU Fans Can Ace" />
+						<Card link="/how-well-u-know/hungergames"		img={hungergames}		text="Only True Fans Can Ace this Hunger Games Trivia Quiz" />
+						<Card link="/how-well-u-know/loki"				img={loki}				text="Think You Know the God of Mischief? Take This Loki Trivia Quiz To Find Out" />
+						<Card link="/how-well-u-know/onepunchman"		img={onepunchman}		text="Think You Know Everything About One Punch Man? Take Our Trivia Quiz to Find Out" />
+						<Card link="/how-well-u-know/breakingbad"		img={breakingbad}		text="The Hardest Breaking Bad Trivia Quiz You’ll Ever Take" />
+						<Card link="/how-well-u-know/strangerthings"	img={strangerthings}	text="Only True Stranger Things Fans Can Pass This Trivia Quiz" />
+						<Card link="/how-well-u-know/wandavision"		img={wandavision}		text="Think You Know Everything About WandaVision? Take Our Trivia Quiz to Find Out" />
+						<Card link="/how-well-u-know/valorant"			img={valorant}			text="How Well Do You Know Valorant’s Agents? Take This Quiz to Find Out" />
+						<GradientCard link="/how-well-u-know/friends"							text="Friends Quiz Questions for True Fans" />
 					</div>
 				</div>
 			</section>
