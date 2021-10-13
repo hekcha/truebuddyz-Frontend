@@ -42,7 +42,6 @@ function Home(props) {
 						<br />
 						<Game newGame={props.newGame} />
 						<br />
-						<CssGauge />
 						<hr />
 						<Footer />
 					</div>

@@ -4,14 +4,19 @@ import { Card } from "@material-ui/core";
 import Loading from "../page/Loading";
 import { makeStyles } from "@material-ui/core/styles";
 import CssGauge from "../page/CssGauge";
+import resultBG from "../assets/resultbg.png";
+import ShareButton from "../page/ShareButton";
 
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
-		margin: "-5px auto",
-		width: "100%",
-		height: "60vw",
-		maxHeight: "360px",
-		backgroundSize: "cover",
+		margin: "auto",
+		marginTop: "-35px",
+		marginBottom: "-40px",
+		boxShadow: "none",
+		width: "190px",
+		height: "160px",
+		// maxHeight: "360px",
+		// backgroundSize: "cover",
 	},
 	options: {
 		backgroundColor: "white",
@@ -25,9 +30,23 @@ const useStyles = makeStyles((theme) => ({
 		cursor: "pointer",
 		border: "2px solid black",
 	},
+
+	card: {
+		minWidth: "300px",
+		maxWidth: "430px",
+		height: "528px",
+		margin: "48px auto",
+		backgroundColor: "#f7f7f7",
+		boxShadow: "4px 4px 5px  rgba(0, 0, 0, 0.2), -4px -4px 5px  rgba(0, 0, 0, 0.2)",
+		backgroundSize: "cover",
+		border: "25px black",
+		borderRadius: "30px",
+		// animation: `$colorChange 10000ms ${theme.transitions.easing.easeInOut} infinite `,
+	},
 	messageCard: {
 		width: "375px",
 		margin: "-18px auto",
+		marginBottom: "5px",
 		// backgroundColor: "black",
 		backgroundSize: "cover",
 		border: "25px black",
@@ -182,19 +201,30 @@ function HowWellUKnow(props) {
 			</div>
 		);
 	return (
-		<div style={{ textAlign: "center", margin: "auto" }}>
-			<div className={`${classes.imageContainer} image-container`}>
-				<img className=" thumbnail" src={result.image} alt="Question" />
+		<div>
+			<div>
+				<div style={{ textAlign: "center", margin: "auto" }}>
+					<Card className={classes.card} raised>
+						<CssGauge score={result.score} message={result.complement} />
+						<p style={{ fontSize: "54px", marginTop: "-15px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>Your Score Is </p>
+						<p style={{ fontSize: "84px", marginTop: "-74px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", marginBottom: "24px" }}>
+							{" "}
+							{result.score}
+						</p>
+
+						<div className={`${classes.imageContainer} image-container 	`}>
+							<img className=" thumbnail" src={result.image} alt="Question" />
+						</div>
+						<br />
+						<hr />
+						<br />
+						<div style={{ margin: "auto", textAlign: "center" }}>
+							{/* <p style={{ textAlign: "center", marginTop: "-15px" }}>Share</p> */}
+							<ShareButton />
+						</div>
+					</Card>
+				</div>
 			</div>
-			<CssGauge score={result.score} message="good" />
-			<p style={{ fontSize: "54px", marginTop: "-15px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>Your Score Is </p>
-			<p style={{ fontSize: "84px", marginTop: "-74px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}> {result.score}</p>
-			<p style={{ fontSize: "60px", marginTop: "-74px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}> Performance</p>
-			<Card className={classes.messageCard} raised>
-				<p style={{ fontSize: "24px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.complement}</p>
-				{/* to feed message in database */}
-				<p style={{ fontSize: "24px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.message}</p>
-			</Card>
 		</div>
 	);
 }

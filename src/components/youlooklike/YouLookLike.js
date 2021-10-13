@@ -4,23 +4,45 @@ import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
 import Loading from "../page/Loading";
 import { makeStyles } from "@material-ui/core/styles";
+import ShareButton from "../page/ShareButton";
 
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
-		margin: "10px auto",
-		width: "100%",
+		margin: "2px auto",
+		marginTop: "-15px",
+		marginBottom: "-10px",
+		// width: "100%",
 		minWidth: "315px",
-		height: "60vw",
-		maxHeight: "360px",
+		height: "300px",
+		// maxHeight: "360px",
+	},
+	card: {
+		// display: "block",
+		minWidth: "300px",
+		maxWidth: "430px",
+		minHeight: "500px",
+		miaxHeight: "578px",
+		margin: "18px auto",
+		backgroundColor: "#f7f7f7",
+		boxShadow: "4px 4px 5px  rgba(0, 0, 0, 0.2), -4px -4px 5px  rgba(0, 0, 0, 0.2)",
+		backgroundSize: "cover",
+		border: "25px black",
+		borderRadius: "30px",
 	},
 	messageCard: {
-		maxWidth: "675px",
-		margin: "-18px auto",
-		// backgroundColor: "black",
+		display: "table-cell",
+		fontSize: "14px",
+		minHeight: "135px",
+		maxHeight: "245px",
+		wordWrap: "break",
+		backgroundColor: "rgba(0, 0, 0, 0.8)",
 		backgroundSize: "cover",
-		border: "2px",
+		// border: "2px",
 		borderRadius: "12px",
-		animation: `$colorChange 10000ms ${theme.transitions.easing.easeInOut} infinite `,
+		fontSize: "	20px",
+		fontFamily: "'Akaya Kanadaka', cursive",
+		color: "white",
+		verticalAlign: "center",
 	},
 	options: {
 		backgroundColor: "white",
@@ -59,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
 const NUMBER_OF_QUESTIONS = 8 + Math.floor(Math.random() * 3);
 
 function YouLookLike(props) {
-	const [token] = useCookies(['tb-token','tb-user']);
+	const [token] = useCookies(["tb-token", "tb-user"]);
 	const [que, setQue] = useState(null);
 	const [i, setI] = useState(0);
 	const [result, setResult] = useState(null);
@@ -87,7 +109,7 @@ function YouLookLike(props) {
 		})
 			.then((resp) => resp.json())
 			.then((res) => {
-				console.log(res)
+				console.log(res);
 				setQue(res);
 			})
 			.catch((err) => console.log(err));
@@ -103,9 +125,9 @@ function YouLookLike(props) {
 					"Authorization": `Token ${token["tb-token"]}`,
 				},
 			})
-			.then((resp) => resp.json())
-			.then((res) => setResult(res[0]))
-			.catch((err) => console.log(err));
+				.then((resp) => resp.json())
+				.then((res) => setResult(res[0]))
+				.catch((err) => console.log(err));
 
 			fetch(`${process.env.REACT_APP_API_URL}/core/data/`, {
 				method: "POST",
@@ -127,10 +149,7 @@ function YouLookLike(props) {
 				</div>
 				<br />
 				<div className="text-center col-12">
-					<h1 style={{ fontWeight: "bold", width: "auto", maxWidth: "800px", textAlign: "text-center", margin: "auto" }}>
-						{" "}
-						{que[i][`que`]}{" "}
-					</h1>
+					<h1 style={{ fontWeight: "bold", width: "auto", maxWidth: "800px", textAlign: "text-center", margin: "auto" }}> {que[i][`que`]} </h1>
 				</div>
 
 				<Card onClick={() => setI(i + 1)} className={`${classes.options} my-3`} raised>
@@ -159,7 +178,24 @@ function YouLookLike(props) {
 	else
 		return (
 			<div style={{ textAlign: "center", margin: "auto" }}>
-				<p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>{result.name} </p>
+				<Card className={classes.card} raised>
+					<p style={{ fontSize: "50px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", marginBottom: "-20px", marginTop: "-10px" }}>
+						{result.name}{" "}
+					</p>
+					<hr />
+					<div className={`${classes.imageContainer} image-container`}>
+						<img className=" thumbnail" src={result.image} style={{ margin: "18px auto" }} alt="Result" />
+					</div>
+					<Card className={classes.messageCard} raised>
+						{/* <p style={{ fontSize: "	20px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.text}</p> */}
+						{result.text}
+					</Card>
+				</Card>
+				<div style={{ margin: "auto", textAlign: "center", position: "absolute", top: "16%", left: "0" }}>
+					{/* <p style={{ textAlign: "center", marginTop: "-15px" }}>Share</p> */}
+					<ShareButton />
+				</div>
+				{/* <p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>{result.name} </p>
 				<div className={`${classes.imageContainer} image-container`}>
 					<img className=" thumbnail" src={result.image} style={{ margin: "18px auto" }} alt="Result" />
 				</div>
@@ -167,7 +203,7 @@ function YouLookLike(props) {
 					<Card className={classes.messageCard} raised>
 						<p style={{ fontSize: "28px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", verticalAlign: "justify" }}>{result.text}</p>
 					</Card>
-				</div>
+				</div> */}
 			</div>
 		);
 }

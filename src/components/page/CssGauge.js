@@ -37,8 +37,9 @@ function CssGauge(props) {
 					</div>
 					{Needle(props.score)}
 					<div className="gauge-center">
-						{console.log(props.score)}
-						<div className="number">HIGH</div>
+						<div className="number" style={{ textTransform: "capitalize" }}>
+							{props.message}
+						</div>
 					</div>
 				</div>
 			</div>

@@ -32,6 +32,7 @@
 
 .gauge-center .number {
 	display: block;
+	margin-top: 1em;
 	width: 100%;
 	text-align: center;
 	border: 0 !important;
@@ -59,7 +60,7 @@
 	z-index: 9;
 }
 .needle0 {
-	animation: fourspeed0 7s 1 both;
+	animation: fourspeed0 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -78,7 +79,7 @@
 	}
 }
 .needle1 {
-	animation: fourspeed1 7s 1 both;
+	animation: fourspeed1 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -97,7 +98,7 @@
 	}
 }
 .needle2 {
-	animation: fourspeed2 7s 1 both;
+	animation: fourspeed2 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -116,7 +117,7 @@
 	}
 }
 .needle3 {
-	animation: fourspeed3 7s 1 both;
+	animation: fourspeed3 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -135,7 +136,7 @@
 	}
 }
 .needle4 {
-	animation: fourspeed4 7s 1 both;
+	animation: fourspeed4 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -154,7 +155,7 @@
 	}
 }
 .needle5 {
-	animation: fourspeed5 7s 1 both;
+	animation: fourspeed5 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -173,7 +174,7 @@
 	}
 }
 .needle6 {
-	animation: fourspeed6 7s 1 both;
+	animation: fourspeed6 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -192,7 +193,7 @@
 	}
 }
 .needle7 {
-	animation: fourspeed7 7s 1 both;
+	animation: fourspeed7 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -211,7 +212,7 @@
 	}
 }
 .needle8 {
-	animation: fourspeed8 7s 1 both;
+	animation: fourspeed8 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -230,7 +231,7 @@
 	}
 }
 .needle9 {
-	animation: fourspeed9 7s 1 both;
+	animation: fourspeed9 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -249,7 +250,7 @@
 	}
 }
 .needle10 {
-	animation: fourspeed10 7s 1 both;
+	animation: fourspeed10 4s 1 both;
 	animation-delay: 1s;
 	display: block;
 }
@@ -281,41 +282,13 @@
 }
 
 .four .slice-colors .st.slice-item:nth-child(2) {
-	border-top: 50px #f1c40f solid;
-	border-right: 50px #f1c40f solid;
-	background-color: #1eaa59;
+	border-top: 52px #e67e22 solid;
+	border-right: 50px #e67e22 solid;
+	background-color: #e84c3d;
 }
-
 .four .slice-colors .st.slice-item:nth-child(4) {
-	left: 50%;
-	border-bottom: 50px #e84c3d solid;
-	border-right: 50px #e84c3d solid;
-	background-color: #e67e22;
+	left: 49%;
+	border-bottom: 50px #1eaa59 solid;
+	border-right: 54px #1eaa59 solid;
+	background-color: #f1c40f;
 }
-
-/* @keyframes fourspeed1 {
-	0% {
-		transform: rotate(0);
-	}
-	100% {
-		transform: rotate(16deg);
-	}
-}
-
-@keyframes fourspeed2 {
-	0% {
-		transform: rotate(0);
-	}
-	100% {
-		transform: rotate(65deg);
-	}
-} */
-
-/* @keyframes fourspeed3 {
-	0% {
-		transform: rotate(0);
-	}
-	100% {
-		transform: rotate(80deg);
-	}
-} */
