@@ -15,6 +15,14 @@ const useStyles = makeStyles((theme) => ({
 		backgroundSize: "cover",
 		[theme.breakpoints.down("xs")]: {
 			width: "100% !important",
+			backgroundSize: "cover",
+		},
+	},
+	cardTitle: {
+		[theme.breakpoints.down("sm")]: {
+			marginTop: "60px",
+			fontSize: "24px",
+			// top: "200px",
 		},
 	},
 }));
@@ -28,9 +36,10 @@ function Card(props) {
 					<img src={props.img} alt="Logo" />
 				</div>
 				<div
-					className={"card_title"}
+					className={`card_title`}
 					style={{
 						zIndex: "8",
+						verticalAlign: "center",
 						textAlign: "center",
 						fontFamily: "cursive",
 						fontWeight: "999",
@@ -41,6 +50,7 @@ function Card(props) {
 					}}
 				>
 					<p
+						className={`${classes.cardTitle}`}
 						style={{
 							filter: "brightness(10)",
 							// eslint-disable-next-line

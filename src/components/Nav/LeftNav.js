@@ -32,15 +32,16 @@ const Ul = styled.ul`
 
 	@media (max-width: 768px) {
 		flex-flow: column nowrap;
-		background-color: #f0eee4;
+		background-color: white;
 		opacity: 0.95;
 		position: fixed;
-		transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+		transform: ${({ open }) => (open ? "translateX(0%)" : "translateX(-100%)")};
 		font-size: 24px;
 		top: 80px;
 		left: 0;
-		height: 45vh;
+		height: 35vh;
 		width: 250px;
+		border:"2px solid black"
 		padding-top: 2.5rem;
 		border-bottom-right-radius: 20px;
 		transition: transform 0.5s ease-in-out;
@@ -92,22 +93,23 @@ const Apply4 = styled.div`
 const LeftNav = ({ open }) => {
 	return (
 		<Ul open={open}>
-			<a href="/" style={{ textDecoration: "none" }}>
+			<a href="/" style={{ textDecoration: "none", opacity: "0.95", marginBottom: "10px", marginTop: "5px" }}>
 				<li>
 					<Apply1 open={open}>Home</Apply1>
 				</li>
 			</a>
-			<a href="/games" style={{ textDecoration: "none" }}>
+
+			<a href="/games" style={{ textDecoration: "none", opacity: "0.95", marginBottom: "10px" }}>
 				<li>
 					<Apply2 open={open}>Games</Apply2>
 				</li>
 			</a>
-			<a href="/contribution" style={{ textDecoration: "none" }}>
+			<a href="/contribution" style={{ textDecoration: "none", opacity: "0.95", marginBottom: "10px" }}>
 				<li>
 					<Apply3 open={open}>Contribution</Apply3>
 				</li>
 			</a>
-			<a href="/feedback" style={{ textDecoration: "none" }}>
+			<a href="/feedback" style={{ textDecoration: "none", opacity: "0.95", marginBottom: "10px" }}>
 				<li>
 					<Apply4 open={open}>Feedback</Apply4>
 				</li>
