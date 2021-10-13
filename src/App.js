@@ -21,7 +21,6 @@ import IndexHowWellUKnow from "./components/howWellUKnow/IndexHowWellUKnow";
 import HowWellUKnow from "./components/howWellUKnow/HowWellUKnow";
 import Policy from "./components/page/Policy";
 import IndexThisOrThat from "./components/TwoOptionQue/ThisOrThatIndex";
-import IndexWouldYouRather from "./components/TwoOptionQue/WouldYouRatherIndex";
 import TwoOptRoom from "./components/TwoOptionQue/CreateTwoOptionsRoom";
 import PlayTwoOpt from "./components/TwoOptionQue/PlayTwoOpt";
 

@@ -261,7 +261,7 @@ function Rapidfire(props) {
 			startTimer(
 				setTimeout(function () {
 					AnsChoice("not selected");
-				}, 10000)
+				}, 15000)
 				// yha shi krna time
 			);
 		} else if (y !== 1 && countdown) clearInterval(countdown);
@@ -418,7 +418,7 @@ function Rapidfire(props) {
 				<div className="row">
 					<div id="countdown" className="mb-3 col-12">
 						<div id="countdown-number">
-							<span id="time">10</span>
+							<span id="time">15</span>
 						</div>
 						<svg>
 							<circle r="18" cx="20" cy="20"></circle>

@@ -37,7 +37,7 @@ function Card(props) {
 						webkitTextFillColor: "#fdfffe",
 						webkitTextStroke: "0.9px black",
 						textShadow: "2px 1px black , 2px 0 5px gray",
-						fontSize: "34px",
+						fontSize: "30px",
 					}}
 				>
 					<p
@@ -77,7 +77,7 @@ function GradientCard(props) {
 							fontFamily: "cursive",
 							fontWeight: "999",
 							textShadow: "2px 2px black , 0 0 5px gray",
-							fontSize: "34px",
+							fontSize: "30px",
 							marginBlock: "auto",
 						}}
 					>
