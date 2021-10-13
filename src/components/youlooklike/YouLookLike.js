@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 		// display: "block",
 		minWidth: "300px",
 		maxWidth: "430px",
-		minHeight: "500px",
+		minHeight: "430px",
 		miaxHeight: "578px",
 		margin: "18px auto",
 		backgroundColor: "#f7f7f7",
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	messageCard: {
 		display: "table-cell",
-		fontSize: "14px",
+		fontSize: "20px",
 		minHeight: "135px",
 		maxHeight: "245px",
 		wordWrap: "break",
@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
 		backgroundSize: "cover",
 		// border: "2px",
 		borderRadius: "12px",
-		fontSize: "	20px",
 		fontFamily: "'Akaya Kanadaka', cursive",
 		color: "white",
 		verticalAlign: "center",
@@ -182,7 +181,8 @@ function YouLookLike(props) {
 					<p style={{ fontSize: "50px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", marginBottom: "-20px", marginTop: "-10px" }}>
 						{result.name}{" "}
 					</p>
-					<hr />
+
+					<br />
 					<div className={`${classes.imageContainer} image-container`}>
 						<img className=" thumbnail" src={result.image} style={{ margin: "18px auto" }} alt="Result" />
 					</div>
@@ -191,7 +191,10 @@ function YouLookLike(props) {
 						{result.text}
 					</Card>
 				</Card>
-				<div style={{ margin: "auto", textAlign: "center", position: "absolute", top: "16%", left: "0" }}>
+				<p style={{ fontSize: "30px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", marginBottom: "-20px", marginTop: "-10px" }}>
+					Share👇
+				</p>
+				<div style={{ margin: "12px auto", textAlign: "center", position: "absolute", top: "15%", left: "0" }}>
 					{/* <p style={{ textAlign: "center", marginTop: "-15px" }}>Share</p> */}
 					<ShareButton />
 				</div>

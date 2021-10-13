@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./ShareButton.css";
 
 function ShareButton() {
@@ -11,15 +11,9 @@ function ShareButton() {
 					<li
 						onClick={() => {
 							const note = document.querySelector(".share");
-							{
-								console.log(note);
-							}
 							if (width) {
 								note.style.width = "44px";
 								setWidth(false);
-								{
-									console.log(width);
-								}
 							} else {
 								note.style.width = "220px";
 								setWidth(true);

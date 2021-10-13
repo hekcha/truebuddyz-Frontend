@@ -7,7 +7,6 @@ import Card from "../Card";
 import Trending from "./Trending";
 import Game from "./Game";
 import Footer from "./Footer";
-import CssGauge from "./CssGauge";
 
 function Home(props) {
 	return (

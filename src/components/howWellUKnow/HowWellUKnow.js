@@ -4,7 +4,6 @@ import { Card } from "@material-ui/core";
 import Loading from "../page/Loading";
 import { makeStyles } from "@material-ui/core/styles";
 import CssGauge from "../page/CssGauge";
-import resultBG from "../assets/resultbg.png";
 import ShareButton from "../page/ShareButton";
 
 const useStyles = makeStyles((theme) => ({
@@ -85,7 +84,18 @@ function HowWellUKnow(props) {
 	const [score, setScore] = useState(0);
 	const classes = useStyles();
 
-	var ALLOWED_PAGES = ["fastandfurious", "marvel", "hungergames", "loki", "onepunchman", "breakingbad", "strangerthings", "wandavision", "valorant", "friends"]
+	var ALLOWED_PAGES = [
+		"fastandfurious",
+		"marvel",
+		"hungergames",
+		"loki",
+		"onepunchman",
+		"breakingbad",
+		"strangerthings",
+		"wandavision",
+		"valorant",
+		"friends",
+	];
 
 	var frmdata = new FormData();
 	frmdata.append("game", "HWUK");
@@ -137,26 +147,25 @@ function HowWellUKnow(props) {
 	}, [i]);
 
 	const StoreAns = (item) => {
-		document.getElementById(optionList[0]).classList.remove("optionHover")
-		document.getElementById(optionList[1]).classList.remove("optionHover")
-		document.getElementById(optionList[2]).classList.remove("optionHover")
-		document.getElementById(optionList[3]).classList.remove("optionHover")
-		document.getElementById(optionList[item]).style.backgroundColor="#d96a6a";
-		document.getElementById(optionList[que[i]["ans"]]).style.backgroundColor="#5dc760";
-		
+		document.getElementById(optionList[0]).classList.remove("optionHover");
+		document.getElementById(optionList[1]).classList.remove("optionHover");
+		document.getElementById(optionList[2]).classList.remove("optionHover");
+		document.getElementById(optionList[3]).classList.remove("optionHover");
+		document.getElementById(optionList[item]).style.backgroundColor = "#d96a6a";
+		document.getElementById(optionList[que[i]["ans"]]).style.backgroundColor = "#5dc760";
+
 		setTimeout(() => {
-			document.getElementById(optionList[0]).classList.add("optionHover")
-			document.getElementById(optionList[1]).classList.add("optionHover")
-			document.getElementById(optionList[2]).classList.add("optionHover")
-			document.getElementById(optionList[3]).classList.add("optionHover")
-			
-			document.getElementById(optionList[0]).style.backgroundColor="inherit";
-			document.getElementById(optionList[1]).style.backgroundColor="inherit";
-			document.getElementById(optionList[2]).style.backgroundColor="inherit";
-			document.getElementById(optionList[3]).style.backgroundColor="inherit";
+			document.getElementById(optionList[0]).classList.add("optionHover");
+			document.getElementById(optionList[1]).classList.add("optionHover");
+			document.getElementById(optionList[2]).classList.add("optionHover");
+			document.getElementById(optionList[3]).classList.add("optionHover");
+
+			document.getElementById(optionList[0]).style.backgroundColor = "inherit";
+			document.getElementById(optionList[1]).style.backgroundColor = "inherit";
+			document.getElementById(optionList[2]).style.backgroundColor = "inherit";
+			document.getElementById(optionList[3]).style.backgroundColor = "inherit";
 			if (item === que[i]["ans"]) setScore(score + 1);
 			setI(i + 1);
-			
 		}, 400);
 	};
 

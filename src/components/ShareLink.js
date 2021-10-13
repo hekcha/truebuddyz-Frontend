@@ -116,16 +116,16 @@ function ShareLink(props) {
 				<Card.Body style={{ height: "15rem" }}>
 					<Card.Text className={classes.text}>{QUOTES[props.game][props.type]}</Card.Text>
 					<Card.Title className={classes.title}>
-						<textarea id="link" className={classes.link} value={props.link} style={{cursor:'auto'}} disabled />
+						<textarea id="link" className={classes.link} value={props.link} style={{ cursor: "auto" }} disabled />
 					</Card.Title>
-					<span>
+					<span className="my-5">
 						{props.game !== "quiz" ? null : (
 							<a href={props.link}>
 								<button
 									type="button"
 									className="btn btn-outline-dark btn-sm mx-1"
 									data-mdb-ripple-color="dark"
-									style={{ marginTop: "18px", marginBottom: "-25px", borderRadius: "10px" }}
+									style={{ marginTop: "18px", marginBottom: "-5px", borderRadius: "10px" }}
 								>
 									Result
 								</button>
@@ -135,7 +135,7 @@ function ShareLink(props) {
 							type="button"
 							className="btn btn-success btn-sm mx-1"
 							data-mdb-ripple-color="dark"
-							style={{ marginTop: "18px", marginBottom: "-25px", borderRadius: "10px" }}
+							style={{ marginTop: "18px", marginBottom: "-5px", borderRadius: "10px" }}
 							onClick={() => {
 								copy(props.link);
 								alert("Bingo😄...Share this with friends😉");
@@ -145,8 +145,8 @@ function ShareLink(props) {
 						</button>
 					</span>
 				</Card.Body>
-				<Card.Footer className="text-muted p-3">
-					<h4 style={{ marginBottom: "-12px" }}>Share On</h4>
+				<Card.Footer className="text-muted ">
+					<h4 style={{ marginBottom: "-20px" }}>Share On</h4>
 					<br />
 					<div
 						className="socializer a sr-32px sr-circle sr-float sr-font-lg sr-icon-white sr-bdr-grey sr-sw-icon-1 sr-pad justify-content-center"
