@@ -107,10 +107,7 @@ function YouLookLike(props) {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => {
-				console.log(res);
-				setQue(res);
-			})
+			.then((res) => setQue(res))
 			.catch((err) => console.log(err));
 		// eslint-disable-next-line
 	}, []);

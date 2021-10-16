@@ -1,6 +1,6 @@
-import friends from "../assets/quiz_friends.jpg";
-import couples from "../assets/quiz_couples.jfif";
-import siblings from "../assets/quiz_siblings.jfif";
+import friends from "../assets/QUIZ/QUIZ_friends.jpg";
+import couples from "../assets/QUIZ/QUIZ_couple.jpg";
+import siblings from "../assets/QUIZ/QUIZ_siblings.jfif";
 import coming_soon from "../assets/coming_soon.jpg";
 import Card from "../Card";
 

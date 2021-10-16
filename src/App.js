@@ -97,7 +97,6 @@ function App() {
 							<Route path="/this-or-that/:type" exact component={(x) => <TwoOptRoom game="thisorthat" subGame={x.match.params.type} />} />
 							<Route path="/this-or-that/:type/:code" exact component={(x) => <PlayTwoOpt game="thisorthat" subGame={x.match.params.type} gameId={x.match.params.code} />} />
 
-							{/* <Route path="/would-you-rather" exact component={(x) => <IndexWouldYouRather />} /> */}
 							<Route path="/would-you-rather" exact component={(x) => <TwoOptRoom game="wouldyourather" subGame="all" />} />
 							<Route path="/would-you-rather/:code" exact component={(x) => <PlayTwoOpt game="wouldyourather" subGame="all" gameId={x.match.params.code} />} />
 							<Redirect to="/" />

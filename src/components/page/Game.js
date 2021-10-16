@@ -1,9 +1,13 @@
 import React from "react";
 // import "./main.css";
-import quiz from "../assets/quiz.jpg";
-import rf from "../assets/rf.jpg";
+import quiz from "../assets/QUIZ/QUIZ.jpg";
+import rf from "../assets/RF/RF.jpg";
+import tot from "../assets/TOT/TOT.jpg";
+import hwuk from "../assets/HWUK/HWUK.jpg";
+import yll from "../assets/YLL/YLL.jpg";
+import wur from "../assets/WUR.jpg";
 import NewGame from "./NewGame";
-import Card, { GradientCard } from "../Card";
+import Card from "../Card";
 
 
 function Game(props) {
@@ -22,10 +26,10 @@ function Game(props) {
 							<Card link="/quiz" img={quiz} text="" />
 							<Card link="/rapid-fire" img={rf} text="RapidFire" />
 
-							<GradientCard link="/how-well-u-know" text="How Well You Know" />
-							<GradientCard link="/you-look-like" text="You look like" />
-							<GradientCard link="/this-or-that" text="this or that" />
-							<GradientCard link="/would-you-rather" text="would you rather" />
+							<Card link="/how-well-u-know" img={hwuk} text="" />
+							<Card link="/you-look-like" img={yll} text="You look like" />
+							<Card link="/this-or-that" img={tot} text="" />
+							<Card link="/would-you-rather" img={wur} text="" />
 						</div>
 					</div>
 				</section>
