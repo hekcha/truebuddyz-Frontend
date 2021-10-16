@@ -23,11 +23,9 @@ const useStyles = makeStyles((theme) => ({
 		minHeight: "430px",
 		miaxHeight: "578px",
 		margin: "18px auto",
-		backgroundColor: "#f7f7f7",
-		boxShadow: "4px 4px 5px  rgba(0, 0, 0, 0.2), -4px -4px 5px  rgba(0, 0, 0, 0.2)",
-		backgroundSize: "cover",
-		border: "25px black",
+		boxShadow: "10px 10px 30px 20px rgba(41, 50, 100 , 0.25)",
 		borderRadius: "30px",
+		backgroundSize: "cover",
 	},
 	messageCard: {
 		display: "table-cell",
@@ -174,6 +172,7 @@ function YouLookLike(props) {
 	else
 		return (
 			<div style={{ textAlign: "center", margin: "auto" }}>
+				{/* <div className={`${classes.card} card-layout layout-medium`}> */}
 				<Card className={classes.card} raised>
 					<p style={{ fontSize: "50px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", marginBottom: "-20px", marginTop: "-10px" }}>
 						{result.name}{" "}
@@ -184,10 +183,10 @@ function YouLookLike(props) {
 						<img className=" thumbnail" src={result.image} style={{ margin: "18px auto" }} alt="Result" />
 					</div>
 					<Card className={classes.messageCard} raised>
-						{/* <p style={{ fontSize: "	20px", fontFamily: "'Akaya Kanadaka', cursive", color: "white", verticalAlign: "justify" }}>{result.text}</p> */}
 						{result.text}
 					</Card>
 				</Card>
+				{/* </div> */}
 				<p style={{ fontSize: "30px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", marginBottom: "-20px", marginTop: "-10px" }}>
 					Share👇
 				</p>
@@ -195,15 +194,6 @@ function YouLookLike(props) {
 					{/* <p style={{ textAlign: "center", marginTop: "-15px" }}>Share</p> */}
 					<ShareButton />
 				</div>
-				{/* <p style={{ fontSize: "54px", fontFamily: "'Akaya Kanadaka', cursive", color: "black" }}>{result.name} </p>
-				<div className={`${classes.imageContainer} image-container`}>
-					<img className=" thumbnail" src={result.image} style={{ margin: "18px auto" }} alt="Result" />
-				</div>
-				<div>
-					<Card className={classes.messageCard} raised>
-						<p style={{ fontSize: "28px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", verticalAlign: "justify" }}>{result.text}</p>
-					</Card>
-				</div> */}
 			</div>
 		);
 }

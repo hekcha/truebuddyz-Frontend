@@ -35,11 +35,9 @@ const useStyles = makeStyles((theme) => ({
 		maxWidth: "430px",
 		height: "528px",
 		margin: "48px auto",
-		backgroundColor: "#f7f7f7",
-		boxShadow: "4px 4px 5px  rgba(0, 0, 0, 0.2), -4px -4px 5px  rgba(0, 0, 0, 0.2)",
-		backgroundSize: "cover",
-		border: "25px black",
+		boxShadow: "10px 10px 30px 20px rgba(41, 50, 100 , 0.25)",
 		borderRadius: "30px",
+		backgroundSize: "cover",
 		// animation: `$colorChange 10000ms ${theme.transitions.easing.easeInOut} infinite `,
 	},
 	messageCard: {

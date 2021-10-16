@@ -8,11 +8,6 @@ a {
 	color: inherit;
 	background-color: white;
 }
-a:hover {
-	text-decoration: none;
-	color: inherit;
-	background-color: white;
-}
 
 ul {
 	list-style: none;
@@ -73,24 +68,49 @@ ul {
 	box-shadow: 0 4px 0 #2a2a2a;
 	width: 230px;
 }
+.share:hover {
+	text-decoration: none;
+	background-color: rgb(90, 89, 89);
+	opacity: 0.98;
+}
 
 .instagram {
 	background: #ec4d4c;
 	box-shadow: 0 4px 0 #ec4d4c;
 }
+.instagram:hover {
+	text-decoration: none;
+	background-color: #eb7777;
+	opacity: 0.98;
+}
 .twitter {
 	background: #00acee;
 	box-shadow: 0 4px 0 #00acee;
+}
+.twitter:hover {
+	text-decoration: none;
+	background-color: #60cbf5;
+	opacity: 0.98;
 }
 
 .facebook {
 	background: #3b5998;
 	box-shadow: 0 4px 0 #2d4370;
 }
+.facebook:hover {
+	text-decoration: none;
+	background-color: #5a73ab;
+	opacity: 0.98;
+}
 
 .whatsapp {
 	background: #48a91f;
 	box-shadow: 0 4px 0 #48a91f;
+}
+.whatsapp:hover {
+	text-decoration: none;
+	background-color: #6bc744;
+	opacity: 0.98;
 }
 
 .btn-share {
