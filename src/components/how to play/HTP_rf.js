@@ -23,7 +23,7 @@ function HTP_rf() {
 				</li>
 				<li>After the player have joined.Click Start Button to continue.😃</li>
 				<li>
-					<italic>Responses all users after they choose any option.</italic>{" "}
+					<italic>Responses of all users are shown after they choose any option.</italic>{" "}
 				</li>
 			</ol>
 		</div>
