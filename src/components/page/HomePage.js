@@ -1,8 +1,8 @@
 import React from "react";
 // import "./main.css";
-import quiz_friends from "../assets/quiz_friends.jpg";
-import quiz_couples from "../assets/quiz_couples.jfif";
-import rf_friends from "../assets/rf_friends.jpg";
+import quiz_friends from "../assets/QUIZ/QUIZ_friends.jpg";
+import quiz_couples from "../assets/QUIZ/QUIZ_couple.jpg";
+import rf_friends from "../assets/RF/RF_friends.jpg";
 import Card from "../Card";
 import Trending from "./Trending";
 import Game from "./Game";

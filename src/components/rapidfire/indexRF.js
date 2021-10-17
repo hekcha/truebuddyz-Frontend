@@ -1,7 +1,7 @@
 // import "./indexrf.css";
-import friends from "../assets/rf_friends.jpg";
-import couples from "../assets/rf_couples.jpg";
-import siblings from "../assets/rf_siblings.jpg";
+import friends from "../assets/RF/RF_friends.jpg";
+import couples from "../assets/RF/RF_couple.jpg";
+import siblings from "../assets/RF/RF_siblings.jpg";
 import coming_soon from "../assets/coming_soon.jpg";
 import Card from '../Card';
 

@@ -1,4 +1,4 @@
-import Card, { GradientCard } from "../Card";
+import Card from "../Card";
 import fastandfurious from "../assets/HWUK/HWUK_fastandfurious.jpg";
 import marvel from "../assets/HWUK/HWUK_marvel.jpg";
 import hungergames from "../assets/HWUK/HWUK_hungergames.jpg";
@@ -8,6 +8,8 @@ import breakingbad from "../assets/HWUK/HWUK_breakingbad.jfif";
 import strangerthings from "../assets/HWUK/HWUK_strangerthings.jpg";
 import wandavision from "../assets/HWUK/HWUK_wandavision.jpg";
 import valorant from "../assets/HWUK/HWUK_valorant.jpg";
+import friends from "../assets/HWUK/HWUK_friends.jpg";
+
 function IndexHowWellUKnow() {
 	return (
 		<div className="inner div">
@@ -36,7 +38,7 @@ function IndexHowWellUKnow() {
 						<Card link="/how-well-u-know/strangerthings"	img={strangerthings}	text="Only True Stranger Things Fans Can Pass This Trivia Quiz" />
 						<Card link="/how-well-u-know/wandavision"		img={wandavision}		text="Think You Know Everything About WandaVision? Take Our Trivia Quiz to Find Out" />
 						<Card link="/how-well-u-know/valorant"			img={valorant}			text="How Well Do You Know Valorant’s Agents? Take This Quiz to Find Out" />
-						<GradientCard link="/how-well-u-know/friends"							text="Friends Quiz Questions for True Fans" />
+						<Card link="/how-well-u-know/friends"			img={friends}			text="Friends Quiz Questions for True Fans" />
 					</div>
 				</div>
 			</section>

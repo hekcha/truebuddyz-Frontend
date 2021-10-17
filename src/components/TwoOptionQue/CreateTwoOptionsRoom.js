@@ -13,7 +13,7 @@ function TwoOptRoom(props) {
 	var ALLOWED_GAMES = ["wouldyourather", "thisorthat"];
     var ALLOWED_PAGES = {
         "wouldyourather":["all"],
-        "thisorthat":["friends", "students"],
+        "thisorthat":["friends", "couple", "funny", "hard", "adult"],
     }
 
 	useEffect(() => {

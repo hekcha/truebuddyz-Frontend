@@ -4,7 +4,7 @@ import { Card } from "@material-ui/core";
 import Loading from "../page/Loading";
 import { makeStyles } from "@material-ui/core/styles";
 import CssGauge from "../page/CssGauge";
-import ShareButton from "../page/ShareButton";
+// import ShareButton from "../page/ShareButton";
 
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
@@ -145,6 +145,7 @@ function HowWellUKnow(props) {
 	}, [i]);
 
 	const StoreAns = (item) => {
+
 		document.getElementById(optionList[0]).classList.remove("optionHover");
 		document.getElementById(optionList[1]).classList.remove("optionHover");
 		document.getElementById(optionList[2]).classList.remove("optionHover");
@@ -153,15 +154,18 @@ function HowWellUKnow(props) {
 		document.getElementById(optionList[que[i]["ans"]]).style.backgroundColor = "#5dc760";
 
 		setTimeout(() => {
-			document.getElementById(optionList[0]).classList.add("optionHover");
-			document.getElementById(optionList[1]).classList.add("optionHover");
-			document.getElementById(optionList[2]).classList.add("optionHover");
-			document.getElementById(optionList[3]).classList.add("optionHover");
-
-			document.getElementById(optionList[0]).style.backgroundColor = "inherit";
-			document.getElementById(optionList[1]).style.backgroundColor = "inherit";
-			document.getElementById(optionList[2]).style.backgroundColor = "inherit";
-			document.getElementById(optionList[3]).style.backgroundColor = "inherit";
+			if(document.getElementById(optionList[0]))
+			{
+				document.getElementById(optionList[0]).classList.add("optionHover");
+				document.getElementById(optionList[1]).classList.add("optionHover");
+				document.getElementById(optionList[2]).classList.add("optionHover");
+				document.getElementById(optionList[3]).classList.add("optionHover");
+	
+				document.getElementById(optionList[0]).style.backgroundColor = "inherit";
+				document.getElementById(optionList[1]).style.backgroundColor = "inherit";
+				document.getElementById(optionList[2]).style.backgroundColor = "inherit";
+				document.getElementById(optionList[3]).style.backgroundColor = "inherit";
+			}
 			if (item === que[i]["ans"]) setScore(score + 1);
 			setI(i + 1);
 		}, 400);
@@ -224,12 +228,12 @@ function HowWellUKnow(props) {
 							<img className=" thumbnail" src={result.image} alt="Question" />
 						</div>
 						<br />
-						<hr />
+						{/* <hr />
 						<br />
 						<div style={{ margin: "auto", textAlign: "center" }}>
-							{/* <p style={{ textAlign: "center", marginTop: "-15px" }}>Share</p> */}
+							<p style={{ textAlign: "center", marginTop: "-15px" }}>Share</p>
 							<ShareButton />
-						</div>
+						</div> */}
 					</Card>
 				</div>
 			</div>

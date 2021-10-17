@@ -1,7 +1,10 @@
 import Card from "../Card";
-import coming_soon from "../assets/coming_soon.jpg";
-import YLL_TRANS_main from "../assets/YLL_TRANS_main-min.jpg";
-import YLL_NARUTO_main from "../assets/YLL_NARUTO_main.gif";
+import himym from '../assets/YLL/YLL_himym.jpg'
+import demonslayer from '../assets/YLL/YLL_demonslayer.jpg'
+import transformer from '../assets/YLL/YLL_transformer.jpg'
+import naruto from '../assets/YLL/YLL_naruto.jpg'
+import fastandfurious from '../assets/YLL/YLL_fastandfurious.jpg'
+
 
 function IndexYouLookLike() {
 	return (
@@ -17,13 +20,12 @@ function IndexYouLookLike() {
 			<section className="tiles section" style={{ marginTop: "30px" }}>
 				<div id="indexrf" className="container">
 					<div className="cards-list">
-						<Card img={YLL_NARUTO_main} link="/you-look-like/naruto" text="Which Naruto character you are?" />
-						<Card img={YLL_TRANS_main} link="/you-look-like/transformer" text="Which Transformer Are You? Take the Quiz to Find Out" />
+						<Card img={naruto} link="/you-look-like/naruto" text="Which Naruto character you are?" />
+						<Card img={transformer} link="/you-look-like/transformer" text="Which Transformer Are You? Take the Quiz to Find Out" />
+						<Card img={himym} link="/you-look-like/himym" text="Which How I Met Your Mother Character Are You? Take the Quiz to Find Out" />
+						<Card img={demonslayer} link="/you-look-like/demonslayer" text="Which demon slayer character you are" />
+						<Card img={fastandfurious} link="/you-look-like/fastandfurious" text="Which Fast & Furious Character Are You? Take This Quiz to Find Out" />
 
-						<Card link="#" img={coming_soon} text="" />
-						<Card link="#" img={coming_soon} text="" />
-						<Card link="#" img={coming_soon} text="" />
-						<Card link="#" img={coming_soon} text="" />
 					</div>
 				</div>
 			</section>
