@@ -20,7 +20,7 @@ function ShareButton() {
 							}
 						}}
 					>
-						<a href="{#}" className="button share entypo-share">
+						<a href="#" className="button share entypo-share">
 							<i className="fas fa-share-alt"></i>
 						</a>
 					</li>
