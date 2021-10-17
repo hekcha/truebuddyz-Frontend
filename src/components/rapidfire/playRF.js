@@ -9,7 +9,7 @@ import { Button, Card, TextField } from "@material-ui/core";
 import NeonRapidfire from "../Neon/NeonRapidfire";
 import ShareLink from "../ShareLink";
 import finger from "../assets/finger.gif";
-
+import "../page/timer.css";
 
 const useStyles = makeStyles((theme) => ({
 	btnGrad: {
@@ -145,7 +145,7 @@ function getRandomInt(max) {
 
 function Rapidfire(props) {
 	// firebaseAuth.signInAnonymously().catch(alert);
-	const [token] = useCookies(['tb-token','tb-user']);
+	const [token] = useCookies(["tb-token", "tb-user"]);
 	const classes = useStyles();
 	// Check which colour to delete.
 	// ["#FF00E4", "#28FFBF", "#C400FF", "#F7FD04", "#FF5200", "#FA163F", "#FF00C8", "#D80E70", "#00541A"];
@@ -261,7 +261,7 @@ function Rapidfire(props) {
 			startTimer(
 				setTimeout(function () {
 					AnsChoice("not selected");
-				}, 15000)
+				}, 30000)
 				// yha shi krna time
 			);
 		} else if (y !== 1 && countdown) clearInterval(countdown);
@@ -291,7 +291,11 @@ function Rapidfire(props) {
 
 	const NextQue = () => {
 		// increse the count in queNo
-		firebaseDb.child("RapidFire").child(props.gameId).child("queNo").set((i + 1) % queBank.length);
+		firebaseDb
+			.child("RapidFire")
+			.child(props.gameId)
+			.child("queNo")
+			.set((i + 1) % queBank.length);
 		// Set ans to null
 		firebaseDb.child("RapidFire").child(props.gameId).child("ans").set("null");
 		// setI((i + 1) % queBank.length);
@@ -307,22 +311,21 @@ function Rapidfire(props) {
 	if (i === -1) {
 		return (
 			<div id="playRF" style={{ margin: "40px auto" }}>
-				<NeonRapidfire types={props.type} style={{ margin: "auto",}} />
+				<NeonRapidfire types={props.type} style={{ margin: "auto" }} />
 				<br />
-				<div
-					className="card"
-					style={{border:'0', zIndex: '-1'}}
-				><img
-				src={finger} 
-				alt="finger" 
-				style={{
-					backgroundImage: finger,
-					margin: "8px auto",
-					width: "330px",
-					height: "243px",
-					borderRadius: "450px",
-				}}
-			/></div>
+				<div className="card" style={{ border: "0", zIndex: "-1" }}>
+					<img
+						src={finger}
+						alt="finger"
+						style={{
+							backgroundImage: finger,
+							margin: "8px auto",
+							width: "330px",
+							height: "243px",
+							borderRadius: "450px",
+						}}
+					/>
+				</div>
 				<p style={{ textAlign: "center", fontSize: "50px" }}>Loading Your Room...</p>
 			</div>
 		);
@@ -411,18 +414,24 @@ function Rapidfire(props) {
 					<NeonRapidfire types={props.type} style={{ marginY: "25px" }} />
 				</div>
 				<br />
+				<h2 style={{ fontFamily: "'Pacifico'" }}>Never Ending Question</h2>
+				<br />
 				<h3 className="my-2">
 					<i class="fas fa-circle fa-xs" style={{ color: "#05b714" }}></i> Online: {Object.values(users).length}{" "}
 				</h3>
-				<br />
-				<div className="row">
-					<div id="countdown" className="mb-3 col-12">
-						<div id="countdown-number">
-							<span id="time">15</span>
+				{/* <br /> */}
+				<div className="row ">
+					<div style={{ display: "flex", margin: "5px auto", justifyContent: "center", alignItems: "center" }}>
+						<div className="outer">
+							<div className="inner">
+								<div className="minute-box">
+									<p id="minute-box">00</p>
+								</div>
+								<div className="second-box">
+									<p id="time">30</p>
+								</div>
+							</div>
 						</div>
-						<svg>
-							<circle r="18" cx="20" cy="20"></circle>
-						</svg>
 					</div>
 					<br />
 					<hr />
@@ -441,9 +450,15 @@ function Rapidfire(props) {
 						})}
 					</div>
 				</div>
-				<button className={`${classes.btnGrad}`} onClick={() => AnsChoice("Skipped")} style={{ width: "80px" }}>
+
+				<Button
+					variant="contained"
+					color="primary"
+					onClick={() => AnsChoice("Skipped")}
+					// style={{ width: "80px", height: "40px", verticalAlign: "center" }}
+				>
 					Skip
-				</button>
+				</Button>
 			</div>
 		);
 	}
@@ -488,7 +503,7 @@ function Rapidfire(props) {
 	if (y === 3)
 		return (
 			<div id="playRF" className="mt-4" style={{ textAlign: "center" }}>
-				{ans===null?NextQue():null}
+				{ans === null ? NextQue() : null}
 				<div className="my-5">
 					<NeonRapidfire types={props.type} />
 				</div>

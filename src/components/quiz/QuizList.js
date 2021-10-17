@@ -12,7 +12,7 @@ function QuizList() {
 			<header className="header">
 				<h1
 					className="h1"
-					style={{ marginTop: "0px", marginBottom: "0em", textAlign: "center", fontFamily: "'Permanent Marker', cursive", fontSize: "72px" }}
+					style={{ marginTop: "-90px", marginBottom: "0em", textAlign: "center", fontFamily: "'Permanent Marker', cursive", fontSize: "72px" }}
 				>
 					Quiz
 				</h1>

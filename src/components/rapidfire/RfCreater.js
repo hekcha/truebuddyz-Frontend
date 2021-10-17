@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import NeonRapidfire from "../Neon/NeonRapidfire";
 import finger from "../assets/finger.gif";
-
+import HTP_rf from "../how to play/HTP_rf";
 
 function RfCreater(props) {
 	var ALLOWED_PAGES = ["friends", "couple", "siblings"];
@@ -15,48 +15,48 @@ function RfCreater(props) {
 			if (ALLOWED_PAGES[i] === props.type) break;
 			if (i === ALLOWED_PAGES.length - 1) window.location.href = "/"; // SHOW 404 page
 		}
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, []);
 
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(false);
 	const Redirect = () => {
 		setIsLoading(true);
 		var date = new Date();
 		var gameId = date.getTime().toString(31);
-		var x=Math.floor(Math.random()*50);
-		firebaseDb.child("RapidFire").child(gameId).set(
+		var x = Math.floor(Math.random() * 50);
+		firebaseDb
+			.child("RapidFire")
+			.child(gameId)
+			.set(
 				{
 					queNo: x,
 					users: "null",
 					ans: "null",
 				},
 				(err) => {
-					if(err)
-						console.log("Error: ", err);
-					else
-						window.location.href = `/rapid-fire/${props.type}/${gameId}`;
+					if (err) console.log("Error: ", err);
+					else window.location.href = `/rapid-fire/${props.type}/${gameId}`;
 				}
 			);
 	};
-	if(isLoading)
+	if (isLoading)
 		return (
 			<div id="playRF" style={{ margin: "40px auto" }}>
-				<NeonRapidfire types={props.type} style={{ margin: "auto",}} />
+				<NeonRapidfire types={props.type} style={{ margin: "auto" }} />
 				<br />
-				<div
-					className="card"
-					style={{border:'0', zIndex: '-1'}}
-				><img
-				src={finger} 
-				alt="finger" 
-				style={{
-					backgroundImage: finger,
-					margin: "8px auto",
-					width: "330px",
-					height: "243px",
-					borderRadius: "450px",
-				}}
-			/></div>
+				<div className="card" style={{ border: "0", zIndex: "-1" }}>
+					<img
+						src={finger}
+						alt="finger"
+						style={{
+							backgroundImage: finger,
+							margin: "8px auto",
+							width: "330px",
+							height: "243px",
+							borderRadius: "450px",
+						}}
+					/>
+				</div>
 				<p style={{ textAlign: "center", fontSize: "50px" }}>Creating A Room For You...</p>
 			</div>
 		);
@@ -69,7 +69,7 @@ function RfCreater(props) {
 			<Button variant="contained" color="primary" onClick={() => Redirect()}>
 				Create a room
 			</Button>
-			<pre style={{ fontSize: "48px", fontWeight: "999", fontFamily: "'Pacifico', cursive", color: "#404040" }}>How to Play?👇 </pre>
+			<HTP_rf />
 		</div>
 	);
 }

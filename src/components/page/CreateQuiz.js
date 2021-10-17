@@ -4,6 +4,7 @@ import { Card, TextField, Stepper, Step, StepLabel } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import NeonCreateQuiz from "../Neon/NeonCreateQuiz";
+import HTP_quiz from "../how to play/HTP_quiz";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -125,6 +126,7 @@ export default function SimpleCard(props) {
 					</Button>
 				</CardContent>
 			</Card>
+			<HTP_quiz />
 		</div>
 	);
 }
