@@ -421,7 +421,7 @@ function Rapidfire(props) {
 				</h3>
 				{/* <br /> */}
 				<div className="row ">
-					<div style={{ display: "flex", margin: "5px auto", justifyContent: "center", alignItems: "center" }}>
+					<div id="timer" style={{ display: "flex", margin: "5px auto", justifyContent: "center", alignItems: "center" }}>
 						<div className="outer">
 							<div className="inner">
 								<div className="minute-box">
