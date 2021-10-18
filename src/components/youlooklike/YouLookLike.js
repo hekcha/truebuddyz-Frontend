@@ -8,12 +8,12 @@ import ShareButton from "../page/ShareButton";
 
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
-		margin: "2px auto",
-		marginTop: "-15px",
+		margin: "auto",
+		marginTop: "0px",
 		marginBottom: "-10px",
 		// width: "100%",
-		minWidth: "315px",
-		height: "300px",
+		// minWidth: "315px",
+		height: "225px",
 		// maxHeight: "360px",
 	},
 	card: {

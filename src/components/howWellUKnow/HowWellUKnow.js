@@ -9,11 +9,11 @@ import CssGauge from "../page/CssGauge";
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
 		margin: "auto",
-		marginTop: "-35px",
+		marginTop: "0",
 		marginBottom: "-40px",
 		boxShadow: "none",
-		width: "190px",
-		height: "160px",
+		// width: "190px",
+		height: "225px",
 		// maxHeight: "360px",
 		// backgroundSize: "cover",
 	},
@@ -165,10 +165,10 @@ function HowWellUKnow(props) {
 				document.getElementById(optionList[1]).style.backgroundColor = "inherit";
 				document.getElementById(optionList[2]).style.backgroundColor = "inherit";
 				document.getElementById(optionList[3]).style.backgroundColor = "inherit";
+				if (item === que[i]["ans"]) setScore(score + 1);
+				setI(i + 1);
 			}
-			if (item === que[i]["ans"]) setScore(score + 1);
-			setI(i + 1);
-		}, 400);
+		}, 700);
 	};
 
 	if (!que) return <Loading />;
@@ -176,7 +176,7 @@ function HowWellUKnow(props) {
 		return (
 			<div id="howwellyouknow" className="text-center">
 				<div className={`${classes.imageContainer} image-container`}>
-					<img className=" thumbnail" src={que[i][`image`]} alt="Question" />
+					<img key={Date.now()} className=" thumbnail" src={que[i][`image`]} alt="Question" />
 				</div>
 				<br />
 				<div className="text-center col-12">

@@ -2,6 +2,7 @@
 package-lock.json
 src/firebase.js
 .env
+/build
 # dependencies
 /node_modules
 /.pnp

@@ -201,11 +201,14 @@ function Playquiz(props) {
 		document.getElementById(optionList[a]).style.backgroundColor="#d96a6a";
 		document.getElementById(optionList[que[`ans${i + 1}`]]).style.backgroundColor="#5dc760";
 		setTimeout(() => {
-			document.getElementById(optionList[0]).style.backgroundColor="inherit";
-			document.getElementById(optionList[1]).style.backgroundColor="inherit";
-			document.getElementById(optionList[2]).style.backgroundColor="inherit";
-			document.getElementById(optionList[3]).style.backgroundColor="inherit";
-			setI(i + 1);
+			if(document.getElementById(optionList[0]))
+			{
+				document.getElementById(optionList[0]).style.backgroundColor="inherit";
+				document.getElementById(optionList[1]).style.backgroundColor="inherit";
+				document.getElementById(optionList[2]).style.backgroundColor="inherit";
+				document.getElementById(optionList[3]).style.backgroundColor="inherit";
+				setI(i + 1);
+			}
 		}, 700);
 	}
 
