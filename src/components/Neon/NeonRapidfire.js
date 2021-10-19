@@ -3,7 +3,13 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles((theme) => ({
 	logoR: {
+		[theme.breakpoints.up("xs")]: {
+			marginTop: "10px",
+			fontSize: "18px",
+		},
 		[theme.breakpoints.down("xs")]: {
+			marginTop: "10px",
+			maginBottom: "50px",
 			fontSize: "18px",
 		},
 	},

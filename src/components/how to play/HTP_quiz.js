@@ -6,19 +6,27 @@ function HTP_quiz() {
 			style={{
 				position: "relative",
 				color: "black",
+				minWidth: "320px",
+				maxWidth: "550px",
 				fontSize: "32px",
-				textAlign: "center",
-				fontWeight: "600",
+				margin: "auto",
 				marginTop: "80px",
 			}}
 		>
-			<p style={{ fontSize: "49px", fontFamily: "'Permanent Marker', cursive" }}>How to play?</p>
-			<ol>
+			<p style={{ fontSize: "49px", fontFamily: "'Pacifico', cursive", fontWeight: "600", textAlign: "center" }}>How to play?</p>
+			<ol
+				style={{
+					display: "flex",
+					textAlign: "left",
+					flexDirection: "column",
+				}}
+			>
 				<li>Enter your name in the textbox📝.</li>
 				<li>
 					Answer the question.
 					<li>
-						You can <u>change the options</u> or <u>skip to next one</u>.
+						You can <strong style={{ fontWeight: "550", color: "gray" }}>change the options</strong> or{" "}
+						<strong style={{ fontWeight: "550", color: "gray" }}>skip to next one</strong>.
 					</li>
 				</li>
 				<li>Share the quiz with your friends.😃</li>
