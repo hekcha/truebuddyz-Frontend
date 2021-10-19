@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { Card } from "@material-ui/core";
 import Loading from "../page/Loading";
 import { makeStyles } from "@material-ui/core/styles";
-import ShareButton from "../page/ShareButton";
+// import ShareButton from "../page/ShareButton";
 
 const useStyles = makeStyles((theme) => ({
 	imageContainer: {
@@ -13,15 +13,15 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: "-10px",
 		// width: "100%",
 		// minWidth: "315px",
-		height: "225px",
+		// height: "225px",
 		// maxHeight: "360px",
 	},
 	card: {
 		// display: "block",
 		minWidth: "300px",
-		maxWidth: "430px",
-		minHeight: "430px",
-		miaxHeight: "578px",
+		maxWidth: "70%",
+		// minHeight: "430px",
+		// miaxHeight: "578px",
 		margin: "18px auto",
 		boxShadow: "10px 10px 30px 20px rgba(41, 50, 100 , 0.25)",
 		borderRadius: "30px",
@@ -54,24 +54,24 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: "center",
 		cursor: "pointer",
 		border: "2px solid black",
-		"&:hover": {
-			scale: "1.05",
-			// eslint-disable-next-line
-			background: " #1D976C",
-			// eslint-disable-next-line
-			background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
-			// eslint-disable-next-line
-			background: "linear-gradient(to right, #93F9B9, #1D976C)",
-		},
-		"&:active": {
-			scale: "1.05",
-			// eslint-disable-next-line
-			background: " #1D976C",
-			// eslint-disable-next-line
-			background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
-			// eslint-disable-next-line
-			background: "linear-gradient(to right, #93F9B9, #1D976C)",
-		},
+		// "&:hover": {
+		// 	scale: "1.05",
+		// 	// eslint-disable-next-line
+		// 	background: " #1D976C",
+		// 	// eslint-disable-next-line
+		// 	background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
+		// 	// eslint-disable-next-line
+		// 	background: "linear-gradient(to right, #93F9B9, #1D976C)",
+		// },
+		// "&:active": {
+		// 	scale: "1.05",
+		// 	// eslint-disable-next-line
+		// 	background: " #1D976C",
+		// 	// eslint-disable-next-line
+		// 	background: "-webkit-linear-gradient(to right, #93F9B9, #1D976C)",
+		// 	// eslint-disable-next-line
+		// 	background: "linear-gradient(to right, #93F9B9, #1D976C)",
+		// },
 	},
 }));
 
@@ -180,20 +180,19 @@ function YouLookLike(props) {
 
 					<br />
 					<div className={`${classes.imageContainer} image-container`}>
-						<img className=" thumbnail" src={result.image} style={{ margin: "18px auto" }} alt="Result" />
+						<img className=" thumbnail" src={result.image} style={{ margin: "18px auto",width:'60%' }} alt="Result" />
 					</div>
-					<Card className={classes.messageCard} raised>
+					<div style={{margin:'30px auto 60px 25%', width:'50%',marginLeft:'25%', fontFamily:'Permanent Marker',fontSize:'1.2rem'}}>
 						{result.text}
-					</Card>
+					</div>
 				</Card>
-				{/* </div> */}
-				<p style={{ fontSize: "30px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", marginBottom: "-20px", marginTop: "-10px" }}>
+				{/* <p style={{ fontSize: "30px", fontFamily: "'Akaya Kanadaka', cursive", color: "black", marginBottom: "-20px", marginTop: "-10px" }}>
 					Share👇
 				</p>
 				<div style={{ margin: "12px auto", textAlign: "center", position: "absolute", top: "15%", left: "0" }}>
-					{/* <p style={{ textAlign: "center", marginTop: "-15px" }}>Share</p> */}
+					<p style={{ textAlign: "center", marginTop: "-15px" }}>Share</p>
 					<ShareButton />
-				</div>
+				</div> */}
 			</div>
 		);
 }
