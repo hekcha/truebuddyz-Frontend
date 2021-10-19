@@ -25,8 +25,8 @@ function HTP_quiz() {
 				<li>
 					Answer the question.
 					<li>
-						You can <strong style={{ fontWeight: "550", color: "gray" }}>change the options</strong> or{" "}
-						<strong style={{ fontWeight: "550", color: "gray" }}>skip to next one</strong>.
+						You can <strong style={{ fontWeight: "550", color: "#58688e" }}>change the options</strong> or{" "}
+						<strong style={{ fontWeight: "550", color: "#58688e" }}>skip to next one</strong>.
 					</li>
 				</li>
 				<li>Share the quiz with your friends.😃</li>
