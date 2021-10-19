@@ -400,7 +400,7 @@ function Rapidfire(props) {
 				</Card>
 				<br />
 				<ShareLink game="rf" type={props.type} link={`${process.env.REACT_APP_URL}/rapid-fire/${props.type}/${props.gameId}`} />
-				<h1 className="my-4">Instructions📖</h1>
+				{/* <h1 className="my-4">Instructions📖</h1> */}
 			</div>
 		);
 	}

@@ -247,6 +247,7 @@ function Quizcreate(props) {
 			}
 		}
 	};
+	
 
 	const NextQue = () => {
 		if (item !== null) {
@@ -351,7 +352,7 @@ function Quizcreate(props) {
 					<div className="row d-flex justify-content-center my-3" style={{ width: "100%" }}>
 						<div className="col-8">
 							<div className="row d-flex justify-content-center">
-								<Button variant="contained" color="secondary" className="mx-3  col-4" onClick={() => setI((i + 1) % queBank.length)}>
+								<Button variant="contained" color="secondary" className="mx-3  col-4" onClick={() => {setI((i + 1) % queBank.length);SelectAns(null)}}>
 									Skip
 								</Button>
 								<Button variant="contained" className="mx-3 col-4" onClick={() => NextQue()} style={{ backgroundColor: "green", color: "white" }}>

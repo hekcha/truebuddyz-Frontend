@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: "-10px",
 	},
 	item0: {
-		display: "grid",
+		display: "inline-block",
 		textAlign: "center",
 		fontWeight: "500",
 		height: "100%",
@@ -65,9 +65,9 @@ const useStyles = makeStyles((theme) => ({
 		textTransform: "capitalize",
 	},
 	item1: {
-		display: "grid",
+		display: "inline-block",
 		textAlign: "center",
-		fontWeight: "525",
+		fontWeight: "600",
 		fontSize: "18px",
 		textTransform: "capitalize",
 		verticalAlign: "center",
@@ -122,9 +122,11 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	tableCard2: {
+		display: "flex",
 		width: "35vw",
 		margin: "15px",
 		borderRadius: "15px",
+		justifyContent: "space-between",
 		backgroundSize: "cover",
 		backgroundRepeat: "no-repeat",
 		[theme.breakpoints.down("sm")]: {

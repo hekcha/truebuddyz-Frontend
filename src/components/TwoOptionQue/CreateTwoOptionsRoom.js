@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import finger from "../assets/finger.gif";
 import NeonTwoOpt from "../Neon/NeonTwoOpt";
+import MostLiked from "../page/MostLiked";
 
 
 function TwoOptRoom(props) {
@@ -87,10 +88,15 @@ function TwoOptRoom(props) {
 			{props.game==='wouldyourather'? <div />:
 				<h1 style={{ color: "#404040" }}>Click to Create a room for {props.subGame}</h1>
 			}
-			<Button variant="contained" color="primary" onClick={() => Redirect()}>
+			<Button variant="contained" color="primary" style={{marginTop:'3rem'}} onClick={() => Redirect()}>
 				Create a room
 			</Button>
-			<pre style={{ fontSize: "48px", fontWeight: "999", fontFamily: "'Pacifico', cursive", color: "#404040" }}>How to Play?👇 </pre>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<MostLiked />
+			{/* <pre style={{ fontSize: "48px", fontWeight: "999", fontFamily: "'Pacifico', cursive", color: "#404040" }}>How to Play?👇 </pre> */}
 		</div>
 	);
 }
