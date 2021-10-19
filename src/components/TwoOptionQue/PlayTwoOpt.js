@@ -404,7 +404,7 @@ function PlayTwoOpt(props) {
 				</Card>
 				<br />
 				<ShareLink game={props.game} type={props.subGame} link={link} />
-				<h1 className="my-4">Instructions📖</h1>
+				{/* <h1 className="my-4">Instructions📖</h1> */}
 			</div>
 		);
 	}

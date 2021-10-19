@@ -65,7 +65,7 @@ function RfCreater(props) {
 			<span className="row " style={{ display: "inline", flexDirection: "row" }}>
 				<NeonRapidfire types={props.type} />
 			</span>
-			<h1 style={{ color: "#404040" }}>Click to Create a room</h1>
+			<h1 style={{ color: "#404040",paddingTop:'3rem'}}>Click to Create a room</h1>
 			<Button variant="contained" color="primary" onClick={() => Redirect()}>
 				Create a room
 			</Button>

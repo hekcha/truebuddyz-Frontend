@@ -1,12 +1,9 @@
 import React from "react";
 // import "./main.css";
-import quiz_friends from "../assets/QUIZ/QUIZ_friends.jpg";
-import quiz_couples from "../assets/QUIZ/QUIZ_couple.jpg";
-import rf_friends from "../assets/RF/RF_friends.jpg";
-import Card from "../Card";
 import Trending from "./Trending";
 import Game from "./Game";
 import Footer from "./Footer";
+import MostLiked from "./MostLiked";
 
 function Home(props) {
 	return (
@@ -15,7 +12,8 @@ function Home(props) {
 				<div className="row"></div>
 				<div id="wrapper" className="div mx-4">
 					<div id="main" className="div">
-						<div className="inner div">
+						<MostLiked />
+						{/* <div className="inner div">
 							<header className="header">
 								<h1 className="h1" style={{ marginBottom: "0.2em" }}>
 									Most Liked💗
@@ -33,7 +31,7 @@ function Home(props) {
 									</div>
 								</div>
 							</section>
-						</div>
+						</div> */}
 						<br />
 						<br />
 						<Trending trand={props.trand} />

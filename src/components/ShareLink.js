@@ -113,7 +113,7 @@ function ShareLink(props) {
 		<div style={{ display: "flex", justifyContent: "center", marginTop: "8vh" }}>
 			<Card className={`text-center ${classes.cardBody}`}>
 				<Card.Header className={classes.heading}>{TEXT[props.game][props.type]}</Card.Header>
-				<Card.Body style={{ height: "15rem" }}>
+				<Card.Body style={{ height: "19rem" }}>
 					<Card.Text className={classes.text}>{QUOTES[props.game][props.type]}</Card.Text>
 					<Card.Title className={classes.title}>
 						<textarea id="link" className={classes.link} value={props.link} style={{ cursor: "auto" }} disabled />
@@ -155,7 +155,7 @@ function ShareLink(props) {
 					>
 						<span className="sr-whatsapp sr-text-below">
 							<a
-								href={`https://api.whatsapp.com/send?text="Your friend share this **TrueBuddyz Quiz** :\n ${props.link} \n Click on the link☝ to show some love❤ to your friend."`}
+								href={`https://api.whatsapp.com/send?text="Your friend share this TrueBuddyz.com game :\n ${props.link} \n Click on the link☝ to play."`}
 								title="WhatsApp"
 							>
 								<i className="fab fa-whatsapp"></i>
@@ -164,7 +164,7 @@ function ShareLink(props) {
 						</span>
 						<span className="sr-telegram sr-text-below">
 							<a
-								href={`https://telegram.me/share/url?url=Your friend share this **TrueBuddyz Quiz** :\n ${props.link} \n Click on the link☝ to show some love❤ to your friend.`}
+								href={`https://telegram.me/share/url?url=Your friend share this TrueBuddyz.com game :\n ${props.link} \n Click on the link☝ to play.`}
 								title="Telegram"
 							>
 								<i className="fab fa-telegram-plane"></i>
@@ -174,7 +174,7 @@ function ShareLink(props) {
 
 						<span className="sr-facebook sr-text-below ">
 							<a
-								href={`https://www.facebook.com/share.php?u=Your friend share this **TrueBuddyz Quiz** :\n ${props.link} \n Click on the link☝ to show some love❤ to your friend.`}
+								href={`https://www.facebook.com/share.php?u=Your friend share this TrueBuddyz.com game :\n ${props.link} \n Click on the link☝ to play.`}
 								title="Facebook"
 							>
 								<i className="fab fa-facebook-f"></i>
