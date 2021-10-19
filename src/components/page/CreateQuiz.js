@@ -106,7 +106,6 @@ export default function SimpleCard(props) {
 						id="name"
 						label="Your Name Here"
 						placeholder="Hello Dear👋"
-						multiline
 						variant="filled"
 						name="name"
 						inputProps={{ maxLength: 18 }}

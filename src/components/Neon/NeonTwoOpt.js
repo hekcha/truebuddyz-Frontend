@@ -4,15 +4,16 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyle = makeStyles((theme) => ({
 	logoR: {
 		[theme.breakpoints.down("xs")]: {
+			marginTop: "88px",
 			fontSize: "18px",
 		},
 	},
 }));
 function NeonTwoOpt(props) {
 	const classes = useStyle();
-	if(props.game==='thisorthat')
+	if (props.game === "thisorthat")
 		return (
-			<div className={`${classes.logoR} logoR row `}>
+			<div className={`${classes.logoR} logoR row mt-5 `}>
 				<b className="mb-5">
 					<span>This</span>
 					<span> Or </span>
@@ -20,7 +21,7 @@ function NeonTwoOpt(props) {
 				</b>
 			</div>
 		);
-	if(props.game==='wouldyourather')
+	if (props.game === "wouldyourather")
 		return (
 			<div className={`${classes.logoR} logoR row `}>
 				<b className="mb-5">

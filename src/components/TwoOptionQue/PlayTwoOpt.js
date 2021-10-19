@@ -10,7 +10,6 @@ import ShareLink from "../ShareLink";
 import finger from "../assets/finger.gif";
 import NeonTwoOpt from "../Neon/NeonTwoOpt";
 
-
 const useStyles = makeStyles((theme) => ({
 	btnGrad: {
 		backgroundImage: "linear-gradient(to right, #007991 0%, #78ffd6  51%, #007991  100%)",
@@ -57,15 +56,16 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: "-10px",
 	},
 	item0: {
-		display: "inline-block",
+		display: "grid",
 		textAlign: "center",
 		fontWeight: "500",
-
+		height: "100%",
+		margin: "auto",
 		fontSize: "24px",
 		textTransform: "capitalize",
 	},
 	item1: {
-		display: "inline-block",
+		display: "grid",
 		textAlign: "center",
 		fontWeight: "525",
 		fontSize: "18px",
@@ -145,7 +145,7 @@ function getRandomInt(max) {
 
 function PlayTwoOpt(props) {
 	// firebaseAuth.signInAnonymously().catch(alert);
-	const [token] = useCookies(['tb-token','tb-user']);
+	const [token] = useCookies(["tb-token", "tb-user"]);
 	const classes = useStyles();
 	// Check which colour to delete.
 	// ["#FF00E4", "#28FFBF", "#C400FF", "#F7FD04", "#FF5200", "#FA163F", "#FF00C8", "#D80E70", "#00541A"];
@@ -184,29 +184,24 @@ function PlayTwoOpt(props) {
 	const [countdown, setCountDown] = useState(null);
 
 	var ALLOWED_GAMES = ["wouldyourather", "thisorthat"];
-    var ALLOWED_PAGES = {
-        "wouldyourather":["all"],
-        "thisorthat":["friends", "couple", "funny", "hard", "adult"],
-    }
+	var ALLOWED_PAGES = {
+		"wouldyourather": ["all"],
+		"thisorthat": ["friends", "couple", "funny", "hard", "adult"],
+	};
 
-    var link;
-    if(props.game==='wouldyourather')
-        link =`${process.env.REACT_APP_URL}/would-you-rather/${props.gameId}`
-    if(props.game==='thisorthat')
-        link =`${process.env.REACT_APP_URL}/this-or-that/${props.subGame}/${props.gameId}`
+	var link;
+	if (props.game === "wouldyourather") link = `${process.env.REACT_APP_URL}/would-you-rather/${props.gameId}`;
+	if (props.game === "thisorthat") link = `${process.env.REACT_APP_URL}/this-or-that/${props.subGame}/${props.gameId}`;
 
-    useEffect(() => {
-
+	useEffect(() => {
 		for (var i = 0; i < ALLOWED_GAMES.length; i++) {
-			if (ALLOWED_GAMES[i] === props.game)
-            {
-                for(var j = 0; j < ALLOWED_PAGES[props.game].length; j++)
-                {
-                    if(ALLOWED_PAGES[props.game][j] === props.subGame) break;
-                    if(j === ALLOWED_PAGES[props.game].length - 1) window.location.href = "/";
-                }
-                break;
-            }
+			if (ALLOWED_GAMES[i] === props.game) {
+				for (var j = 0; j < ALLOWED_PAGES[props.game].length; j++) {
+					if (ALLOWED_PAGES[props.game][j] === props.subGame) break;
+					if (j === ALLOWED_PAGES[props.game].length - 1) window.location.href = "/";
+				}
+				break;
+			}
 			if (i === ALLOWED_GAMES.length - 1) window.location.href = "/"; // SHOW 404 page
 		}
 
@@ -223,7 +218,11 @@ function PlayTwoOpt(props) {
 			.catch((err) => console.log(err));
 
 		// monitor changes in props.game -> GameID -> users (in firebase)
-		firebaseDb.child(props.game).child(props.gameId).child("users").on(
+		firebaseDb
+			.child(props.game)
+			.child(props.gameId)
+			.child("users")
+			.on(
 				"value",
 				(snapshot) => {
 					setUsers(snapshot.val());
@@ -234,7 +233,11 @@ function PlayTwoOpt(props) {
 			);
 
 		// monitor changes in props.game -> GameID -> ans (in firebase)
-		firebaseDb.child(props.game).child(props.gameId).child("ans").on(
+		firebaseDb
+			.child(props.game)
+			.child(props.gameId)
+			.child("ans")
+			.on(
 				"value",
 				(snapshot) => {
 					setAns(snapshot.val());
@@ -244,7 +247,11 @@ function PlayTwoOpt(props) {
 				}
 			);
 		// monitor changes in props.game -> GameID -> queNo (in firebase)
-		firebaseDb.child(props.game).child(props.gameId).child("queNo").on(
+		firebaseDb
+			.child(props.game)
+			.child(props.gameId)
+			.child("queNo")
+			.on(
 				"value",
 				(snapshot) => {
 					setI(snapshot.val());
@@ -298,7 +305,11 @@ function PlayTwoOpt(props) {
 
 	const NextQue = () => {
 		// increse the count in queNo
-		firebaseDb.child(props.game).child(props.gameId).child("queNo").set((i + 1) % queBank.length);
+		firebaseDb
+			.child(props.game)
+			.child(props.gameId)
+			.child("queNo")
+			.set((i + 1) % queBank.length);
 		// Set ans to null
 		firebaseDb.child(props.game).child(props.gameId).child("ans").set("null");
 		// setI((i + 1) % queBank.length);
@@ -314,22 +325,21 @@ function PlayTwoOpt(props) {
 	if (i === -1) {
 		return (
 			<div id="playRF" style={{ margin: "40px auto" }}>
-                <NeonTwoOpt game={props.game} />
+				<NeonTwoOpt game={props.game} />
 				<br />
-				<div
-					className="card"
-					style={{border:'0', zIndex: '-1'}}
-				><img
-				src={finger} 
-				alt="finger" 
-				style={{
-					backgroundImage: finger,
-					margin: "8px auto",
-					width: "330px",
-					height: "243px",
-					borderRadius: "450px",
-				}}
-			/></div>
+				<div className="card" style={{ border: "0", zIndex: "-1" }}>
+					<img
+						src={finger}
+						alt="finger"
+						style={{
+							backgroundImage: finger,
+							margin: "8px auto",
+							width: "330px",
+							height: "243px",
+							borderRadius: "450px",
+						}}
+					/>
+				</div>
 				<p style={{ textAlign: "center", fontSize: "50px" }}>Loading Your Room...</p>
 			</div>
 		);
@@ -338,7 +348,7 @@ function PlayTwoOpt(props) {
 	if (name === "") {
 		return (
 			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
-                <NeonTwoOpt game={props.game} />
+				<NeonTwoOpt game={props.game} />
 				<Card className={classes.card} raised>
 					<p className="my-3" style={{ fontSize: "34px", fontWeight: "00", color: "black" }}>
 						Enter Your Name
@@ -357,7 +367,7 @@ function PlayTwoOpt(props) {
 	if (y === 0) {
 		return (
 			<div id="playRF" className="text-center" style={{ marginTop: "80px" }}>
-                <NeonTwoOpt game={props.game} />
+				<NeonTwoOpt game={props.game} />
 				<br />
 				<Button variant="contained" color="primary" onClick={() => setY(1)}>
 					Start
@@ -414,11 +424,11 @@ function PlayTwoOpt(props) {
 		return (
 			<div id="playRF" className="text-center mt-5" style={{ margin: "0px auto" }}>
 				<div className="my-2">
-                    <NeonTwoOpt game={props.game} />
+					<NeonTwoOpt game={props.game} />
 				</div>
 				<br />
 				<h3 className="my-2">
-				<i class="fas fa-circle fa-xs" style={{ color: "#05b714" }}></i> Online: {Object.values(users).length}{" "}
+					<i class="fas fa-circle fa-xs" style={{ color: "#05b714" }}></i> Online: {Object.values(users).length}{" "}
 				</h3>
 				<br />
 				<div className="row">
@@ -433,22 +443,22 @@ function PlayTwoOpt(props) {
 					<br />
 					<hr />
 					<div className="col-8 offset-2 row">
-						{props.game==='wouldyourather'?
-							<div style={{ textAlign: "center", marginX: "0", fontFamily:'Dancing Script'}}>
-								<h3>{queBank[parseInt(i)]['que']}</h3>
+						{props.game === "wouldyourather" ? (
+							<div style={{ textAlign: "center", marginX: "0", fontFamily: "Dancing Script" }}>
+								<h3>{queBank[parseInt(i)]["que"]}</h3>
 							</div>
-						:null}
-                        <Card onClick={() => AnsChoice(queBank[parseInt(i)]['optionA'])} className={classes.options} style={{}} raised>
-                            <h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-                                {queBank[parseInt(i)]['optionA']}
-                            </h3>
-                        </Card>
-						<span style={{fontFamily:'Dancing Script'}}>OR</span>
-                        <Card onClick={() => AnsChoice(queBank[parseInt(i)]['optionB'])} className={classes.options} style={{}} raised>
-                            <h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
-                            {queBank[parseInt(i)]['optionB']}
-                            </h3>
-                        </Card>
+						) : null}
+						<Card onClick={() => AnsChoice(queBank[parseInt(i)]["optionA"])} className={classes.options} style={{}} raised>
+							<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+								{queBank[parseInt(i)]["optionA"]}
+							</h3>
+						</Card>
+						<span style={{ fontFamily: "Dancing Script" }}>OR</span>
+						<Card onClick={() => AnsChoice(queBank[parseInt(i)]["optionB"])} className={classes.options} style={{}} raised>
+							<h3 className="text-capitalize text-center" style={{ fontSize: "26px" }}>
+								{queBank[parseInt(i)]["optionB"]}
+							</h3>
+						</Card>
 					</div>
 				</div>
 				<button className={`${classes.btnGrad}`} onClick={() => AnsChoice("Skipped")} style={{ width: "80px" }}>
@@ -462,7 +472,7 @@ function PlayTwoOpt(props) {
 		if (ans != null && Object.values(users).length === Object.values(ans).length) setY(3);
 		return (
 			<div className="text-center m-auto">
-                <NeonTwoOpt game={props.game} />
+				<NeonTwoOpt game={props.game} />
 				<br />
 				<div className="m-2">
 					<h1 style={{ fontFamily: "'ZCOOL KuaiLe', cursive" }}>Wait for your friend's response</h1>
@@ -498,9 +508,9 @@ function PlayTwoOpt(props) {
 	if (y === 3)
 		return (
 			<div id="playRF" className="mt-4" style={{ textAlign: "center" }}>
-				{ans===null?NextQue():null}
+				{ans === null ? NextQue() : null}
 				<div className="my-5">
-                    <NeonTwoOpt game={props.game} />
+					<NeonTwoOpt game={props.game} />
 				</div>
 				<div>
 					<table style={{ margin: "auto", justifyContent: "center" }}>
@@ -530,9 +540,7 @@ function PlayTwoOpt(props) {
 			</div>
 		);
 	// window.location.href = `/rapid-fire`;
-    <div>
-        test
-    </div>
+	<div>test</div>;
 }
 
 export default PlayTwoOpt;
