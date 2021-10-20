@@ -79,11 +79,10 @@ const useStyles = makeStyles((theme) => ({
 		color: "#435560",
 		background: "#f0f0f6",
 		borderRadius: "20px",
-		cursor:'pointer',
+		cursor: "pointer",
 		boxShadow:
 			"8px 8px 10px rgba( 0, 0, 0, 0.2), -8px -8px 10px rgba(255, 255, 255, 0.8), inset 6px 6px 10px rgba( 0, 0, 0, 0.2), inset -6px -6px 10px rgba(255, 255, 255, 0.8)",
-		transition: 'background 301ms ease-in-out',
-		
+		transition: "background 301ms ease-in-out",
 	},
 	checked: {
 		color: "#22ca62",
@@ -132,9 +131,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-var optionList = ["optionA", "optionB", "optionC", "optionD"]
+var optionList = ["optionA", "optionB", "optionC", "optionD"];
 function Playquiz(props) {
-	const [token] = useCookies(['tb-token','tb-user']);
+	const [token] = useCookies(["tb-token", "tb-user"]);
 	const [name, setName] = useState(null);
 	const [user, setUser] = useState(null);
 	const [que, setQue] = useState(null);
@@ -198,15 +197,14 @@ function Playquiz(props) {
 	function Checkans(a) {
 		setAns([...ans, a]);
 		if (que[`ans${i + 1}`] === a) setMarks(marks + 1);
-		document.getElementById(optionList[a]).style.backgroundColor="#d96a6a";
-		document.getElementById(optionList[que[`ans${i + 1}`]]).style.backgroundColor="#5dc760";
+		document.getElementById(optionList[a]).style.backgroundColor = "#d96a6a";
+		document.getElementById(optionList[que[`ans${i + 1}`]]).style.backgroundColor = "#5dc760";
 		setTimeout(() => {
-			if(document.getElementById(optionList[0]))
-			{
-				document.getElementById(optionList[0]).style.backgroundColor="inherit";
-				document.getElementById(optionList[1]).style.backgroundColor="inherit";
-				document.getElementById(optionList[2]).style.backgroundColor="inherit";
-				document.getElementById(optionList[3]).style.backgroundColor="inherit";
+			if (document.getElementById(optionList[0])) {
+				document.getElementById(optionList[0]).style.backgroundColor = "inherit";
+				document.getElementById(optionList[1]).style.backgroundColor = "inherit";
+				document.getElementById(optionList[2]).style.backgroundColor = "inherit";
+				document.getElementById(optionList[3]).style.backgroundColor = "inherit";
 				setI(i + 1);
 			}
 		}, 700);
@@ -221,7 +219,7 @@ function Playquiz(props) {
 						<QueNumber que={ans.length} />
 					</div>
 					<div className={classes.box} style={{ borderColor: `${colourPalette[i % 8]}`, marginTop: "0" }}>
-						<textarea className={`question ${classes.question}`} value={que[`que${i + 1}`]}  disabled />
+						<textarea className={`question ${classes.question}`} value={que[`que${i + 1}`]} disabled />
 						<br />
 						<div className={`row ${classes.parentOption}`} style={{ padding: "0", margin: "0", maxWidth: "100%" }}>
 							<div className="col-md-6 col-xs-12 d-flex justify-content-center" style={{ maxWidth: "100%" }}>
@@ -232,12 +230,7 @@ function Playquiz(props) {
 									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
-										<textarea
-											className={`optionA ${classes.option} col-md-9 col-xs-11 `}
-											id="optionA"
-											value={que[`option${i + 1}A`]}
-											disabled
-										/>
+										<textarea className={`optionA ${classes.option} col-md-9 col-xs-11 `} id="optionA" value={que[`option${i + 1}A`]} disabled />
 									</center>
 								</span>
 							</div>
@@ -250,12 +243,7 @@ function Playquiz(props) {
 									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
-										<textarea
-											className={`optionB ${classes.option} col-md-9 col-xs-11`}
-											id="optionB"
-											value={que[`option${i + 1}B`]}
-											disabled
-										/>
+										<textarea className={`optionB ${classes.option} col-md-9 col-xs-11`} id="optionB" value={que[`option${i + 1}B`]} disabled />
 									</center>
 								</span>
 							</div>
@@ -268,12 +256,7 @@ function Playquiz(props) {
 									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
-										<textarea
-											className={`optionC ${classes.option} col-md-9 col-xs-11`}
-											id="optionC"
-											value={que[`option${i + 1}C`]}
-											disabled
-										/>
+										<textarea className={`optionC ${classes.option} col-md-9 col-xs-11`} id="optionC" value={que[`option${i + 1}C`]} disabled />
 									</center>
 								</span>
 							</div>
@@ -286,12 +269,7 @@ function Playquiz(props) {
 									style={{ maxWidth: "100%", display: "block" }}
 								>
 									<center>
-										<textarea
-											className={`optionD ${classes.option} col-md-9 col-xs-11`}
-											id="optionD"
-											value={que[`option${i + 1}D`]}
-											disabled
-										/>
+										<textarea className={`optionD ${classes.option} col-md-9 col-xs-11`} id="optionD" value={que[`option${i + 1}D`]} disabled />
 									</center>
 								</span>
 							</div>
@@ -369,7 +347,6 @@ function Playquiz(props) {
 								id="name"
 								label="Your Name Here"
 								placeholder="Hello Dear👋"
-								multiline
 								variant="filled"
 								name="name"
 								inputProps={{ maxLength: 18 }}
