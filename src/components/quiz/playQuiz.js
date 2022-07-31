@@ -196,10 +196,10 @@ function Playquiz(props) {
 
 	function Checkans(a) {
 		setAns([...ans, a]);
-		if (que[`ans${i + 1}`] === a) setMarks(marks + 1);
 		document.getElementById(optionList[a]).style.backgroundColor = "#d96a6a";
 		document.getElementById(optionList[que[`ans${i + 1}`]]).style.backgroundColor = "#5dc760";
 		setTimeout(() => {
+			if (que[`ans${i + 1}`] === a) setMarks(marks + 1);
 			if (document.getElementById(optionList[0])) {
 				document.getElementById(optionList[0]).style.backgroundColor = "inherit";
 				document.getElementById(optionList[1]).style.backgroundColor = "inherit";
@@ -207,7 +207,7 @@ function Playquiz(props) {
 				document.getElementById(optionList[3]).style.backgroundColor = "inherit";
 				setI(i + 1);
 			}
-		}, 700);
+		}, 600);
 	}
 
 	function Showque() {
@@ -324,7 +324,7 @@ function Playquiz(props) {
 		);
 	// wait until question is fetched
 	else if (!que || !user) return <Loading />;
-	else if (user === que.user) window.location.href = `/quiz/view/${que.code}`;
+	// else if (user === que.user) window.location.href = `/quiz/view/${que.code}`;
 	// ask user to enter name
 	else
 		return (

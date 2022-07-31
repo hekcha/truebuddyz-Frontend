@@ -27,7 +27,7 @@ function IndexThisOrThat() {
 						<Card link="/this-or-that/couple" img={couple} text="This or That for Couple" />
 						<Card link="/this-or-that/funny" img={funny} text="Funny This or That Questions" />
 						<Card link="/this-or-that/hard" img={hard} text="Hard This or That Questions" />
-						<Card link="/this-or-that/adult" img={adult} text="Adult This or That Questions" />
+						{/* <Card link="/this-or-that/adult" img={adult} text="Adult This or That Questions" /> */}
 					</div>
 				</div>
 			</section>

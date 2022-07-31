@@ -975,7 +975,7 @@ header p {
 	stroke-width: 2px;
 	stroke: #333;
 	fill: none;
-	animation: countdown 10s linear infinite forwards;
+	animation: countdown 15s linear infinite forwards;
 }
 
 @keyframes countdown {
